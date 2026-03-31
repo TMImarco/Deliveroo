@@ -219,8 +219,6 @@ C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\ms7j3rwc9f-9vr69e8ynj.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\isk6w61laj-87fc7y1x7t.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\ngs26ugopu-mlv21k5csn.gz
-C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\mdm5n4uptv-v8o5408itv.gz
-C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\r1tahk21iz-v8o5408itv.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\staticwebassets.development.json
@@ -231,3 +229,6 @@ C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\Deliveroo.pdb
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\Deliveroo.genruntimeconfig.cache
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\ref\Deliveroo.dll
+C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\scopedcss\Views\Shared\_LayoutAdmin.cshtml.rz.scp.css
+C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\mdm5n4uptv-dzl30wu1v7.gz
+C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\r1tahk21iz-dzl30wu1v7.gz

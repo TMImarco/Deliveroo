@@ -24,6 +24,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Home/LoginAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbkFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -47,3 +51,7 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-qgn06afi62
+
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Shared/_LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-qpa08mvz5o
