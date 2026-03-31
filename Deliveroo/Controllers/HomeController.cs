@@ -15,33 +15,38 @@ public class HomeController : Controller
     public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IHttpContextAccessor contextAccessor)
     {
         _logger = logger;
-        _configuration = configuration;
+        _configuration = configuration; //NON RIMUOVERE (file di configurazione)
         _gestioneDati = new GestioneDati();
         _contextAccessor = contextAccessor;
     }
 
     //  ----------------------------------PER AUTENTICAZIONE-LOGIN-------------------------------------------
+    //pagina per reindirizzare alla pagina di login per l'admin
     public IActionResult LoginAdmin()
     {
         return View();
     }
 
+    //richiesta http post per l'autenticazione dell'admin
     [HttpPost]
     public IActionResult LoginAdmin(Utente utente)
     {
+        //prende le cose scritte nella text box
+        //DA FARE: controllare che non siano NULL e/o impedire di inserirlo e/o qualcos'altro
         string username=_configuration.GetRequiredSection("AdminCredentials").GetValue<string>("UserName");
         string password=_configuration.GetRequiredSection("AdminCredentials").GetValue<string>("Password");
         
+        //controlla se le credenziali inserite sono giuste
         if (utente.Username==username && utente.Password==password)
         {
-            //ok è chi doveva essere
+            //Credenziali corrette
             //scrivo nella sessione l'utente loggato
             _contextAccessor.HttpContext.Session.SetString("user", "admin");
             return RedirectToAction("Index");
         }
         else
         {
-            //se le credenziali non sono valide
+            //Credenziali non valide
             //ritorniamo al form di login
             ViewData["errore"] = "Credenziali non valide";
             return View();
