@@ -122,4 +122,22 @@ public class GestioneDati
 
         return listaRigheDettaglio;
     }
+    
+    // METODI AGGIUNTIVI
+    public List<string> GetCategorie()
+    {
+        List<string> listCategorie = new();
+        string query = "SELECT categoria FROM articoli";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            string categoria = (string)reader["categoria"];
+            listCategorie.Add(categoria);
+        }
+        reader.Close();
+
+        return listCategorie;
+    }
 }
