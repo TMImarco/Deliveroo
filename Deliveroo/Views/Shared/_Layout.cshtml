@@ -1,5 +1,10 @@
 ﻿<!--LAYOUT NORMALE DELLA HOME QUANDO ENTRI INIZIALMENTE (COME UTENTE NORMALE)-->
 
+@inject GestioneDati g
+@{
+    var categorie = g.GetCategorie();
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +20,9 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container justify-content-center">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Deliveroo</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <h2 class="section-title">Deliveroo</h2>
+            </a>
         </div>
     </nav>
 </header>
@@ -23,58 +30,20 @@
 <!-- MACRO CATEGORIE -->
 <div class="macro-section">
     <div class="container">
-        <div class="categories-grid">
+        <div class="macro-grid">
+            @foreach (var categoria in categorie)
+            {
+                <div class="macro-item">
+                    <a href="#" class="macro-main-box">
+                        @categoria
+                    </a>
 
-            <a asp-controller="Home" asp-action="Index" class="category-card hab">
-                <div class="cat-icon">🏠</div>
-                <h3>HAB.</h3>
-            </a>
-
-            <a asp-controller="Home" asp-action="Index" class="category-card bar">
-                <div class="cat-icon">☕</div>
-                <h3>BAR</h3>
-            </a>
-
-            <a asp-controller="Home" asp-action="Index" class="category-card rist">
-                <div class="cat-icon">🍽️</div>
-                <h3>RIST.</h3>
-            </a>
-
-            <a asp-controller="Home" asp-action="Index" class="category-card pizzeria">
-                <div class="cat-icon">🍕</div>
-                <h3>PIZZA</h3>
-            </a>
-
-            <a asp-controller="Home" asp-action="Index" class="category-card fastfood">
-                <div class="cat-icon">🍔</div>
-                <h3>FAST FOOD</h3>
-            </a>
-
-            <a asp-controller="Home" asp-action="Index" class="category-card sushi">
-                <div class="cat-icon">🍣</div>
-                <h3>SUSHI</h3>
-            </a>
-
-            <a asp-controller="Home" asp-action="Index" class="category-card dessert">
-                <div class="cat-icon">🍰</div>
-                <h3>DESSERT</h3>
-            </a>
-
-            <a asp-controller="Home" asp-action="Index" class="category-card salute">
-                <div class="cat-icon">🥗</div>
-                <h3>SALUTE</h3>
-            </a>
-
-            <a asp-controller="Home" asp-action="Index" class="category-card bevande">
-                <div class="cat-icon">🥤</div>
-                <h3>BEVANDE</h3>
-            </a>
-
-            <a asp-controller="Home" asp-action="Index" class="category-card etnico">
-                <div class="cat-icon">🌮</div>
-                <h3>ETNICO</h3>
-            </a>
-
+                    <div class="macro-sub-row">
+                        <div class="macro-sub-box"></div>
+                        <div class="macro-sub-box"></div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>
@@ -86,17 +55,17 @@
     </main>
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2026 - Deliveroo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-</footer>
-
 <!-- CARRELLO FAB -->
 <a href="#" class="cart-fab" title="Carrello">
     🛒
     <span class="cart-badge">0</span>
 </a>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2026 - Deliveroo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

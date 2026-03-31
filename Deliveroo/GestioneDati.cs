@@ -127,7 +127,7 @@ public class GestioneDati
     public List<string> GetCategorie()
     {
         List<string> listCategorie = new();
-        string query = "SELECT categoria FROM articoli";
+        string query = "SELECT distinct categoria FROM articoli";
         MySqlCommand command = new MySqlCommand(query, _connection);
         MySqlDataReader reader = command.ExecuteReader();
 

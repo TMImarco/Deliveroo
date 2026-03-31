@@ -1,3 +1,5 @@
+using Deliveroo;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,6 +12,10 @@ builder.Services.AddSession(options =>
         options.IdleTimeout = TimeSpan.FromMinutes(10);
     }
 );
+
+//Registro la classe GestioneDati cosi da poterlo usare all'interno del Layout.html
+builder.Services.AddScoped<GestioneDati>();
+
 
 var app = builder.Build();
 
