@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BaVTsMeHarpfgFjpDPOugbYKZvJKIjusWsahFhTJJtU=",
+  "Hash": "HODuXtELqIK9lZUV2mWIbzi1QaChcAaiZzMAs1JeEk0=",
   "Source": "Deliveroo",
   "BasePath": "_content/Deliveroo",
   "Mode": "Default",
@@ -836,12 +836,12 @@
       "OriginalItemSpec": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\mdm5n4uptv-xmym0mebur.gz",
+      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\mdm5n4uptv-5we7w2l0z2.gz",
       "SourceId": "Deliveroo",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Deliveroo",
-      "RelativePath": "Deliveroo#[.{fingerprint=xmym0mebur}]?.styles.css.gz",
+      "RelativePath": "Deliveroo#[.{fingerprint=5we7w2l0z2}]?.styles.css.gz",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Alternative",
@@ -850,8 +850,8 @@
       "RelatedAsset": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\scopedcss\\bundle\\Deliveroo.styles.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "x91rak1qnh",
-      "Integrity": "Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64=",
+      "Fingerprint": "4hr57khsff",
+      "Integrity": "WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\scopedcss\\bundle\\Deliveroo.styles.css"
@@ -1088,12 +1088,12 @@
       "OriginalItemSpec": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\r1tahk21iz-xmym0mebur.gz",
+      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\r1tahk21iz-5we7w2l0z2.gz",
       "SourceId": "Deliveroo",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Deliveroo",
-      "RelativePath": "Deliveroo#[.{fingerprint=xmym0mebur}]!.bundle.scp.css.gz",
+      "RelativePath": "Deliveroo#[.{fingerprint=5we7w2l0z2}]!.bundle.scp.css.gz",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Alternative",
@@ -1102,8 +1102,8 @@
       "RelatedAsset": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\Deliveroo.bundle.scp.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "x91rak1qnh",
-      "Integrity": "Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64=",
+      "Fingerprint": "4hr57khsff",
+      "Integrity": "WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\Deliveroo.bundle.scp.css"
@@ -1375,8 +1375,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "xmym0mebur",
-      "Integrity": "J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU=",
+      "Fingerprint": "5we7w2l0z2",
+      "Integrity": "Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\scopedcss\\bundle\\Deliveroo.styles.css"
@@ -1396,8 +1396,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "xmym0mebur",
-      "Integrity": "J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU=",
+      "Fingerprint": "5we7w2l0z2",
+      "Integrity": "Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\Deliveroo.bundle.scp.css"
@@ -1443,6 +1443,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\Foto\\cappuccino.jpg",
+      "SourceId": "Deliveroo",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
+      "BasePath": "_content/Deliveroo",
+      "RelativePath": "Foto/cappuccino#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "s3hvd6vdvg",
+      "Integrity": "WJ0uynuTT44HyDFi4qCQeIvO9TeQ5JCukM2XDvOq0mA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Foto\\cappuccino.jpg"
     },
     {
       "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\js\\site.js",
@@ -3026,13 +3047,13 @@
       ]
     },
     {
-      "Route": "Deliveroo.bundle.scp.css",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\r1tahk21iz-xmym0mebur.gz",
+      "Route": "Deliveroo.5we7w2l0z2.bundle.scp.css",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\r1tahk21iz-5we7w2l0z2.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000636132316"
+          "Quality": "0.000618429190"
         }
       ],
       "ResponseHeaders": [
@@ -3042,19 +3063,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1571"
+          "Value": "1616"
         },
         {
           "Name": "ETag",
-          "Value": "\"Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64=\""
+          "Value": "\"WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 31 Mar 2026 14:20:25 GMT"
+          "Value": "Tue, 31 Mar 2026 14:52:10 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -3070,18 +3091,26 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU=\""
+          "Value": "W/\"Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY=\""
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "5we7w2l0z2"
+        },
+        {
+          "Name": "label",
+          "Value": "Deliveroo.bundle.scp.css"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU="
+          "Value": "sha256-Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY="
         }
       ]
     },
     {
-      "Route": "Deliveroo.bundle.scp.css",
+      "Route": "Deliveroo.5we7w2l0z2.bundle.scp.css",
       "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\Deliveroo.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3091,7 +3120,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5129"
+          "Value": "5350"
         },
         {
           "Name": "Content-Type",
@@ -3099,258 +3128,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU=\""
+          "Value": "\"Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 31 Mar 2026 14:20:25 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU="
-        }
-      ]
-    },
-    {
-      "Route": "Deliveroo.bundle.scp.css.gz",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\r1tahk21iz-xmym0mebur.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1571"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 31 Mar 2026 14:20:25 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64="
-        }
-      ]
-    },
-    {
-      "Route": "Deliveroo.styles.css",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\mdm5n4uptv-xmym0mebur.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000636132316"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1571"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 31 Mar 2026 14:20:25 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU="
-        }
-      ]
-    },
-    {
-      "Route": "Deliveroo.styles.css",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\scopedcss\\bundle\\Deliveroo.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5129"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 31 Mar 2026 14:20:25 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU="
-        }
-      ]
-    },
-    {
-      "Route": "Deliveroo.styles.css.gz",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\mdm5n4uptv-xmym0mebur.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1571"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 31 Mar 2026 14:20:25 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64="
-        }
-      ]
-    },
-    {
-      "Route": "Deliveroo.xmym0mebur.bundle.scp.css",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\r1tahk21iz-xmym0mebur.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000636132316"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1571"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 31 Mar 2026 14:20:25 GMT"
+          "Value": "Tue, 31 Mar 2026 14:52:10 GMT"
         },
         {
           "Name": "Cache-Control",
           "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xmym0mebur"
+          "Value": "5we7w2l0z2"
         },
         {
           "Name": "label",
@@ -3358,13 +3150,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU="
+          "Value": "sha256-Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY="
         }
       ]
     },
     {
-      "Route": "Deliveroo.xmym0mebur.bundle.scp.css",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\Deliveroo.bundle.scp.css",
+      "Route": "Deliveroo.5we7w2l0z2.bundle.scp.css.gz",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\r1tahk21iz-5we7w2l0z2.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3373,7 +3165,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5129"
+          "Value": "1616"
         },
         {
           "Name": "Content-Type",
@@ -3381,56 +3173,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU=\""
+          "Value": "\"WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 31 Mar 2026 14:20:25 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "xmym0mebur"
-        },
-        {
-          "Name": "label",
-          "Value": "Deliveroo.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU="
-        }
-      ]
-    },
-    {
-      "Route": "Deliveroo.xmym0mebur.bundle.scp.css.gz",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\r1tahk21iz-xmym0mebur.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1571"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 31 Mar 2026 14:20:25 GMT"
+          "Value": "Tue, 31 Mar 2026 14:52:10 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3448,7 +3195,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xmym0mebur"
+          "Value": "5we7w2l0z2"
         },
         {
           "Name": "label",
@@ -3456,18 +3203,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64="
+          "Value": "sha256-WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg="
         }
       ]
     },
     {
-      "Route": "Deliveroo.xmym0mebur.styles.css",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\mdm5n4uptv-xmym0mebur.gz",
+      "Route": "Deliveroo.5we7w2l0z2.styles.css",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\mdm5n4uptv-5we7w2l0z2.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000636132316"
+          "Quality": "0.000618429190"
         }
       ],
       "ResponseHeaders": [
@@ -3477,15 +3224,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1571"
+          "Value": "1616"
         },
         {
           "Name": "ETag",
-          "Value": "\"Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64=\""
+          "Value": "\"WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 31 Mar 2026 14:20:25 GMT"
+          "Value": "Tue, 31 Mar 2026 14:52:10 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3505,13 +3252,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU=\""
+          "Value": "W/\"Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xmym0mebur"
+          "Value": "5we7w2l0z2"
         },
         {
           "Name": "label",
@@ -3519,12 +3266,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU="
+          "Value": "sha256-Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY="
         }
       ]
     },
     {
-      "Route": "Deliveroo.xmym0mebur.styles.css",
+      "Route": "Deliveroo.5we7w2l0z2.styles.css",
       "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\scopedcss\\bundle\\Deliveroo.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3534,7 +3281,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5129"
+          "Value": "5350"
         },
         {
           "Name": "Content-Type",
@@ -3542,11 +3289,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU=\""
+          "Value": "\"Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 31 Mar 2026 14:20:25 GMT"
+          "Value": "Tue, 31 Mar 2026 14:52:10 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3556,7 +3303,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xmym0mebur"
+          "Value": "5we7w2l0z2"
         },
         {
           "Name": "label",
@@ -3564,13 +3311,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-J+/rRafg41Lbd1vn4YcmNzaVGCeLqfRLYEsut3H01YU="
+          "Value": "sha256-Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY="
         }
       ]
     },
     {
-      "Route": "Deliveroo.xmym0mebur.styles.css.gz",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\mdm5n4uptv-xmym0mebur.gz",
+      "Route": "Deliveroo.5we7w2l0z2.styles.css.gz",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\mdm5n4uptv-5we7w2l0z2.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3579,7 +3326,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1571"
+          "Value": "1616"
         },
         {
           "Name": "Content-Type",
@@ -3587,11 +3334,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64=\""
+          "Value": "\"WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 31 Mar 2026 14:20:25 GMT"
+          "Value": "Tue, 31 Mar 2026 14:52:10 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3609,7 +3356,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xmym0mebur"
+          "Value": "5we7w2l0z2"
         },
         {
           "Name": "label",
@@ -3617,7 +3364,281 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Nenkfj0Nqit7XZuJMbL7/TnBlC89kN3knvKqOmS6V64="
+          "Value": "sha256-WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg="
+        }
+      ]
+    },
+    {
+      "Route": "Deliveroo.bundle.scp.css",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\r1tahk21iz-5we7w2l0z2.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000618429190"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1616"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 31 Mar 2026 14:52:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY="
+        }
+      ]
+    },
+    {
+      "Route": "Deliveroo.bundle.scp.css",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\Deliveroo.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5350"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 31 Mar 2026 14:52:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY="
+        }
+      ]
+    },
+    {
+      "Route": "Deliveroo.bundle.scp.css.gz",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\r1tahk21iz-5we7w2l0z2.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1616"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 31 Mar 2026 14:52:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg="
+        }
+      ]
+    },
+    {
+      "Route": "Deliveroo.styles.css",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\mdm5n4uptv-5we7w2l0z2.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000618429190"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1616"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 31 Mar 2026 14:52:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY="
+        }
+      ]
+    },
+    {
+      "Route": "Deliveroo.styles.css",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\scopedcss\\bundle\\Deliveroo.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5350"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 31 Mar 2026 14:52:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jf9FKvroWitMQAYQuXy9mCG7x7YvQCNrNApj+MXRWfY="
+        }
+      ]
+    },
+    {
+      "Route": "Deliveroo.styles.css.gz",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\mdm5n4uptv-5we7w2l0z2.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1616"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 31 Mar 2026 14:52:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WGGm834e5Al/8WT2161Qk0f3PF7+BFSR/FmbG3s3IUg="
         }
       ]
     },
@@ -3916,6 +3937,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0="
+        }
+      ]
+    },
+    {
+      "Route": "Foto/cappuccino.jpg",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\Foto\\cappuccino.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "736401"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WJ0uynuTT44HyDFi4qCQeIvO9TeQ5JCukM2XDvOq0mA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 31 Mar 2026 14:37:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WJ0uynuTT44HyDFi4qCQeIvO9TeQ5JCukM2XDvOq0mA="
+        }
+      ]
+    },
+    {
+      "Route": "Foto/cappuccino.s3hvd6vdvg.jpg",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\Foto\\cappuccino.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "736401"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WJ0uynuTT44HyDFi4qCQeIvO9TeQ5JCukM2XDvOq0mA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 31 Mar 2026 14:37:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s3hvd6vdvg"
+        },
+        {
+          "Name": "label",
+          "Value": "Foto/cappuccino.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WJ0uynuTT44HyDFi4qCQeIvO9TeQ5JCukM2XDvOq0mA="
         }
       ]
     },

@@ -1,6 +1,4 @@
-﻿<!--LAYOUT NORMALE DELLA HOME QUANDO ENTRI INIZIALMENTE (COME UTENTE NORMALE)-->
-
-@inject GestioneDati g
+﻿@inject GestioneDati g
 @{
     var categorie = g.GetCategorie();
 }
@@ -8,13 +6,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Deliveroo</title>
     <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/Deliveroo.styles.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Deliveroo.styles.css" asp-append-version="true" />
 </head>
 <body>
 <header>
@@ -27,7 +25,6 @@
     </nav>
 </header>
 
-<!-- MACRO CATEGORIE -->
 <div class="macro-section">
     <div class="container">
         <div class="macro-grid">
@@ -35,7 +32,8 @@
             {
                 <div class="macro-item">
                     <a href="#" class="macro-main-box">
-                        @categoria
+                        <img src="@Url.Content(categoria.PercorsoFoto)" alt="@categoria.Nome" class="macro-image" />
+                        <span>@categoria.Nome</span>
                     </a>
 
                     <div class="macro-sub-row">
@@ -48,24 +46,22 @@
     </div>
 </div>
 
-
 <div class="container">
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
 </div>
 
-<!-- CARRELLO FAB -->
-<a href="#" class="cart-fab" title="Carrello">
-    🛒
-    <span class="cart-badge">0</span>
-</a>
-
 <footer class="border-top footer text-muted">
     <div class="container">
         &copy; 2026 - Deliveroo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
+
+<a href="#" class="cart-fab" title="Carrello">
+    🛒
+    <span class="cart-badge">0</span>
+</a>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -124,20 +124,27 @@ public class GestioneDati
     }
     
     // METODI AGGIUNTIVI
-    public List<string> GetCategorie()
+    public List<Categoria> GetCategorie()
     {
-        List<string> listCategorie = new();
-        string query = "SELECT distinct categoria FROM articoli";
+        List<Categoria> listCategorie = new();
+        string query = "SELECT categoria, MIN(foto) AS foto FROM articoli GROUP BY categoria";
+
         MySqlCommand command = new MySqlCommand(query, _connection);
         MySqlDataReader reader = command.ExecuteReader();
 
         while (reader.Read())
         {
-            string categoria = (string)reader["categoria"];
-            listCategorie.Add(categoria);
-        }
-        reader.Close();
+            Categoria cat = new()
+            {
+                Nome = reader["categoria"].ToString(),
+                PercorsoFoto = reader["foto"].ToString()
+            };
 
+            listCategorie.Add(cat);
+        }
+
+        reader.Close();
         return listCategorie;
     }
+
 }
