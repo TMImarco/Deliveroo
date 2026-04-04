@@ -42,7 +42,7 @@ public class HomeController : Controller
             //Credenziali corrette
             //scrivo nella sessione l'utente loggato
             _contextAccessor.HttpContext.Session.SetString("user", "admin");
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexAdmin");//appena fatto il login reindirizza all'index fatto apposta per l'admin
         }
         else
         {
@@ -60,13 +60,6 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
     
-    public IActionResult Index()
-    {
-        // Visualizzo le categorie nell'Index
-        var listCategorie = _gestioneDati.GetCategorie();
-        return View(listCategorie);
-    }
-    
     //-----------------------------------------PAGINA ARTICOLI------------------------------------------------
     //pagina per reindirizzare alla pagina degli articoli
     public IActionResult Articoli()
@@ -75,8 +68,21 @@ public class HomeController : Controller
     }
     //--------------------------------------SOLO PER ADMIN-SOLO AUTORIZZATI--------------------------------------------
     
+    //Index fatto apposta per l'admin (l'utente normale non potra' accedervi)
+    public IActionResult IndexAdmin()
+    {
+        return View();
+    }
+    
     //-----------------------------------------------------------------------------------------------------------------
 
+    public IActionResult Index()
+    {
+        // Visualizzo le categorie nell'Index
+        var listCategorie = _gestioneDati.GetCategorie();
+        return View(listCategorie);
+    }
+    
     public IActionResult Privacy()
     {
         return View();
