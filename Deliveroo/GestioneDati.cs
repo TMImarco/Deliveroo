@@ -30,7 +30,8 @@ public class GestioneDati
                 Nome = (string)reader["nome"],
                 Foto = (string)reader["foto"],
                 Prezzo = (double)reader["prezzo_listino"],
-                NumeroOrdini = (int)reader["Numero_ordini"]
+                NumeroOrdini = (int)reader["Numero_ordini"],
+                Categoria = (string)reader["categoria"]
             };
 
 

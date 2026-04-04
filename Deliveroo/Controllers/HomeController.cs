@@ -62,11 +62,17 @@ public class HomeController : Controller
     
     public IActionResult Index()
     {
-        // Visualizzo le categorie nell'Index, cioè la home dell'utente
+        // Visualizzo le categorie nell'Index
         var listCategorie = _gestioneDati.GetCategorie();
         return View(listCategorie);
     }
-
+    
+    //-----------------------------------------PAGINA ARTICOLI------------------------------------------------
+    //pagina per reindirizzare alla pagina degli articoli
+    public IActionResult Articoli()
+    {
+        return View();
+    }
     //--------------------------------------SOLO PER ADMIN-SOLO AUTORIZZATI--------------------------------------------
     
     //-----------------------------------------------------------------------------------------------------------------
