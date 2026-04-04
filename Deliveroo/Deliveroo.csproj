@@ -14,4 +14,13 @@
       <None Include="wwwroot\Foto\cappuccino.jpg" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Update="wwwroot\Foto\cappuccino.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\Foto\sushi.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

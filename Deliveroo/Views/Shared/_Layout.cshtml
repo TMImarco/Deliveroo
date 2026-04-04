@@ -25,26 +25,6 @@
     </nav>
 </header>
 
-<div class="macro-section">
-    <div class="container">
-        <div class="macro-grid">
-            @foreach (var categoria in categorie)
-            {
-                <div class="macro-item">
-                    <a href="#" class="macro-main-box">
-                        <img src="@Url.Content(categoria.PercorsoFoto)" alt="@categoria.Nome" class="macro-image" />
-                        <span>@categoria.Nome</span>
-                    </a>
-
-                    <div class="macro-sub-row">
-                        <div class="macro-sub-box"></div>
-                        <div class="macro-sub-box"></div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-</div>
 
 <div class="container">
     <main role="main" class="pb-3">
@@ -57,11 +37,6 @@
         &copy; 2026 - Deliveroo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
-
-<a href="#" class="cart-fab" title="Carrello">
-    🛒
-    <span class="cart-badge">0</span>
-</a>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

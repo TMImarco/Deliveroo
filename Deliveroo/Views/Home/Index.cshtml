@@ -1,3 +1,37 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page"; 
 }
+
+<!-- Macro-section e Container sono puramente di grafica, invece macro-grid suddivide le categorie in 5 per fila 
+Il numero per fila può essere modificato all'interno dell site.css nell'apposita classe -->
+<div class="macro-section">
+    <div class="container">
+        <div class="macro-grid">
+            <!-- Dalla Model (lista delle categorie)
+            faccio una box di categoria per ciascuno >> se vogliamo aggiungere una nuova categoria, tutto sarà automatico -->
+            @foreach (var categoria in Model)
+            {
+                <!-- Box principale della macro-categoria che contiene una foto rappresentativa e il nome -->
+                <div class="macro-item">
+                    <a href="#" class="macro-main-box">
+                        <img src="@Url.Content(categoria.PercorsoFoto)" alt="@categoria.Nome" class="macro-image"/>
+                        <span>@categoria.Nome</span>
+                    </a>
+
+                    <!-- Sono i due rettangolini sotto agli box delle categorie
+                    Me l'ha messo Claude e sto pensando a cosa si potrebbe aggiungere, sennò li tolgo-->
+                    <div class="macro-sub-row">
+                        <div class="macro-sub-box"></div>
+                        <div class="macro-sub-box"></div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- CARRELLO -->
+<a href="#" class="cart-fab" title="Carrello">
+    🛒
+    <span class="cart-badge">0</span>
+</a>
