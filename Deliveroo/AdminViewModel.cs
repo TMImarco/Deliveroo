@@ -1,0 +1,10 @@
+﻿using Deliveroo.Tabelle;
+
+namespace Deliveroo;
+
+public class AdminViewModel
+{
+    public List<Ordine> Ordini { get; set; }
+    public List<Associazione> Associazioni { get; set; }
+    public List<Articolo> Articoli { get; set; }
+}

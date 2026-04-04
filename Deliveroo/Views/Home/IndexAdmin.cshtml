@@ -1,14 +1,98 @@
-﻿@{
-    ViewData["Title"] = "Admin Dashboard"; 
+﻿@model AdminViewModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
 }
 
-<div class="macro-section">
-    <div class="container">
-        <h1>Tabelle</h1>
-        <h2>grafici</h2>
-        <h3>griud</h3>
-        <h4>pulsanti</h4>
-        <h5>ecc</h5>
-        <h6>ecc</h6>
-    </div>
+<div class="container">
+    <h4>Ordini</h4>
+    <!--data table per gli ORDINI-->
+    <table id="ordiniTable" class="display">
+        <thead>
+        <tr>
+            <th>ID ordine</th>
+            <th>Cliente</th>
+            <th>Data</th>
+            <th>Importo totale</th>
+            <th>Indirizzo</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var o in Model.Ordini)
+        {
+            <tr>
+                <td>@o.IdOrdine</td>
+                <td>@o.NomeCliente</td>
+                <td>@o.Data.ToString("dd/MM/yyyy")</td>
+                <td>@o.ImportoTotale</td>
+                <td>@o.Indirizzo</td>
+            </tr>
+        }
+        </tbody>
+    </table>
 </div>
+
+<div class="container">
+    <h4>Associazioni</h4>
+    <!--data table per le ASSOCIAZIONI-->
+    <table id="associazioniTable" class="display">
+        <thead>
+        <tr>
+            <th>ID articolo n.:1</th>
+            <th>ID articolo n.:2</th>
+            <th>Numero ordini</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var a in Model.Associazioni)
+        {
+            <tr>
+                <td>@a.IdArticolo1</td>
+                <td>@a.IdArticolo2</td>
+                <td>@a.NumeroOrdini</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <h4>Articoli</h4>
+    <!--data table per gli ARTICOLI-->
+    <table id="articoliTable" class="display">
+        <thead>
+        <tr>
+            <th>ID articolo</th>
+            <th>Nome</th>
+            <th>Foto</th>
+            <th>Prezzo</th>
+            <th>Numero ordini</th>
+            <th>Categoria</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var a in Model.Articoli)
+        {
+            <tr>
+                <td>@a.IdArticolo</td>
+                <td>@a.Nome</td>
+                <td>@a.Foto</td>
+                <td>@a.Prezzo</td>
+                <td>@a.NumeroOrdini</td>
+                <td>@a.Categoria</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+<!--script per data table-->
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#ordiniTable').DataTable();
+            $('#associazioniTable').DataTable();
+            $('#articoliTable').DataTable();
+        });
+    </script>
+}

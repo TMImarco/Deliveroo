@@ -71,7 +71,18 @@ public class HomeController : Controller
     //Index fatto apposta per l'admin (l'utente normale non potra' accedervi)
     public IActionResult IndexAdmin()
     {
-        return View();
+        //e' stata creata una nuova classe chiamata AdminViewModel
+        //per riuscire a "trasportare" all'indexAdmin piu' di 1 elemento
+        //la classe sara' il model e dopo verra' scomposta per tutte le
+        //operazioni necessarie
+        var adminViewModel = new AdminViewModel()
+        {
+            Ordini = _gestioneDati.GetTuttiOrdini(),
+            Associazioni = _gestioneDati.GetTutteAssociazioni(),
+            Articoli = _gestioneDati.GetTuttiArticoli()
+        };
+        
+        return View(adminViewModel);
     }
     
     //-----------------------------------------------------------------------------------------------------------------
