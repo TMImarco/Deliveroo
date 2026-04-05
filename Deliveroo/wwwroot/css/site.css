@@ -20,7 +20,7 @@ html {
 
 body {
   margin: 0;
-  padding: 0;
+  padding-bottom: 108px;
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {

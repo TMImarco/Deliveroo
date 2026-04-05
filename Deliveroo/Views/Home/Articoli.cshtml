@@ -7,6 +7,10 @@
 
     <!-- prendo tutte le categorie per visualizzarle nella tab bar -->
     var categorie = _gestione.GetCategorie();
+    
+    <!-- per personalizzare la navbar, tengo conto della categoria selezionata da evidenziarla -->
+    var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString() 
+                           ?? Context.Request.Query["categoria"].ToString();
 }
 <!-- Contenuto della sezione NavbarLinks per questa vista specifica -->
 
@@ -14,11 +18,17 @@
     <!-- LA TAB BAR -->
     <div class="navbar-collapse collapse">
         <ul class="navbar-nav flex-row gap-3">
-            <!-- tab item per ciascuna categoria -->
             @foreach (var cat in categorie)
             {
+                <!-- categoria selezionata-->
+                var isActive = currentCategoria == cat.Nome ? "active" : "";
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Articoli" asp-route-categoria="@cat.Nome">@cat.Nome</a>
+                    <a class="nav-link text-dark @isActive" 
+                       asp-controller="Home" 
+                       asp-action="Articoli" 
+                       asp-route-categoria="@cat.Nome">
+                        @cat.Nome
+                    </a>
                 </li>
             }
         </ul>
@@ -31,7 +41,15 @@
         <div class="macro-grid">
             @foreach (var articolo in Model)
             {
-                <p> @articolo.Nome - @articolo.Prezzo.ToString("F2") </p>
+                <div class="articolo-card">
+                    <div class="articolo-img-wrap">
+                        <img src="@articolo.Foto" alt="@articolo.Nome" class="articolo-img" />
+                    </div>
+                    <div class="articolo-info">
+                        <span class="articolo-nome">@articolo.Nome</span>
+                        <span class="articolo-prezzo">€ @articolo.Prezzo.ToString("F2")</span>
+                    </div>
+                </div>
             }
         </div>
     </div>
@@ -45,4 +63,5 @@
 
 @section Styles {
     <link rel="stylesheet" href="/css/Articoli.css"/>
+}
 }
