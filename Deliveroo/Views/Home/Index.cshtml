@@ -1,5 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "Home Page"; 
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
 }
 
 <!-- Macro-section e Container sono puramente di grafica, invece macro-grid suddivide le categorie in 5 per fila 
@@ -12,8 +13,8 @@ Il numero per fila può essere modificato all'interno dell site.css nell'apposit
             @foreach (var categoria in Model)
             {
                 <!-- Box principale della macro-categoria che contiene una foto rappresentativa e il nome -->
-                <div class="macro-item">
-                    <a href="#" class="macro-main-box">
+                <div class="macro-item">-
+                    <a asp-controller="Home" asp-action="Articoli" asp-route-categoria="@categoria.Nome" class="macro-main-box">
                         <img src="@Url.Content(categoria.PercorsoFoto)" alt="@categoria.Nome" class="macro-image"/>
                         <span>@categoria.Nome</span>
                     </a>
@@ -35,3 +36,8 @@ Il numero per fila può essere modificato all'interno dell site.css nell'apposit
     🛒
     <span class="cart-badge">0</span>
 </a>
+
+<!-- CSS specifico per questa vista, caricato solo qui e non nelle altre pagine -->
+@section Styles {
+    <link rel="stylesheet" href="/css/Index.css" />
+}

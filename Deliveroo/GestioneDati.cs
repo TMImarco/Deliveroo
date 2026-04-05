@@ -148,4 +148,32 @@ public class GestioneDati
         return listCategorie;
     }
 
+    public List<Articolo> GetArticoloPerCategoria(string categoria)
+    {
+        List<Articolo> listaArticoli = new List<Articolo>();
+
+        string query = "SELECT * FROM articoli where categoria = @categoria order by id";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@categoria", categoria);
+        MySqlDataReader reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            Articolo articolo = new Articolo()
+            {
+                IdArticolo = (int)reader["id"],
+                Nome = (string)reader["nome"],
+                Foto = (string)reader["foto"],
+                Prezzo = (double)reader["prezzo_listino"],
+                NumeroOrdini = (int)reader["Numero_ordini"],
+                Categoria = (string)reader["categoria"]
+            };
+            
+            listaArticoli.Add(articolo);
+        }
+
+        reader.Close();
+        return listaArticoli;
+    }
+
 }

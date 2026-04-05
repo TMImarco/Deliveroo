@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Deliveroo.styles.css" asp-append-version="true" />
+    
+    <!-- se la vista dichiara "section NavbarLinks" il contenuto viene inserito qui -->
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
 <header>
@@ -16,6 +19,9 @@
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                 <h2 class="section-title">Deliveroo</h2>
             </a>
+            
+            <!-- se la vista dichiara "section Styles" il CSS aggiuntivo viene caricato nell'<head> -->
+            @await RenderSectionAsync("NavbarLinks", required: false)
         </div>
     </nav>
 </header>

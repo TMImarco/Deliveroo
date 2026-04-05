@@ -62,9 +62,11 @@ public class HomeController : Controller
     
     //-----------------------------------------PAGINA ARTICOLI------------------------------------------------
     //pagina per reindirizzare alla pagina degli articoli
-    public IActionResult Articoli()
+    public IActionResult Articoli(string categoria)
     {
-        return View();
+        // Visualizzo tutti gli Articoli per categoria nell'Index
+        var listArticoli = _gestioneDati.GetArticoloPerCategoria(categoria);
+        return View(listArticoli);
     }
     //--------------------------------------SOLO PER ADMIN-SOLO AUTORIZZATI--------------------------------------------
     
