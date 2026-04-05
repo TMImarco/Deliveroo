@@ -1,6 +1,16 @@
 /* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+:root[b-qpa08mvz5o] {
+  --teal: #00CCBC;
+  --teal-dark: #00A39B;
+  --teal-light: #E8FAF9;
+  --ink: #1A1A2E;
+  --surface: #F7F8FA;
+  --border: #E5E7EB;
+}
+
+/*----------- GRAFICA CSS ADMIN DEFAULT -----------*/
 a.navbar-brand[b-qpa08mvz5o] {
   white-space: normal;
   text-align: center;
@@ -45,4 +55,26 @@ button.accept-policy[b-qpa08mvz5o] {
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
+}
+
+
+/*----------- GRAFICA DELLA HEADER -----------*/
+.section-title[b-qpa08mvz5o] {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+/*----------- GRAFICA DELLA SIDEBAR -----------*/
+.burger-btn[b-qpa08mvz5o] {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1170;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #333;
 }

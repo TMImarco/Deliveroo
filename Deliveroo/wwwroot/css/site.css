@@ -31,3 +31,64 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+/*----------- GRAFICA DELLA SIDEBAR -----------*/
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 240px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+  z-index: 1160;
+  transition: right 0.3s ease;
+  padding: 20px;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar nav {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar nav a {
+  display: block;
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: #333;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.sidebar nav a:hover {
+  color: #00A39B;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 1150;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+.sidebar-logout {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+}
+
+.sidebar-logout:hover {
+  color: #e8572a !important;
+}

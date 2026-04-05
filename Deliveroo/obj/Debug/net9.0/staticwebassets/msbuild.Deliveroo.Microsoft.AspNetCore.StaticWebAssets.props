@@ -48,8 +48,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ymiz4yw1u0</Fingerprint>
-      <Integrity>5iqIY+JHFlzSNcledDcc8EiMwq8HRElfuUZkH+QFSBQ=</Integrity>
+      <Fingerprint>kfu4x9wlf0</Fingerprint>
+      <Integrity>8McCZEN+bdnZS0KSzav1mMJOIjIXTDYuSu6CBMyzzCY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\InserimentoArticolo.css'))</OriginalItemSpec>
@@ -66,29 +66,29 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>bj1hzon4i8</Fingerprint>
-      <Integrity>+Qp+YLAOsfqzWRjKPP7odGhZ2KZtJyZmThs+aOIxJ5c=</Integrity>
+      <Fingerprint>apdvuwgy1m</Fingerprint>
+      <Integrity>4sqVP6548pGhOv40YV6CRHPG+peZtjYwlLHX9NToOig=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Deliveroo.jlaudjs3ua.bundle.scp.css'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Deliveroo.6nuyz1lmyp.bundle.scp.css'))">
       <SourceType>Package</SourceType>
       <SourceId>Deliveroo</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Deliveroo</BasePath>
-      <RelativePath>Deliveroo.jlaudjs3ua.bundle.scp.css</RelativePath>
+      <RelativePath>Deliveroo.6nuyz1lmyp.bundle.scp.css</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>Reference</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ProjectBundle</AssetTraitValue>
-      <Fingerprint>jlaudjs3ua</Fingerprint>
-      <Integrity>J2pjWSYcA0FNRIL94Hdqd7KIu0kc7GY0N8IGN+FJtiw=</Integrity>
+      <Fingerprint>6nuyz1lmyp</Fingerprint>
+      <Integrity>okZAMK4RqNZ5F3+PiLbq4njqSwDqz8xnauIgc9ODjQI=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Deliveroo.jlaudjs3ua.bundle.scp.css'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Deliveroo.6nuyz1lmyp.bundle.scp.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))">
       <SourceType>Package</SourceType>

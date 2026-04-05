@@ -7,7 +7,7 @@
   --border: #E5E7EB;
 }
 
-/* header */
+/*----------- GRAFICA DELLA HEADER -----------*/
 .section-title[b-qgn06afi62] {
   margin: 0;
   font-size: 1.8rem;
@@ -15,7 +15,24 @@
   color: var(--ink);
 }
 
-/* ── Bottom Navbar ── */
+/*----------- GRAFICA DEL BURGER BUTTON -----------*/
+/* Burger Button = quelle tre linee orizzontali per accedere alla sidebar */
+.burger-btn[b-qgn06afi62] {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1170;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #333;
+}
+
+/*----------- GRAFICA DELLA SIDEBAR IN site.css (boh funziona solo li) -----------*/
+
+
+/*----------- GRAFICA DELLA BOTTOM NAVBAR -----------*/
 .bottom-navbar[b-qgn06afi62] {
   position: fixed;
   bottom: 0;

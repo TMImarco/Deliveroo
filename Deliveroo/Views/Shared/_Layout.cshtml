@@ -13,33 +13,52 @@
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
+
+<!-- ___________ SIDEBAR ___________-->
+<!-- Burger Button -->
+<button class="burger-btn" onclick="toggleSidebar()">&#9776;</button>
+
+<!-- Sidebar Overlay -->
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <nav>
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <a asp-controller="Home" asp-action="LoginAdmin">Admin</a>
+        <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </nav>
+</div>
+
+<!-- ___________ NAVBAR ___________-->
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container justify-content-center">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                 <h2 class="section-title">Deliveroo</h2>
             </a>
-            
+
             <!-- se la vista dichiara "section Styles" il CSS aggiuntivo viene caricato nell'<head> -->
             @await RenderSectionAsync("NavbarLinks", required: false)
         </div>
     </nav>
 </header>
 
-
+<!-- ___________ BODY ___________-->
 <div class="container">
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
 </div>
 
+<!-- ___________ FOOTER ___________-->
 <footer class="border-top footer text-muted">
     <div class="container">
         &copy; 2026 - Deliveroo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
 
-<!-- Bottom Navbar -->
+<!-- ___________ BOTTOM NAVBAR ___________-->
 <nav class="bottom-navbar">
 </nav>
 
@@ -47,5 +66,14 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
+
+<!-- ___________ SCRIPT per il funzionamento della SIDEBAR ___________-->
+<script>
+    function toggleSidebar() {
+        document.querySelector('.sidebar').classList.toggle('open');
+        document.querySelector('.sidebar-overlay').classList.toggle('active');
+    }
+</script>
+
 </body>
 </html>
