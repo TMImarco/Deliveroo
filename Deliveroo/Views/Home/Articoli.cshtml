@@ -41,7 +41,7 @@
         <div class="macro-grid">
             @foreach (var articolo in Model)
             {
-                <div class="articolo-card">
+                <a asp-controller="Home" asp-action="InserimentoArticolo" asp-route-id="@articolo.IdArticolo" class="articolo-card">
                     <div class="articolo-img-wrap">
                         <img src="@articolo.Foto" alt="@articolo.Nome" class="articolo-img" />
                     </div>
@@ -49,7 +49,7 @@
                         <span class="articolo-nome">@articolo.Nome</span>
                         <span class="articolo-prezzo">€ @articolo.Prezzo.ToString("F2")</span>
                     </div>
-                </div>
+                </a>
             }
         </div>
     </div>

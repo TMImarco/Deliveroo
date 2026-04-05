@@ -24,6 +24,8 @@
     cursor: pointer;
     transition: transform 0.22s ease, box-shadow 0.22s ease;
     animation: fadeUp 0.4s ease both;
+    text-decoration: none;
+    color: inherit;
 }
 
 .articolo-card:hover {

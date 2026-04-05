@@ -64,10 +64,19 @@ public class HomeController : Controller
     //pagina per reindirizzare alla pagina degli articoli
     public IActionResult Articoli(string categoria)
     {
-        // Visualizzo tutti gli Articoli per categoria nell'Index
+        // Visualizzo tutti gli Articoli per categoria
         var listArticoli = _gestioneDati.GetArticoloPerCategoria(categoria);
         return View(listArticoli);
     }
+
+    //pagine per reindirizzare alla pagina dell'inserimento articolo del carrello
+    public IActionResult InserimentoArticolo(int id)
+    {
+        // Visualizzo l'articolo scelto
+        var articoloScelto = _gestioneDati.GetArticoloScelto(id);
+        return View(articoloScelto);
+    }
+    
     //--------------------------------------SOLO PER ADMIN-SOLO AUTORIZZATI--------------------------------------------
     
     //Index fatto apposta per l'admin (l'utente normale non potra' accedervi)

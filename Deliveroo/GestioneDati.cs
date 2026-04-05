@@ -175,5 +175,31 @@ public class GestioneDati
         reader.Close();
         return listaArticoli;
     }
+    
+    public Articolo GetArticoloScelto(int id)
+    {
+        Articolo articolo = null;
+
+        string query = "SELECT * FROM articoli where id = @id order by id";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        MySqlDataReader reader = command.ExecuteReader();
+
+        if (reader.Read())
+        {
+            articolo = new()
+            {
+                IdArticolo = (int)reader["id"],
+                Nome = (string)reader["nome"],
+                Foto = (string)reader["foto"],
+                Prezzo = (double)reader["prezzo_listino"],
+                NumeroOrdini = (int)reader["Numero_ordini"],
+                Categoria = (string)reader["categoria"]
+            };
+        }
+
+        reader.Close();
+        return articolo;
+    }
 
 }

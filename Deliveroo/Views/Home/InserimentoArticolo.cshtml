@@ -1,0 +1,26 @@
+﻿@using Deliveroo.Tabelle
+@{
+    ViewData["Title"] = "Articoli";
+    Layout = "_Layout";
+
+    Articolo art = Model;
+}
+
+<!-- AGGIUNGERE NEL DATABASE LA DESCRIZIONE DELL'ARTICOLO !! (es: allergeni) -->
+
+<div class="macro-section">
+    <div class="container">
+        <p> Nome - @art.Nome </p>
+        <p> Prezzo - @art.Prezzo </p>
+    </div>
+</div>
+
+<!-- CARRELLO -->
+<a href="#" class="cart-fab" title="Carrello">
+    🛒
+    <span class="cart-badge">0</span>
+</a>
+
+@section Styles {
+    <link rel="stylesheet" href="/css/InserimentoArticolo.css"/>
+}
