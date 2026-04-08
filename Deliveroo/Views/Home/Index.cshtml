@@ -13,7 +13,7 @@ Il numero per fila può essere modificato all'interno dell site.css nell'apposit
             @foreach (var categoria in Model)
             {
                 <!-- Box principale della macro-categoria che contiene una foto rappresentativa e il nome -->
-                <div class="macro-item">-
+                <div class="macro-item">
                     <a asp-controller="Home" asp-action="Articoli" asp-route-categoria="@categoria.Nome" class="macro-main-box">
                         <img src="@Url.Content(categoria.PercorsoFoto)" alt="@categoria.Nome" class="macro-image"/>
                         <span>@categoria.Nome</span>
