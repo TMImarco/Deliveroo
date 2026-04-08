@@ -7,5 +7,5 @@ public class Articolo
     public string Foto { get; set; }
     public double Prezzo { get; set; }
     public int NumeroOrdini { get; set; }
-    public string Categoria { get; set; }
+    public Categoria Categoria { get; set; }
 }

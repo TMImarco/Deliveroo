@@ -11,14 +11,38 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Include="wwwroot\Foto\cappuccino.jpg" />
+      <None Include="wwwroot\FotoCategoria\cappuccino.jpg" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Update="wwwroot\Foto\cappuccino.jpg">
+      <Content Update="wwwroot\Foto\sushi.jpg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Update="wwwroot\Foto\sushi.jpg">
+      <Content Update="wwwroot\Foto\bar.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\Foto\antipasti.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\Foto\bevande.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\Foto\contorni.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\Foto\dolci.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\Foto\hamburger.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\Foto\pizza.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\Foto\primi_piatti.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\Foto\secondi_piatti.jpg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>

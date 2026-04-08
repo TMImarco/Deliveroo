@@ -5,12 +5,44 @@
       "PackagePath": "staticwebassets\\Deliveroo.6nuyz1lmyp.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\Foto\\cappuccino.jpg",
-      "PackagePath": "staticwebassets\\Foto\\cappuccino.jpg"
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\antipasti.jpg",
+      "PackagePath": "staticwebassets\\FotoCategoria\\antipasti.jpg"
     },
     {
-      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\Foto\\sushi.jpg",
-      "PackagePath": "staticwebassets\\Foto\\sushi.jpg"
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\bar.jpg",
+      "PackagePath": "staticwebassets\\FotoCategoria\\bar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\bevande.jpg",
+      "PackagePath": "staticwebassets\\FotoCategoria\\bevande.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\contorni.jpg",
+      "PackagePath": "staticwebassets\\FotoCategoria\\contorni.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\dolci.jpg",
+      "PackagePath": "staticwebassets\\FotoCategoria\\dolci.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\hamburger.jpg",
+      "PackagePath": "staticwebassets\\FotoCategoria\\hamburger.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\pizza.jpg",
+      "PackagePath": "staticwebassets\\FotoCategoria\\pizza.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\primi_piatti.jpg",
+      "PackagePath": "staticwebassets\\FotoCategoria\\primi_piatti.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\secondi_piatti.jpg",
+      "PackagePath": "staticwebassets\\FotoCategoria\\secondi_piatti.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\sushi.jpg",
+      "PackagePath": "staticwebassets\\FotoCategoria\\sushi.jpg"
     },
     {
       "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\Articoli.css",

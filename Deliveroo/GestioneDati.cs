@@ -18,28 +18,37 @@ public class GestioneDati
     {
         List<Articolo> listaArticoli = new List<Articolo>();
 
-        string query = "SELECT * FROM articoli order by id";
+        string query = @"SELECT a.*, c.nomeCategoria, c.foto AS foto_categoria
+                     FROM articoli a
+                     JOIN categorie c ON a.idCategoria = c.id
+                     ORDER BY a.id";
+
         MySqlCommand command = new MySqlCommand(query, _connection);
         MySqlDataReader reader = command.ExecuteReader();
 
         while (reader.Read())
         {
+            Categoria categoria = new Categoria()
+            {
+                IdCategoria = (int)reader["idCategoria"],
+                Nome = (string)reader["nomeCategoria"],
+                PercorsoFoto = (string)reader["foto_categoria"]
+            };
+
             Articolo articolo = new Articolo()
             {
                 IdArticolo = (int)reader["id"],
                 Nome = (string)reader["nome"],
                 Foto = (string)reader["foto"],
                 Prezzo = (double)reader["prezzo_listino"],
-                NumeroOrdini = (int)reader["Numero_ordini"],
-                Categoria = (string)reader["categoria"]
+                NumeroOrdini = (int)reader["numero_ordini"],
+                Categoria = categoria
             };
-
 
             listaArticoli.Add(articolo);
         }
 
         reader.Close();
-
         return listaArticoli;
     }
     
@@ -128,7 +137,7 @@ public class GestioneDati
     public List<Categoria> GetCategorie()
     {
         List<Categoria> listCategorie = new();
-        string query = "SELECT categoria, MIN(foto) AS foto FROM articoli GROUP BY categoria";
+        string query = "SELECT * FROM categorie order by id;";
 
         MySqlCommand command = new MySqlCommand(query, _connection);
         MySqlDataReader reader = command.ExecuteReader();
@@ -137,8 +146,9 @@ public class GestioneDati
         {
             Categoria cat = new()
             {
-                Nome = reader["categoria"].ToString(),
-                PercorsoFoto = reader["foto"].ToString()
+                IdCategoria = (int)reader["id"],
+                Nome = (string)reader["nomeCategoria"],
+                PercorsoFoto = (string)reader["foto"]
             };
 
             listCategorie.Add(cat);
@@ -148,17 +158,28 @@ public class GestioneDati
         return listCategorie;
     }
 
-    public List<Articolo> GetArticoloPerCategoria(string categoria)
+    public List<Articolo> GetArticoliPerCategoria(int idCategoria)
     {
         List<Articolo> listaArticoli = new List<Articolo>();
 
-        string query = "SELECT * FROM articoli where categoria = @categoria order by id";
+        string query = @"SELECT a.*, c.nomeCategoria, c.foto AS foto_categoria
+                     FROM articoli a
+                     JOIN categorie c ON a.idCategoria = c.id
+                     WHERE a.idCategoria = @idCategoria
+                     ORDER BY a.id";
         MySqlCommand command = new MySqlCommand(query, _connection);
-        command.Parameters.AddWithValue("@categoria", categoria);
+        command.Parameters.AddWithValue("@idCategoria", idCategoria);
         MySqlDataReader reader = command.ExecuteReader();
 
         while (reader.Read())
         {
+            Categoria categoria = new Categoria()
+            {
+                IdCategoria = (int)reader["idCategoria"],
+                Nome = (string)reader["nomeCategoria"],
+                PercorsoFoto = (string)reader["foto"]
+            };
+            
             Articolo articolo = new Articolo()
             {
                 IdArticolo = (int)reader["id"],
@@ -166,7 +187,7 @@ public class GestioneDati
                 Foto = (string)reader["foto"],
                 Prezzo = (double)reader["prezzo_listino"],
                 NumeroOrdini = (int)reader["Numero_ordini"],
-                Categoria = (string)reader["categoria"]
+                Categoria = categoria
             };
             
             listaArticoli.Add(articolo);
@@ -180,21 +201,31 @@ public class GestioneDati
     {
         Articolo articolo = null;
 
-        string query = "SELECT * FROM articoli where id = @id order by id";
+        string query = @"SELECT a.*, c.nomeCategoria, c.foto AS foto_categoria
+FROM articoli a
+JOIN categorie c ON a.idCategoria = c.id
+WHERE a.id = @id;";
         MySqlCommand command = new MySqlCommand(query, _connection);
         command.Parameters.AddWithValue("@id", id);
         MySqlDataReader reader = command.ExecuteReader();
 
         if (reader.Read())
         {
-            articolo = new()
+            Categoria categoria = new Categoria()
+            {
+                IdCategoria = (int)reader["idCategoria"],
+                Nome = (string)reader["nomeCategoria"],
+                PercorsoFoto = (string)reader["foto"]
+            };
+            
+            articolo = new Articolo()
             {
                 IdArticolo = (int)reader["id"],
                 Nome = (string)reader["nome"],
                 Foto = (string)reader["foto"],
                 Prezzo = (double)reader["prezzo_listino"],
                 NumeroOrdini = (int)reader["Numero_ordini"],
-                Categoria = (string)reader["categoria"]
+                Categoria = categoria
             };
         }
 
