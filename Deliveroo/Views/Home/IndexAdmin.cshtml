@@ -3,88 +3,96 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<div class="container">
-    <h4>Ordini</h4>
-    <!--data table per gli ORDINI-->
-    <table id="ordiniTable" class="display">
-        <thead>
-        <tr>
-            <th>ID ordine</th>
-            <th>Cliente</th>
-            <th>Data</th>
-            <th>Importo totale</th>
-            <th>Indirizzo</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var o in Model.Ordini)
-        {
+<div class="grid-container">
+    
+    <!--BLOCCO 1 della GRID (in altro a sinistra)-->
+    <div class="container">
+        <h4>Ordini</h4>
+        <!--data table per gli ORDINI-->
+        <table id="ordiniTable" class="display">
+            <thead>
             <tr>
-                <td>@o.IdOrdine</td>
-                <td>@o.NomeCliente</td>
-                <td>@o.Data.ToString("dd/MM/yyyy")</td>
-                <td>@o.ImportoTotale</td>
-                <td>@o.Indirizzo</td>
+                <th>ID ordine</th>
+                <th>Cliente</th>
+                <th>Data</th>
+                <th>Importo totale</th>
+                <th>Indirizzo</th>
             </tr>
-        }
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+            @foreach (var o in Model.Ordini)
+            {
+                <tr>
+                    <td>@o.IdOrdine</td>
+                    <td>@o.NomeCliente</td>
+                    <td>@o.Data.ToString("dd/MM/yyyy")</td>
+                    <td>@o.ImportoTotale</td>
+                    <td>@o.Indirizzo</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 
-<div class="container">
-    <h4>Associazioni</h4>
-    <!--data table per le ASSOCIAZIONI-->
-    <table id="associazioniTable" class="display">
-        <thead>
-        <tr>
-            <th>ID articolo n.:1</th>
-            <th>ID articolo n.:2</th>
-            <th>Numero ordini</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var a in Model.Associazioni)
-        {
+    <!--BLOCCO 2 della GRID (in altro a destra)-->
+    <div class="container">
+        <h4>Associazioni</h4>
+        <!--data table per le ASSOCIAZIONI-->
+        <table id="associazioniTable" class="display">
+            <thead>
             <tr>
-                <td>@a.IdArticolo1</td>
-                <td>@a.IdArticolo2</td>
-                <td>@a.NumeroOrdini</td>
+                <th>ID articolo n.:1</th>
+                <th>ID articolo n.:2</th>
+                <th>Numero ordini</th>
             </tr>
-        }
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+            @foreach (var a in Model.Associazioni)
+            {
+                <tr>
+                    <td>@a.IdArticolo1</td>
+                    <td>@a.IdArticolo2</td>
+                    <td>@a.NumeroOrdini</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 
-<div class="container">
-    <h4>Articoli</h4>
-    <!--data table per gli ARTICOLI-->
-    <table id="articoliTable" class="display">
-        <thead>
-        <tr>
-            <th>ID articolo</th>
-            <th>Nome</th>
-            <th>Foto</th>
-            <th>Prezzo</th>
-            <th>Numero ordini</th>
-            <th>Categoria</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var a in Model.Articoli)
-        {
+    <!--BLOCCO 3 della GRID (in basso a sinistra)-->
+    <div class="container">
+        <h4>Articoli</h4>
+        <!--data table per gli ARTICOLI-->
+        <table id="articoliTable" class="display">
+            <thead>
             <tr>
-                <td>@a.IdArticolo</td>
-                <td>@a.Nome</td>
-                <td>@a.Foto</td>
-                <td>@a.Prezzo</td>
-                <td>@a.NumeroOrdini</td>
-                <td>@a.Categoria</td>
+                <th>ID articolo</th>
+                <th>Nome</th>
+                <th>Prezzo</th>
+                <th>Numero ordini</th>
+                <th>Categoria</th>
             </tr>
-        }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach (var a in Model.Articoli)
+            {
+                <tr>
+                    <td>@a.IdArticolo</td>
+                    <td>@a.Nome</td>
+                    <td>@a.Prezzo</td>
+                    <td>@a.NumeroOrdini</td>
+                    <td>@a.Categoria.Nome</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    
+    <!--BLOCCO 4 della GRID (in basso a destra)-->
+    <div class="container">
+        <h4>BLOCCO 4</h4>
+    </div>
 </div>
-
 <!--script per data table-->
 
 @section Scripts {
