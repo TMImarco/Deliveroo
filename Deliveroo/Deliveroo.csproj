@@ -11,10 +11,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Include="wwwroot\FotoCategoria\cappuccino.jpg" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Content Update="wwwroot\Foto\sushi.jpg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
@@ -43,6 +39,9 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Update="wwwroot\Foto\secondi_piatti.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\FotoArticoli\cappuccino.jpg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
