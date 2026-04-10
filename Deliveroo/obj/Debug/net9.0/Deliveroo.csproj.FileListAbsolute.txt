@@ -228,16 +228,16 @@ C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\Deliveroo.genruntimeconfig.cache
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\ref\Deliveroo.dll
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\6aho0goxy0-suea3wioi2.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\u05j9f0ov9-kfu4x9wlf0.gz
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\mdm5n4uptv-6nuyz1lmyp.gz
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\r1tahk21iz-6nuyz1lmyp.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\6aho0goxy0-suea3wioi2.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\u05j9f0ov9-kfu4x9wlf0.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\mdm5n4uptv-6nuyz1lmyp.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\r1tahk21iz-6nuyz1lmyp.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\vyi5zaj6gz-g7sfjfaqad.gz
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\bin\Debug\net9.0\wwwroot\FotoArticoli\cappuccino.jpg
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\bbav3rywun-6ptkh712sj.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\bin\Debug\net9.0\wwwroot\FotoArticoli\cappuccino.jpg
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\bbav3rywun-ge249it9dv.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\vyi5zaj6gz-ea0dscer3m.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\bbav3rywun-ge249it9dv.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\vyi5zaj6gz-ea0dscer3m.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\u05j9f0ov9-abpx15x2lb.gz

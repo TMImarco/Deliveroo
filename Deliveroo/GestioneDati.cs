@@ -42,6 +42,7 @@ public class GestioneDati
                 Foto = (string)reader["foto"],
                 Prezzo = (double)reader["prezzo_listino"],
                 NumeroOrdini = (int)reader["numero_ordini"],
+                Descrizione = (string)reader["descrizione"],
                 Categoria = categoria
             };
 
@@ -186,6 +187,7 @@ public class GestioneDati
                 Nome = (string)reader["nome"],
                 Foto = (string)reader["foto"],
                 Prezzo = (double)reader["prezzo_listino"],
+                Descrizione = (string) reader["descrizione"],
                 NumeroOrdini = (int)reader["Numero_ordini"],
                 Categoria = categoria
             };
@@ -224,6 +226,7 @@ WHERE a.id = @id;";
                 Nome = (string)reader["nome"],
                 Foto = (string)reader["foto"],
                 Prezzo = (double)reader["prezzo_listino"],
+                Descrizione = (string) reader["descrizione"],
                 NumeroOrdini = (int)reader["Numero_ordini"],
                 Categoria = categoria
             };

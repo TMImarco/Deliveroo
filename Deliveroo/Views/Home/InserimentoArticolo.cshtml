@@ -2,16 +2,50 @@
 @{
     ViewData["Title"] = "Articoli";
     Layout = "_Layout";
-
     Articolo art = Model;
 }
 
-<!-- AGGIUNGERE NEL DATABASE LA DESCRIZIONE DELL'ARTICOLO !! (es: allergeni) -->
-
 <div class="macro-section">
     <div class="container">
-        <p> Nome - @art.Nome </p>
-        <p> Prezzo - @art.Prezzo </p>
+        <div class="page-split">
+
+            <!-- SINISTRA -->
+            <div class="left-col">
+                <div class="article-split">
+                    <div class="article-left">
+                        <img src="@art.Foto" alt="@art.Nome" />
+                    </div>
+                    <div class="article-right">
+                        <div class="article-right-content">
+                            <h1>@art.Nome</h1>
+                            <p class="descrizione">@art.Descrizione</p>
+                            <div class="article-divider"></div>
+                            <p class="prezzo">€ @art.Prezzo.ToString("0.00")</p>
+                            <div class="article-divider"></div>
+                            <div class="qty-add-row">
+                                <div class="qty-row">
+                                    <button class="qty-btn" onclick="cambiaQty(-1)">−</button>
+                                    <span class="qty-val" id="qty">1</span>
+                                    <button class="qty-btn" onclick="cambiaQty(1)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="add-btn" onclick="aggiungiAlCarrello()">Aggiungi</button>
+                    </div>
+                </div>
+
+                @section AboveNavbar {
+                    <div class="total-overlay">
+                        <span class="label">Totale: </span>
+                        <span class="valore" id="totale">€ @art.Prezzo.ToString("0.00")</span>
+                    </div>
+                }
+            </div>
+
+            <!-- DESTRA (raccomandazioni future) -->
+            <div class="right-col"></div>
+
+        </div>
     </div>
 </div>
 
@@ -23,4 +57,27 @@
 
 @section Styles {
     <link rel="stylesheet" href="/css/InserimentoArticolo.css"/>
+}
+
+@section Scripts {
+    <script>
+        const prezzo = @art.Prezzo;
+        let qty = 1;
+
+        function aggiornaTotale() {
+            document.getElementById('totale').textContent =
+                '€ ' + (prezzo * qty).toFixed(2);
+        }
+
+        function cambiaQty(d) {
+            qty = Math.max(1, qty + d);
+            document.getElementById('qty').textContent = qty;
+            aggiornaTotale();
+        }
+
+        function aggiungiAlCarrello() {
+            const badge = document.querySelector('.cart-badge');
+            badge.textContent = parseInt(badge.textContent) + qty;
+        }
+    </script>
 }
