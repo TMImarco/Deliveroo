@@ -12,17 +12,17 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"suea3wioi2"},{"Name":"integrity","Value":"sha256-TBPY\u002BEvf98OEPea3bePhWm68AaoIcSRjOzi2urlKI80="},{"Name":"label","Value":"_content/Deliveroo/css/Articoli.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3065"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022TBPY\u002BEvf98OEPea3bePhWm68AaoIcSRjOzi2urlKI80=\u0022"},{"Name":"Last-Modified","Value":"Sun, 05 Apr 2026 16:50:18 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/Deliveroo/css/Carrello.3ssah35k27.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Carrello.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3ssah35k27"},{"Name":"integrity","Value":"sha256-M52xl6Y2x7MksIO\u002BoakMn5uXQPqTbkNduuKr23g7EVw="},{"Name":"label","Value":"_content/Deliveroo/css/Carrello.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"427"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022M52xl6Y2x7MksIO\u002BoakMn5uXQPqTbkNduuKr23g7EVw=\u0022"},{"Name":"Last-Modified","Value":"Sat, 11 Apr 2026 15:21:47 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Deliveroo/css/Carrello.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Carrello.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-M52xl6Y2x7MksIO\u002BoakMn5uXQPqTbkNduuKr23g7EVw="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"427"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022M52xl6Y2x7MksIO\u002BoakMn5uXQPqTbkNduuKr23g7EVw=\u0022"},{"Name":"Last-Modified","Value":"Sat, 11 Apr 2026 15:21:47 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-V\u002BQpdMsJkM/2ZZhYnnjj8QwNqp8BKutzpgulCP/0wVA="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4521"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022V\u002BQpdMsJkM/2ZZhYnnjj8QwNqp8BKutzpgulCP/0wVA=\u0022"},{"Name":"Last-Modified","Value":"Sat, 11 Apr 2026 17:04:14 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Deliveroo/css/Carrello.p0ha312wx4.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Carrello.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"p0ha312wx4"},{"Name":"integrity","Value":"sha256-V\u002BQpdMsJkM/2ZZhYnnjj8QwNqp8BKutzpgulCP/0wVA="},{"Name":"label","Value":"_content/Deliveroo/css/Carrello.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4521"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022V\u002BQpdMsJkM/2ZZhYnnjj8QwNqp8BKutzpgulCP/0wVA=\u0022"},{"Name":"Last-Modified","Value":"Sat, 11 Apr 2026 17:04:14 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Deliveroo/css/Index.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Index.css'))</AssetFile>

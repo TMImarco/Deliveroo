@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>3ssah35k27</Fingerprint>
-      <Integrity>M52xl6Y2x7MksIO+oakMn5uXQPqTbkNduuKr23g7EVw=</Integrity>
+      <Fingerprint>p0ha312wx4</Fingerprint>
+      <Integrity>V+QpdMsJkM/2ZZhYnnjj8QwNqp8BKutzpgulCP/0wVA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Carrello.css'))</OriginalItemSpec>

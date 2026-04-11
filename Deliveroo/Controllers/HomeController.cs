@@ -86,6 +86,13 @@ public class HomeController : Controller
 
 	//-----------------------------------------CARRELLO------------------------------------------------
 
+	// reindirizzamento verso la pagina riepilogo del carrello
+	public IActionResult Carrello()
+	{
+		List<Articolo> lista = _gestioneCarrello.RecuperaCarrello();
+		return View(lista);
+	}
+	
 	public IActionResult MettiNelCarrello(int id, int qty = 1)
 	{
 		Articolo articolo = _gestioneDati.GetArticoloScelto(id);
@@ -101,18 +108,40 @@ public class HomeController : Controller
 	{
 		return Content(_gestioneCarrello.NumeroElementiCarrello().ToString());
 	}
+	
+	/* AGGIUNGERE O TOGLIERE DALLA QUANTITA DAL CARRELLO */
+	public IActionResult Incrementa(int id)
+	{
+		List<Articolo> lista = _gestioneCarrello.RecuperaCarrello();
+		Articolo articolo = _gestioneDati.GetArticoloScelto(id);
+		lista.Add(articolo);
+		_gestioneCarrello.SalvaCarrello(lista);
+		return RedirectToAction("Carrello");
+	}
 
-	/*public IActionResult SvuotaCarrello()
+	public IActionResult Decrementa(int id)
+	{
+		List<Articolo> lista = _gestioneCarrello.RecuperaCarrello();
+		Articolo daRimuovere = lista.FirstOrDefault(a => a.IdArticolo == id);
+		if (daRimuovere != null)
+			lista.Remove(daRimuovere);
+		_gestioneCarrello.SalvaCarrello(lista);
+		return RedirectToAction("Carrello");
+	}
+
+	public IActionResult Rimuovi(int id)
+	{
+		List<Articolo> lista = _gestioneCarrello.RecuperaCarrello();
+		lista.RemoveAll(a => a.IdArticolo == id);
+		_gestioneCarrello.SalvaCarrello(lista);
+		return RedirectToAction("Carrello");
+	}
+
+	public IActionResult SvuotaCarrello()
 	{
 	    _gestioneCarrello.SvuotaCarrello();
 	    return View("Carrello");
 	}
-
-	public IActionResult Carrello()
-	{
-	    List<Articolo> lista = _gestioneCarrello.RecuperaCarrello();
-	    return View(lista);
-	}*/
 
 	//--------------------------------------SOLO PER ADMIN-SOLO AUTORIZZATI--------------------------------------------
 

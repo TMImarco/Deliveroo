@@ -16,3 +16,227 @@
     gap: 1.5rem;
     align-items: start;
 }
+
+/* ── CARRELLO ── */
+
+.carrello-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    min-height: calc(100vh - 100px); /* si estende fino alla navbar */
+    margin-bottom: 100px; /* evita che il contenuto finisca sotto la total-overlay */
+    border: 0.5px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+.left-col {
+    display: flex;
+    flex-direction: column;
+    border-right: 0.5px solid #e0e0e0;
+}
+
+/* header colonna */
+.col-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 0.5px solid #e0e0e0;
+    background: #f7f7f7;
+}
+
+.col-header h2 {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.clear-btn {
+    font-size: 12px;
+    color: #e53935;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.clear-btn:hover {
+    background: #fdecea;
+}
+
+/* lista articoli */
+.item-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.item-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    border-bottom: 0.5px solid #e0e0e0;
+}
+
+.item-row:last-child {
+    border-bottom: none;
+}
+
+/* miniatura */
+.item-thumb {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 0.5px solid #e0e0e0;
+    flex-shrink: 0;
+    background: #f7f7f7;
+}
+
+/* info testo */
+.item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.item-name {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-unit-price {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* controlli quantità */
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 0.5px solid #ccc;
+    background: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    line-height: 1;
+}
+
+.qty-btn:hover {
+    background: #f0f0f0;
+}
+
+.qty-val {
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* prezzo riga */
+.item-price {
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 52px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* bottone rimuovi */
+.remove-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    color: #aaa;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.remove-btn:hover {
+    color: #e53935;
+    background: #fdecea;
+}
+
+/* footer */
+.total-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 100px;
+    z-index: 1100;
+    background: #fff;
+    border-top: 0.5px solid #e0e0e0;
+}
+
+.footer-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 20px;
+    border-top: 0.5px solid #e0e0e0;
+    background: #f7f7f7;
+}
+
+.footer-info {
+    font-size: 13px;
+    color: #888;
+}
+
+.footer-total {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.procedi-btn {
+    padding: 10px 28px;
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.procedi-btn:hover {
+    background: var(--teal-dark);
+}
+
+/* colonna destra vuota */
+.right-col {
+    background: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

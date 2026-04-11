@@ -1,20 +1,53 @@
-﻿@using Deliveroo.Tabelle
+﻿@model List<Deliveroo.Tabelle.Articolo>
 @{
     ViewData["Title"] = "Articoli";
     Layout = "_Layout";
-    Articolo art = Model;
 }
 
 <div class="macro-section">
     <div class="container">
-        <div class="page-split">
+        <div class="carrello-wrapper">
 
-            <!-- SINISTRA -->
+            <div class="left-col">
+                <div class="col-header">
+                    <h2>Carrello</h2>
+                    <a asp-action="SvuotaCarrello" class="clear-btn">Svuota</a>
+                </div>
+
+                <!-- SINISTRA -->
+                <div class="item-list">
+                    @foreach (var gruppo in Model.GroupBy(a => a.IdArticolo))
+                    {
+                        var articolo = gruppo.First();
+                        var quantita = gruppo.Count();
+                        var prezzoTotale = articolo.Prezzo * quantita;
+
+                        <div class="item-row">
+                            <img class="item-thumb" src="@Url.Content(articolo.Foto)" alt="@articolo.Nome"/>
+                            <div class="item-info">
+                                <div class="item-name">@articolo.Nome</div>
+                                <div class="item-unit-price">€@articolo.Prezzo.ToString("F2") cad.</div>
+                            </div>
+                            <div class="qty-controls">
+                                <a asp-action="Decrementa" asp-route-id="@articolo.IdArticolo" class="qty-btn">−</a>
+                                <span class="qty-val">@quantita</span>
+                                <a asp-action="Incrementa" asp-route-id="@articolo.IdArticolo" class="qty-btn">+</a>
+                            </div>
+                            <div class="item-price">€@prezzoTotale.ToString("F2")</div>
+                            <a asp-action="Rimuovi" asp-route-id="@articolo.IdArticolo" class="remove-btn">✕</a>
+                        </div>
+                    }
+                </div>
 
                 @section AboveNavbar {
-                <div class="total-overlay">
-                    <!-- NUMERO TOTALE + PREZZO TOTALE -->
-                </div>
+                    <div class="total-overlay">
+                        <div>
+                            <div class="footer-info">@Model.Count articoli</div>
+                            <div class="footer-total">Totale: €@Model.Sum(a => a.Prezzo).ToString("F2")</div>
+                        </div>
+                        <a asp-action="SvuotaCarrello" class="clear-btn">Svuota</a>
+                        <a asp-action="" class="procedi-btn">Procedi</a>
+                    </div>
                 }
             </div>
 
@@ -23,6 +56,7 @@
 
         </div>
     </div>
+</div>
 
 
 <!-- BOTTONE PROCEDI -->
