@@ -1,8 +1,8 @@
 ﻿@using Deliveroo.Tabelle
 @{
-    ViewData["Title"] = "Articoli";
-    Layout = "_Layout";
-    Articolo art = Model;
+ViewData["Title"] = "Articoli";
+Layout = "_Layout";
+Articolo art = Model;
 }
 
 <div class="macro-section">
@@ -35,10 +35,10 @@
                 </div>
 
                 @section AboveNavbar {
-                    <div class="total-overlay">
-                        <span class="label">Totale: </span>
-                        <span class="valore" id="totale">€ @art.Prezzo.ToString("0.00")</span>
-                    </div>
+                <div class="total-overlay">
+                    <span class="label">Totale: </span>
+                    <span class="valore" id="totale">€ @art.Prezzo.ToString("0.00")</span>
+                </div>
                 }
             </div>
 
@@ -50,34 +50,46 @@
 </div>
 
 <!-- CARRELLO -->
-<a href="#" class="cart-fab" title="Carrello">
+<a class="cart-fab" title="Carrello">
     🛒
-    <span class="cart-badge">0</span>
+    <span class="cart-badge"></span>
 </a>
 
 @section Styles {
-    <link rel="stylesheet" href="/css/InserimentoArticolo.css"/>
+<link rel="stylesheet" href="/css/InserimentoArticolo.css"/>
 }
 
 @section Scripts {
-    <script>
-        const prezzo = @art.Prezzo;
-        let qty = 1;
+<script>
+    /* AUMENTARE LA QUANTITA DELL'ARTICOLO */
+    const prezzo = @art.Prezzo;
+    const aggiungiUrl = '@Url.Action("MettiNelCarrello", "Home", new { id = art.IdArticolo })';
+    let qty = 1;
 
-        function aggiornaTotale() {
-            document.getElementById('totale').textContent =
-                '€ ' + (prezzo * qty).toFixed(2);
-        }
+    function aggiornaTotale() {
+        document.getElementById('totale').textContent =
+            '€ ' + (prezzo * qty).toFixed(2);
+    }
 
-        function cambiaQty(d) {
-            qty = Math.max(1, qty + d);
-            document.getElementById('qty').textContent = qty;
-            aggiornaTotale();
-        }
+    function cambiaQty(d) {
+        qty = Math.max(1, qty + d);
+        document.getElementById('qty').textContent = qty;
+        aggiornaTotale();
+    }
 
-        function aggiungiAlCarrello() {
-            const badge = document.querySelector('.cart-badge');
-            badge.textContent = parseInt(badge.textContent) + qty;
-        }
-    </script>
+    /* AGGIORNARE IL BADGE */
+    async function aggiornaBadge() {
+        const res = await fetch('/Home/NumeroElementi');
+        const count = await res.text();
+        document.querySelectorAll('.cart-badge').forEach(b => b.textContent = count);
+    }
+
+    async function aggiungiAlCarrello() {
+        await fetch(aggiungiUrl + '?qty=' + qty);
+        await aggiornaBadge();
+    }
+
+    // Badge al caricamento
+    aggiornaBadge();
+</script>
 }

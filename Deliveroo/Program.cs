@@ -13,9 +13,9 @@ builder.Services.AddSession(options =>
     }
 );
 
-//Registro la classe GestioneDati cosi da poterlo usare all'interno del Layout.html
+//Registro le classi GestioneDati e GestioneCarrello cosi da poterli usare all'interno dei .cshtml
 builder.Services.AddScoped<GestioneDati>();
-
+//builder.Services.AddScoped<GestioneCarrello>();
 
 var app = builder.Build();
 

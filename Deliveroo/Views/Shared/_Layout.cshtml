@@ -76,5 +76,16 @@
     }
 </script>
 
+<!-- ___________ SCRIPT per il funzionamento del BADGE DEL CARRELLO (il numero in alto a destra del bottoncino) ___________-->
+<script>
+    async function aggiornaBadge() {
+        const res = await fetch('/Home/NumeroElementi');
+        const count = await res.text();
+        document.querySelectorAll('.cart-badge').forEach(b => b.textContent = count);
+    }
+
+    aggiornaBadge();
+    setInterval(aggiornaBadge, 2000); // ogni 2 secondi
+</script>
 </body>
 </html>
