@@ -156,7 +156,9 @@ public class HomeController : Controller
 		{
 			Ordini = _gestioneDati.GetTuttiOrdini(),
 			Associazioni = _gestioneDati.GetTutteAssociazioni(),
-			Articoli = _gestioneDati.GetTuttiArticoli()
+			Articoli = _gestioneDati.GetTuttiArticoli(),
+			OrdiniTotaliDiOgniCategoria = _gestioneDati.GetOrdiniTotaliDiOgniCategoria(),
+			ClassificaArticoli = _gestioneDati.GetTop10Articoli()
 		};
 
 		return View(adminViewModel);

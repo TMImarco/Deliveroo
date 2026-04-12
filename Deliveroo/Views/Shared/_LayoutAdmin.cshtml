@@ -1,16 +1,18 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - Deliveroo Admin Dashboard</title>
     <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Deliveroo.styles.css" asp-append-version="true" />
-    
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/Deliveroo.styles.css" asp-append-version="true"/>
+
     <!--libreria data table-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+    
+    @await RenderSectionAsync("Styles",required:false)
 </head>
 <body>
 
@@ -26,7 +28,7 @@
     <nav>
         <a asp-controller="Home" asp-action="IndexAdmin">Admin Dashboard </a>
         <a asp-controller="Home" asp-action="Privacy">Privacy</a>
-        
+
         <a asp-controller="Home" asp-action="Logout" class="sidebar-logout">Esci</a>
     </nav>
 </div>
@@ -62,9 +64,12 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 
-<!--script per data table-->
+<!--SCRIPT per DATA TABLE-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<!--SCRIPT per i GRAFICI-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 @await RenderSectionAsync("Scripts", required: false)
 
@@ -75,6 +80,5 @@
         document.querySelector('.sidebar-overlay').classList.toggle('active');
     }
 </script>
-
 </body>
 </html>

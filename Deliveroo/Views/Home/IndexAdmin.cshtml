@@ -4,10 +4,11 @@
 }
 
 <div class="grid-container">
-    
+
     <!--BLOCCO 1 della GRID (in altro a sinistra)-->
+    <!--ORDINI-->
     <div class="container">
-        <h4>Ordini</h4>
+        <h4>ORDINI</h4>
         <!--data table per gli ORDINI-->
         <table id="ordiniTable" class="display">
             <thead>
@@ -35,8 +36,9 @@
     </div>
 
     <!--BLOCCO 2 della GRID (in altro a destra)-->
+    <!--ASSOCIAZIONI-->
     <div class="container">
-        <h4>Associazioni</h4>
+        <h4>ASSOCIAZIONI</h4>
         <!--data table per le ASSOCIAZIONI-->
         <table id="associazioniTable" class="display">
             <thead>
@@ -60,47 +62,131 @@
     </div>
 
     <!--BLOCCO 3 della GRID (in basso a sinistra)-->
-    <div class="container">
-        <h4>Articoli</h4>
-        <!--data table per gli ARTICOLI-->
-        <table id="articoliTable" class="display">
-            <thead>
-            <tr>
-                <th>ID articolo</th>
-                <th>Nome</th>
-                <th>Prezzo</th>
-                <th>Numero ordini</th>
-                <th>Categoria</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var a in Model.Articoli)
-            {
-                <tr>
-                    <td>@a.IdArticolo</td>
-                    <td>@a.Nome</td>
-                    <td>@a.Prezzo</td>
-                    <td>@a.NumeroOrdini</td>
-                    <td>@a.Categoria.Nome</td>
-                </tr>
+    <!--ARTICOLI-->
+    <!-- data table con CLASSIFICA ARTICOLI -->
+    <div class="container-fluid">
+        <h4>BEST SELLING</h4>
+        <div class="ranking-wrapper">
+            @{
+                var lista = Model.ClassificaArticoli.ToList();
+                var medals = new[] { "🥇", "🥈", "🥉" };
             }
-            </tbody>
-        </table>
+
+            <!-- PODIO: primi 3 -->
+            @if (lista.Count >= 1)
+            {
+                <div class="podium">
+                    @for (int i = 0; i < Math.Min(3, lista.Count); i++)
+                    {
+                        var a = lista[i];
+                        <div class="podium-card pos-@(i + 1)">
+                            <div class="podium-pos">@(i + 1)</div>
+                            <div class="podium-medal">@medals[i]</div>
+                            <div class="podium-name">@a.Nome</div>
+                            <div class="podium-category">@a.Categoria.Nome</div>
+                            <div class="podium-orders">@a.NumeroOrdini <span>ordini</span></div>
+                            <div class="podium-price">€ @a.Prezzo.ToString("0.00")</div>
+                        </div>
+                    }
+                </div>
+            }
+
+            <!-- LISTA: dal 4° in poi -->
+            @if (lista.Count > 3)
+            {
+                <div class="ranking-list">
+                    @for (int i = 3; i < lista.Count; i++)
+                    {
+                        var a = lista[i];
+                        <div class="rank-row">
+                            <div class="rank-num">#@(i + 1)</div>
+                            <div class="rank-info">
+                                <span class="rank-name">@a.Nome</span>
+                                <span class="rank-cat">@a.Categoria.Nome</span>
+                            </div>
+                            <div class="rank-price">€ @a.Prezzo.ToString("0.00")</div>
+                            <div class="rank-orders">
+                                <strong>@a.NumeroOrdini</strong>
+                                <small>ordini</small>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
     </div>
-    
+
     <!--BLOCCO 4 della GRID (in basso a destra)-->
     <div class="container">
-        <h4>BLOCCO 4</h4>
+        <h4>CATEGORIE PIU' ORDINATE</h4>
+        <canvas id="graficoCategorie"></canvas>
     </div>
 </div>
-<!--script per data table-->
+
 
 @section Scripts {
+    <!--SCRIPT per la creazione delle DATA TABLE-->
     <script>
         $(document).ready(function () {
             $('#ordiniTable').DataTable();
             $('#associazioniTable').DataTable();
-            $('#articoliTable').DataTable();
+            $('#classificaArticoliTable').DataTable();
         });
     </script>
+
+    <!--SCRIPT per la creazione del GRAFICO "graficoCategorie"-->
+    <script>
+
+        //blocco di codice c# per dividere tutti i dizionari
+        //per poi inserire le key come label e i value come data
+        //mentendo l'ordine
+        @{
+            List<String> cslabel = new List<string>();
+            List<int> csdata = new List<int>();
+
+            foreach (var d in Model.OrdiniTotaliDiOgniCategoria)
+            {
+                cslabel.AddRange(d.Keys);
+                csdata.AddRange(d.Values);
+            }
+        }
+
+        //serializzazione dei dati perche' la libreria accetta solo json per data e label
+        const labels = @Json.Serialize(cslabel);
+        const data = @Json.Serialize(csdata);
+
+        //JSON per i colori
+        const colors = [
+            '#FF6384', // rosa
+            '#36A2EB', // blu
+            '#FFCE56', // giallo
+            '#4BC0C0', // turchese
+            '#9966FF', // viola
+            '#FF9F40', // arancione
+            '#00C851', // verde
+            '#FF4444', // rosso
+            '#33B5E5', // azzurro
+            '#AA66CC'  // lilla
+        ];
+        
+        new Chart(document.getElementById('graficoCategorie'), {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Ordini totali:',
+                        data: data,
+                        backgroundColor: colors,
+                        borderWidth: 2
+                    }]
+                }
+            }
+        );
+    </script>
+}
+
+@section Styles {
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="~/css/classifica.css"/>
 }

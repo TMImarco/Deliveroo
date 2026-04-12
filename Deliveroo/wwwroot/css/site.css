@@ -92,10 +92,14 @@ body {
 .sidebar-logout:hover {
   color: #e8572a !important;
 }
-
+/*-------USATO PER ADMIN---------------*/
 /*GRID di 4 elementi 2 blocchi in altro 2 in basso*/
 .grid-container {
   display: grid;
+  /*grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;*/
   grid-template-columns: 50% 50%;
-  grid-template-rows: 50% 50%;
+  grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  
 }

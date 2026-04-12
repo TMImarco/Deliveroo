@@ -1,0 +1,179 @@
+﻿.ranking-wrapper {
+    /*font-family: 'DM Sans', sans-serif;*/
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.ranking-title {
+    /*font-family: 'Bebas Neue', sans-serif;*/
+    font-size: 2.8rem;
+    /*letter-spacing: 3px;*/
+    text-align: center;
+    color: #1a1a2e;
+    margin-bottom: 2.5rem;
+}
+
+/* ── PODIO ── */
+.podium {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.podium-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 16px 16px 0 0;
+    padding: 1.4rem 1rem 1rem;
+    width: 220px;
+    color: #fff;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .18);
+    transition: transform .2s;
+}
+
+.podium-card:hover {
+    transform: translateY(-4px);
+}
+
+.podium-card.pos-1 {
+    background: linear-gradient(145deg, #f9c74f, #f3722c);
+    height: 300px;
+    order: 2;
+}
+
+.podium-card.pos-2 {
+    background: linear-gradient(145deg, #6c757d, #adb5bd);
+    height: 250px;
+    order: 1;
+}
+
+.podium-card.pos-3 {
+    background: linear-gradient(145deg, #cd7f32, #a0522d);
+    height: 220px;
+    order: 3;
+}
+
+.podium-medal {
+    font-size: 2.2rem;
+    margin-bottom: .4rem;
+}
+
+.podium-pos {
+    /*font-family: 'Bebas Neue', sans-serif;*/
+    font-size: 3rem;
+    line-height: 1;
+    opacity: .25;
+    position: absolute;
+    top: 8px;
+    right: 14px;
+}
+
+.podium-name {
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: .3rem;
+}
+
+.podium-category {
+    font-size: .75rem;
+    opacity: .8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: .6rem;
+}
+
+.podium-orders {
+    /*font-family: 'Bebas Neue', sans-serif;*/
+    font-size: 1.9rem;
+    letter-spacing: 1px;
+}
+
+.podium-orders span {
+    font-size: .85rem;
+    /*font-family: 'DM Sans', sans-serif;*/
+    opacity: .85;
+}
+
+.podium-price {
+    font-size: .85rem;
+    opacity: .75;
+    margin-top: .2rem;
+}
+
+/* ── LISTA RESTO ── */
+.ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+}
+
+.rank-row {
+    display: grid;
+    grid-template-columns: 48px 1fr auto auto;
+    align-items: center;
+    gap: 1rem;
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: .75rem 1.2rem;
+    transition: box-shadow .15s, transform .15s;
+}
+
+.rank-row:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .09);
+    transform: translateX(4px);
+}
+
+.rank-num {
+    /*font-family: 'Bebas Neue', sans-serif;*/
+    font-size: 1.5rem;
+    color: #adb5bd;
+    text-align: center;
+}
+
+.rank-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.rank-name {
+    font-weight: 600;
+    color: #212529;
+    font-size: .95rem;
+}
+
+.rank-cat {
+    font-size: .75rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.rank-price {
+    font-size: .9rem;
+    color: #495057;
+    white-space: nowrap;
+}
+
+.rank-orders {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.rank-orders strong {
+    /*font-family: 'Bebas Neue', sans-serif;*/
+    font-size: 1.4rem;
+    color: #f3722c;
+}
+
+.rank-orders small {
+    display: block;
+    font-size: .7rem;
+    color: #adb5bd;
+}

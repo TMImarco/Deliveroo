@@ -236,4 +236,73 @@ WHERE a.id = @id;";
         return articolo;
     }
 
+    //il metodo restiutira' una lista con tutte le categorie e associato il loro numero totale di ordini che ogni articolo di quella categoria ha fatto
+    public List<Dictionary<string, int>> GetOrdiniTotaliDiOgniCategoria()
+    {
+        //key: nome della categoria
+        //value: numero di oridni totali per quella categoria
+        List<Dictionary<string, int>> categorieENumeroOrdiniTotali = new List<Dictionary<string, int>>();
+
+        //la query restituisce la categoria e il numero di ordini totale che tutti gli articoli di quella categoria hanno fatto
+        string query = @"SELECT c.nomeCategoria, SUM(a.numero_ordini) AS totale_ordini
+FROM categorie c
+    JOIN articoli a ON c.id = a.idCategoria
+GROUP BY c.id, c.nomeCategoria";
+        
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            //lettura dei dati della tebella
+            string nomeCategoria = (string)reader["nomeCategoria"];
+            int totaleOrdiniCategoria = reader.GetInt32("totale_ordini");
+            
+            //uso un dizionario di appoggio per inserire i dati su quello totale
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            dict.Add(nomeCategoria, totaleOrdiniCategoria);
+
+            categorieENumeroOrdiniTotali.Add(dict);
+        }
+        reader.Close();
+        
+        return categorieENumeroOrdiniTotali;
+    }
+
+    public List<Articolo> GetTop10Articoli()
+    {
+        List<Articolo> classifica = new List<Articolo>();
+
+        string query = @"SELECT a.*, c.nomeCategoria, c.foto AS foto_categoria
+                     FROM articoli a
+                     JOIN categorie c ON a.idCategoria = c.id
+                     ORDER BY a.numero_ordini DESC
+                     limit 10";
+        
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            Categoria categoria = new Categoria()
+            {
+                IdCategoria = (int)reader["idCategoria"],
+                Nome = (string)reader["nomeCategoria"],
+                PercorsoFoto = (string)reader["foto_categoria"]
+            };
+
+            Articolo articolo = new Articolo()
+            {
+                IdArticolo = (int)reader["id"],
+                Nome = (string)reader["nome"],
+                Foto = (string)reader["foto"],
+                Prezzo = (double)reader["prezzo_listino"],
+                NumeroOrdini = (int)reader["numero_ordini"],
+                Descrizione = (string)reader["descrizione"],
+                Categoria = categoria
+            };
+            
+            classifica.Add(articolo);
+        }
+
+        return classifica;
+    }
 }
