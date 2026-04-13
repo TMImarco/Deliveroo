@@ -139,8 +139,10 @@ public class HomeController : Controller
 
 	public IActionResult SvuotaCarrello()
 	{
-	    _gestioneCarrello.SvuotaCarrello();
-	    return View("Carrello");
+		_gestioneCarrello.SvuotaCarrello();
+		List<Articolo> lista = _gestioneCarrello.RecuperaCarrello();
+		_gestioneCarrello.SalvaCarrello(lista);
+		return View("Carrello", lista);
 	}
 
 	//--------------------------------------SOLO PER ADMIN-SOLO AUTORIZZATI--------------------------------------------

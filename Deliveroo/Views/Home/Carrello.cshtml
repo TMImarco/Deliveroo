@@ -16,26 +16,29 @@
 
                 <!-- SINISTRA -->
                 <div class="item-list">
-                    @foreach (var gruppo in Model.GroupBy(a => a.IdArticolo))
+                    @if (Model != null && Model.Any())
                     {
-                        var articolo = gruppo.First();
-                        var quantita = gruppo.Count();
-                        var prezzoTotale = articolo.Prezzo * quantita;
+                        @foreach (var gruppo in Model.GroupBy(a => a.IdArticolo))
+                        {
+                            var articolo = gruppo.First();
+                            var quantita = gruppo.Count();
+                            var prezzoTotale = articolo.Prezzo * quantita;
 
-                        <div class="item-row">
-                            <img class="item-thumb" src="@Url.Content(articolo.Foto)" alt="@articolo.Nome"/>
-                            <div class="item-info">
-                                <div class="item-name">@articolo.Nome</div>
-                                <div class="item-unit-price">€@articolo.Prezzo.ToString("F2") cad.</div>
+                            <div class="item-row">
+                                <img class="item-thumb" src="@Url.Content(articolo.Foto)" alt="@articolo.Nome"/>
+                                <div class="item-info">
+                                    <div class="item-name">@articolo.Nome</div>
+                                    <div class="item-unit-price">€@articolo.Prezzo.ToString("F2") cad.</div>
+                                </div>
+                                <div class="qty-controls">
+                                    <a asp-action="Decrementa" asp-route-id="@articolo.IdArticolo" class="qty-btn">−</a>
+                                    <span class="qty-val">@quantita</span>
+                                    <a asp-action="Incrementa" asp-route-id="@articolo.IdArticolo" class="qty-btn">+</a>
+                                </div>
+                                <div class="item-price">€@prezzoTotale.ToString("F2")</div>
+                                <a asp-action="Rimuovi" asp-route-id="@articolo.IdArticolo" class="remove-btn">✕</a>
                             </div>
-                            <div class="qty-controls">
-                                <a asp-action="Decrementa" asp-route-id="@articolo.IdArticolo" class="qty-btn">−</a>
-                                <span class="qty-val">@quantita</span>
-                                <a asp-action="Incrementa" asp-route-id="@articolo.IdArticolo" class="qty-btn">+</a>
-                            </div>
-                            <div class="item-price">€@prezzoTotale.ToString("F2")</div>
-                            <a asp-action="Rimuovi" asp-route-id="@articolo.IdArticolo" class="remove-btn">✕</a>
-                        </div>
+                        }
                     }
                 </div>
 
