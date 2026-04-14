@@ -70,15 +70,14 @@
     <!--BLOCCO 3 della GRID (in basso a sinistra)-->
     <!--pulsanti da implementare (non definitivi)-->
     <div class="container">
-        <div>
-            <button>MODIFICA ARTICOLI</button>
-        </div>
-        <div>
-            <button>MODIFICA ASSOCIAZIONI</button>
-        </div>
-        <div>
-            <button>MODIFICA MENU</button>
-        </div>
+        <a asp-controller="Home" asp-action="CategorieAdmin" class="btn btn-primary">
+            MODIFICA ARTICOLI
+        </a>
+        <a asp-controller="Home" asp-action="AggiungiNuovoArticolo" class="btn btn-primary">
+            AGGIUNGI ARTICOLO
+        </a>
+
+
     </div>
 
     <!--BLOCCO 4 della GRID (in basso a destra)-->

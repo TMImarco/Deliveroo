@@ -1,9 +1,6 @@
-﻿@using Deliveroo.Tabelle
-@{
-    ViewData["Title"] = "Aggiungi Articolo";
-    Layout = "_Layout"; //il layout è quello dell'utente (va bene)
-    
-    Articolo art = Model;//da modificare/togliere
+﻿@{
+    ViewData["Title"] = "Admin - Aggiungi Articolo";
+    Layout = "_LayoutAdmin"; //il layout è quello dell'utente (va bene)
 }
 
 <div class="macro-section">
@@ -18,28 +15,23 @@
 
                 <div class="article-split">
                     <div class="article-left">
-                        <img src="@art.Foto" alt="@art.Nome"/>
+                        <!-- foto articolo -->
                     </div>
 
                     <!--da sostiuire con bottoni per aggiungere tutti gli elementi + aggiungere categoria-->
                     <div class="article-right">
                         <div class="article-right-content">
-                            <h1>@art.Nome</h1>
-                            <p class="descrizione">@art.Descrizione</p>
+                            <!-- nome articolo (h1) -->
+                            <!-- desccrizione articolo (<p class="descrizione">) -->
                             <div class="article-divider"></div>
-                            <p class="prezzo">€ @art.Prezzo.ToString("0.00")</p>
+                            <!-- prezzo articolo (<p class="prezzo">) -->
                             <div class="article-divider"></div>
                         </div>
 
                         <!--bottone per completamento operazione-->
-                        <button class="add-btn">Aggiungi</button>
+                        <button class="add-btn">Fine</button>
                     </div>
                 </div>
-
-                <!-- contenuto della riga sotto-->
-                @section AboveNavbar {
-                }
-
             </div>
         </div>
     </div>
@@ -48,6 +40,4 @@
 <!--da modificare-->
 @section Styles {
     <link rel="stylesheet" href="/css/InserimentoArticolo.css"/>
-}
-
 }

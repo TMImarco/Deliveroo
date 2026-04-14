@@ -28,8 +28,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBcnRpY29saS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Home/ArticoliAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBcnRpY29saUFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Home/Carrello.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYXJyZWxsby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Home/CategorieAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYXRlZ29yaWVBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Home/Index.cshtml]
@@ -46,6 +54,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Home/LoginAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbkFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Home/ModificaArticolo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNb2RpZmljYUFydGljb2xvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Home/Privacy.cshtml]

@@ -32,17 +32,17 @@
         <a asp-controller="Home" asp-action="Logout" class="sidebar-logout">Esci</a>
     </nav>
 </div>
-
-
+<!-- ___________ NAVBAR ___________-->
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container justify-content-center">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="IndexAdmin">
-                <h2 class="section-title">
-                    Deliveroo
-                    <small class="text-muted">admin dashboard</small>
-                </h2>
-            </a>
+            <h2 class="section-title">
+                Deliveroo
+                <small class="text-muted">admin dashboard</small>
+            </h2>
+
+            <!-- se la vista dichiara "section Styles" il CSS aggiuntivo viene caricato nell'<head> -->
+            @await RenderSectionAsync("NavbarLinks", required: false)
         </div>
     </nav>
 </header>

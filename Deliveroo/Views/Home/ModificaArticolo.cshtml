@@ -1,0 +1,72 @@
+﻿@using Deliveroo.Tabelle
+@{
+ViewData["Title"] = "Admin - Modifica Articoli";
+Layout = "_LayoutAdmin";
+Articolo art = Model;
+}
+
+<h1>MODIFICA L'ARTICOLO</h1>
+
+<div class="macro-section">
+    <div class="container">
+        <div class="page-split">
+
+            <!-- SINISTRA -->
+            <div class="left-col">
+                
+                <!-- NAVIGAZIONE PREV / NEXT 
+                Piuttosto di ritornare sempre alla pagina di tutti gli articoli, ci sono i bottoni avanti e indietro per navigare facilmente -->
+                <div class="article-nav">
+                    @if (ViewBag.IdPrev != null)
+                    {
+                        <a class="nav-arrow prev" asp-action="ModificaArticolo" asp-route-id="@ViewBag.IdPrev">&#8592;</a>
+                    }
+                    else
+                    {
+                        <span class="nav-arrow prev disabled">&#8592;</span>
+                    }
+
+                    @if (ViewBag.IdNext != null)
+                    {
+                        <a class="nav-arrow next" asp-action="ModificaArticolo" asp-route-id="@ViewBag.IdNext">&#8594;</a>
+                    }
+                    else
+                    {
+                        <span class="nav-arrow next disabled">&#8594;</span>
+                    }
+                </div>
+                
+                <!-- BOTTONE BACK -->
+                <a class="nav-arrow back-btn"
+                   asp-action="ArticoliAdmin"
+                   asp-route-idCategoria="@ViewBag.IdCategoria">
+                    ↵
+                </a>
+
+                <div class="article-split">
+                    <div class="article-left">
+                        <img src="@art.Foto" alt="@art.Nome"/>
+                    </div>
+                    <div class="article-right">
+                        <div class="article-right-content">
+                            <h1>@art.Nome</h1>
+                            <p class="descrizione">@art.Descrizione</p>
+                            <div class="article-divider"></div>
+                            <p class="prezzo">€ @art.Prezzo.ToString("0.00")</p>
+                            <div class="article-divider"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- DESTRA (raccomandazioni future) -->
+            <div class="right-col"></div>
+
+        </div>
+    </div>
+</div>
+
+@section Styles {
+<link rel="stylesheet" href="/css/InserimentoArticolo.css"/>
+}

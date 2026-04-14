@@ -27,46 +27,6 @@ public class HomeController : Controller
 		_gestioneCarrello = new GestioneCarrello(_contextAccessor.HttpContext.Session);
 	}
 
-	//  ----------------------------------PER AUTENTICAZIONE-LOGIN-------------------------------------------
-	//pagina per reindirizzare alla pagina di login per l'admin
-	public IActionResult LoginAdmin()
-	{
-		return View();
-	}
-
-	//richiesta http post per l'autenticazione dell'admin
-	[HttpPost]
-	public IActionResult LoginAdmin(Utente utente)
-	{
-		//prende le cose scritte nella text box
-		//DA FARE: controllare che non siano NULL e/o impedire di inserirlo e/o qualcos'altro
-		string username = _configuration.GetRequiredSection("AdminCredentials").GetValue<string>("UserName");
-		string password = _configuration.GetRequiredSection("AdminCredentials").GetValue<string>("Password");
-
-		//controlla se le credenziali inserite sono giuste
-		if (utente.Username == username && utente.Password == password)
-		{
-			//Credenziali corrette
-			//scrivo nella sessione l'utente loggato
-			_contextAccessor.HttpContext.Session.SetString("user", "admin");
-			return RedirectToAction("IndexAdmin"); //appena fatto il login reindirizza all'index fatto apposta per l'admin
-		}
-		else
-		{
-			//Credenziali non valide
-			//ritorniamo al form di login
-			ViewData["errore"] = "Credenziali non valide";
-			return View();
-		}
-	}
-
-	//-----------------------------------------PAGINA LOGOUT------------------------------------------------
-	public IActionResult Logout()
-	{
-		_contextAccessor.HttpContext.Session.Clear();
-		return RedirectToAction("Index");
-	}
-
 	//-----------------------------------------PAGINA ARTICOLI------------------------------------------------
 	//pagina per reindirizzare alla pagina degli articoli
 	public IActionResult Articoli(int idCategoria)
@@ -161,6 +121,45 @@ public class HomeController : Controller
 		return RedirectToAction("Carrello");
 	}
 
+	//  ----------------------------------LOGIN/LOGOUT-------------------------------------------
+	//pagina per reindirizzare alla pagina di login per l'admin
+	public IActionResult LoginAdmin()
+	{
+		return View();
+	}
+
+	//richiesta http post per l'autenticazione dell'admin
+	[HttpPost]
+	public IActionResult LoginAdmin(Utente utente)
+	{
+		//prende le cose scritte nella text box
+		//DA FARE: controllare che non siano NULL e/o impedire di inserirlo e/o qualcos'altro
+		string username = _configuration.GetRequiredSection("AdminCredentials").GetValue<string>("UserName");
+		string password = _configuration.GetRequiredSection("AdminCredentials").GetValue<string>("Password");
+
+		//controlla se le credenziali inserite sono giuste
+		if (utente.Username == username && utente.Password == password)
+		{
+			//Credenziali corrette
+			//scrivo nella sessione l'utente loggato
+			_contextAccessor.HttpContext.Session.SetString("user", "admin");
+			return RedirectToAction("IndexAdmin"); //appena fatto il login reindirizza all'index fatto apposta per l'admin
+		}
+		else
+		{
+			//Credenziali non valide
+			//ritorniamo al form di login
+			ViewData["errore"] = "Credenziali non valide";
+			return View();
+		}
+	}
+
+	public IActionResult Logout()
+	{
+		_contextAccessor.HttpContext.Session.Clear();
+		return RedirectToAction("Index");
+	}
+	
 	//--------------------------------------SOLO PER ADMIN-SOLO AUTORIZZATI--------------------------------------------
 
 	//Index fatto apposta per l'admin (l'utente normale non potra' accedervi)
@@ -182,6 +181,43 @@ public class HomeController : Controller
 		return View(adminViewModel);
 	}
 
+	//riprende Index
+	public IActionResult CategorieAdmin()
+	{
+		// Visualizzo le categorie nell'Index
+		var listCategorie = _gestioneDati.GetCategorie();
+		return View(listCategorie);
+	}
+	
+	//riprende Articoli
+	public IActionResult ArticoliAdmin(int idCategoria)
+	{
+		// Visualizzo tutti gli Articoli per categoria
+		var listArticoli = _gestioneDati.GetArticoliPerCategoria(idCategoria);
+		return View(listArticoli);
+	}
+	
+	public IActionResult AggiungiNuovoArticolo()
+	{
+		return View();
+	}
+
+	//riprende InsermentoArticolo
+	public IActionResult ModificaArticolo(int id)
+	{
+		var articoloScelto = _gestioneDati.GetArticoloScelto(id);
+
+		// Recupera tutti gli articoli della stessa categoria, ordinati per ID, così posso scorrere tra di loro
+		var articoliCategoria = _gestioneDati.GetArticoliPerCategoria(articoloScelto.Categoria.IdCategoria);
+		var ids = articoliCategoria.Select(a => a.IdArticolo).ToList();
+
+		int index = ids.IndexOf(id);
+		ViewBag.IdPrev = index > 0 ? ids[index - 1] : (int?)null;
+		ViewBag.IdNext = index < ids.Count - 1 ? ids[index + 1] : (int?)null;
+		ViewBag.IdCategoria = articoloScelto.Categoria.IdCategoria;
+
+		return View(articoloScelto);
+	}
 	//-----------------------------------------------------------------------------------------------------------------
 
 	public IActionResult Index()
