@@ -6,64 +6,15 @@
 <div class="grid-container">
 
     <!--BLOCCO 1 della GRID (in altro a sinistra)-->
-    <!--ORDINI-->
+    <!--GRAFICO-->
     <div class="container">
-        <h4>ORDINI</h4>
-        <!--data table per gli ORDINI-->
-        <table id="ordiniTable" class="display">
-            <thead>
-            <tr>
-                <th>ID ordine</th>
-                <th>Cliente</th>
-                <th>Data</th>
-                <th>Importo totale</th>
-                <th>Indirizzo</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var o in Model.Ordini)
-            {
-                <tr>
-                    <td>@o.IdOrdine</td>
-                    <td>@o.NomeCliente</td>
-                    <td>@o.Data.ToString("dd/MM/yyyy")</td>
-                    <td>@o.ImportoTotale</td>
-                    <td>@o.Indirizzo</td>
-                </tr>
-            }
-            </tbody>
-        </table>
+        <h4>CATEGORIE PIU' ORDINATE</h4>
+        <canvas id="graficoCategorie"></canvas>
     </div>
 
     <!--BLOCCO 2 della GRID (in altro a destra)-->
-    <!--ASSOCIAZIONI-->
-    <div class="container">
-        <h4>ASSOCIAZIONI</h4>
-        <!--data table per le ASSOCIAZIONI-->
-        <table id="associazioniTable" class="display">
-            <thead>
-            <tr>
-                <th>ID articolo n.:1</th>
-                <th>ID articolo n.:2</th>
-                <th>Numero ordini</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var a in Model.Associazioni)
-            {
-                <tr>
-                    <td>@a.IdArticolo1</td>
-                    <td>@a.IdArticolo2</td>
-                    <td>@a.NumeroOrdini</td>
-                </tr>
-            }
-            </tbody>
-        </table>
-    </div>
-
-    <!--BLOCCO 3 della GRID (in basso a sinistra)-->
-    <!--ARTICOLI-->
     <!-- data table con CLASSIFICA ARTICOLI -->
+    <!--DA FARE: modificare che il podio sia a destra e le altre posizioni a sinistra-->
     <div class="container-fluid">
         <h4>BEST SELLING</h4>
         <div class="ranking-wrapper">
@@ -116,11 +67,74 @@
         </div>
     </div>
 
-    <!--BLOCCO 4 della GRID (in basso a destra)-->
+    <!--BLOCCO 3 della GRID (in basso a sinistra)-->
+    <!--pulsanti da implementare (non definitivi)-->
     <div class="container">
-        <h4>CATEGORIE PIU' ORDINATE</h4>
-        <canvas id="graficoCategorie"></canvas>
+        <div>
+            <button>MODIFICA ARTICOLI</button>
+        </div>
+        <div>
+            <button>MODIFICA ASSOCIAZIONI</button>
+        </div>
+        <div>
+            <button>MODIFICA MENU</button>
+        </div>
     </div>
+
+    <!--BLOCCO 4 della GRID (in basso a destra)-->
+    <!--ORDINI-->
+    <div class="container">
+        <h4>ORDINI</h4>
+        <!--data table per gli ORDINI-->
+        <table id="ordiniTable" class="display">
+            <thead>
+            <tr>
+                <th>ID ordine</th>
+                <th>Cliente</th>
+                <th>Data</th>
+                <th>Importo totale</th>
+                <th>Indirizzo</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var o in Model.Ordini)
+            {
+                <tr>
+                    <td>@o.IdOrdine</td>
+                    <td>@o.NomeCliente</td>
+                    <td>@o.Data.ToString("dd/MM/yyyy")</td>
+                    <td>@o.ImportoTotale</td>
+                    <td>@o.Indirizzo</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+    <!--NON VISIBILI (indeciso se metterle)-->
+    <!--ASSOCIAZIONI
+    <div class="container">
+        <h4>ASSOCIAZIONI</h4>
+        <table id="associazioniTable" class="display">
+            <thead>
+            <tr>
+                <th>ID articolo n.:1</th>
+                <th>ID articolo n.:2</th>
+                <th>Numero ordini</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var a in Model.Associazioni)
+            {
+                <tr>
+                    <td>@a.IdArticolo1</td>
+                    <td>@a.IdArticolo2</td>
+                    <td>@a.NumeroOrdini</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>-->
 </div>
 
 
@@ -168,7 +182,7 @@
             '#33B5E5', // azzurro
             '#AA66CC'  // lilla
         ];
-        
+
         new Chart(document.getElementById('graficoCategorie'), {
                 type: 'doughnut',
                 data: {
@@ -188,5 +202,6 @@
 @section Styles {
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" href="~/css/classifica.css"/>
+    <link rel="stylesheet" href="~/cssAdmin/classifica.css"/>
+    <link rel="stylesheet" href="~/cssAdmin/IndexAdmin.css"/>
 }
