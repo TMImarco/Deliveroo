@@ -11,9 +11,39 @@ Articolo art = Model;
 
             <!-- SINISTRA -->
             <div class="left-col">
+                
+                <!-- NAVIGAZIONE PREV / NEXT 
+                Piuttosto di ritornare sempre alla pagina di tutti gli articoli, ci sono i bottoni avanti e indietro per navigare facilmente -->
+                <div class="article-nav">
+                    @if (ViewBag.IdPrev != null)
+                    {
+                        <a class="nav-arrow prev" asp-action="InserimentoArticolo" asp-route-id="@ViewBag.IdPrev">&#8592;</a>
+                    }
+                    else
+                    {
+                        <span class="nav-arrow prev disabled">&#8592;</span>
+                    }
+
+                    @if (ViewBag.IdNext != null)
+                    {
+                        <a class="nav-arrow next" asp-action="InserimentoArticolo" asp-route-id="@ViewBag.IdNext">&#8594;</a>
+                    }
+                    else
+                    {
+                        <span class="nav-arrow next disabled">&#8594;</span>
+                    }
+                </div>
+                
+                <!-- BOTTONE BACK -->
+                <a class="nav-arrow back-btn"
+                   asp-action="Articoli"
+                   asp-route-idCategoria="@ViewBag.IdCategoria">
+                    ↵
+                </a>
+
                 <div class="article-split">
                     <div class="article-left">
-                        <img src="@art.Foto" alt="@art.Nome" />
+                        <img src="@art.Foto" alt="@art.Nome"/>
                     </div>
                     <div class="article-right">
                         <div class="article-right-content">
@@ -35,11 +65,12 @@ Articolo art = Model;
                 </div>
 
                 @section AboveNavbar {
-                <div class="total-overlay">
-                    <span class="label">Totale: </span>
-                    <span class="valore" id="totale">€ @art.Prezzo.ToString("0.00")</span>
-                </div>
+                    <div class="total-overlay">
+                        <span class="label">Totale: </span>
+                        <span class="valore" id="totale">€ @art.Prezzo.ToString("0.00")</span>
+                    </div>
                 }
+
             </div>
 
             <!-- DESTRA (raccomandazioni future) -->

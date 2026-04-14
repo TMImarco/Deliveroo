@@ -79,17 +79,33 @@ public class HomeController : Controller
 	//pagine per reindirizzare alla pagina dell'inserimento articolo del carrello
 	public IActionResult InserimentoArticolo(int id)
 	{
-		// Visualizzo l'articolo scelto
 		var articoloScelto = _gestioneDati.GetArticoloScelto(id);
+
+		// Recupera tutti gli articoli della stessa categoria, ordinati per ID, così posso scorrere tra di loro
+		var articoliCategoria = _gestioneDati.GetArticoliPerCategoria(articoloScelto.Categoria.IdCategoria);
+		var ids = articoliCategoria.Select(a => a.IdArticolo).ToList();
+
+		int index = ids.IndexOf(id);
+		ViewBag.IdPrev = index > 0 ? ids[index - 1] : (int?)null;
+		ViewBag.IdNext = index < ids.Count - 1 ? ids[index + 1] : (int?)null;
+		ViewBag.IdCategoria = articoloScelto.Categoria.IdCategoria;
+
 		return View(articoloScelto);
 	}
-
 	//-----------------------------------------CARRELLO------------------------------------------------
 
 	// reindirizzamento verso la pagina riepilogo del carrello
 	public IActionResult Carrello()
 	{
-		List<Articolo> lista = _gestioneCarrello.RecuperaCarrello();
+		// Salva il referer (tengo conto della pagina precedente in cui ero) solo se non viene dal carrello stesso
+		var referer = Request.Headers["Referer"].ToString();
+		if (!string.IsNullOrEmpty(referer) && !referer.Contains("Carrello"))
+		{
+			HttpContext.Session.SetString("CarrelloReferer", referer);
+		}
+		ViewBag.BackUrl = HttpContext.Session.GetString("CarrelloReferer") ?? "/";
+
+		var lista = _gestioneCarrello.RecuperaCarrello();
 		return View(lista);
 	}
 	
@@ -142,7 +158,7 @@ public class HomeController : Controller
 		_gestioneCarrello.SvuotaCarrello();
 		List<Articolo> lista = _gestioneCarrello.RecuperaCarrello();
 		_gestioneCarrello.SalvaCarrello(lista);
-		return View("Carrello", lista);
+		return RedirectToAction("Carrello");
 	}
 
 	//--------------------------------------SOLO PER ADMIN-SOLO AUTORIZZATI--------------------------------------------
