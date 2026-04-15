@@ -236,11 +236,11 @@ WHERE a.id = @id;";
         return articolo;
     }
 
-    //il metodo restiutira' una lista con tutte le categorie e associato il loro numero totale di ordini che ogni articolo di quella categoria ha fatto
+    //il metodo restituirà una lista con tutte le categorie e associato il loro numero totale di ordini che ogni articolo di quella categoria ha fatto
     public List<Dictionary<string, int>> GetOrdiniTotaliDiOgniCategoria()
     {
         //key: nome della categoria
-        //value: numero di oridni totali per quella categoria
+        //value: numero di ordini totali per quella categoria
         List<Dictionary<string, int>> categorieENumeroOrdiniTotali = new List<Dictionary<string, int>>();
 
         //la query restituisce la categoria e il numero di ordini totale che tutti gli articoli di quella categoria hanno fatto
@@ -253,7 +253,7 @@ GROUP BY c.id, c.nomeCategoria";
         MySqlDataReader reader = command.ExecuteReader();
         while (reader.Read())
         {
-            //lettura dei dati della tebella
+            //lettura dei dati della tabella
             string nomeCategoria = (string)reader["nomeCategoria"];
             int totaleOrdiniCategoria = reader.GetInt32("totale_ordini");
             
@@ -304,5 +304,176 @@ GROUP BY c.id, c.nomeCategoria";
         }
 
         return classifica;
+    }
+
+    //metodo per aggiungere un nuovo articolo da 0
+    //id = null, perchè è un autoincrement nel DB
+    //numero_ordini = 0, perchè se è un articolo nuovo nessuno può averlo mai ordinato
+    public void AggiungiArticolo(Articolo articolo)
+    {
+        string query = @"INSERT INTO articoli(nome,foto,prezzo_listino,numero_ordini,idCategoria,descrizione)
+VALUES (@nome,@foto,@prezzo_listino,@numero_ordini,@idCategoria,@descrizione)";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@nome", articolo.Nome);
+        command.Parameters.AddWithValue("@foto", articolo.Foto);
+        command.Parameters.AddWithValue("@prezzo_listino", articolo.Prezzo);
+        command.Parameters.AddWithValue("@numero_ordini", articolo.NumeroOrdini);
+        command.Parameters.AddWithValue("@idCategoria", articolo.Categoria);
+        command.Parameters.AddWithValue("@descrizione", articolo.Descrizione);
+
+        //DA FARE:
+        //che quando c'è un errore nell'esecuzione della query venga un errore a schermo
+        try
+        {
+            command.ExecuteNonQuery();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    //----------METODI MODIFICA ARTICOLO ---------------
+    public void ModificaNomeArticolo(int id, string nome)
+    {
+        string query = @"UPDATE articoli
+SET nome = @nome
+WHERE id = @id";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@nome", nome);
+
+        //DA FARE:
+        //se errore e/o articolo non trovato fare errore a schermo
+        try
+        {
+            //se 0 = articolo non trovato e modifica non fatta
+            //se 1 = articolo trovato e modifica fatta
+            int esito = command.ExecuteNonQuery();
+            if (esito == 0)
+            {
+                Console.WriteLine("Riga non trovata");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    public void ModificaFotoArticolo(int id, string foto)
+    {
+        string query = @"UPDATE articoli
+SET foto = @foto
+WHERE id = @id";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@foto", foto);
+
+        //DA FARE:
+        //se errore e/o articolo non trovato fare errore a schermo
+        try
+        {
+            //se 0 = articolo non trovato e modifica non fatta
+            //se 1 = articolo trovato e modifica fatta
+            int esito = command.ExecuteNonQuery();
+            if (esito == 0)
+            {
+                Console.WriteLine("Riga non trovata");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    public void ModificaPrezzo_listinoArticolo(int id, double prezzoListino)
+    {
+        string query = @"UPDATE articoli
+SET prezzo_listino = @prezzo_listino
+WHERE id = @id";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@prezzo_listino", prezzoListino);
+
+        //DA FARE:
+        //se errore e/o articolo non trovato fare errore a schermo
+        try
+        {
+            //se 0 = articolo non trovato e modifica non fatta
+            //se 1 = articolo trovato e modifica fatta
+            int esito = command.ExecuteNonQuery();
+            if (esito == 0)
+            {
+                Console.WriteLine("Riga non trovata");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    //numero_ordini non si modifica?
+
+    public void ModificaIdCategoriaArticolo(int id, int idCategoria)
+    {
+        string query = @"UPDATE articoli
+SET idCategoria = @idCategoria
+WHERE id = @id";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@idCategoria", idCategoria);
+
+        //DA FARE:
+        //se errore e/o articolo non trovato fare errore a schermo
+        try
+        {
+            //se 0 = articolo non trovato e modifica non fatta
+            //se 1 = articolo trovato e modifica fatta
+            int esito = command.ExecuteNonQuery();
+            if (esito == 0)
+            {
+                Console.WriteLine("Riga non trovata");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    public void ModificaDescrizioneArticoli(int id, string descrizione)
+    {
+        string query = @"UPDATE articoli
+SET descrizione = @descrizione
+WHERE id = @id";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@descrizione", descrizione);
+
+        //DA FARE:
+        //se errore e/o articolo non trovato fare errore a schermo
+        try
+        {
+            //se 0 = articolo non trovato e modifica non fatta
+            //se 1 = articolo trovato e modifica fatta
+            int esito = command.ExecuteNonQuery();
+            if (esito == 0)
+            {
+                Console.WriteLine("Riga non trovata");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 }

@@ -46,13 +46,25 @@ Articolo art = Model;
                 <div class="article-split">
                     <div class="article-left">
                         <img src="@art.Foto" alt="@art.Nome"/>
+                        <button class="btn btn-primary">
+                            EDIT
+                        </button>
                     </div>
                     <div class="article-right">
                         <div class="article-right-content">
                             <h1>@art.Nome</h1>
+                            <button class="btn btn-primary">
+                                EDIT
+                            </button>
                             <p class="descrizione">@art.Descrizione</p>
+                            <button class="btn btn-primary">
+                                EDIT
+                            </button>
                             <div class="article-divider"></div>
                             <p class="prezzo">€ @art.Prezzo.ToString("0.00")</p>
+                            <button class="btn btn-primary">
+                                EDIT
+                            </button>
                             <div class="article-divider"></div>
                         </div>
                     </div>
@@ -68,5 +80,5 @@ Articolo art = Model;
 </div>
 
 @section Styles {
-<link rel="stylesheet" href="/css/InserimentoArticolo.css"/>
+<link rel="stylesheet" href="/cssAdmin/ModificaArticolo.css"/>
 }
