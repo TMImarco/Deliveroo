@@ -1,8 +1,8 @@
 ﻿@using Deliveroo.Tabelle
 @{
-ViewData["Title"] = "Admin - Modifica Articoli";
-Layout = "_LayoutAdmin";
-Articolo art = Model;
+    ViewData["Title"] = "Admin - Modifica Articoli";
+    Layout = "_LayoutAdmin";
+    Articolo art = Model;
 }
 
 <h1>MODIFICA L'ARTICOLO</h1>
@@ -13,13 +13,14 @@ Articolo art = Model;
 
             <!-- SINISTRA -->
             <div class="left-col">
-                
+
                 <!-- NAVIGAZIONE PREV / NEXT 
                 Piuttosto di ritornare sempre alla pagina di tutti gli articoli, ci sono i bottoni avanti e indietro per navigare facilmente -->
                 <div class="article-nav">
                     @if (ViewBag.IdPrev != null)
                     {
-                        <a class="nav-arrow prev" asp-action="ModificaArticolo" asp-route-id="@ViewBag.IdPrev">&#8592;</a>
+                        <a class="nav-arrow prev" asp-action="ModificaArticolo"
+                           asp-route-id="@ViewBag.IdPrev">&#8592;</a>
                     }
                     else
                     {
@@ -28,14 +29,15 @@ Articolo art = Model;
 
                     @if (ViewBag.IdNext != null)
                     {
-                        <a class="nav-arrow next" asp-action="ModificaArticolo" asp-route-id="@ViewBag.IdNext">&#8594;</a>
+                        <a class="nav-arrow next" asp-action="ModificaArticolo"
+                           asp-route-id="@ViewBag.IdNext">&#8594;</a>
                     }
                     else
                     {
                         <span class="nav-arrow next disabled">&#8594;</span>
                     }
                 </div>
-                
+
                 <!-- BOTTONE BACK -->
                 <a class="nav-arrow back-btn"
                    asp-action="ArticoliAdmin"
@@ -44,6 +46,7 @@ Articolo art = Model;
                 </a>
 
                 <div class="article-split">
+
                     <div class="article-left">
                         <img src="@art.Foto" alt="@art.Nome"/>
                         <button class="btn btn-primary">
@@ -84,5 +87,5 @@ Articolo art = Model;
 </div>
 
 @section Styles {
-<link rel="stylesheet" href="/cssAdmin/ModificaArticolo.css"/>
+    <link rel="stylesheet" href="/cssAdmin/ModificaArticolo.css"/>
 }

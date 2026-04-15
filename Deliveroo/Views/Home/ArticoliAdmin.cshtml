@@ -6,14 +6,14 @@
     Layout = "_LayoutAdmin";
 
     <!-- prendo tutte le categorie per visualizzarle nella tab bar -->
-    var categorie = _gestione.GetCategorie();
+    var categorie = _gestione.GetTutteCategorie();
     
     <!-- per personalizzare la navbar, tengo conto della categoria selezionata da evidenziarla -->
     var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString() 
                            ?? Context.Request.Query["categoria"].ToString();
 }
-<!-- Contenuto della sezione NavbarLinks per questa vista specifica -->
 
+<!-- Contenuto della sezione NavbarLinks per questa vista specifica -->
 @section NavbarLinks {
     <!-- LA TAB BAR -->
     <div class="navbar-collapse collapse">

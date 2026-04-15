@@ -169,7 +169,7 @@ public class HomeController : Controller
 		//per riuscire a "trasportare" all'indexAdmin piu' di 1 elemento
 		//la classe sara' il model e dopo verra' scomposta per tutte le
 		//operazioni necessarie
-		var adminViewModel = new AdminViewModel()
+		var adminViewModel = new IndexAdminViewModel()
 		{
 			Ordini = _gestioneDati.GetTuttiOrdini(),
 			Associazioni = _gestioneDati.GetTutteAssociazioni(),
@@ -185,7 +185,7 @@ public class HomeController : Controller
 	public IActionResult CategorieAdmin()
 	{
 		// Visualizzo le categorie nell'Index
-		var listCategorie = _gestioneDati.GetCategorie();
+		var listCategorie = _gestioneDati.GetTutteCategorie();
 		return View(listCategorie);
 	}
 	
@@ -197,12 +197,61 @@ public class HomeController : Controller
 		return View(listArticoli);
 	}
 	
+	//normale vista della pogina
+	[HttpGet]
 	public IActionResult AggiungiNuovoArticolo()
 	{
-		return View();
+		var categorie = _gestioneDati.GetTutteCategorie();
+		return View(categorie);
+	}
+	
+	//quando clicchi il submit del form (in questo caso il pulsante fine)
+	[HttpPost]
+	public IActionResult AggiungiNuovoArticolo(AggiungiNuovoArticoloAdminViewModel model)
+	{
+		//per fare in modo che il form capisca dove mettere
+		//il nome della variabile in AggiungiNuovoArticoloAdminViewModel
+		//deve corrispondere al name dell'elemento input in AggiungiNuovoArticolo.cshtml
+		//<input type="text" id="nome" name="nome"> il contenuto di questa text box andra' in Nome di AggiungiNuovoArticoloAdminViewModel (e' case insensitive)
+		
+		// Gestione dell'immagine (se presente) --> da rivedere
+		if (model.Foto != null && model.Foto.Length > 0)
+		{
+			var nomefile = Path.GetFileName(model.Foto.FileName);
+			var percorso = Path.Combine("wwwroot/img", nomefile);
+			using (var stream = new FileStream(percorso, FileMode.Create))
+			{
+				model.Foto.CopyTo(stream);
+			}
+		}
+
+		Categoria cat = new Categoria()
+		{
+			IdCategoria = model.IdCategoria,
+			Nome = _gestioneDati.GetCategoria(model.IdCategoria).Nome,
+			PercorsoFoto = _gestioneDati.GetCategoria(model.IdCategoria).PercorsoFoto,
+		};
+
+		Articolo art = new Articolo()
+		{
+			IdArticolo = -1,
+			Nome = model.Nome,
+			Foto = model.Foto.ToString(), //da rivedere IFormatFile.ToString()
+			Descrizione = model.Descrizione,
+			Prezzo = model.Prezzo, //da rivedere double o decimal
+			NumeroOrdini = 0,
+			Categoria = cat,
+		};
+		
+		// Ora puoi usare i valori per salvare l'articolo nel DB
+		_gestioneDati.AggiungiArticolo(art);
+
+		//ritorna alla vista di tutti gli articoli corrispondenti alla categoria in cui sei dentro
+		return RedirectToAction("ArticoliAdmin", new { model.IdCategoria });
 	}
 
 	//riprende InsermentoArticolo
+	[HttpGet]
 	public IActionResult ModificaArticolo(int id)
 	{
 		var articoloScelto = _gestioneDati.GetArticoloScelto(id);
@@ -218,6 +267,13 @@ public class HomeController : Controller
 
 		return View(articoloScelto);
 	}
+
+	/*[HttpPost]
+	public IActionResult ModificaArticolo(Articolo articolo)
+	{
+		//DA FARE: si puo' modificare solo un elemento alla volta
+		//1 form per ogni coso di modifica con il suo submit
+	}*/
 	//-----------------------------------------------------------------------------------------------------------------
 
 	public IActionResult Index()
@@ -235,7 +291,7 @@ public class HomeController : Controller
 		_contextAccessor.HttpContext.Session.SetInt32("contatore", (int)contatore);
 		
 		// Visualizzo le categorie nell'Index
-		var listCategorie = _gestioneDati.GetCategorie();
+		var listCategorie = _gestioneDati.GetTutteCategorie();
 		return View(listCategorie);
 	}
 

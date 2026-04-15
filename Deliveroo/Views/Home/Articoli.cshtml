@@ -6,7 +6,7 @@
     Layout = "_Layout";
 
     <!-- prendo tutte le categorie per visualizzarle nella tab bar -->
-    var categorie = _gestione.GetCategorie();
+    var categorie = _gestione.GetTutteCategorie();
     
     <!-- per personalizzare la navbar, tengo conto della categoria selezionata da evidenziarla -->
     var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString() 

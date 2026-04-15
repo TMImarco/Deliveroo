@@ -8,11 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/Deliveroo.styles.css" asp-append-version="true"/>
-
-    <!--libreria data table-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
-    
-    @await RenderSectionAsync("Styles",required:false)
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
 
@@ -36,11 +32,13 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container justify-content-center">
-            <h2 class="section-title">
-                Deliveroo
-                <small class="text-muted">admin dashboard</small>
-            </h2>
-
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="IndexAdmin">
+                <h2 class="section-title">
+                    Deliveroo
+                    <small class="text-muted">admin dashboard</small>
+                </h2>
+            </a>
+            
             <!-- se la vista dichiara "section Styles" il CSS aggiuntivo viene caricato nell'<head> -->
             @await RenderSectionAsync("NavbarLinks", required: false)
         </div>
@@ -63,13 +61,6 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-
-<!--SCRIPT per DATA TABLE-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
-<!--SCRIPT per i GRAFICI-->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 @await RenderSectionAsync("Scripts", required: false)
 

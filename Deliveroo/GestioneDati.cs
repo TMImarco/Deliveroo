@@ -135,7 +135,7 @@ public class GestioneDati
     }
     
     // METODI AGGIUNTIVI
-    public List<Categoria> GetCategorie()
+    public List<Categoria> GetTutteCategorie()
     {
         List<Categoria> listCategorie = new();
         string query = "SELECT * FROM categorie order by id;";
@@ -475,5 +475,31 @@ WHERE id = @id";
             Console.WriteLine(e);
             throw;
         }
+    }
+    //--------------------------------------------------------------------------------
+
+    public Categoria GetCategoria(int idCategoria)
+    {
+        Categoria cat = null;
+        
+        string query = @"SELECT *
+FROM categorie
+WHERE id = @idCategoria";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@idCategoria", idCategoria);
+        MySqlDataReader reader = command.ExecuteReader();
+
+        if (reader.Read())
+        {
+            cat = new Categoria()
+            {
+                IdCategoria = (int)reader["idCategoria"],
+                Nome = (string)reader["nome"],
+                PercorsoFoto = (string)reader["percorsoFoto"],
+            };
+        }
+        reader.Close();
+
+        return cat;
     }
 }

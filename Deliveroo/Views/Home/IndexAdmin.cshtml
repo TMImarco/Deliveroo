@@ -1,4 +1,4 @@
-﻿@model AdminViewModel
+﻿@model IndexAdminViewModel
 @{
     ViewData["Title"] = "Admin Dashboard";
 }
@@ -13,7 +13,7 @@
     </div>
 
     <!--BLOCCO 2 della GRID (in altro a destra)-->
-    <!-- data table con CLASSIFICA ARTICOLI -->
+    <!-- CLASSIFICA ARTICOLI -->
     <!--DA FARE: modificare che il podio sia a destra e le altre posizioni a sinistra-->
     <div class="container-fluid">
         <h4>BEST SELLING</h4>
@@ -76,6 +76,14 @@
         <a asp-controller="Home" asp-action="AggiungiNuovoArticolo" class="btn btn-primary">
             AGGIUNGI ARTICOLO
         </a>
+        <a asp-controller="Home" asp-action="" class="btn btn-primary">
+            RIMUOVI ARTICOLO
+        </a>
+        
+        <!--vedere il file di Bandiera su Classroom e modificare il sistema di raccomandazioni di conseguenza (metodo confidence e righe dettaglio)-->
+        <a asp-controller="Home" asp-action="" class="btn btn-primary">
+            VEDERE LE ASSOCIAZIONE DI ACQUISTO CON LE "CONFIDENCE" IN 'A'
+        </a>
 
 
     </div>
@@ -109,35 +117,15 @@
             </tbody>
         </table>
     </div>
-
-    <!--NON VISIBILI (indeciso se metterle)-->
-    <!--ASSOCIAZIONI
-    <div class="container">
-        <h4>ASSOCIAZIONI</h4>
-        <table id="associazioniTable" class="display">
-            <thead>
-            <tr>
-                <th>ID articolo n.:1</th>
-                <th>ID articolo n.:2</th>
-                <th>Numero ordini</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var a in Model.Associazioni)
-            {
-                <tr>
-                    <td>@a.IdArticolo1</td>
-                    <td>@a.IdArticolo2</td>
-                    <td>@a.NumeroOrdini</td>
-                </tr>
-            }
-            </tbody>
-        </table>
-    </div>-->
 </div>
 
 
 @section Scripts {
+    <!--SCRIPT per DATA TABLE-->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <!--SCRIPT per i GRAFICI-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <!--SCRIPT per la creazione delle DATA TABLE-->
     <script>
         $(document).ready(function () {
@@ -199,8 +187,13 @@
 }
 
 @section Styles {
+    <!--stile sheet per le data tables-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+    
+    <!--importazione font per alcune classi della classifica (per ora tolto)
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap"
-          rel="stylesheet">
+          rel="stylesheet">-->
+    
     <link rel="stylesheet" href="~/cssAdmin/classifica.css"/>
     <link rel="stylesheet" href="~/cssAdmin/Index.css"/>
 }
