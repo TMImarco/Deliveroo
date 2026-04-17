@@ -449,7 +449,7 @@ WHERE id = @id";
         }
     }
     
-    public void ModificaDescrizioneArticoli(int id, string descrizione)
+    public void ModificaDescrizioneArticolo(int id, string descrizione)
     {
         string query = @"UPDATE articoli
 SET descrizione = @descrizione
@@ -501,5 +501,15 @@ WHERE id = @idCategoria";
         reader.Close();
 
         return cat;
+    }
+
+    public void EliminaArticolo(int id)
+    {
+        //modificare il db ed elminare a cascata le righe dettaglio con quell'articolo (?), le associazioni con quell'articolo (?)
+    }
+
+    public void AggiungiCategoria(Categoria categoria)
+    {
+        //semplice creazione di una nuova categorias
     }
 }

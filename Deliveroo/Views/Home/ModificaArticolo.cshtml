@@ -2,7 +2,8 @@
 @{
     ViewData["Title"] = "Admin - Modifica Articoli";
     Layout = "_LayoutAdmin";
-    Articolo art = Model;
+    Articolo art = Model.Item1; //item 1 della tupla
+    List<Categoria> categorie = Model.Item2; //item 2 della tupla
 }
 
 <h1>MODIFICA L'ARTICOLO</h1>
@@ -53,26 +54,65 @@
                             EDIT
                         </button>
                     </div>
+
                     <div class="article-right">
                         <div class="article-right-content">
-                            <h1>@art.Nome</h1>
-                            <button class="btn btn-primary">
-                                EDIT
-                            </button>
-                            <p class="descrizione">@art.Descrizione</p>
-                            <button class="btn btn-primary">
-                                EDIT
-                            </button>
+                            <!--questo form passa al ModificaNomeArticolo il art.IdArticolo-->
+                            <form method="post"
+                                  asp-action="ModificaNomeArticolo"
+                                  asp-route-id="@art.IdArticolo">
+
+                                <!--questo input passa la ModificaNomeArticolo il nuovo nome-->
+                                <input type="text" name="nome" value="@art.Nome"/>
+                                <!-- su css fare simile a <h1>@art.Nome</h1>-->
+                                <input type="submit" name="SubmitNome" value="EDIT" class="btn btn-primary"/>
+                            </form>
+
+                            <form method="post"
+                                  asp-action="ModificaDescrizioneArticolo"
+                                  asp-route-id="@art.IdArticolo">
+                                <textarea name="descrizione" id="txaModificaDescrizione"
+                                          style="width:200px; overflow:hidden; resize:none;">@art.Descrizione</textarea>
+                                <!-- su css fare simile a <p>@art.Descrizione</p>-->
+                                <input type="submit" name="SubmitDescrizione" value="EDIT" class="btn btn-primary"/>
+                            </form>
+
                             <div class="article-divider"></div>
-                            <p class="prezzo">€ @art.Prezzo.ToString("0.00")</p>
-                            <button class="btn btn-primary">
-                                EDIT
-                            </button>
+
+                            <form method="post"
+                                  asp-action="ModificaPrezzo_listinoArticolo"
+                                  asp-route-id="@art.IdArticolo">
+
+                                <!--gli va bene input="number" e dopo nel metodo post e' double?
+                                con questo modo di fare scritto sotto ToString(InvariantCulture) forza il punto come separatore decimale
+                                step="0.01" permette i decimali nell'input
+                                min="0" evita prezzi negativi-->
+                                <input type="number" 
+                                       name="prezzo_listino" 
+                                       value="@art.Prezzo.ToString(System.Globalization.CultureInfo.InvariantCulture)"
+                                       step="0.01"
+                                       min="0"/>
+                                
+                                <!-- su css fare simile a <p class="prezzo">€ @art.Prezzo.ToString("0.00")</p>-->
+                                <input type="submit" name="SubmitPrezzo_listino" value="EDIT" class="btn btn-primary"/>
+                            </form>
+
                             <div class="article-divider"></div>
-                            <p>@art.Categoria.Nome</p>
-                            <button class="btn btn-primary">
-                                EDIT
-                            </button>
+
+                            <!-- su css fare simile a <p>@art.Categoria.Nome</p>-->
+                            <form method="post"
+                                  asp-action="ModificaCategoriaArticolo"
+                                  asp-route-id="@art.IdArticolo">
+                                <select name="categoria" id="categoria">
+                                    @foreach (var c in categorie)
+                                    {
+                                        var isSelected = c.IdCategoria == art.Categoria.IdCategoria;
+                                        <option value="@c.IdCategoria" selected="@isSelected">
+                                            @c.Nome
+                                        </option>
+                                    }
+                                </select>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -80,7 +120,9 @@
             </div>
 
             <!-- DESTRA (raccomandazioni future) -->
-            <div class="right-col"></div>
+            <div class="right-col">
+                <button class="btn btn-primary">ELIMINA</button>
+            </div>
 
         </div>
     </div>
@@ -88,4 +130,17 @@
 
 @section Styles {
     <link rel="stylesheet" href="/cssAdmin/ModificaArticolo.css"/>
+}
+
+@section Scripts
+{
+    <!--script per adattare la larghezza della <textarea> dells descrizione-->
+    <script>
+        const ta = document.getElementById("txaModificaDescrizione");
+        ta.style.height = ta.scrollHeight + "px";
+        ta.addEventListener("input", () => {
+            ta.style.height = "auto";
+            ta.style.height = ta.scrollHeight + "px";
+        });
+    </script>
 }

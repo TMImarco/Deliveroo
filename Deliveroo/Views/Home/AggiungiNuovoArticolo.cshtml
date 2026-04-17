@@ -35,18 +35,20 @@
 
                                 <!-- descrizione articolo (<p class="descrizione">) -->
                                 <!--INPUT DESCRIZIONE-->
-                                <input type="text" id="descrizione" name="descrizione">
+                                <textarea name="descrizione" id="descrizione"
+                                          style="width:200px; overflow:hidden; resize:none;"></textarea>
 
                                 <div class="article-divider"></div>
 
                                 <!-- prezzo articolo (<p class="prezzo">) -->
                                 <!--INPUT PREZZO-->
-                                <input type="number" id="prezzo" name="prezzo">
+                                <input type="number" id="prezzo" name="prezzo" step="0.01" min="0">
 
                                 <div class="article-divider"></div>
 
                                 <!--INPUT CATEGORIA-->
-                                <select name="categorie" id="categorie">
+                                <select name="categoria" id="categoria" required>
+                                    <option value=""></option>
                                     @foreach (var c in categorie)
                                     {
                                         <option value="@c.IdCategoria">@c.Nome</option>
@@ -70,4 +72,16 @@
 
 @section Styles {
     <link rel="stylesheet" href="/cssAdmin/ModificaArticolo.css"/>
+}
+@section Scripts
+{
+    <!--script per adattare la larghezza della <textarea> dells descrizione-->
+    <script>
+        const ta = document.getElementById("descrizione");
+        ta.style.height = ta.scrollHeight + "px";
+        ta.addEventListener("input", () => {
+            ta.style.height = "auto";
+            ta.style.height = ta.scrollHeight + "px";
+        });
+    </script>
 }

@@ -250,10 +250,12 @@ public class HomeController : Controller
 		return RedirectToAction("ArticoliAdmin", new { model.IdCategoria });
 	}
 
-	//riprende InsermentoArticolo
+	//riprende InserimentoArticolo
 	[HttpGet]
 	public IActionResult ModificaArticolo(int id)
 	{
+		var categorie = _gestioneDati.GetTutteCategorie();
+		
 		var articoloScelto = _gestioneDati.GetArticoloScelto(id);
 
 		// Recupera tutti gli articoli della stessa categoria, ordinati per ID, così posso scorrere tra di loro
@@ -265,15 +267,33 @@ public class HomeController : Controller
 		ViewBag.IdNext = index < ids.Count - 1 ? ids[index + 1] : (int?)null;
 		ViewBag.IdCategoria = articoloScelto.Categoria.IdCategoria;
 
-		return View(articoloScelto);
+		//tupla per mandare 2 elementi
+		return View((articoloScelto,categorie));
 	}
-
-	/*[HttpPost]
-	public IActionResult ModificaArticolo(Articolo articolo)
+	[HttpPost]
+	public IActionResult ModificaNomeArticolo(string nome, int id) //il id come lo trova? Con asp-route-id
 	{
-		//DA FARE: si puo' modificare solo un elemento alla volta
-		//1 form per ogni coso di modifica con il suo submit
-	}*/
+		_gestioneDati.ModificaNomeArticolo(id, nome);
+		return RedirectToAction("ModificaArticolo", new {id});
+	}
+	[HttpPost]
+	public IActionResult ModificaDescrizioneArticolo(string descrizione, int id)
+	{
+		_gestioneDati.ModificaDescrizioneArticolo(id, descrizione);
+		return RedirectToAction("ModificaArticolo", new {id});
+	}
+	[HttpPost]
+	public IActionResult ModificaPrezzo_listinoArticolo(double prezzo_listino, int id)
+	{
+		_gestioneDati.ModificaPrezzo_listinoArticolo(id, prezzo_listino);
+		return RedirectToAction("ModificaArticolo", new {id});
+	}
+	[HttpPost]
+	public IActionResult ModificaCategoriaArticolo(int idCategoria, int id)
+	{
+		_gestioneDati.ModificaIdCategoriaArticolo(id, idCategoria);
+		return RedirectToAction("ModificaArticolo", new {id});
+	}
 	//-----------------------------------------------------------------------------------------------------------------
 
 	public IActionResult Index()
