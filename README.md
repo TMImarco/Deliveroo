@@ -1,7 +1,7 @@
 # Deliveroo
 ## Progetto di coppia
 Coppia: Agapi, Garbin
-Scandeza 01/05/2026
+Scandeza 09/05/2026
 
 Dividiamo il progetto in tre macro argomenti:
 ## Admin
