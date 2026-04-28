@@ -1,19 +1,143 @@
 ﻿@model List<Deliveroo.Tabelle.Articolo>
 @{
-    ViewData["Title"] = "Articoli";
+    ViewData["Title"] = "Riepilogo Ordine";
     Layout = "_Layout";
 }
 
 <div class="macro-section">
-    
+
     <!-- BOTTONE BACK -->
     <a class="nav-arrow back-btn" href="@ViewBag.BackUrl">↵</a>
-    
-    <div class="container">
 
+    <div class="container riepilogo-container">
+
+        <h1 class="riepilogo-title">Riepilogo Ordine</h1>
+
+        <div class="riepilogo-grid">
+
+            <!-- COLONNA SINISTRA: articoli + dati utente -->
+            <div class="riepilogo-left">
+
+                <!-- ARTICOLI NEL CARRELLO -->
+                <section class="riepilogo-card">
+                    <h2 class="card-section-title">🛒 Il tuo ordine</h2>
+
+                    @if (Model != null && Model.Any())
+                    {
+                        <ul class="articoli-list">
+                            @foreach (var articolo in Model)
+                            {
+                                <li class="articolo-row">
+                                    <span class="articolo-nome">@articolo.Nome</span>
+                                    <span class="articolo-prezzo">€ @articolo.Prezzo.ToString("F2")</span>
+                                </li>
+                            }
+                        </ul>
+
+                        <div class="totale-row">
+                            <span class="totale-label">Totale</span>
+                            <span class="totale-prezzo">€ @Model.Sum(a => a.Prezzo).ToString("F2")</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="carrello-vuoto">Il carrello è vuoto.</p>
+                    }
+                </section>
+
+                <!-- DATI PERSONALI E INDIRIZZO -->
+                <section class="riepilogo-card">
+                    <h2 class="card-section-title">📦 Dati di consegna</h2>
+
+                    <form asp-action="" asp-controller="" method="post" id="formOrdine">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            <label for="nome">Nome e Cognome</label>
+                            <input type="text" id="nome" name="Nome" class="form-input" placeholder="Es. Mario Rossi" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="indirizzo">Indirizzo di consegna</label>
+                            <input type="text" id="indirizzo" name="Indirizzo" class="form-input" placeholder="Es. Via Roma 10, Milano" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono">Numero di telefono</label>
+                            <input type="tel" id="telefono" name="Telefono" class="form-input" placeholder="Es. +39 333 1234567" required />
+                        </div>
+
+                        <!-- METODO DI PAGAMENTO -->
+                        <section class="riepilogo-card pagamento-card">
+                            <h2 class="card-section-title">💳 Metodo di pagamento</h2>
+
+                            <div class="pagamento-options">
+
+                                <label class="pagamento-option">
+                                    <input type="radio" name="MetodoPagamento" value="carta" required />
+                                    <span class="pagamento-icon">💳</span>
+                                    <span class="pagamento-label">Carta di credito / debito</span>
+                                </label>
+
+                                <label class="pagamento-option">
+                                    <input type="radio" name="MetodoPagamento" value="paypal" />
+                                    <span class="pagamento-icon">🅿️</span>
+                                    <span class="pagamento-label">PayPal</span>
+                                </label>
+
+                                <label class="pagamento-option">
+                                    <input type="radio" name="MetodoPagamento" value="contanti" />
+                                    <span class="pagamento-icon">💵</span>
+                                    <span class="pagamento-label">Contanti alla consegna</span>
+                                </label>
+
+                            </div>
+                        </section>
+                    </form>
+                </section>
+
+            </div>
+            @section AboveNavbar {
+            <button type="submit" form="formOrdine" class="btn-conferma" @(Model == null || !Model.Any() ? "disabled" : "")>
+                Conferma ordine →
+            </button>
+            }
+
+            <!-- COLONNA DESTRA: riepilogo fisso -->
+            <aside class="riepilogo-right">
+                <div class="riepilogo-card sticky-summary">
+                    <h2 class="card-section-title">📋 Riepilogo</h2>
+
+                    @if (Model != null && Model.Any())
+                    {
+                        <ul class="summary-list">
+                            @foreach (var articolo in Model)
+                            {
+                                <li class="summary-row">
+                                    <span>@articolo.Nome</span>
+                                    <span>€ @articolo.Prezzo.ToString("F2")</span>
+                                </li>
+                            }
+                        </ul>
+
+                        <hr class="summary-divider" />
+
+                        <div class="summary-totale">
+                            <span>Totale</span>
+                            <strong>€ @Model.Sum(a => a.Prezzo).ToString("F2")</strong>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="carrello-vuoto">Nessun articolo.</p>
+                    }
+                </div>
+            </aside>
+
+        </div>
     </div>
 </div>
 
 @section Styles {
-    <link rel="stylesheet" href="/css/Carrello.css"/>
+    <link rel="stylesheet" href="/css/Riepilogo.css" />
 }

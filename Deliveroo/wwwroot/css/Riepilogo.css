@@ -78,3 +78,234 @@
     .back-btn:hover {
         background-color: #333;
     }
+
+
+/* ===== LAYOUT GENERALE ===== */
+.riepilogo-container {
+    padding: 2rem 1rem 4rem;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.riepilogo-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-color, #1a1a1a);
+    text-align: center;
+}
+
+.riepilogo-left {
+    width: 100%;
+}
+
+/* ===== CARD GENERICA ===== */
+.riepilogo-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.card-section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    color: #1a1a1a;
+}
+
+/* ===== LISTA ARTICOLI ===== */
+.articoli-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+}
+
+.articolo-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+}
+
+.articolo-row:last-child {
+    border-bottom: none;
+}
+
+.articolo-nome {
+    color: #333;
+}
+
+.articolo-prezzo {
+    font-weight: 600;
+    color: #00ccbc;
+}
+
+.totale-row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-top: 2px solid #f0f0f0;
+}
+
+.totale-prezzo {
+    color: #00ccbc;
+}
+
+.carrello-vuoto {
+    color: #999;
+    font-style: italic;
+}
+
+/* ===== FORM ===== */
+.form-group {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-input {
+    padding: 0.75rem 1rem;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fafafa;
+}
+
+.form-input:focus {
+    border-color: #00ccbc;
+    background: #fff;
+}
+
+/* ===== PAGAMENTO ===== */
+.pagamento-card {
+    box-shadow: none;
+    padding: 0;
+    background: transparent;
+}
+
+.pagamento-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.pagamento-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    font-size: 0.95rem;
+}
+
+.pagamento-option:hover {
+    border-color: #00ccbc;
+    background: #f0fffe;
+}
+
+.pagamento-option input[type="radio"] {
+    accent-color: #00ccbc;
+    width: 18px;
+    height: 18px;
+}
+
+.pagamento-option input[type="radio"]:checked + .pagamento-icon + .pagamento-label {
+    font-weight: 600;
+}
+
+.pagamento-icon {
+    font-size: 1.2rem;
+}
+
+/* ===== BOTTONE CONFERMA ===== */
+.btn-conferma {
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #00ccbc;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.3px;
+}
+
+.btn-conferma:hover:not([disabled]) {
+    background: #00b5a7;
+    transform: translateY(-1px);
+}
+
+.btn-conferma[disabled] {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* ===== COLONNA DESTRA STICKY ===== */
+.sticky-summary {
+    position: sticky;
+    top: 100px;
+}
+
+.summary-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    padding: 0.4rem 0;
+    color: #444;
+}
+
+.summary-divider {
+    border: none;
+    border-top: 1.5px solid #f0f0f0;
+    margin: 1rem 0;
+}
+
+.summary-totale {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    color: #1a1a1a;
+}
+
+.summary-totale strong {
+    color: #00ccbc;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .riepilogo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sticky-summary {
+        position: static;
+    }
+}

@@ -120,7 +120,24 @@ public class HomeController : Controller
 		_gestioneCarrello.SalvaCarrello(lista);
 		return RedirectToAction("Carrello");
 	}
+	
+	//-----------------------------------------RIEPILOGO------------------------------------------------
 
+	public IActionResult Riepilogo()
+	{
+		// Salva il referer (tengo conto della pagina precedente in cui ero) solo se non viene dal carrello stesso
+		var referer = Request.Headers["Referer"].ToString();
+		if (!string.IsNullOrEmpty(referer) && !referer.Contains("Carrello"))
+		{
+			HttpContext.Session.SetString("CarrelloReferer", referer);
+		}
+		ViewBag.BackUrl = HttpContext.Session.GetString("CarrelloReferer") ?? "/";
+
+		var lista = _gestioneCarrello.RecuperaCarrello();
+		return View(lista);
+	}
+	
+	
 	//  ----------------------------------LOGIN/LOGOUT-------------------------------------------
 	//pagina per reindirizzare alla pagina di login per l'admin
 	public IActionResult LoginAdmin()
