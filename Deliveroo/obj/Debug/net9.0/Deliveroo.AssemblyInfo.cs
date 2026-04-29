@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Deliveroo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3c687c0f14fa8522631ab4eebf4b5189cd8010b1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c31b5d11f236ad224e8d63cb05297a468cbe581")]
 [assembly: System.Reflection.AssemblyProductAttribute("Deliveroo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Deliveroo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

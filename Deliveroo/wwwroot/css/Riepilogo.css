@@ -237,7 +237,7 @@
 
 /* ===== BOTTONE CONFERMA ===== */
 .btn-conferma {
-    display: block;
+    display: flex;
     width: 100%;
     margin-top: 1.5rem;
     padding: 1rem;
@@ -250,6 +250,21 @@
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
     letter-spacing: 0.3px;
+    z-index:1100;
+    position:fixed;
+}
+
+.procedi-btn {
+    padding: 10px 28px;
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-conferma:hover:not([disabled]) {

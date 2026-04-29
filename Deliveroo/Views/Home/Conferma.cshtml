@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Ordine Confermato";
+    Layout = "_Layout";
+}
+
+<div class="grazie-page">
+
+    <div class="grazie-card">
+
+        <!-- ICONA ANIMATA -->
+        <div class="checkmark-wrapper">
+            <svg class="checkmark" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+                <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+                <path class="checkmark-check" fill="none" d="M14 27 l8 8 l16-16" />
+            </svg>
+        </div>
+
+        <!-- TESTO -->
+        <h1 class="grazie-title">Ordine confermato!</h1>
+        <p class="grazie-subtitle">Grazie per il tuo ordine. Il ristorante lo ha ricevuto e lo sta preparando.</p>
+
+        <!-- DETTAGLI STIMA -->
+        <div class="grazie-eta">
+            <span class="eta-icon">🛵</span>
+            <div>
+                <div class="eta-label">Tempo stimato di consegna</div>
+                <div class="eta-value">25 – 40 minuti</div>
+            </div>
+        </div>
+
+        <!-- SEPARATORE -->
+        <hr class="grazie-divider" />
+
+        <!-- AZIONI -->
+        <div class="grazie-actions">
+            <a href="@Url.Action("Index", "Home")" class="btn-home">
+                Torna alla home
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="/css/Conferma.css" />
+}

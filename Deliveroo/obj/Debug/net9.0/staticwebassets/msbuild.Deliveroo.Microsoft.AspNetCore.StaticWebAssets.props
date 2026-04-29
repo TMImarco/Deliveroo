@@ -36,6 +36,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Carrello.css'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Conferma.css'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Deliveroo</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Deliveroo</BasePath>
+      <RelativePath>css/Conferma.css</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>jyp3ugg74x</Fingerprint>
+      <Integrity>1XuF0DnbESCc5SkLEP1V+y+wjmc5/Dq6kYbHsuQvny4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Conferma.css'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Index.css'))">
       <SourceType>Package</SourceType>
       <SourceId>Deliveroo</SourceId>
@@ -84,8 +102,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>fzveoxrs6v</Fingerprint>
-      <Integrity>lXoHDbrzDzGNU94TZ5P620CZdlKXENZ3zqr6sBxlp50=</Integrity>
+      <Fingerprint>j8l6hlhxg5</Fingerprint>
+      <Integrity>AyaypQjvzjVHA1lj1a3AVnIJ0JYptH+rlbrDRCGdfi0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Riepilogo.css'))</OriginalItemSpec>

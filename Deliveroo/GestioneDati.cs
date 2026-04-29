@@ -512,4 +512,26 @@ WHERE id = @idCategoria";
     {
         //semplice creazione di una nuova categorias
     }
+    
+    //----------METODI AGGIUNGI ORDINE NEL DATABASE ---------------
+    public void AggiungiOrdine(Ordine ordine)
+    {
+        string query = @"INSERT INTO ordini(nome_cliente,indirizzo,data,importo_totale)
+VALUES (@nome_cliente,@indirizzo,@data,@importo_totale)";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@nome_cliente", ordine.NomeCliente);
+        command.Parameters.AddWithValue("@indirizzo", ordine.Indirizzo);
+        command.Parameters.AddWithValue("@importo_totale", ordine.ImportoTotale);
+        command.Parameters.AddWithValue("@data", ordine.Data);
+
+        try
+        {
+            command.ExecuteNonQuery();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 }

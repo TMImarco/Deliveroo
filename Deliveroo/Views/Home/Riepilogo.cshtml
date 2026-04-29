@@ -1,4 +1,5 @@
-﻿@model List<Deliveroo.Tabelle.Articolo>
+﻿@using Deliveroo.Tabelle
+@model List<Deliveroo.Tabelle.Articolo>
 @{
     ViewData["Title"] = "Riepilogo Ordine";
     Layout = "_Layout";
@@ -8,11 +9,8 @@
 
     <!-- BOTTONE BACK -->
     <a class="nav-arrow back-btn" href="@ViewBag.BackUrl">↵</a>
-
     <div class="container riepilogo-container">
-
         <h1 class="riepilogo-title">Riepilogo Ordine</h1>
-
         <div class="riepilogo-grid">
 
             <!-- COLONNA SINISTRA: articoli + dati utente -->
@@ -21,19 +19,23 @@
                 <!-- ARTICOLI NEL CARRELLO -->
                 <section class="riepilogo-card">
                     <h2 class="card-section-title">🛒 Il tuo ordine</h2>
-
                     @if (Model != null && Model.Any())
                     {
                         <ul class="articoli-list">
-                            @foreach (var articolo in Model)
+                            @foreach (var gruppo in Model.GroupBy(a => a.IdArticolo))
                             {
+                                var articolo = gruppo.First();
+                                var quantita = gruppo.Count();
                                 <li class="articolo-row">
                                     <span class="articolo-nome">@articolo.Nome</span>
-                                    <span class="articolo-prezzo">€ @articolo.Prezzo.ToString("F2")</span>
+                                    @if (quantita > 1)
+                                    {
+                                        <span class="articolo-qty">x @quantita</span>
+                                    }
+                                    <span class="articolo-prezzo">€ @((articolo.Prezzo * quantita).ToString("F2"))</span>
                                 </li>
                             }
                         </ul>
-
                         <div class="totale-row">
                             <span class="totale-label">Totale</span>
                             <span class="totale-prezzo">€ @Model.Sum(a => a.Prezzo).ToString("F2")</span>
@@ -49,12 +51,12 @@
                 <section class="riepilogo-card">
                     <h2 class="card-section-title">📦 Dati di consegna</h2>
 
-                    <form asp-action="" asp-controller="" method="post" id="formOrdine">
+                    <form asp-action="Conferma" asp-controller="Home" method="post" id="formOrdine">
                         @Html.AntiForgeryToken()
 
                         <div class="form-group">
                             <label for="nome">Nome e Cognome</label>
-                            <input type="text" id="nome" name="Nome" class="form-input" placeholder="Es. Mario Rossi" required />
+                            <input type="text" id="nome" name="NomeCliente" class="form-input" placeholder="Es. Mario Rossi" required />
                         </div>
 
                         <div class="form-group">
@@ -64,7 +66,7 @@
 
                         <div class="form-group">
                             <label for="telefono">Numero di telefono</label>
-                            <input type="tel" id="telefono" name="Telefono" class="form-input" placeholder="Es. +39 333 1234567" required />
+                            <input type="tel" id="telefono" class="form-input" placeholder="Es. +39 333 1234567" required />
                         </div>
 
                         <!-- METODO DI PAGAMENTO -->
@@ -74,19 +76,19 @@
                             <div class="pagamento-options">
 
                                 <label class="pagamento-option">
-                                    <input type="radio" name="MetodoPagamento" value="carta" required />
+                                    <input type="radio" value="carta" required />
                                     <span class="pagamento-icon">💳</span>
                                     <span class="pagamento-label">Carta di credito / debito</span>
                                 </label>
 
                                 <label class="pagamento-option">
-                                    <input type="radio" name="MetodoPagamento" value="paypal" />
+                                    <input type="radio" value="paypal" />
                                     <span class="pagamento-icon">🅿️</span>
                                     <span class="pagamento-label">PayPal</span>
                                 </label>
 
                                 <label class="pagamento-option">
-                                    <input type="radio" name="MetodoPagamento" value="contanti" />
+                                    <input type="radio" value="contanti" />
                                     <span class="pagamento-icon">💵</span>
                                     <span class="pagamento-label">Contanti alla consegna</span>
                                 </label>
@@ -97,46 +99,23 @@
                 </section>
 
             </div>
-            @section AboveNavbar {
-            <button type="submit" form="formOrdine" class="btn-conferma" @(Model == null || !Model.Any() ? "disabled" : "")>
-                Conferma ordine →
-            </button>
-            }
-
-            <!-- COLONNA DESTRA: riepilogo fisso -->
-            <aside class="riepilogo-right">
-                <div class="riepilogo-card sticky-summary">
-                    <h2 class="card-section-title">📋 Riepilogo</h2>
-
-                    @if (Model != null && Model.Any())
-                    {
-                        <ul class="summary-list">
-                            @foreach (var articolo in Model)
-                            {
-                                <li class="summary-row">
-                                    <span>@articolo.Nome</span>
-                                    <span>€ @articolo.Prezzo.ToString("F2")</span>
-                                </li>
-                            }
-                        </ul>
-
-                        <hr class="summary-divider" />
-
-                        <div class="summary-totale">
-                            <span>Totale</span>
-                            <strong>€ @Model.Sum(a => a.Prezzo).ToString("F2")</strong>
-                        </div>
-                    }
-                    else
-                    {
-                        <p class="carrello-vuoto">Nessun articolo.</p>
-                    }
-                </div>
-            </aside>
 
         </div>
     </div>
 </div>
+
+@section AboveNavbar {
+    <div class="total-overlay">
+        <div>
+            <div class="footer-info">@Model.Count articoli</div>
+            <div class="footer-total">Totale: €@Model.Sum(a => a.Prezzo).ToString("F2")</div>
+        </div>
+        <button type="submit" form="formOrdine" class="procedi-btn" @(Model == null || !Model.Any() ? "disabled" : "")>
+            Conferma ordine →
+        </button>
+    </div>
+}
+
 
 @section Styles {
     <link rel="stylesheet" href="/css/Riepilogo.css" />

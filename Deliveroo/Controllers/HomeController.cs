@@ -122,7 +122,6 @@ public class HomeController : Controller
 	}
 	
 	//-----------------------------------------RIEPILOGO------------------------------------------------
-
 	public IActionResult Riepilogo()
 	{
 		// Salva il referer (tengo conto della pagina precedente in cui ero) solo se non viene dal carrello stesso
@@ -135,6 +134,21 @@ public class HomeController : Controller
 
 		var lista = _gestioneCarrello.RecuperaCarrello();
 		return View(lista);
+	}
+	
+	//-----------------------------------------RINGRAZIAMENTI------------------------------------------------
+	[HttpPost]
+	public IActionResult Conferma(Ordine ordine)
+	{
+		ordine.Data = DateTime.Now;
+		ordine.ImportoTotale = _gestioneCarrello.RecuperaCarrello().Sum(a => a.Prezzo);
+		
+		if (ModelState.IsValid)
+		{
+			_gestioneDati.AggiungiOrdine(ordine); // VERIFICARE SE FUNZIONA !!
+			return View("Conferma");
+		}
+		return RedirectToAction("Riepilogo");
 	}
 	
 	
