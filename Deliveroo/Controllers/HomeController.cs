@@ -145,12 +145,17 @@ public class HomeController : Controller
 		
 		if (ModelState.IsValid)
 		{
-			_gestioneDati.AggiungiOrdine(ordine); // VERIFICARE SE FUNZIONA !!
+			long idOrdine = _gestioneDati.AggiungiOrdine(ordine);  // recupero l'ID
+
+			var articoli = _gestioneCarrello.RecuperaCarrello();
+			_gestioneDati.AggiungiRigheDettaglio(idOrdine, articoli);  // inserisco i dettagli
+			_gestioneDati.AggiornaAssociazioni(articoli);
+			_gestioneCarrello.SvuotaCarrello();
+
 			return View("Conferma");
 		}
 		return RedirectToAction("Riepilogo");
 	}
-	
 	
 	//  ----------------------------------LOGIN/LOGOUT-------------------------------------------
 	//pagina per reindirizzare alla pagina di login per l'admin

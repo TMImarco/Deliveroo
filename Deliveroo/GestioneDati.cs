@@ -514,7 +514,7 @@ WHERE id = @idCategoria";
     }
     
     //----------METODI AGGIUNGI ORDINE NEL DATABASE ---------------
-    public void AggiungiOrdine(Ordine ordine)
+    public long AggiungiOrdine(Ordine ordine)
     {
         string query = @"INSERT INTO ordini(nome_cliente,indirizzo,data,importo_totale)
 VALUES (@nome_cliente,@indirizzo,@data,@importo_totale)";
@@ -527,11 +527,82 @@ VALUES (@nome_cliente,@indirizzo,@data,@importo_totale)";
         try
         {
             command.ExecuteNonQuery();
+            return command.LastInsertedId;  // proprietà di MySqlCommand
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
             throw;
+        }
+    }
+    
+    public void AggiungiRigheDettaglio(long idOrdine, List<Articolo> articoli)
+    {
+        string query = @"INSERT INTO righe_dettaglio(id_ordine, id_articolo, quantita, prezzo)
+VALUES (@id_ordine, @id_articolo, @quantita, @prezzo)";
+
+        var righe = articoli
+            .GroupBy(a => a.IdArticolo)
+            .Select(g => new {
+                IdArticolo = g.Key,
+                Quantita = g.Count(),
+                Prezzo = g.Sum(a => a.Prezzo)
+            });
+
+        foreach (var riga in righe)
+        {
+            MySqlCommand command = new MySqlCommand(query, _connection);
+            command.Parameters.AddWithValue("@id_ordine", idOrdine);
+            command.Parameters.AddWithValue("@id_articolo", riga.IdArticolo);
+            command.Parameters.AddWithValue("@quantita", riga.Quantita);
+            command.Parameters.AddWithValue("@prezzo", riga.Prezzo);
+
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+    }
+    
+    public void AggiornaAssociazioni(List<Articolo> articoli)
+    {
+        var ids = articoli.Select(a => a.IdArticolo).Distinct().ToList();
+
+        var coppie = ids
+            .SelectMany((id1, i) => ids.Skip(i + 1), (id1, id2) => new {
+                Id1 = Math.Min(id1, id2),
+                Id2 = Math.Max(id1, id2)
+            });
+
+        foreach (var coppia in coppie)
+        {
+            string queryCheck = "SELECT COUNT(*) FROM associazioni WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
+            MySqlCommand cmdCheck = new MySqlCommand(queryCheck, _connection);
+            cmdCheck.Parameters.AddWithValue("@id1", coppia.Id1);
+            cmdCheck.Parameters.AddWithValue("@id2", coppia.Id2);
+            long count = (long)cmdCheck.ExecuteScalar();
+
+            if (count > 0)
+            {
+                string queryUpdate = "UPDATE associazioni SET numero_ordini = numero_ordini + 1 WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
+                MySqlCommand cmdUpdate = new MySqlCommand(queryUpdate, _connection);
+                cmdUpdate.Parameters.AddWithValue("@id1", coppia.Id1);
+                cmdUpdate.Parameters.AddWithValue("@id2", coppia.Id2);
+                cmdUpdate.ExecuteNonQuery();
+            }
+            else
+            {
+                string queryInsert = "INSERT INTO associazioni(id_articolo1, id_articolo2, numero_ordini) VALUES (@id1, @id2, 1)";
+                MySqlCommand cmdInsert = new MySqlCommand(queryInsert, _connection);
+                cmdInsert.Parameters.AddWithValue("@id1", coppia.Id1);
+                cmdInsert.Parameters.AddWithValue("@id2", coppia.Id2);
+                cmdInsert.ExecuteNonQuery();
+            }
         }
     }
 }
