@@ -145,6 +145,30 @@ public class HomeController : Controller
 		_gestioneCarrello.SalvaCarrello(lista);
 		return RedirectToAction("Carrello");
 	}
+	
+	public List<Articolo> GetRaccomandazioni(List<int> idArticoliCarrello)
+	{
+		// Raccolgo tutte le associazioni per ogni articolo nel carrello
+		List<Associazione> tutteAssociazioni = new List<Associazione>();
+
+		foreach (int idArticolo in idArticoliCarrello)
+		{
+			var associazioni = _gestioneDati.GetAssociazione(idArticolo);
+			tutteAssociazioni.AddRange(associazioni);
+		}
+
+		// Escludo gli articoli già nel carrello e prendo i 4 con confidence più alta
+		List<int> idRaccomandati = tutteAssociazioni
+			.Where(a => !idArticoliCarrello.Contains(a.IdArticolo2))
+			.OrderByDescending(a => a.Confidence) // non serve GetConfidence perché ordina di base in base alla confidence piu alta
+			.Select(a => a.IdArticolo2)
+			.Distinct()
+			.Take(4)
+			.ToList();
+
+		// Recupero gli articoli completi
+		return idRaccomandati.Select(id => _gestioneDati.GetArticoloScelto(id)).ToList();
+	}
 
 	//-----------------------------------------RIEPILOGO------------------------------------------------
 	public IActionResult Riepilogo()
@@ -160,30 +184,6 @@ public class HomeController : Controller
 
 		var lista = _gestioneCarrello.RecuperaCarrello();
 		return View(lista);
-	}
-
-	public List<Articolo> GetRaccomandazioni(List<int> idArticoliCarrello)
-	{
-		// Raccolgo tutte le associazioni per ogni articolo nel carrello
-		List<Associazione> tutteAssociazioni = new List<Associazione>();
-
-		foreach (int idArticolo in idArticoliCarrello)
-		{
-			var associazioni = _gestioneDati.GetAssociazione(idArticolo);
-			tutteAssociazioni.AddRange(associazioni);
-		}
-
-		// Escludo gli articoli già nel carrello e prendo i 4 con confidence più alta
-		List<int> idRaccomandati = tutteAssociazioni
-			.Where(a => !idArticoliCarrello.Contains(a.IdArticolo2))
-			.OrderByDescending(a => a.Confidence)
-			.Select(a => a.IdArticolo2)
-			.Distinct()
-			.Take(4)
-			.ToList();
-
-		// Recupero gli articoli completi
-		return idRaccomandati.Select(id => _gestioneDati.GetArticoloScelto(id)).ToList();
 	}
 
 	//-----------------------------------------RINGRAZIAMENTI------------------------------------------------

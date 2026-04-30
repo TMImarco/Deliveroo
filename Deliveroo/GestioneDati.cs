@@ -608,11 +608,22 @@ VALUES (@id_ordine, @id_articolo, @quantita, @prezzo)";
 			}
 			else
 			{
-				string queryInsert =
-					"INSERT INTO associazioni(id_articolo1, id_articolo2, numero_ordini) VALUES (@id1, @id2, 1)";
+				// 1. Conta quante volte id_articolo1 appare in totale negli ordini
+				string queryTotale = "SELECT COUNT(*) FROM ordini WHERE id = @id1";
+				MySqlCommand cmdTotale = new MySqlCommand(queryTotale, _connection);
+				cmdTotale.Parameters.AddWithValue("@id1", coppia.Id1);
+				int totaleOrdiniA = Convert.ToInt32(cmdTotale.ExecuteScalar());
+
+// 2. Calcola confidence
+				double confidence = totaleOrdiniA > 0 ? 1.0 / totaleOrdiniA : 0.0;
+// (numero_ordini è 1 perché è la prima volta che compaiono insieme)
+
+// 3. Inserisci con confidence
+				string queryInsert = "INSERT INTO associazioni(id_articolo1, id_articolo2, numero_ordini, confidence) VALUES (@id1, @id2, 1, @conf)";
 				MySqlCommand cmdInsert = new MySqlCommand(queryInsert, _connection);
 				cmdInsert.Parameters.AddWithValue("@id1", coppia.Id1);
 				cmdInsert.Parameters.AddWithValue("@id2", coppia.Id2);
+				cmdInsert.Parameters.AddWithValue("@conf", confidence);
 				cmdInsert.ExecuteNonQuery();
 			}
 		}
@@ -623,7 +634,10 @@ VALUES (@id_ordine, @id_articolo, @quantita, @prezzo)";
 
 	public void AggiornaConfidence()
 	{
-		string query = @"
+
+		string queryTruncate = @"TRUNCATE TABLE associazioni";
+		
+		string queryConfidence = @"
 INSERT INTO associazioni (
     id_articolo1,
     id_articolo2,
@@ -651,10 +665,12 @@ ON DUPLICATE KEY UPDATE
     numero_ordini = VALUES(numero_ordini),
     confidence = VALUES(confidence);";
 
-		MySqlCommand command = new MySqlCommand(query, _connection);
+		MySqlCommand commandTruncate = new MySqlCommand(queryTruncate, _connection);
+		MySqlCommand commandConfidence = new MySqlCommand(queryConfidence, _connection);
 		try
 		{
-			command.ExecuteNonQuery();
+			commandTruncate.ExecuteNonQuery();
+			commandConfidence.ExecuteNonQuery();
 		}
 		catch (Exception e)
 		{
@@ -687,17 +703,5 @@ ON DUPLICATE KEY UPDATE
 		}
 
 		return lista;
-	}
-
-	public double GetConfidence(int id_articolo1, int id_articolo2)
-	{
-		string query = "SELECT confidence FROM associazioni WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
-
-		MySqlCommand cmd = new MySqlCommand(query, _connection);
-		cmd.Parameters.AddWithValue("@id1", id_articolo1);
-		cmd.Parameters.AddWithValue("@id2", id_articolo2);
-
-		object result = cmd.ExecuteScalar();
-		return result != null ? Convert.ToDouble(result) : 0.0;
 	}
 }
