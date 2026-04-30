@@ -28,13 +28,12 @@ Dividiamo il progetto in tre macro argomenti:
 1. HomePage delle MacroCategorie (pagina Index)
 2. Pagine di tutti gli Articoli e del singolo Articolo selezionato
 3. Aggiunta al Carrello + Pagina del Carrello
-4. Pagina del Riepilogo (NON completato)
+4. Pagina del Riepilogo + Aggiungere l'ordine nel DB
+5. Fare le raccomandazioni
 
 ### Funzioni da implementare:
-1. Aggiungere campi per i dati del cliente e pagamento nel Riepilogo
-2. Fare le raccomandazioni
-3. Provare API per le foto 
-4. Migliorare la grafica (Utente e Admin) 
+1. Provare API per le foto 
+2. Migliorare la grafica (Utente e Admin) 
 
 ## Database
 ###### Programmatore: Agapi,Garbin
