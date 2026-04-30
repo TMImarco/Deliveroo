@@ -9,7 +9,11 @@ public class GestioneDati
 
     public GestioneDati()
     {
-        string connectionString = "database=deliveroo;host=localhost;port=3306;user=root;password=root";
+        string connectionString = @"database=deliveroo;
+host=localhost;
+port=3306;
+user=root;
+password=root";
         _connection = new MySqlConnection(connectionString);
         _connection.Open();
     }
