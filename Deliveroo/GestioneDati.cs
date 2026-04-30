@@ -71,7 +71,8 @@ password=root";
 			{
 				IdArticolo1 = (int)reader["id_articolo1"],
 				IdArticolo2 = (int)reader["id_articolo2"],
-				NumeroOrdini = (int)reader["Numero_ordini"]
+				NumeroOrdini = (int)reader["Numero_ordini"],
+				Confidence = (double)reader["confidence"]
 			};
 
 
@@ -577,52 +578,52 @@ VALUES (@id_ordine, @id_articolo, @quantita, @prezzo)";
 		}
 	}
 
-public void AggiornaAssociazioni(List<Articolo> articoli)
-{
-    var ids = articoli.Select(a => a.IdArticolo).Distinct().ToList();
+	public void AggiornaAssociazioni(List<Articolo> articoli)
+	{
+		var ids = articoli.Select(a => a.IdArticolo).Distinct().ToList();
 
-    var coppie = ids
-        .SelectMany((id1, i) => ids.Skip(i + 1), (id1, id2) => new
-        {
-            Id1 = Math.Min(id1, id2),
-            Id2 = Math.Max(id1, id2)
-        });
+		var coppie = ids
+			.SelectMany((id1, i) => ids.Skip(i + 1), (id1, id2) => new
+			{
+				Id1 = Math.Min(id1, id2),
+				Id2 = Math.Max(id1, id2)
+			});
 
-    foreach (var coppia in coppie)
-    {
-        string queryCheck = "SELECT COUNT(*) FROM associazioni WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
-        MySqlCommand cmdCheck = new MySqlCommand(queryCheck, _connection);
-        cmdCheck.Parameters.AddWithValue("@id1", coppia.Id1);
-        cmdCheck.Parameters.AddWithValue("@id2", coppia.Id2);
-        long count = (long)cmdCheck.ExecuteScalar();
+		foreach (var coppia in coppie)
+		{
+			string queryCheck = "SELECT COUNT(*) FROM associazioni WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
+			MySqlCommand cmdCheck = new MySqlCommand(queryCheck, _connection);
+			cmdCheck.Parameters.AddWithValue("@id1", coppia.Id1);
+			cmdCheck.Parameters.AddWithValue("@id2", coppia.Id2);
+			long count = (long)cmdCheck.ExecuteScalar();
 
-        if (count > 0)
-        {
-            string queryUpdate =
-                "UPDATE associazioni SET numero_ordini = numero_ordini + 1 WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
-            MySqlCommand cmdUpdate = new MySqlCommand(queryUpdate, _connection);
-            cmdUpdate.Parameters.AddWithValue("@id1", coppia.Id1);
-            cmdUpdate.Parameters.AddWithValue("@id2", coppia.Id2);
-            cmdUpdate.ExecuteNonQuery();
-        }
-        else
-        {
-            string queryInsert =
-                "INSERT INTO associazioni(id_articolo1, id_articolo2, numero_ordini) VALUES (@id1, @id2, 1)";
-            MySqlCommand cmdInsert = new MySqlCommand(queryInsert, _connection);
-            cmdInsert.Parameters.AddWithValue("@id1", coppia.Id1);
-            cmdInsert.Parameters.AddWithValue("@id2", coppia.Id2);
-            cmdInsert.ExecuteNonQuery();
-        }
-    }
+			if (count > 0)
+			{
+				string queryUpdate =
+					"UPDATE associazioni SET numero_ordini = numero_ordini + 1 WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
+				MySqlCommand cmdUpdate = new MySqlCommand(queryUpdate, _connection);
+				cmdUpdate.Parameters.AddWithValue("@id1", coppia.Id1);
+				cmdUpdate.Parameters.AddWithValue("@id2", coppia.Id2);
+				cmdUpdate.ExecuteNonQuery();
+			}
+			else
+			{
+				string queryInsert =
+					"INSERT INTO associazioni(id_articolo1, id_articolo2, numero_ordini) VALUES (@id1, @id2, 1)";
+				MySqlCommand cmdInsert = new MySqlCommand(queryInsert, _connection);
+				cmdInsert.Parameters.AddWithValue("@id1", coppia.Id1);
+				cmdInsert.Parameters.AddWithValue("@id2", coppia.Id2);
+				cmdInsert.ExecuteNonQuery();
+			}
+		}
 
-    // Ricalcola confidence per tutta la tabella dopo l'aggiornamento
-    AggiornaConfidence();
-}
+		// Ricalcola confidence per tutta la tabella dopo l'aggiornamento
+		AggiornaConfidence();
+	}
 
-public void AggiornaConfidence()
-{
-    string query = @"
+	public void AggiornaConfidence()
+	{
+		string query = @"
 INSERT INTO associazioni (
     id_articolo1,
     id_articolo2,
@@ -650,15 +651,53 @@ ON DUPLICATE KEY UPDATE
     numero_ordini = VALUES(numero_ordini),
     confidence = VALUES(confidence);";
 
-    MySqlCommand command = new MySqlCommand(query, _connection);
-    try
-    {
-        command.ExecuteNonQuery();
-    }
-    catch (Exception e)
-    {
-        Console.WriteLine(e);
-        throw;
-    }
-}
+		MySqlCommand command = new MySqlCommand(query, _connection);
+		try
+		{
+			command.ExecuteNonQuery();
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e);
+			throw;
+		}
+	}
+	
+	//----------METODI PER LE RACCOMANDAZIONI ---------------
+	public List<Associazione> GetAssociazione(int id_articolo1)
+	{
+		string query = "SELECT * FROM associazioni WHERE id_articolo1 = @id";
+		List<Associazione> lista = new List<Associazione>();
+
+		MySqlCommand cmd = new MySqlCommand(query, _connection);
+		cmd.Parameters.AddWithValue("@id", id_articolo1);
+
+		using (MySqlDataReader reader = cmd.ExecuteReader())
+		{
+			while (reader.Read())
+			{
+				lista.Add(new Associazione
+				{
+					IdArticolo1 = reader.GetInt32("id_articolo1"),
+					IdArticolo2 = reader.GetInt32("id_articolo2"),
+					NumeroOrdini = reader.GetInt32("numero_ordini"),
+					Confidence = reader.GetDouble("confidence")
+				});
+			}
+		}
+
+		return lista;
+	}
+
+	public double GetConfidence(int id_articolo1, int id_articolo2)
+	{
+		string query = "SELECT confidence FROM associazioni WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
+
+		MySqlCommand cmd = new MySqlCommand(query, _connection);
+		cmd.Parameters.AddWithValue("@id1", id_articolo1);
+		cmd.Parameters.AddWithValue("@id2", id_articolo2);
+
+		object result = cmd.ExecuteScalar();
+		return result != null ? Convert.ToDouble(result) : 0.0;
+	}
 }

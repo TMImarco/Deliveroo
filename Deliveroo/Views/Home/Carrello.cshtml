@@ -1,4 +1,4 @@
-﻿@model List<Deliveroo.Tabelle.Articolo>
+﻿@model Deliveroo.Models.CarrelloViewModel
 @{
     ViewData["Title"] = "Articoli";
     Layout = "_Layout";
@@ -22,9 +22,9 @@
 
                 <!-- SINISTRA -->
                 <div class="item-list">
-                    @if (Model != null && Model.Any())
+                    @if (Model != null && Model.ArticoliCarrello.Any())
                     {
-                        @foreach (var gruppo in Model.GroupBy(a => a.IdArticolo))
+                        @foreach (var gruppo in Model.ArticoliCarrello.GroupBy(a => a.IdArticolo))
                         {
                             var articolo = gruppo.First();
                             var quantita = gruppo.Count();
@@ -62,8 +62,8 @@
                 @section AboveNavbar {
                     <div class="total-overlay">
                         <div>
-                            <div class="footer-info">@Model.Count articoli</div>
-                            <div class="footer-total">Totale: €@Model.Sum(a => a.Prezzo).ToString("F2")</div>
+                            <div class="footer-info">@Model.ArticoliCarrello.Count articoli</div>
+                            <div class="footer-total">Totale: €@Model.ArticoliCarrello.Sum(a => a.Prezzo).ToString("F2")</div>
                         </div>
                         <a href="@Url.Action("SvuotaCarrello")"
                            class="clear-btn confirm-action"
@@ -74,8 +74,34 @@
 
             </div>
 
-            <!-- DESTRA (raccomandazioni future) -->
-            <div class="right-col"></div>
+            <!-- DESTRA (raccomandazioni) -->
+            <div class="right-col">
+                <div class="col-header">
+                    <h2>Consigliati per te</h2>
+                </div>
+                @if (Model.Raccomandazioni != null && Model.Raccomandazioni.Any())
+                {
+                    <div class="rec-list">
+                        @foreach (var articolo in Model.Raccomandazioni)
+                        {
+                            <div class="rec-row">
+                                <img class="rec-thumb" src="@Url.Content(articolo.Foto)" alt="@articolo.Nome"/>
+                                <div class="rec-info">
+                                    <div class="rec-name">@articolo.Nome</div>
+                                    <div class="rec-price">€@articolo.Prezzo.ToString("F2")</div>
+                                </div>
+                                <a asp-action="Incrementa" asp-route-id="@articolo.IdArticolo" class="rec-add-btn">+</a>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div style="padding: 20px; color: #aaa; font-size: 13px; text-align: center;">
+                        Nessun consiglio disponibile
+                    </div>
+                }
+            </div>
 
         </div>
     </div>

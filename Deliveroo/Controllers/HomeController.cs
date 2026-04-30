@@ -55,7 +55,7 @@ public class HomeController : Controller
 	//-----------------------------------------CARRELLO------------------------------------------------
 
 	// reindirizzamento verso la pagina riepilogo del carrello
-	public IActionResult Carrello()
+	/*public IActionResult Carrello()
 	{
 		// Salva il referer (tengo conto della pagina precedente in cui ero) solo se non viene dal carrello stesso
 		var referer = Request.Headers["Referer"].ToString();
@@ -67,8 +67,33 @@ public class HomeController : Controller
 
 		var lista = _gestioneCarrello.RecuperaCarrello();
 		return View(lista);
+	}*/
+
+	public IActionResult Carrello()
+	{
+		List<Articolo> listaCarrello = new();
+		
+		// Salva il referer (tengo conto della pagina precedente in cui ero) solo se non viene dal carrello stesso
+		var referer = Request.Headers["Referer"].ToString();
+		if (!string.IsNullOrEmpty(referer) && !referer.Contains("Carrello"))
+		{
+			HttpContext.Session.SetString("CarrelloReferer", referer);
+		}
+		ViewBag.BackUrl = HttpContext.Session.GetString("CarrelloReferer") ?? "/";
+
+		listaCarrello = _gestioneCarrello.RecuperaCarrello();
+		List<int> idCarrello = listaCarrello.Select(a => a.IdArticolo).ToList();
+		List<Articolo> raccomandazioni = GetRaccomandazioni(idCarrello);
+
+		var viewModel = new CarrelloViewModel
+		{
+			ArticoliCarrello = listaCarrello,
+			Raccomandazioni = raccomandazioni
+		};
+
+		return View(viewModel);
 	}
-	
+
 	public IActionResult MettiNelCarrello(int id, int qty = 1)
 	{
 		Articolo articolo = _gestioneDati.GetArticoloScelto(id);
@@ -84,7 +109,7 @@ public class HomeController : Controller
 	{
 		return Content(_gestioneCarrello.NumeroElementiCarrello().ToString());
 	}
-	
+
 	/* AGGIUNGERE O TOGLIERE DALLA QUANTITA DAL CARRELLO */
 	public IActionResult Incrementa(int id)
 	{
@@ -120,7 +145,7 @@ public class HomeController : Controller
 		_gestioneCarrello.SalvaCarrello(lista);
 		return RedirectToAction("Carrello");
 	}
-	
+
 	//-----------------------------------------RIEPILOGO------------------------------------------------
 	public IActionResult Riepilogo()
 	{
@@ -130,33 +155,59 @@ public class HomeController : Controller
 		{
 			HttpContext.Session.SetString("CarrelloReferer", referer);
 		}
+
 		ViewBag.BackUrl = HttpContext.Session.GetString("CarrelloReferer") ?? "/";
 
 		var lista = _gestioneCarrello.RecuperaCarrello();
 		return View(lista);
 	}
-	
+
+	public List<Articolo> GetRaccomandazioni(List<int> idArticoliCarrello)
+	{
+		// Raccolgo tutte le associazioni per ogni articolo nel carrello
+		List<Associazione> tutteAssociazioni = new List<Associazione>();
+
+		foreach (int idArticolo in idArticoliCarrello)
+		{
+			var associazioni = _gestioneDati.GetAssociazione(idArticolo);
+			tutteAssociazioni.AddRange(associazioni);
+		}
+
+		// Escludo gli articoli già nel carrello e prendo i 4 con confidence più alta
+		List<int> idRaccomandati = tutteAssociazioni
+			.Where(a => !idArticoliCarrello.Contains(a.IdArticolo2))
+			.OrderByDescending(a => a.Confidence)
+			.Select(a => a.IdArticolo2)
+			.Distinct()
+			.Take(4)
+			.ToList();
+
+		// Recupero gli articoli completi
+		return idRaccomandati.Select(id => _gestioneDati.GetArticoloScelto(id)).ToList();
+	}
+
 	//-----------------------------------------RINGRAZIAMENTI------------------------------------------------
 	[HttpPost]
 	public IActionResult Conferma(Ordine ordine)
 	{
 		ordine.Data = DateTime.Now;
 		ordine.ImportoTotale = _gestioneCarrello.RecuperaCarrello().Sum(a => a.Prezzo);
-		
+
 		if (ModelState.IsValid)
 		{
-			long idOrdine = _gestioneDati.AggiungiOrdine(ordine);  // recupero l'ID
+			long idOrdine = _gestioneDati.AggiungiOrdine(ordine); // recupero l'ID
 
 			var articoli = _gestioneCarrello.RecuperaCarrello();
-			_gestioneDati.AggiungiRigheDettaglio(idOrdine, articoli);  // inserisco i dettagli
+			_gestioneDati.AggiungiRigheDettaglio(idOrdine, articoli); // inserisco i dettagli
 			_gestioneDati.AggiornaAssociazioni(articoli);
 			_gestioneCarrello.SvuotaCarrello();
 
 			return View("Conferma");
 		}
+
 		return RedirectToAction("Riepilogo"); //wikfjnkjfnwf
 	}
-	
+
 	//  ----------------------------------LOGIN/LOGOUT-------------------------------------------
 	//pagina per reindirizzare alla pagina di login per l'admin
 	public IActionResult LoginAdmin()
@@ -195,7 +246,7 @@ public class HomeController : Controller
 		_contextAccessor.HttpContext.Session.Clear();
 		return RedirectToAction("Index");
 	}
-	
+
 	//--------------------------------------SOLO PER ADMIN-SOLO AUTORIZZATI--------------------------------------------
 
 	//Index fatto apposta per l'admin (l'utente normale non potra' accedervi)
@@ -224,7 +275,7 @@ public class HomeController : Controller
 		var listCategorie = _gestioneDati.GetTutteCategorie();
 		return View(listCategorie);
 	}
-	
+
 	//riprende Articoli
 	public IActionResult ArticoliAdmin(int idCategoria)
 	{
@@ -232,7 +283,7 @@ public class HomeController : Controller
 		var listArticoli = _gestioneDati.GetArticoliPerCategoria(idCategoria);
 		return View(listArticoli);
 	}
-	
+
 	//normale vista della pogina
 	[HttpGet]
 	public IActionResult AggiungiNuovoArticolo()
@@ -240,7 +291,7 @@ public class HomeController : Controller
 		var categorie = _gestioneDati.GetTutteCategorie();
 		return View(categorie);
 	}
-	
+
 	//quando clicchi il submit del form (in questo caso il pulsante fine)
 	[HttpPost]
 	public IActionResult AggiungiNuovoArticolo(AggiungiNuovoArticoloAdminViewModel model)
@@ -249,7 +300,7 @@ public class HomeController : Controller
 		//il nome della variabile in AggiungiNuovoArticoloAdminViewModel
 		//deve corrispondere al name dell'elemento input in AggiungiNuovoArticolo.cshtml
 		//<input type="text" id="nome" name="nome"> il contenuto di questa text box andra' in Nome di AggiungiNuovoArticoloAdminViewModel (e' case insensitive)
-		
+
 		// Gestione dell'immagine (se presente) --> da rivedere
 		if (model.Foto != null && model.Foto.Length > 0)
 		{
@@ -278,7 +329,7 @@ public class HomeController : Controller
 			NumeroOrdini = 0,
 			Categoria = cat,
 		};
-		
+
 		// Ora puoi usare i valori per salvare l'articolo nel DB
 		_gestioneDati.AggiungiArticolo(art);
 
@@ -291,7 +342,7 @@ public class HomeController : Controller
 	public IActionResult ModificaArticolo(int id)
 	{
 		var categorie = _gestioneDati.GetTutteCategorie();
-		
+
 		var articoloScelto = _gestioneDati.GetArticoloScelto(id);
 
 		// Recupera tutti gli articoli della stessa categoria, ordinati per ID, così posso scorrere tra di loro
@@ -304,31 +355,35 @@ public class HomeController : Controller
 		ViewBag.IdCategoria = articoloScelto.Categoria.IdCategoria;
 
 		//tupla per mandare 2 elementi
-		return View((articoloScelto,categorie));
+		return View((articoloScelto, categorie));
 	}
+
 	[HttpPost]
 	public IActionResult ModificaNomeArticolo(string nome, int id) //il id come lo trova? Con asp-route-id
 	{
 		_gestioneDati.ModificaNomeArticolo(id, nome);
-		return RedirectToAction("ModificaArticolo", new {id});
+		return RedirectToAction("ModificaArticolo", new { id });
 	}
+
 	[HttpPost]
 	public IActionResult ModificaDescrizioneArticolo(string descrizione, int id)
 	{
 		_gestioneDati.ModificaDescrizioneArticolo(id, descrizione);
-		return RedirectToAction("ModificaArticolo", new {id});
+		return RedirectToAction("ModificaArticolo", new { id });
 	}
+
 	[HttpPost]
 	public IActionResult ModificaPrezzo_listinoArticolo(double prezzo_listino, int id)
 	{
 		_gestioneDati.ModificaPrezzo_listinoArticolo(id, prezzo_listino);
-		return RedirectToAction("ModificaArticolo", new {id});
+		return RedirectToAction("ModificaArticolo", new { id });
 	}
+
 	[HttpPost]
 	public IActionResult ModificaCategoriaArticolo(int idCategoria, int id)
 	{
 		_gestioneDati.ModificaIdCategoriaArticolo(id, idCategoria);
-		return RedirectToAction("ModificaArticolo", new {id});
+		return RedirectToAction("ModificaArticolo", new { id });
 	}
 	//-----------------------------------------------------------------------------------------------------------------
 
@@ -344,8 +399,9 @@ public class HomeController : Controller
 		{
 			contatore++;
 		}
+
 		_contextAccessor.HttpContext.Session.SetInt32("contatore", (int)contatore);
-		
+
 		// Visualizzo le categorie nell'Index
 		var listCategorie = _gestioneDati.GetTutteCategorie();
 		return View(listCategorie);
