@@ -101,6 +101,7 @@ password=root";
 				NomeCliente = (string)reader["nome_cliente"],
 				Indirizzo = (string)reader["indirizzo"],
 				ImportoTotale = (double)reader["importo_totale"],
+				Telefono = (int)reader["telefono"],
 			};
 
 
@@ -703,5 +704,31 @@ ON DUPLICATE KEY UPDATE
 		}
 
 		return lista;
+	}
+
+	public List<Dictionary<int, string>> GetTutteIdArticolo1ENomi()
+	{
+		List<Dictionary<int, string>> ListaIdArticolo1ENome = new List<Dictionary<int, string>>();
+
+		string query = @"SELECT ass.id_articolo1, art.nome
+from associazioni ass
+inner join articoli art on ass.id_articolo1 = art.id
+group by id_articolo1;";
+		
+		MySqlCommand command = new MySqlCommand(query, _connection);
+		MySqlDataReader reader = command.ExecuteReader();
+
+		while (reader.Read())
+		{
+			var id_articolo1 = reader.GetInt32("id_articolo1");
+			var nomeArticolo = reader.GetString("nome");
+
+			Dictionary<int, string> tempDic = new Dictionary<int, string>();
+			tempDic.Add(id_articolo1,nomeArticolo);
+			
+			ListaIdArticolo1ENome.Add(tempDic);
+		}
+		reader.Close();
+		return ListaIdArticolo1ENome;
 	}
 }

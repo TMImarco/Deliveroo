@@ -81,8 +81,8 @@
         </a>
         
         <!--vedere il file di Bandiera su Classroom e modificare il sistema di raccomandazioni di conseguenza (metodo confidence e righe dettaglio)-->
-        <a asp-controller="Home" asp-action="IndexAdmin" class="btn btn-primary">
-            VEDERE LE ASSOCIAZIONE DI ACQUISTO CON LE "CONFIDENCE" IN 'A'
+        <a asp-controller="Home" asp-action="AssociazioniAdmin" class="btn btn-primary">
+            ASSOCIAZIONI D'ACQUISTO
         </a>
 
 
@@ -101,6 +101,7 @@
                 <th>Data</th>
                 <th>Importo totale</th>
                 <th>Indirizzo</th>
+                <th>Numero di telefono</th>
             </tr>
             </thead>
             <tbody>
@@ -112,6 +113,7 @@
                     <td>@o.Data.ToString("dd/MM/yyyy")</td>
                     <td>@o.ImportoTotale</td>
                     <td>@o.Indirizzo</td>
+                    <td>@o.Telefono</td>
                 </tr>
             }
             </tbody>

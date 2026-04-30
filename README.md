@@ -13,12 +13,13 @@ Dividiamo il progetto in tre macro argomenti:
 3. Pagina principale (IndexAdmin)
 4. Modifica/elimina articolo (non testato)
 5. Aggiungi articolo (non testato / da fare ultimi tocchi)
+6. Vedere le associazioni di acquisto con le "confidence" in 'A' + refresh confidence
 
 ### Funzioni da implementare:
 1. Aggiungi categoria
 2. Elimina categoria
 3. Modifica categoria (descrizione, nome)
-3. Vedere le associazioni di acquisto con le "confidence" in 'A'
+4. Grafica
 
 ## Utente
 ###### Programmatore: Agapi

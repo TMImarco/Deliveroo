@@ -1,0 +1,81 @@
+﻿@using Deliveroo.Tabelle
+@model AssociazioniAdminViewModel
+@{
+    ViewData["Title"] = "Admin - Associazioni";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container">
+    <h1>SCEGLI ASSOCIAZIONIE</h1>
+    <form method="post" asp-action="AssociazioniAdmin">
+        <select name="IdArticoloSelezionato" id="idArticolo">
+
+            <option value="">-- Seleziona articolo --</option>
+
+            @foreach (var dic in Model.ListaArticoliENomi)
+            {
+                foreach (var kvp in dic)
+                {
+                    <option value="@kvp.Key"
+                            selected="@(Model.IdArticoloSelezionato == kvp.Key)">
+                        @kvp.Value
+                    </option>
+                }
+            }
+
+        </select>
+
+        <button type="submit" class="btn btn-primary">
+            Carica associazioni
+        </button>
+    </form>
+
+    <table id="associazioniTable" class="display">
+        <thead>
+        <tr>
+            <th>Articolo 1</th>
+            <th>Articolo 2</th>
+            <th>Numero Ordini</th>
+            <th>Confidence</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var o in Model.ListaAssociazioni)
+        {
+            <tr>
+                <td>@o.IdArticolo1</td>
+                <td>@o.IdArticolo2</td>
+                <td>@o.NumeroOrdini</td>
+                <td>@o.Confidence</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <form method="post"
+          asp-action="AggiornaConfidence">
+        <button type="submit"
+                class="btn btn-primary">
+            Aggiorna Confidence
+        </button>
+    </form>
+</div>
+
+@section Scripts
+{
+    <!--SCRIPT per DATA TABLE-->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <!--SCRIPT per la creazione delle DATA TABLE-->
+    <script>
+        $(document).ready(function () {
+            $('#associazioniTable').DataTable();
+        });
+    </script>
+}
+
+@section Styles
+{
+    <!--stile sheet per le data tables-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+}

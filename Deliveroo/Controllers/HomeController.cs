@@ -385,6 +385,38 @@ public class HomeController : Controller
 		_gestioneDati.ModificaIdCategoriaArticolo(id, idCategoria);
 		return RedirectToAction("ModificaArticolo", new { id });
 	}
+
+	[HttpGet]
+	public IActionResult AssociazioniAdmin()
+	{
+		var vm = new AssociazioniAdminViewModel
+		{
+			ListaArticoliENomi = _gestioneDati.GetTutteIdArticolo1ENomi()
+		};
+
+		return View(vm);
+	}
+
+	[HttpPost]
+	public IActionResult AssociazioniAdmin(AssociazioniAdminViewModel vm)
+	{
+		vm.ListaArticoliENomi = _gestioneDati.GetTutteIdArticolo1ENomi();
+
+		if (vm.IdArticoloSelezionato.HasValue)
+		{
+			vm.ListaAssociazioni =
+				_gestioneDati.GetAssociazione(vm.IdArticoloSelezionato.Value);
+		}
+
+		return View(vm);
+	}
+	
+	[HttpPost]
+	public IActionResult AggiornaConfidence()
+	{
+		_gestioneDati.AggiornaConfidence();
+		return RedirectToAction("AssociazioniAdmin");
+	}
 	//-----------------------------------------------------------------------------------------------------------------
 
 	public IActionResult Index()

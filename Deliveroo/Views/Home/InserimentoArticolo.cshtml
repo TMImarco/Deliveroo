@@ -93,7 +93,7 @@ Articolo art = Model;
 @section Scripts {
 <script>
     /* AUMENTARE LA QUANTITA DELL'ARTICOLO */
-    const prezzo = @art.Prezzo;
+    const prezzo = @art.Prezzo.ToString(System.Globalization.CultureInfo.InvariantCulture);
     const aggiungiUrl = '@Url.Action("MettiNelCarrello", "Home", new { id = art.IdArticolo })';
     let qty = 1;
 
