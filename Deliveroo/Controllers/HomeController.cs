@@ -154,7 +154,7 @@ public class HomeController : Controller
 
 			return View("Conferma");
 		}
-		return RedirectToAction("Riepilogo");
+		return RedirectToAction("Riepilogo"); //wikfjnkjfnwf
 	}
 	
 	//  ----------------------------------LOGIN/LOGOUT-------------------------------------------
