@@ -251,6 +251,7 @@ public class HomeController : Controller
 	//--------------------------------------SOLO PER ADMIN-SOLO AUTORIZZATI--------------------------------------------
 
 	//Index fatto apposta per l'admin (l'utente normale non potra' accedervi)
+	[HttpGet]
 	public IActionResult IndexAdmin()
 	{
 		//e' stata creata una nuova classe chiamata AdminViewModel
@@ -263,7 +264,26 @@ public class HomeController : Controller
 			Associazioni = _gestioneDati.GetTutteAssociazioni(),
 			Articoli = _gestioneDati.GetTuttiArticoli(),
 			OrdiniTotaliDiOgniCategoria = _gestioneDati.GetOrdiniTotaliDiOgniCategoria(),
-			ClassificaArticoli = _gestioneDati.GetTop10Articoli()
+			ClassificaArticoli = _gestioneDati.GetArticoliOrdineNumero_ordini(),
+			NumeroTotaleClassificati = 4
+		};
+
+		return View(adminViewModel);
+	}
+
+	[HttpPost]
+	public IActionResult IndexAdmin(int numeroTotaleClassificati)
+	{
+		var adminViewModel = new IndexAdminViewModel()
+		{
+			Ordini = _gestioneDati.GetTuttiOrdini(),
+			Associazioni = _gestioneDati.GetTutteAssociazioni(),
+			Articoli = _gestioneDati.GetTuttiArticoli(),
+			OrdiniTotaliDiOgniCategoria = _gestioneDati.GetOrdiniTotaliDiOgniCategoria(),
+			ClassificaArticoli = _gestioneDati
+				.GetArticoliOrdineNumero_ordini(),
+
+			NumeroTotaleClassificati = numeroTotaleClassificati
 		};
 
 		return View(adminViewModel);

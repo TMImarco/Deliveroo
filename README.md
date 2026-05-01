@@ -19,6 +19,8 @@ Dividiamo il progetto in tre macro argomenti:
 ### Funzioni da implementare:
 1. Grafica
 2. Modificare schermate di visualizzazione per modifica/elimina articolo (forse?)
+3. Modificare fase di riepilogo dopo avere eliminato un articolo e mettere una schermata di conferma con il riepilogo
+4. Modificare la visualizzazione delle associazioni
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate (per ora?)
@@ -52,8 +54,6 @@ Dividiamo il progetto in tre macro argomenti:
 ### Funzioni da implementare
 1. Costrains totaleImporto (forse?):
    (La somma delle righe dettaglio di un certo ordine deve essere uguale all'importo totale scritto nella tabella articoli - per controllo che le righe dettaglio siano inserite correttamente)
-2. Tabella articoli on delate cascace (forse?):
-   (Quando elimini un articolo, elimina tutte le fk articoli in gioro per le tabelle o no? - se no si potrebbe fare in modo che teniamo sempre tutti gli articoli visibili nel DB ma con una colonna isEliminato che con in dovuti controlli non verranno fuori nel programma)
 
 ### Note:
 1. Assicurarsi sempre se il TUO dumb del DB sia agggiornato. (MI raccomando Agapi. Grazie)

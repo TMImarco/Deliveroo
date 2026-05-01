@@ -17,6 +17,18 @@
     <!--DA FARE: modificare che il podio sia a destra e le altre posizioni a sinistra-->
     <div class="container-fluid">
         <h4>BEST SELLING</h4>
+        
+        <p>Seleziona numero di classificati</p>
+        <form method="post" asp-action="IndexAdmin">
+            <input type="number"
+                   name="numeroTotaleClassificati"
+                   value="@Model.NumeroTotaleClassificati"
+                   min="4"
+                   step="1"/>
+
+            <button type="submit">Aggiorna</button>
+        </form>
+        
         <div class="ranking-wrapper">
             @{
                 var lista = Model.ClassificaArticoli.ToList();
@@ -46,7 +58,7 @@
             @if (lista.Count > 3)
             {
                 <div class="ranking-list">
-                    @for (int i = 3; i < lista.Count; i++)
+                    @for (int i = 3; i < Math.Min(Model.NumeroTotaleClassificati, lista.Count); i++)
                     {
                         var a = lista[i];
                         <div class="rank-row">
@@ -68,24 +80,30 @@
     </div>
 
     <!--BLOCCO 3 della GRID (in basso a sinistra)-->
-    <!--pulsanti da implementare (non definitivi)-->
     <div class="container">
-        <a asp-controller="Home" asp-action="CategorieAdmin" class="btn btn-primary">
-            ARTICOLI (MODIFICA/ELIMINA)
-        </a>
-        <a asp-controller="Home" asp-action="AggiungiNuovoArticolo" class="btn btn-primary">
-            AGGIUNGI ARTICOLO
-        </a>
-        <a asp-controller="Home" asp-action="IndexAdmin" class="btn btn-primary">
-            AGGIUNGI CATEGORIA?
-        </a>
-        
-        <!--vedere il file di Bandiera su Classroom e modificare il sistema di raccomandazioni di conseguenza (metodo confidence e righe dettaglio)-->
-        <a asp-controller="Home" asp-action="AssociazioniAdmin" class="btn btn-primary">
-            ASSOCIAZIONI D'ACQUISTO
-        </a>
+        <p>
+            <a asp-controller="Home"
+               asp-action="CategorieAdmin"
+               class="btn btn-primary">
+                ARTICOLI (MODIFICA/ELIMINA)
+            </a>
+        </p>
 
+        <p>
+            <a asp-controller="Home"
+               asp-action="AggiungiNuovoArticolo"
+               class="btn btn-primary">
+                AGGIUNGI ARTICOLO
+            </a>
+        </p>
 
+        <p>
+            <a asp-controller="Home"
+               asp-action="AssociazioniAdmin"
+               class="btn btn-primary">
+                ASSOCIAZIONI D'ACQUISTO
+            </a>
+        </p>
     </div>
 
     <!--BLOCCO 4 della GRID (in basso a destra)-->
@@ -127,7 +145,7 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <!--SCRIPT per i GRAFICI-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <!--SCRIPT per la creazione delle DATA TABLE-->
     <script>
         $(document).ready(function () {
@@ -191,11 +209,11 @@
 @section Styles {
     <!--stile sheet per le data tables-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
-    
+
     <!--importazione font per alcune classi della classifica (per ora tolto)
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap"
           rel="stylesheet">-->
-    
+
     <link rel="stylesheet" href="~/cssAdmin/classifica.css"/>
     <link rel="stylesheet" href="~/cssAdmin/Index.css"/>
 }

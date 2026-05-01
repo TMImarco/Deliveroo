@@ -279,15 +279,14 @@ GROUP BY c.id, c.nomeCategoria";
 		return categorieENumeroOrdiniTotali;
 	}
 
-	public List<Articolo> GetTop10Articoli()
+	public List<Articolo> GetArticoliOrdineNumero_ordini()
 	{
 		List<Articolo> classifica = new List<Articolo>();
 
 		string query = @"SELECT a.*, c.nomeCategoria, c.foto AS foto_categoria
                      FROM articoli a
                      JOIN categorie c ON a.idCategoria = c.id
-                     ORDER BY a.numero_ordini DESC
-                     limit 10";
+                     ORDER BY a.numero_ordini DESC";
 
 		MySqlCommand command = new MySqlCommand(query, _connection);
 		MySqlDataReader reader = command.ExecuteReader();
