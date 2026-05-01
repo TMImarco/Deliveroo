@@ -618,9 +618,9 @@ VALUES (@id_ordine, @id_articolo, @quantita, @prezzo)";
 // 2. Calcola confidence
 				double confidence = totaleOrdiniA > 0 ? 1.0 / totaleOrdiniA : 0.0;
 // (numero_ordini è 1 perché è la prima volta che compaiono insieme)
-
 // 3. Inserisci con confidence
-				string queryInsert = "INSERT INTO associazioni(id_articolo1, id_articolo2, numero_ordini, confidence) VALUES (@id1, @id2, 1, @conf)";
+				string queryInsert =
+					"INSERT INTO associazioni(id_articolo1, id_articolo2, numero_ordini, confidence) VALUES (@id1, @id2, 1, @conf)";
 				MySqlCommand cmdInsert = new MySqlCommand(queryInsert, _connection);
 				cmdInsert.Parameters.AddWithValue("@id1", coppia.Id1);
 				cmdInsert.Parameters.AddWithValue("@id2", coppia.Id2);
@@ -635,9 +635,8 @@ VALUES (@id_ordine, @id_articolo, @quantita, @prezzo)";
 
 	public void AggiornaConfidence()
 	{
-
 		string queryTruncate = @"TRUNCATE TABLE associazioni";
-		
+
 		string queryConfidence = @"
 INSERT INTO associazioni (
     id_articolo1,
@@ -679,7 +678,7 @@ ON DUPLICATE KEY UPDATE
 			throw;
 		}
 	}
-	
+
 	//----------METODI PER LE RACCOMANDAZIONI ---------------
 	public List<Associazione> GetAssociazione(int id_articolo1)
 	{
@@ -714,7 +713,7 @@ ON DUPLICATE KEY UPDATE
 from associazioni ass
 inner join articoli art on ass.id_articolo1 = art.id
 group by id_articolo1;";
-		
+
 		MySqlCommand command = new MySqlCommand(query, _connection);
 		MySqlDataReader reader = command.ExecuteReader();
 
@@ -724,10 +723,11 @@ group by id_articolo1;";
 			var nomeArticolo = reader.GetString("nome");
 
 			Dictionary<int, string> tempDic = new Dictionary<int, string>();
-			tempDic.Add(id_articolo1,nomeArticolo);
-			
+			tempDic.Add(id_articolo1, nomeArticolo);
+
 			ListaIdArticolo1ENome.Add(tempDic);
 		}
+
 		reader.Close();
 		return ListaIdArticolo1ENome;
 	}
