@@ -47,7 +47,8 @@ password=root";
 				Prezzo = (double)reader["prezzo_listino"],
 				NumeroOrdini = (int)reader["numero_ordini"],
 				Descrizione = (string)reader["descrizione"],
-				Categoria = categoria
+				Categoria = categoria,
+				ImageUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"]
 			};
 
 			listaArticoli.Add(articolo);
@@ -155,7 +156,8 @@ password=root";
 			{
 				IdCategoria = (int)reader["id"],
 				Nome = (string)reader["nomeCategoria"],
-				PercorsoFoto = (string)reader["foto"]
+				PercorsoFoto = (string)reader["foto"],
+				ImageUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"]
 			};
 
 			listCategorie.Add(cat);
@@ -195,7 +197,8 @@ password=root";
 				Prezzo = (double)reader["prezzo_listino"],
 				Descrizione = (string)reader["descrizione"],
 				NumeroOrdini = (int)reader["Numero_ordini"],
-				Categoria = categoria
+				Categoria = categoria,
+				ImageUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"]
 			};
 
 			listaArticoli.Add(articolo);
@@ -234,7 +237,8 @@ WHERE a.id = @id;";
 				Prezzo = (double)reader["prezzo_listino"],
 				Descrizione = (string)reader["descrizione"],
 				NumeroOrdini = (int)reader["Numero_ordini"],
-				Categoria = categoria
+				Categoria = categoria,
+				ImageUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"]
 			};
 		}
 

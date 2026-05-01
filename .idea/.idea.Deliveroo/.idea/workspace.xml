@@ -15,52 +15,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="764a2682-c373-444a-b036-83dc2ff384f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Deliveroo/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Deliveroo/ViewModels/AssociazioniAdminViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Deliveroo/Views/Home/AssociazioniAdmin.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deliveroo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deliveroo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/Deliveroo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Deliveroo.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/GestioneDati.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/GestioneDati.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/Views/Home/ArticoliAdmin.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Views/Home/ArticoliAdmin.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/Views/Home/IndexAdmin.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Views/Home/IndexAdmin.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/Tabelle/Articolo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Tabelle/Articolo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/Tabelle/Categoria.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Tabelle/Categoria.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/Views/Home/Articoli.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Views/Home/Articoli.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/Views/Home/InserimentoArticolo.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Views/Home/InserimentoArticolo.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.staticwebassets.endpoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.staticwebassets.endpoints.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.staticwebassets.runtime.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.staticwebassets.runtime.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/apphost.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rbcswa.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rbcswa.dswa.cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/compressed/bbav3rywun-ge249it9dv.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/ref/Deliveroo.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/ref/Deliveroo.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/refint/Deliveroo.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/refint/Deliveroo.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rjimswa.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rjimswa.dswa.cache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rjsmrazor.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rjsmrazor.dswa.cache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rpswa.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rpswa.dswa.cache.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.build.endpoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.build.endpoints.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.build.json.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.build.json.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Deliveroo.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Deliveroo.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Deliveroo.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Deliveroo.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets/msbuild.Deliveroo.Microsoft.AspNetCore.StaticWebAssetEndpoints.props" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets/msbuild.Deliveroo.Microsoft.AspNetCore.StaticWebAssetEndpoints.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets/msbuild.Deliveroo.Microsoft.AspNetCore.StaticWebAssets.props" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets/msbuild.Deliveroo.Microsoft.AspNetCore.StaticWebAssets.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/wwwroot/css/Index.css" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/wwwroot/css/Index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,48 +91,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.Deliveroo: http.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;RiderNuGetOptionsPageId&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.Deliveroo: http.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "RiderNuGetOptionsPageId",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Deliveroo: http">
     <configuration name="Deliveroo: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Deliveroo/Deliveroo.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net9.0" />
       <option name="LAUNCH_PROFILE_NAME" value="http" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -172,14 +155,13 @@
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Deliveroo/Deliveroo.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net9.0" />
       <option name="LAUNCH_PROFILE_NAME" value="https" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -270,6 +252,19 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Deliveroo/GestioneDati.cs</url>
+          <line>171</line>
+          <properties documentPath="C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\GestioneDati.cs" containingFunctionPresentation="Method 'GetArticoliPerCategoria'">
+            <startOffsets>
+              <option value="4219" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4271" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

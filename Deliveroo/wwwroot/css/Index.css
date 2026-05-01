@@ -198,3 +198,16 @@
     align-items: center;
     justify-content: center;
 }
+
+/* UNSPLASH API */
+.unsplash-credit {
+    font-size: 10px;
+    color: #999;
+    text-align: center;
+    margin: 2px 0 0 0;
+}
+
+.unsplash-credit a {
+    color: #999;
+    text-decoration: underline;
+}

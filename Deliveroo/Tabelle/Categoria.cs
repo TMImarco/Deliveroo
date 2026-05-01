@@ -7,4 +7,7 @@ public class Categoria
     public int IdCategoria {get;set;}
 	public string Nome { get; set; }
 	public string PercorsoFoto { get; set; }
+	
+	//TEMPORANEO
+	public string ImageUrl { get; set; }
 }
