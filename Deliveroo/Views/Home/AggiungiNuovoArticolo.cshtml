@@ -2,7 +2,7 @@
     ViewData["Title"] = "Admin - Aggiungi Articolo";
     Layout = "_LayoutAdmin"; //il layout è quello dell'utente (va bene)
 
-    List<Categoria> categorie = Model;
+    @model List<Categoria>
 }
 
 <div class="macro-section">
@@ -13,17 +13,15 @@
             <div class="left-col">
 
                 <!-- BOTTONE BACK (fare un pulsante per annullare l'operazione-->
-                <button class="btn btn-primary">
-                    ANNULLA
-                </button>
+                <a asp-action="IndexAdmin" class="btn btn-primary">ANNULLA</a>
 
                 <form method="post"
-                      asp-action="AggiungiNuovoArticolo"
-                      enctype="multipart/form-data">
+                      asp-action="AggiungiNuovoArticolo">
                     <div class="article-split">
                         <div class="article-left">
-                            <!-- INPUT FILE per FOTO ? -->
-                            <input type="file" id="foto" name="foto">
+                            <!-- INPUT PATH per FOTO -->
+                            <h3>FOTO</h3>
+                            <input type="text" id="foto" name="foto">
                         </div>
 
                         <!--da sostituire con bottoni per aggiungere tutti gli elementi + aggiungere categoria-->
@@ -31,10 +29,12 @@
                             <div class="article-right-content">
                                 <!-- nome articolo (h1) -->
                                 <!--INPUT NOME-->
+                                <h3>NOME</h3>
                                 <input type="text" id="nome" name="nome">
 
                                 <!-- descrizione articolo (<p class="descrizione">) -->
                                 <!--INPUT DESCRIZIONE-->
+                                <h3>DESCRIZIONE</h3>
                                 <textarea name="descrizione" id="descrizione"
                                           style="width:200px; overflow:hidden; resize:none;"></textarea>
 
@@ -42,24 +42,22 @@
 
                                 <!-- prezzo articolo (<p class="prezzo">) -->
                                 <!--INPUT PREZZO-->
+                                <h3>PREZZO</h3>
                                 <input type="number" id="prezzo" name="prezzo" step="0.01" min="0">
 
                                 <div class="article-divider"></div>
 
                                 <!--INPUT CATEGORIA-->
-                                <select name="categoria" id="categoria" required>
+                                <h3>CATEGORIA</h3>
+                                <select name="idcategoria" id="idcategoria" required>
                                     <option value=""></option>
-                                    @foreach (var c in categorie)
+                                    @foreach (var c in Model)
                                     {
                                         <option value="@c.IdCategoria">@c.Nome</option>
                                     }
                                 </select>
                             </div>
-
-                            <!--bottone per completamento operazione (per ora non funzionante per evitare casini
-                            finche' non viene sistemato il caricamento della foto e la variabile del prezzo nel HomeController
                             <input type="submit" value="FINE" class="add-btn"/>
-                            -->
                         </div>
                     </div>
                 </form>

@@ -11,15 +11,17 @@ Dividiamo il progetto in tre macro argomenti:
 1. Login (utente: admin pwd: admin)
 2. Logout
 3. Pagina principale (IndexAdmin)
-4. Modifica/elimina articolo (non testato)
-5. Aggiungi articolo (non testato / da fare ultimi tocchi)
+4. Modifica articolo (per ora si puo' modificare solo il percorso della foto)
+5. Aggiungi articolo (da vedere per le foto, per ora si inserisce solo il path + fare in modo che si debbano riempire tutti gli input)
 6. Vedere le associazioni di acquisto con le "confidence" in 'A' + refresh confidence
+7. Elimina articolo (insieme a modifica)
 
 ### Funzioni da implementare:
-1. Aggiungi categoria
-2. Elimina categoria
-3. Modifica categoria (descrizione, nome)
-4. Grafica
+1. Grafica
+2. Modificare schermate di visualizzazione per modifica/elimina articolo (forse?)
+
+### Note
+1. Opzione elimina/modifica/aggiungi categoria scartate (per ora?)
 
 ## Utente
 ###### Programmatore: Agapi
@@ -54,4 +56,7 @@ Dividiamo il progetto in tre macro argomenti:
    (Quando elimini un articolo, elimina tutte le fk articoli in gioro per le tabelle o no? - se no si potrebbe fare in modo che teniamo sempre tutti gli articoli visibili nel DB ma con una colonna isEliminato che con in dovuti controlli non verranno fuori nel programma)
 
 ### Note:
-Assicurarsi sempre se il TUO dumb del DB sia agggiornato.
+1. Assicurarsi sempre se il TUO dumb del DB sia agggiornato. (MI raccomando Agapi. Grazie)
+2. Come ho gestito l'eliminazione di un articolo:
+   1. idArticolo e' FK con ON DELETE CASCADE nella tabella righe_dettaglio, quindi quando elimino un articolo si elimina tutte le righe_dettaglio che hanno la sua FK 
+   2. idArticolo e' FK con ON DELETE CASCADE nella tabella associaizoni, quindi quando elimino un articolo si elimina anche tutte le righe di associazioni che hanno la sua FK

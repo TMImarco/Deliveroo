@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using Deliveroo.Models;
 using Deliveroo.Tabelle;
@@ -301,31 +302,22 @@ public class HomeController : Controller
 		//deve corrispondere al name dell'elemento input in AggiungiNuovoArticolo.cshtml
 		//<input type="text" id="nome" name="nome"> il contenuto di questa text box andra' in Nome di AggiungiNuovoArticoloAdminViewModel (e' case insensitive)
 
-		// Gestione dell'immagine (se presente) --> da rivedere
-		if (model.Foto != null && model.Foto.Length > 0)
-		{
-			var nomefile = Path.GetFileName(model.Foto.FileName);
-			var percorso = Path.Combine("wwwroot/img", nomefile);
-			using (var stream = new FileStream(percorso, FileMode.Create))
-			{
-				model.Foto.CopyTo(stream);
-			}
-		}
+		var categoriaDb = _gestioneDati.GetCategoria(model.IdCategoria);
 
 		Categoria cat = new Categoria()
 		{
-			IdCategoria = model.IdCategoria,
-			Nome = _gestioneDati.GetCategoria(model.IdCategoria).Nome,
-			PercorsoFoto = _gestioneDati.GetCategoria(model.IdCategoria).PercorsoFoto,
+			IdCategoria = categoriaDb.IdCategoria,
+			Nome = categoriaDb.Nome,
+			PercorsoFoto = categoriaDb.PercorsoFoto,
 		};
 
 		Articolo art = new Articolo()
 		{
 			IdArticolo = -1,
 			Nome = model.Nome,
-			Foto = model.Foto.ToString(), //da rivedere IFormatFile.ToString()
+			Foto = model.Foto,
 			Descrizione = model.Descrizione,
-			Prezzo = model.Prezzo, //da rivedere double o decimal
+			Prezzo = model.Prezzo,
 			NumeroOrdini = 0,
 			Categoria = cat,
 		};
@@ -334,7 +326,7 @@ public class HomeController : Controller
 		_gestioneDati.AggiungiArticolo(art);
 
 		//ritorna alla vista di tutti gli articoli corrispondenti alla categoria in cui sei dentro
-		return RedirectToAction("ArticoliAdmin", new { model.IdCategoria });
+		return RedirectToAction("ArticoliAdmin", new { idCategoria = model.IdCategoria });
 	}
 
 	//riprende InserimentoArticolo
@@ -358,6 +350,13 @@ public class HomeController : Controller
 		return View((articoloScelto, categorie));
 	}
 
+	[HttpPost]
+	public IActionResult ModificaFotoArticolo(string percorsoFoto, int id)
+	{
+		_gestioneDati.ModificaFotoArticolo(id, percorsoFoto);
+		return RedirectToAction("ModificaArticolo", new { id });
+	}
+	
 	[HttpPost]
 	public IActionResult ModificaNomeArticolo(string nome, int id) //il id come lo trova? Con asp-route-id
 	{
@@ -386,6 +385,50 @@ public class HomeController : Controller
 		return RedirectToAction("ModificaArticolo", new { id });
 	}
 
+	[HttpPost]
+	public IActionResult EliminaArticolo(int id)
+	{
+		var articolo = _gestioneDati.GetArticoloScelto(id);
+
+		TempData["IdArticolo"] = articolo.IdArticolo;
+		TempData["Nome"] = articolo.Nome;
+		TempData["Foto"] = articolo.Foto;
+		TempData["Descrizione"] = articolo.Descrizione;
+		TempData["Prezzo"] = articolo.Prezzo.ToString(CultureInfo.InvariantCulture); //perche' TempData non permette double
+		TempData["NumeroOrdini"] = articolo.NumeroOrdini;
+		TempData["IdCategoria"] = articolo.Categoria.IdCategoria;
+		TempData["NomeCategoria"] = articolo.Categoria.Nome;
+		TempData["FotoCategoria"] = articolo.Categoria.PercorsoFoto;
+		
+		_gestioneDati.EliminaArticolo(id);
+
+		return RedirectToAction("ArticoloEliminato");
+	}
+
+	public IActionResult ArticoloEliminato()
+	{
+		var categoria = new Categoria()
+		{
+			IdCategoria = (int)TempData["IdCategoria"],
+			Nome = TempData["NomeCategoria"] as string,
+			PercorsoFoto = TempData["FotoCategoria"] as string
+		};
+		
+		var articolo = new Articolo
+		{
+			IdArticolo = (int)TempData["IdArticolo"],
+			Nome = TempData["Nome"] as string,
+			Foto =  TempData["Foto"] as string,
+			Descrizione = TempData["Descrizione"] as string,
+			Prezzo = Convert.ToDouble(TempData["Prezzo"]),
+			NumeroOrdini = (int)TempData["NumeroOrdini"],
+			Categoria = categoria
+		};
+
+		return View(articolo);
+	}
+	
+	//ASSOCIAZIONi
 	[HttpGet]
 	public IActionResult AssociazioniAdmin()
 	{

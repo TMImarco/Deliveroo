@@ -329,7 +329,7 @@ VALUES (@nome,@foto,@prezzo_listino,@numero_ordini,@idCategoria,@descrizione)";
 		command.Parameters.AddWithValue("@foto", articolo.Foto);
 		command.Parameters.AddWithValue("@prezzo_listino", articolo.Prezzo);
 		command.Parameters.AddWithValue("@numero_ordini", articolo.NumeroOrdini);
-		command.Parameters.AddWithValue("@idCategoria", articolo.Categoria);
+		command.Parameters.AddWithValue("@idCategoria", articolo.Categoria.IdCategoria);
 		command.Parameters.AddWithValue("@descrizione", articolo.Descrizione);
 
 		//DA FARE:
@@ -504,9 +504,9 @@ WHERE id = @idCategoria";
 		{
 			cat = new Categoria()
 			{
-				IdCategoria = (int)reader["idCategoria"],
-				Nome = (string)reader["nome"],
-				PercorsoFoto = (string)reader["percorsoFoto"],
+				IdCategoria = (int)reader["id"],
+				Nome = (string)reader["nomeCategoria"],
+				PercorsoFoto = (string)reader["foto"],
 			};
 		}
 
@@ -514,10 +514,24 @@ WHERE id = @idCategoria";
 
 		return cat;
 	}
-
+	
 	public void EliminaArticolo(int id)
 	{
-		//modificare il db ed elminare a cascata le righe dettaglio con quell'articolo (?), le associazioni con quell'articolo (?)
+		string query = @"DELETE FROM articoli where id = @id";
+		MySqlCommand command = new MySqlCommand(query, _connection);
+		command.Parameters.AddWithValue("@id", id);
+		try
+		{
+			int esito = command.ExecuteNonQuery();
+			if (esito == 0)
+			{
+				Console.WriteLine("ID articolo non trovato");
+			}
+		} catch (Exception e)
+		{
+			Console.WriteLine(e);
+			throw;
+		}
 	}
 
 	public void AggiungiCategoria(Categoria categoria)

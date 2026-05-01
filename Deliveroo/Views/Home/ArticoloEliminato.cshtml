@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Admin - ArticoloEliminato";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container">
+    <h1>ARTICOLO ELIMINATO</h1>
+
+    <div class="container">
+        <p>@Model.IdArticolo</p>
+        <p>@Model.Nome</p>
+        <p>@Model.Foto</p>
+        <p>@Model.Descrizione</p>
+        <p>@Model.Prezzo</p>
+        <p>@Model.NumeroOrdini<p>
+        <p>@Model.Categoria.IdCategoria</p>
+        <p>@Model.Categoria.Nome</p>
+        <p>@Model.Categoria.PercorsoFoto</p>
+    </div>
+    
+    <a asp-action="CategorieAdmin" class="btn btn-primary">INDIETRO</a>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="/cssAdmin/Articoli.css"/>
+}

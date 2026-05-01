@@ -15,6 +15,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="764a2682-c373-444a-b036-83dc2ff384f9" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Deliveroo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deliveroo/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/GestioneDati.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/GestioneDati.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/Tabelle/Articolo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Tabelle/Articolo.cs" afterDir="false" />
@@ -22,6 +23,15 @@
       <change beforePath="$PROJECT_DIR$/Deliveroo/Views/Home/Articoli.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Views/Home/Articoli.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/Views/Home/InserimentoArticolo.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Views/Home/InserimentoArticolo.cshtml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/Deliveroo/Views/Home/ArticoloEliminato.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deliveroo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deliveroo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/AdminViewModels/AggiungiNuovoArticoloAdminViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/AdminViewModels/AggiungiNuovoArticoloAdminViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/GestioneDati.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/GestioneDati.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/Views/Home/AggiungiNuovoArticolo.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Views/Home/AggiungiNuovoArticolo.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/Views/Home/ModificaArticolo.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/Views/Home/ModificaArticolo.cshtml" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/bin/Debug/net9.0/Deliveroo.pdb" afterDir="false" />
@@ -31,16 +41,24 @@
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/Deliveroo.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/apphost.exe" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/compressed/bbav3rywun-ge249it9dv.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/ref/Deliveroo.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/ref/Deliveroo.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/refint/Deliveroo.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/refint/Deliveroo.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.build.endpoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.build.endpoints.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.build.json" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/ref/Deliveroo.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/ref/Deliveroo.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/refint/Deliveroo.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/refint/Deliveroo.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rjsmrazor.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rjsmrazor.dswa.cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rpswa.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/rpswa.dswa.cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.build.endpoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.build.endpoints.json" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets.development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets/msbuild.Deliveroo.Microsoft.AspNetCore.StaticWebAssetEndpoints.props" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets/msbuild.Deliveroo.Microsoft.AspNetCore.StaticWebAssetEndpoints.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets/msbuild.Deliveroo.Microsoft.AspNetCore.StaticWebAssets.props" beforeDir="false" afterPath="$PROJECT_DIR$/Deliveroo/obj/Debug/net9.0/staticwebassets/msbuild.Deliveroo.Microsoft.AspNetCore.StaticWebAssets.props" afterDir="false" />
@@ -215,6 +233,7 @@
       <workItem from="1777543562409" duration="170000" />
       <workItem from="1777564246091" duration="122000" />
       <workItem from="1777564419375" duration="1632000" />
+      <workItem from="1777644099179" duration="7244000" />
     </task>
     <task id="LOCAL-00001" summary="Completato la PrimaParte del Layout dell'utente, cioè visualizzare le macr-categorie">
       <option name="closed" value="true" />
