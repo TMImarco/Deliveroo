@@ -1,5 +1,4 @@
 using Deliveroo;
-using Deliveroo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +16,6 @@ builder.Services.AddSession(options =>
 //Registro le classi GestioneDati e GestioneCarrello cosi da poterli usare all'interno dei .cshtml
 builder.Services.AddScoped<GestioneDati>();
 //builder.Services.AddScoped<GestioneCarrello>();
-builder.Services.AddHttpClient<UnsplashService>(); //implemento il servizio dell'API
 
 var app = builder.Build();
 

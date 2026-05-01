@@ -18,8 +18,11 @@ Il numero per fila può essere modificato all'interno dell site.css nell'apposit
                         <div class="macro-img-wrap">
                             <!-- PRIMA <img src="@categoria.PercorsoFoto" alt="@categoria.Nome" class="macro-image" /> -->
                             
-                            <!-- UNPLASH API -->
-                            <img src="@(string.IsNullOrEmpty(categoria.ImageUrl) ? categoria.PercorsoFoto : categoria.ImageUrl)" alt="@categoria.Nome" class="macro-image" />
+                            <img src="@categoria.ImageUrl" alt="@categoria.ImageUrl" class="macro-image" />
+                            
+                            <!-- API 
+                            <img src="@(string.IsNullOrEmpty(categoria.ImageUrl) ? categoria.PercorsoFoto : categoria.ImageUrl)" alt="@categoria.Nome" class="macro-image" />-->
+                            
                         </div>
                         <div class="macro-info">
                             <span>@categoria.Nome</span>
