@@ -59,6 +59,10 @@ Dividiamo il progetto in tre macro argomenti:
    (La somma delle righe dettaglio di un certo ordine deve essere uguale all'importo totale scritto nella tabella articoli - per controllo che le righe dettaglio siano inserite correttamente)
 2. Eliminare la colonna foto dalla tabella articoli e anche da categoria (modificare tutti i metodi crud)
 
+## Come funziona il caricamento immagini
+1. Caricare le foto su cloudinary
+2. Le immagini hanno un loro url specifico
+
 ### Note:
 1. Assicurarsi sempre se il TUO dumb del DB sia agggiornato. (MI raccomando Agapi. Grazie)
 2. Come ho gestito l'eliminazione di un articolo:

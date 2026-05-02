@@ -244,7 +244,7 @@ WHERE a.id = @id;";
 				Descrizione = (string)reader["descrizione"],
 				NumeroOrdini = (int)reader["Numero_ordini"],
 				Categoria = categoria,
-				ImageUrl = rawUrl.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
+				ImageUrl = rawUrl.Replace("/upload/", "/upload/w_500,h_600,c_fill,f_auto,q_auto/")
 			};
 		}
 
