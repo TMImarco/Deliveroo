@@ -31,7 +31,7 @@
                             var prezzoTotale = articolo.Prezzo * quantita;
 
                             <div class="item-row">
-                                <img class="item-thumb" src="@Url.Content(articolo.Foto)" alt="@articolo.Nome"/>
+                                <img class="item-thumb" src="@Url.Content(articolo.ImageUrl)" alt="@articolo.Nome"/>
                                 <div class="item-info">
                                     <div class="item-name">@articolo.Nome</div>
                                     <div class="item-unit-price">€@articolo.Prezzo.ToString("F2") cad.</div>
@@ -85,7 +85,7 @@
                         @foreach (var articolo in Model.Raccomandazioni)
                         {
                             <div class="rec-row">
-                                <img class="rec-thumb" src="@Url.Content(articolo.Foto)" alt="@articolo.Nome"/>
+                                <img class="rec-thumb" src="@Url.Content(articolo.ImageUrl)" alt="@articolo.Nome"/>
                                 <div class="rec-info">
                                     <div class="rec-name">@articolo.Nome</div>
                                     <div class="rec-price">€@articolo.Prezzo.ToString("F2")</div>

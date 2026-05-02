@@ -22,7 +22,7 @@ password=root";
 	{
 		List<Articolo> listaArticoli = new List<Articolo>();
 
-		string query = @"SELECT a.*, c.nomeCategoria, c.foto AS foto_categoria
+		string query = @"SELECT a.*, c.nomeCategoria, c.imageUrl AS foto_categoria
                      FROM articoli a
                      JOIN categorie c ON a.idCategoria = c.id
                      ORDER BY a.id";
@@ -36,14 +36,13 @@ password=root";
 			{
 				IdCategoria = (int)reader["idCategoria"],
 				Nome = (string)reader["nomeCategoria"],
-				PercorsoFoto = (string)reader["foto_categoria"]
+				ImageUrl = (string)reader["foto_categoria"]
 			};
 
 			Articolo articolo = new Articolo()
 			{
 				IdArticolo = (int)reader["id"],
 				Nome = (string)reader["nome"],
-				Foto = (string)reader["foto"],
 				Prezzo = (double)reader["prezzo_listino"],
 				NumeroOrdini = (int)reader["numero_ordini"],
 				Descrizione = (string)reader["descrizione"],
@@ -158,7 +157,6 @@ password=root";
 			{
 				IdCategoria = (int)reader["id"],
 				Nome = (string)reader["nomeCategoria"],
-				PercorsoFoto = (string)reader["foto"],
 				ImageUrl = rawUrl.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
 			};
 
@@ -173,7 +171,7 @@ password=root";
 	{
 		List<Articolo> listaArticoli = new List<Articolo>();
 
-		string query = @"SELECT a.*, c.nomeCategoria, c.foto AS foto_categoria
+		string query = @"SELECT a.*, c.nomeCategoria, c.imageUrl AS foto_categoria
                      FROM articoli a
                      JOIN categorie c ON a.idCategoria = c.id
                      WHERE a.idCategoria = @idCategoria
@@ -188,7 +186,7 @@ password=root";
 			{
 				IdCategoria = (int)reader["idCategoria"],
 				Nome = (string)reader["nomeCategoria"],
-				PercorsoFoto = (string)reader["foto"]
+				ImageUrl = ((string)reader["foto_categoria"]).Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
 			};
 			
 			/* per ottimizzare il peso delle foto cambio il suo url */
@@ -197,7 +195,6 @@ password=root";
 			{
 				IdArticolo = (int)reader["id"],
 				Nome = (string)reader["nome"],
-				Foto = (string)reader["foto"],
 				Prezzo = (double)reader["prezzo_listino"],
 				Descrizione = (string)reader["descrizione"],
 				NumeroOrdini = (int)reader["Numero_ordini"],
@@ -216,7 +213,7 @@ password=root";
 	{
 		Articolo articolo = null;
 
-		string query = @"SELECT a.*, c.nomeCategoria, c.foto AS foto_categoria
+		string query = @"SELECT a.*, c.nomeCategoria, c.imageUrl AS foto_categoria
 FROM articoli a
 JOIN categorie c ON a.idCategoria = c.id
 WHERE a.id = @id;";
@@ -230,7 +227,7 @@ WHERE a.id = @id;";
 			{
 				IdCategoria = (int)reader["idCategoria"],
 				Nome = (string)reader["nomeCategoria"],
-				PercorsoFoto = (string)reader["foto"]
+				ImageUrl = ((string)reader["foto_categoria"]).Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
 			};
 
 			/* per ottimizzare il peso delle foto cambio il suo url */
@@ -239,7 +236,6 @@ WHERE a.id = @id;";
 			{
 				IdArticolo = (int)reader["id"],
 				Nome = (string)reader["nome"],
-				Foto = (string)reader["foto"],
 				Prezzo = (double)reader["prezzo_listino"],
 				Descrizione = (string)reader["descrizione"],
 				NumeroOrdini = (int)reader["Numero_ordini"],
@@ -289,7 +285,7 @@ GROUP BY c.id, c.nomeCategoria";
 	{
 		List<Articolo> classifica = new List<Articolo>();
 
-		string query = @"SELECT a.*, c.nomeCategoria, c.foto AS foto_categoria
+		string query = @"SELECT a.*, c.nomeCategoria, c.imageUrl AS foto_categoria
                      FROM articoli a
                      JOIN categorie c ON a.idCategoria = c.id
                      ORDER BY a.numero_ordini DESC";
@@ -301,18 +297,15 @@ GROUP BY c.id, c.nomeCategoria";
 			Categoria categoria = new Categoria()
 			{
 				IdCategoria = (int)reader["idCategoria"],
-				Nome = (string)reader["nomeCategoria"],
-				PercorsoFoto = (string)reader["foto_categoria"]
+				Nome = (string)reader["nomeCategoria"]
 			};
 
 			Articolo articolo = new Articolo()
 			{
 				IdArticolo = (int)reader["id"],
 				Nome = (string)reader["nome"],
-				Foto = (string)reader["foto"],
 				Prezzo = (double)reader["prezzo_listino"],
 				NumeroOrdini = (int)reader["numero_ordini"],
-				Descrizione = (string)reader["descrizione"],
 				Categoria = categoria
 			};
 
@@ -327,11 +320,10 @@ GROUP BY c.id, c.nomeCategoria";
 	//numero_ordini = 0, perchè se è un articolo nuovo nessuno può averlo mai ordinato
 	public void AggiungiArticolo(Articolo articolo)
 	{
-		string query = @"INSERT INTO articoli(nome,foto,prezzo_listino,numero_ordini,idCategoria,descrizione,imageUrl)
-VALUES (@nome,@foto,@prezzo_listino,@numero_ordini,@idCategoria,@descrizione,@imageUrl)";
+		string query = @"INSERT INTO articoli(nome,prezzo_listino,numero_ordini,idCategoria,descrizione,imageUrl)
+VALUES (@nome,@prezzo_listino,@numero_ordini,@idCategoria,@descrizione,@imageUrl)";
 		MySqlCommand command = new MySqlCommand(query, _connection);
 		command.Parameters.AddWithValue("@nome", articolo.Nome);
-		command.Parameters.AddWithValue("@foto", articolo.Foto);
 		command.Parameters.AddWithValue("@prezzo_listino", articolo.Prezzo);
 		command.Parameters.AddWithValue("@numero_ordini", articolo.NumeroOrdini);
 		command.Parameters.AddWithValue("@idCategoria", articolo.Categoria.IdCategoria);
@@ -380,14 +372,15 @@ WHERE id = @id";
 		}
 	}
 
+	//ATTENZIONE DA RIVEDERE!!
 	public void ModificaFotoArticolo(int id, string foto)
 	{
 		string query = @"UPDATE articoli
-SET foto = @foto
+SET imageUrl = @imageUrl
 WHERE id = @id";
 		MySqlCommand command = new MySqlCommand(query, _connection);
 		command.Parameters.AddWithValue("@id", id);
-		command.Parameters.AddWithValue("@foto", foto);
+		command.Parameters.AddWithValue("@imageUrl", foto);
 
 		//DA FARE:
 		//se errore e/o articolo non trovato fare errore a schermo
@@ -512,7 +505,7 @@ WHERE id = @idCategoria";
 			{
 				IdCategoria = (int)reader["id"],
 				Nome = (string)reader["nomeCategoria"],
-				PercorsoFoto = (string)reader["foto"],
+				ImageUrl = ((string)reader["imageUrl"]).Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
 			};
 		}
 

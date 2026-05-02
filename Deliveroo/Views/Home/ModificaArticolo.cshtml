@@ -53,11 +53,19 @@
                         <!--Si modifica solo il percorso della foto per ora-->
                         <form method="post"
                               asp-action="ModificaFotoArticolo"
-                              asp-route-id="@art.IdArticolo">
+                              asp-route-id="@art.IdArticolo"
+                              enctype="multipart/form-data">
 
                             <!--questo input passa la ModificaFotoArticolo il nuovo percorso della foto-->
-                            <input type="text" name="percorsoFoto" value="@art.Foto"/>
-                            <input type="submit" name="SubmitPercorsoFoto" value="EDIT" class="btn btn-primary"/>
+                            <img src="@art.ImageUrl"/>
+                            <input type="file" 
+                                   name="percorsoFoto" 
+                                   value="@art.ImageUrl" 
+                                   required/>
+                            <input type="submit" 
+                                   name="SubmitPercorsoFoto" 
+                                   value="EDIT" 
+                                   class="btn btn-primary"/>
                         </form>
                     </div>
 
@@ -69,18 +77,27 @@
                                   asp-route-id="@art.IdArticolo">
 
                                 <!--questo input passa la ModificaNomeArticolo il nuovo nome-->
-                                <input type="text" name="nome" value="@art.Nome"/>
+                                <input type="text" 
+                                       name="nome" 
+                                       value="@art.Nome"
+                                       required/>
                                 <!-- su css fare simile a <h1>@art.Nome</h1>-->
-                                <input type="submit" name="SubmitNome" value="EDIT" class="btn btn-primary"/>
+                                <input type="submit" 
+                                       name="SubmitNome" 
+                                       value="EDIT" 
+                                       class="btn btn-primary"/>
                             </form>
 
                             <form method="post"
                                   asp-action="ModificaDescrizioneArticolo"
                                   asp-route-id="@art.IdArticolo">
                                 <textarea name="descrizione" id="txaModificaDescrizione"
-                                          style="width:200px; overflow:hidden; resize:none;">@art.Descrizione</textarea>
+                                          style="width:200px; overflow:hidden; resize:none;" required>@art.Descrizione</textarea>
                                 <!-- su css fare simile a <p>@art.Descrizione</p>-->
-                                <input type="submit" name="SubmitDescrizione" value="EDIT" class="btn btn-primary"/>
+                                <input type="submit" 
+                                       name="SubmitDescrizione" 
+                                       value="EDIT" 
+                                       class="btn btn-primary"/>
                             </form>
 
                             <div class="article-divider"></div>
@@ -97,10 +114,14 @@
                                        name="prezzo_listino"
                                        value="@art.Prezzo.ToString(System.Globalization.CultureInfo.InvariantCulture)"
                                        step="0.01"
-                                       min="0"/>
+                                       min="0"
+                                       required/>
 
                                 <!-- su css fare simile a <p class="prezzo">€ @art.Prezzo.ToString("0.00")</p>-->
-                                <input type="submit" name="SubmitPrezzo_listino" value="EDIT" class="btn btn-primary"/>
+                                <input type="submit" 
+                                       name="SubmitPrezzo_listino" 
+                                       value="EDIT" 
+                                       class="btn btn-primary"/>
                             </form>
 
                             <div class="article-divider"></div>
@@ -109,7 +130,9 @@
                             <form method="post"
                                   asp-action="ModificaCategoriaArticolo"
                                   asp-route-id="@art.IdArticolo">
-                                <select name="idcategoria" id="idcategoria">
+                                <select name="idcategoria" 
+                                        id="idcategoria"
+                                        required>
                                     @foreach (var c in categorie)
                                     {
                                         var isSelected = c.IdCategoria == art.Categoria.IdCategoria;
@@ -119,7 +142,10 @@
                                     }
                                 </select>
 
-                                <input type="submit" name="SubmitCategoria" value="EDIT" class="btn btn-primary"/>
+                                <input type="submit" 
+                                       name="SubmitCategoria" 
+                                       value="EDIT" 
+                                       class="btn btn-primary"/>
                             </form>
                         </div>
                     </div>
@@ -132,7 +158,10 @@
                 <form method="post"
                       asp-action="EliminaArticolo"
                       asp-route-id="@art.IdArticolo">
-                    <input type="submit" name="SubmitElimina" value="ELIMINA" class="btn btn-primary"/>
+                    <input type="submit" 
+                           name="SubmitElimina" 
+                           value="ELIMINA" 
+                           class="btn btn-primary"/>
                 </form>
             </div>
 

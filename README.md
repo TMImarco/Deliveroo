@@ -14,16 +14,15 @@ Dividiamo il progetto in tre macro argomenti:
 4. Modifica articolo (per ora si puo' modificare solo il percorso della foto)
 5. Aggiungi articolo (da vedere per le foto, per ora si inserisce solo il path + fare in modo che si debbano riempire tutti gli input)
 6. Vedere le associazioni di acquisto con le "confidence" in 'A' + refresh confidence
-7. Elimina articolo (insieme a modifica)
+7. Elimina articolo (insieme a modifica) + pagina di riepigolo prima di eliminare (fare pop up magari?)
 
 ### Funzioni da implementare:
 1. Grafica
-2. Modificare schermate di visualizzazione per modifica/elimina articolo (forse?)
-3. Modificare fase di riepilogo dopo avere eliminato un articolo e mettere una schermata di conferma con il riepilogo
-4. Modificare la visualizzazione delle associazioni
-5. Ottimizzazione caricamento immagini
-6. Modificare caricamento immagini (come ha fatto la stefania sulle sue pagine di Articoli e Categorie)
-7. Fare in modo che si una preview dell'immagine una volta carcata nella modifica articoli
+2. Modificare schermate per modificare/eliminare un articolo (forse?)
+3. Modificare la visualizzazione delle associazioni
+4. Fare in modo che si una preview dell'immagine una volta cambiata nella modifica articoli e aggiungi nuovo articolo
+5. Fare schermata di errori personalizzata per ogni metodo che puo' fallire (?)
+6. Migliorare visualizzazione del riepilogo prima di eliminare (fare pop-up forse? - come ha fatto stefi sul carrello)
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate (per ora?)
@@ -63,8 +62,14 @@ Dividiamo il progetto in tre macro argomenti:
 1. Caricare le foto su cloudinary
 2. Le immagini hanno un loro url specifico
 
+## Sistema di ottimizzazione immagini
+1. Ricavo l'url "crudo" cioe' la foto a qualita' (dimensioni) massima
+   var rawUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
+2. Rimpiazzio una parte dell'url con una stringa per ridurre le dimensione dell'immagine
+   var refindeUrl = rawUrl.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
+
 ### Note:
-1. Assicurarsi sempre se il TUO dumb del DB sia agggiornato. (MI raccomando Agapi. Grazie)
+1. Assicurarsi sempre se il TUO dumb del DB sia agggiornato. (Ultimo aggiornamento 02-04-2026)
 2. Come ho gestito l'eliminazione di un articolo:
    1. idArticolo e' FK con ON DELETE CASCADE nella tabella righe_dettaglio, quindi quando elimino un articolo si elimina tutte le righe_dettaglio che hanno la sua FK 
    2. idArticolo e' FK con ON DELETE CASCADE nella tabella associaizoni, quindi quando elimino un articolo si elimina anche tutte le righe di associazioni che hanno la sua FK

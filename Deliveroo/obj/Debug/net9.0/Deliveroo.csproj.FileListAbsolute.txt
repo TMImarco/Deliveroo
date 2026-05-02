@@ -48,7 +48,6 @@ C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\k7s0xnpoy4-c1fuffmnoz.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\6aho0goxy0-suea3wioi2.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\wt2bydwzjr-jyp3ugg74x.gz
-C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\u05j9f0ov9-c1fuffmnoz.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\6i9eyg65jm-j8l6hlhxg5.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\vyi5zaj6gz-g7sfjfaqad.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\daehgyzymw-61n19gt1b8.gz
@@ -257,3 +256,4 @@ C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\6aho0goxy0-eb77vkxvc0.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\bin\Debug\net9.0\CloudinaryDotNet.dll
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\u05j9f0ov9-pj0k7ot7r9.gz
