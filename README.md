@@ -33,11 +33,11 @@ Dividiamo il progetto in tre macro argomenti:
 2. Pagine di tutti gli Articoli e del singolo Articolo selezionato
 3. Aggiunta al Carrello + Pagina del Carrello
 4. Pagina del Riepilogo + Aggiungere l'ordine nel DB
-5. Fare le raccomandazioni
+5. Raccomandazioni nel Riepilogo
+6. Visualizzazione delle foto Categorie e Articoli
 
 ### Funzioni da implementare:
-1. Provare API per le foto 
-2. Migliorare la grafica (Utente e Admin) 
+1. Migliorare la grafica e codice (Utente e Admin) 
 
 ## Database
 ###### Programmatore: Agapi,Garbin
@@ -54,6 +54,10 @@ Dividiamo il progetto in tre macro argomenti:
 ### Funzioni da implementare
 1. Costrains totaleImporto (forse?):
    (La somma delle righe dettaglio di un certo ordine deve essere uguale all'importo totale scritto nella tabella articoli - per controllo che le righe dettaglio siano inserite correttamente)
+
+## Come funziona il caricamento immagini
+1. Caricare le foto su cloudinary
+2. Le immagini hanno un loro url specifico
 
 ### Note:
 1. Assicurarsi sempre se il TUO dumb del DB sia agggiornato. (MI raccomando Agapi. Grazie)
