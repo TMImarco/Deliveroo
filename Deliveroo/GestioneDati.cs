@@ -152,12 +152,14 @@ password=root";
 
 		while (reader.Read())
 		{
+			/* per ottimizzare il peso delle foto cambio il suo url */
+			var rawUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
 			Categoria cat = new()
 			{
 				IdCategoria = (int)reader["id"],
 				Nome = (string)reader["nomeCategoria"],
 				PercorsoFoto = (string)reader["foto"],
-				ImageUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"]
+				ImageUrl = rawUrl.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
 			};
 
 			listCategorie.Add(cat);
@@ -188,7 +190,9 @@ password=root";
 				Nome = (string)reader["nomeCategoria"],
 				PercorsoFoto = (string)reader["foto"]
 			};
-
+			
+			/* per ottimizzare il peso delle foto cambio il suo url */
+			var rawUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
 			Articolo articolo = new Articolo()
 			{
 				IdArticolo = (int)reader["id"],
@@ -198,7 +202,7 @@ password=root";
 				Descrizione = (string)reader["descrizione"],
 				NumeroOrdini = (int)reader["Numero_ordini"],
 				Categoria = categoria,
-				ImageUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"]
+				ImageUrl = rawUrl.Replace("/upload/", "/upload/w_200,h_200,c_fill,g_auto,f_auto,q_auto/")
 			};
 
 			listaArticoli.Add(articolo);
@@ -229,6 +233,8 @@ WHERE a.id = @id;";
 				PercorsoFoto = (string)reader["foto"]
 			};
 
+			/* per ottimizzare il peso delle foto cambio il suo url */
+			var rawUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
 			articolo = new Articolo()
 			{
 				IdArticolo = (int)reader["id"],
@@ -238,7 +244,7 @@ WHERE a.id = @id;";
 				Descrizione = (string)reader["descrizione"],
 				NumeroOrdini = (int)reader["Numero_ordini"],
 				Categoria = categoria,
-				ImageUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"]
+				ImageUrl = rawUrl.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
 			};
 		}
 

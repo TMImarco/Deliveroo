@@ -43,9 +43,10 @@ Articolo art = Model;
 
                 <div class="article-split">
                     <div class="article-left">
-                        <!-- <img src="@art.Foto" alt="@art.Nome" class="articolo-img" /> -->
-                        
-                        <img src="@(string.IsNullOrEmpty(art.ImageUrl) ? art.Foto : art.ImageUrl)" alt="@art.Nome"/>
+                        <img src="@art.ImageUrl" 
+                             alt="@art.Nome" 
+                             class="macro-image" 
+                             loading="lazy"/>
                     </div>
                     <div class="article-right">
                         <div class="article-right-content">

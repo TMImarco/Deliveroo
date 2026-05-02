@@ -50,4 +50,17 @@
       <AdditionalFiles Include="Views\Home\AssociazioniAdmin.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\antipasti.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\bar.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\bevande.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\contorni.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\dolci.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\hamburger.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\pizza.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\primi_piatti.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\secondi_piatti.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\sushi.jpg" />
+    </ItemGroup>
+
 </Project>

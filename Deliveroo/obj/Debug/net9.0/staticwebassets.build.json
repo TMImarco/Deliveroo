@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3AwCwzkMUJKSQJctAH0EGIbRlbR7DwwwEajqkPpSuLo=",
+  "Hash": "Q4MGOIgh9I+d18xWER55/QQFaUa/iuK9CxG9fHPVVYI=",
   "Source": "Deliveroo",
   "BasePath": "_content/Deliveroo",
   "Mode": "Default",
@@ -206,12 +206,12 @@
       "OriginalItemSpec": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\6aho0goxy0-suea3wioi2.gz",
+      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\6aho0goxy0-eb77vkxvc0.gz",
       "SourceId": "Deliveroo",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Deliveroo",
-      "RelativePath": "css/Articoli#[.{fingerprint=suea3wioi2}]?.css.gz",
+      "RelativePath": "css/Articoli#[.{fingerprint=eb77vkxvc0}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -220,8 +220,8 @@
       "RelatedAsset": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\Articoli.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "eg7y4ob4cz",
-      "Integrity": "whF74jqi5TrVJQKqe7cYPjrMitqkpyxLEeLGs+BQf3M=",
+      "Fingerprint": "5u4e80an61",
+      "Integrity": "A4jAxDzt5u63h9UGtfTUhWhu8QUYit6d5FPyhdeItfg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\Articoli.css"
@@ -1648,8 +1648,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "suea3wioi2",
-      "Integrity": "TBPY+Evf98OEPea3bePhWm68AaoIcSRjOzi2urlKI80=",
+      "Fingerprint": "eb77vkxvc0",
+      "Integrity": "NsA0BQwezd6CGZdjbcihyaFmubaHJehwebDiDOWk2w0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Articoli.css"
@@ -1905,237 +1905,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoArticoli\\cappuccino.jpg",
-      "SourceId": "Deliveroo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
-      "BasePath": "_content/Deliveroo",
-      "RelativePath": "FotoArticoli/cappuccino#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "s3hvd6vdvg",
-      "Integrity": "WJ0uynuTT44HyDFi4qCQeIvO9TeQ5JCukM2XDvOq0mA=",
-      "CopyToOutputDirectory": "Always",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\FotoArticoli\\cappuccino.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\antipasti.jpg",
-      "SourceId": "Deliveroo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
-      "BasePath": "_content/Deliveroo",
-      "RelativePath": "FotoCategoria/antipasti#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "lvj33t9ng4",
-      "Integrity": "n7GMPwoWWWaRPWU92GTgxDwowwCEO9Jk7ClplIGbcy0=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\FotoCategoria\\antipasti.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\bar.jpg",
-      "SourceId": "Deliveroo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
-      "BasePath": "_content/Deliveroo",
-      "RelativePath": "FotoCategoria/bar#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "49qh2vmg7o",
-      "Integrity": "KB3wRlOujetvLvHWlDWSwUzDuU0SQBpFM8dyD+DEuiA=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\FotoCategoria\\bar.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\bevande.jpg",
-      "SourceId": "Deliveroo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
-      "BasePath": "_content/Deliveroo",
-      "RelativePath": "FotoCategoria/bevande#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "1ik0xgq2p8",
-      "Integrity": "yYgFCUTfHPQasfjbwVLYhVQVJLL/1s9RK9suEozt5HE=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\FotoCategoria\\bevande.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\contorni.jpg",
-      "SourceId": "Deliveroo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
-      "BasePath": "_content/Deliveroo",
-      "RelativePath": "FotoCategoria/contorni#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "ge1armtbjq",
-      "Integrity": "aDe+m13xmHyJnigsHb/oeHAvgBeGjA4o4jiJ3RXIYFs=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\FotoCategoria\\contorni.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\dolci.jpg",
-      "SourceId": "Deliveroo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
-      "BasePath": "_content/Deliveroo",
-      "RelativePath": "FotoCategoria/dolci#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "q036fw0gf4",
-      "Integrity": "NrzjaAHzNqenMxVO8CttSueSGwTAPnbm5hgXjxQBEiE=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\FotoCategoria\\dolci.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\hamburger.jpg",
-      "SourceId": "Deliveroo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
-      "BasePath": "_content/Deliveroo",
-      "RelativePath": "FotoCategoria/hamburger#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "ydjimdglpo",
-      "Integrity": "WmOfn/SiNkuPVMtfXMp2k+w1lTTLLLdMwClNoQnM9f0=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\FotoCategoria\\hamburger.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\pizza.jpg",
-      "SourceId": "Deliveroo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
-      "BasePath": "_content/Deliveroo",
-      "RelativePath": "FotoCategoria/pizza#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "uvqgjo65gx",
-      "Integrity": "Gt8najN5eY4Xdt7ZEhn98Vr5wohu6TEr2e61aOTcq4Y=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\FotoCategoria\\pizza.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\primi_piatti.jpg",
-      "SourceId": "Deliveroo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
-      "BasePath": "_content/Deliveroo",
-      "RelativePath": "FotoCategoria/primi_piatti#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "ug4hrrx0im",
-      "Integrity": "IniVt5dPg6v2LALvjT4iG8x1xfo+/ioXW5Am5FJ6PJE=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\FotoCategoria\\primi_piatti.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\secondi_piatti.jpg",
-      "SourceId": "Deliveroo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
-      "BasePath": "_content/Deliveroo",
-      "RelativePath": "FotoCategoria/secondi_piatti#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "mla1bt5yhr",
-      "Integrity": "FsUjvbwe4YG8qdlo1ZW+fK4I8zbM6djmtZVnv/GDvbs=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\FotoCategoria\\secondi_piatti.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\sushi.jpg",
-      "SourceId": "Deliveroo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
-      "BasePath": "_content/Deliveroo",
-      "RelativePath": "FotoCategoria/sushi#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "c6787z4ief",
-      "Integrity": "VGl0VJ4fWss1K52Pe+3aDeU1JkvNtzrXDo6Uxw8nK6I=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\FotoCategoria\\sushi.jpg"
     },
     {
       "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\js\\site.js",
@@ -3422,12 +3191,12 @@
   "Endpoints": [
     {
       "Route": "css/Articoli.css",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\6aho0goxy0-suea3wioi2.gz",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\6aho0goxy0-eb77vkxvc0.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000935453695"
+          "Quality": "0.000920810313"
         }
       ],
       "ResponseHeaders": [
@@ -3437,15 +3206,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1068"
+          "Value": "1085"
         },
         {
           "Name": "ETag",
-          "Value": "\"whF74jqi5TrVJQKqe7cYPjrMitqkpyxLEeLGs+BQf3M=\""
+          "Value": "\"A4jAxDzt5u63h9UGtfTUhWhu8QUYit6d5FPyhdeItfg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 01 May 2026 15:28:53 GMT"
+          "Value": "Sat, 02 May 2026 10:19:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3465,13 +3234,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"TBPY+Evf98OEPea3bePhWm68AaoIcSRjOzi2urlKI80=\""
+          "Value": "W/\"NsA0BQwezd6CGZdjbcihyaFmubaHJehwebDiDOWk2w0=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-TBPY+Evf98OEPea3bePhWm68AaoIcSRjOzi2urlKI80="
+          "Value": "sha256-NsA0BQwezd6CGZdjbcihyaFmubaHJehwebDiDOWk2w0="
         }
       ]
     },
@@ -3486,7 +3255,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3065"
+          "Value": "3096"
         },
         {
           "Name": "Content-Type",
@@ -3494,11 +3263,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"TBPY+Evf98OEPea3bePhWm68AaoIcSRjOzi2urlKI80=\""
+          "Value": "\"NsA0BQwezd6CGZdjbcihyaFmubaHJehwebDiDOWk2w0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 01 May 2026 15:28:53 GMT"
+          "Value": "Sat, 02 May 2026 10:19:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3508,13 +3277,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-TBPY+Evf98OEPea3bePhWm68AaoIcSRjOzi2urlKI80="
+          "Value": "sha256-NsA0BQwezd6CGZdjbcihyaFmubaHJehwebDiDOWk2w0="
         }
       ]
     },
     {
       "Route": "css/Articoli.css.gz",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\6aho0goxy0-suea3wioi2.gz",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\6aho0goxy0-eb77vkxvc0.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3523,7 +3292,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1068"
+          "Value": "1085"
         },
         {
           "Name": "Content-Type",
@@ -3531,11 +3300,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"whF74jqi5TrVJQKqe7cYPjrMitqkpyxLEeLGs+BQf3M=\""
+          "Value": "\"A4jAxDzt5u63h9UGtfTUhWhu8QUYit6d5FPyhdeItfg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 01 May 2026 15:28:53 GMT"
+          "Value": "Sat, 02 May 2026 10:19:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3553,18 +3322,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-whF74jqi5TrVJQKqe7cYPjrMitqkpyxLEeLGs+BQf3M="
+          "Value": "sha256-A4jAxDzt5u63h9UGtfTUhWhu8QUYit6d5FPyhdeItfg="
         }
       ]
     },
     {
-      "Route": "css/Articoli.suea3wioi2.css",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\6aho0goxy0-suea3wioi2.gz",
+      "Route": "css/Articoli.eb77vkxvc0.css",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\6aho0goxy0-eb77vkxvc0.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000935453695"
+          "Quality": "0.000920810313"
         }
       ],
       "ResponseHeaders": [
@@ -3574,15 +3343,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1068"
+          "Value": "1085"
         },
         {
           "Name": "ETag",
-          "Value": "\"whF74jqi5TrVJQKqe7cYPjrMitqkpyxLEeLGs+BQf3M=\""
+          "Value": "\"A4jAxDzt5u63h9UGtfTUhWhu8QUYit6d5FPyhdeItfg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 01 May 2026 15:28:53 GMT"
+          "Value": "Sat, 02 May 2026 10:19:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3602,13 +3371,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"TBPY+Evf98OEPea3bePhWm68AaoIcSRjOzi2urlKI80=\""
+          "Value": "W/\"NsA0BQwezd6CGZdjbcihyaFmubaHJehwebDiDOWk2w0=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "suea3wioi2"
+          "Value": "eb77vkxvc0"
         },
         {
           "Name": "label",
@@ -3616,12 +3385,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-TBPY+Evf98OEPea3bePhWm68AaoIcSRjOzi2urlKI80="
+          "Value": "sha256-NsA0BQwezd6CGZdjbcihyaFmubaHJehwebDiDOWk2w0="
         }
       ]
     },
     {
-      "Route": "css/Articoli.suea3wioi2.css",
+      "Route": "css/Articoli.eb77vkxvc0.css",
       "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\Articoli.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3631,7 +3400,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3065"
+          "Value": "3096"
         },
         {
           "Name": "Content-Type",
@@ -3639,11 +3408,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"TBPY+Evf98OEPea3bePhWm68AaoIcSRjOzi2urlKI80=\""
+          "Value": "\"NsA0BQwezd6CGZdjbcihyaFmubaHJehwebDiDOWk2w0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 01 May 2026 15:28:53 GMT"
+          "Value": "Sat, 02 May 2026 10:19:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3653,7 +3422,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "suea3wioi2"
+          "Value": "eb77vkxvc0"
         },
         {
           "Name": "label",
@@ -3661,13 +3430,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-TBPY+Evf98OEPea3bePhWm68AaoIcSRjOzi2urlKI80="
+          "Value": "sha256-NsA0BQwezd6CGZdjbcihyaFmubaHJehwebDiDOWk2w0="
         }
       ]
     },
     {
-      "Route": "css/Articoli.suea3wioi2.css.gz",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\6aho0goxy0-suea3wioi2.gz",
+      "Route": "css/Articoli.eb77vkxvc0.css.gz",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\6aho0goxy0-eb77vkxvc0.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3676,7 +3445,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1068"
+          "Value": "1085"
         },
         {
           "Name": "Content-Type",
@@ -3684,11 +3453,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"whF74jqi5TrVJQKqe7cYPjrMitqkpyxLEeLGs+BQf3M=\""
+          "Value": "\"A4jAxDzt5u63h9UGtfTUhWhu8QUYit6d5FPyhdeItfg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 01 May 2026 15:28:53 GMT"
+          "Value": "Sat, 02 May 2026 10:19:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3706,7 +3475,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "suea3wioi2"
+          "Value": "eb77vkxvc0"
         },
         {
           "Name": "label",
@@ -3714,7 +3483,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-whF74jqi5TrVJQKqe7cYPjrMitqkpyxLEeLGs+BQf3M="
+          "Value": "sha256-A4jAxDzt5u63h9UGtfTUhWhu8QUYit6d5FPyhdeItfg="
         }
       ]
     },
@@ -7887,908 +7656,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0="
-        }
-      ]
-    },
-    {
-      "Route": "FotoArticoli/cappuccino.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoArticoli\\cappuccino.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "736401"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"WJ0uynuTT44HyDFi4qCQeIvO9TeQ5JCukM2XDvOq0mA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 09 Apr 2026 08:20:47 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-WJ0uynuTT44HyDFi4qCQeIvO9TeQ5JCukM2XDvOq0mA="
-        }
-      ]
-    },
-    {
-      "Route": "FotoArticoli/cappuccino.s3hvd6vdvg.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoArticoli\\cappuccino.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "736401"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"WJ0uynuTT44HyDFi4qCQeIvO9TeQ5JCukM2XDvOq0mA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 09 Apr 2026 08:20:47 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "s3hvd6vdvg"
-        },
-        {
-          "Name": "label",
-          "Value": "FotoArticoli/cappuccino.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-WJ0uynuTT44HyDFi4qCQeIvO9TeQ5JCukM2XDvOq0mA="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/antipasti.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\antipasti.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2751990"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"n7GMPwoWWWaRPWU92GTgxDwowwCEO9Jk7ClplIGbcy0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 17:59:20 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-n7GMPwoWWWaRPWU92GTgxDwowwCEO9Jk7ClplIGbcy0="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/antipasti.lvj33t9ng4.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\antipasti.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2751990"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"n7GMPwoWWWaRPWU92GTgxDwowwCEO9Jk7ClplIGbcy0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 17:59:20 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "lvj33t9ng4"
-        },
-        {
-          "Name": "label",
-          "Value": "FotoCategoria/antipasti.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-n7GMPwoWWWaRPWU92GTgxDwowwCEO9Jk7ClplIGbcy0="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/bar.49qh2vmg7o.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\bar.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "354431"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"KB3wRlOujetvLvHWlDWSwUzDuU0SQBpFM8dyD+DEuiA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 17:41:45 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "49qh2vmg7o"
-        },
-        {
-          "Name": "label",
-          "Value": "FotoCategoria/bar.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-KB3wRlOujetvLvHWlDWSwUzDuU0SQBpFM8dyD+DEuiA="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/bar.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\bar.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "354431"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"KB3wRlOujetvLvHWlDWSwUzDuU0SQBpFM8dyD+DEuiA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 17:41:45 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-KB3wRlOujetvLvHWlDWSwUzDuU0SQBpFM8dyD+DEuiA="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/bevande.1ik0xgq2p8.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\bevande.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1267175"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"yYgFCUTfHPQasfjbwVLYhVQVJLL/1s9RK9suEozt5HE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 17:59:50 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "1ik0xgq2p8"
-        },
-        {
-          "Name": "label",
-          "Value": "FotoCategoria/bevande.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-yYgFCUTfHPQasfjbwVLYhVQVJLL/1s9RK9suEozt5HE="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/bevande.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\bevande.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1267175"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"yYgFCUTfHPQasfjbwVLYhVQVJLL/1s9RK9suEozt5HE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 17:59:50 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-yYgFCUTfHPQasfjbwVLYhVQVJLL/1s9RK9suEozt5HE="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/contorni.ge1armtbjq.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\contorni.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3787869"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"aDe+m13xmHyJnigsHb/oeHAvgBeGjA4o4jiJ3RXIYFs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 18:00:34 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ge1armtbjq"
-        },
-        {
-          "Name": "label",
-          "Value": "FotoCategoria/contorni.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-aDe+m13xmHyJnigsHb/oeHAvgBeGjA4o4jiJ3RXIYFs="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/contorni.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\contorni.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3787869"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"aDe+m13xmHyJnigsHb/oeHAvgBeGjA4o4jiJ3RXIYFs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 18:00:34 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-aDe+m13xmHyJnigsHb/oeHAvgBeGjA4o4jiJ3RXIYFs="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/dolci.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\dolci.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1595329"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"NrzjaAHzNqenMxVO8CttSueSGwTAPnbm5hgXjxQBEiE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 18:01:01 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-NrzjaAHzNqenMxVO8CttSueSGwTAPnbm5hgXjxQBEiE="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/dolci.q036fw0gf4.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\dolci.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1595329"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"NrzjaAHzNqenMxVO8CttSueSGwTAPnbm5hgXjxQBEiE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 18:01:01 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "q036fw0gf4"
-        },
-        {
-          "Name": "label",
-          "Value": "FotoCategoria/dolci.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-NrzjaAHzNqenMxVO8CttSueSGwTAPnbm5hgXjxQBEiE="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/hamburger.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\hamburger.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1637777"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"WmOfn/SiNkuPVMtfXMp2k+w1lTTLLLdMwClNoQnM9f0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 18:01:20 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-WmOfn/SiNkuPVMtfXMp2k+w1lTTLLLdMwClNoQnM9f0="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/hamburger.ydjimdglpo.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\hamburger.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1637777"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"WmOfn/SiNkuPVMtfXMp2k+w1lTTLLLdMwClNoQnM9f0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 18:01:20 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ydjimdglpo"
-        },
-        {
-          "Name": "label",
-          "Value": "FotoCategoria/hamburger.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-WmOfn/SiNkuPVMtfXMp2k+w1lTTLLLdMwClNoQnM9f0="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/pizza.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\pizza.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2471355"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Gt8najN5eY4Xdt7ZEhn98Vr5wohu6TEr2e61aOTcq4Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 18:01:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Gt8najN5eY4Xdt7ZEhn98Vr5wohu6TEr2e61aOTcq4Y="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/pizza.uvqgjo65gx.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\pizza.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2471355"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Gt8najN5eY4Xdt7ZEhn98Vr5wohu6TEr2e61aOTcq4Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 18:01:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "uvqgjo65gx"
-        },
-        {
-          "Name": "label",
-          "Value": "FotoCategoria/pizza.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Gt8najN5eY4Xdt7ZEhn98Vr5wohu6TEr2e61aOTcq4Y="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/primi_piatti.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\primi_piatti.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1845798"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"IniVt5dPg6v2LALvjT4iG8x1xfo+/ioXW5Am5FJ6PJE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 18:02:10 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-IniVt5dPg6v2LALvjT4iG8x1xfo+/ioXW5Am5FJ6PJE="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/primi_piatti.ug4hrrx0im.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\primi_piatti.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1845798"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"IniVt5dPg6v2LALvjT4iG8x1xfo+/ioXW5Am5FJ6PJE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 18:02:10 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ug4hrrx0im"
-        },
-        {
-          "Name": "label",
-          "Value": "FotoCategoria/primi_piatti.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-IniVt5dPg6v2LALvjT4iG8x1xfo+/ioXW5Am5FJ6PJE="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/secondi_piatti.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\secondi_piatti.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1749107"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"FsUjvbwe4YG8qdlo1ZW+fK4I8zbM6djmtZVnv/GDvbs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 18:02:33 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-FsUjvbwe4YG8qdlo1ZW+fK4I8zbM6djmtZVnv/GDvbs="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/secondi_piatti.mla1bt5yhr.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\secondi_piatti.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1749107"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"FsUjvbwe4YG8qdlo1ZW+fK4I8zbM6djmtZVnv/GDvbs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 08 Apr 2026 18:02:33 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "mla1bt5yhr"
-        },
-        {
-          "Name": "label",
-          "Value": "FotoCategoria/secondi_piatti.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-FsUjvbwe4YG8qdlo1ZW+fK4I8zbM6djmtZVnv/GDvbs="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/sushi.c6787z4ief.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\sushi.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1732145"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"VGl0VJ4fWss1K52Pe+3aDeU1JkvNtzrXDo6Uxw8nK6I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 04 Apr 2026 11:02:15 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "c6787z4ief"
-        },
-        {
-          "Name": "label",
-          "Value": "FotoCategoria/sushi.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-VGl0VJ4fWss1K52Pe+3aDeU1JkvNtzrXDo6Uxw8nK6I="
-        }
-      ]
-    },
-    {
-      "Route": "FotoCategoria/sushi.jpg",
-      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\FotoCategoria\\sushi.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1732145"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"VGl0VJ4fWss1K52Pe+3aDeU1JkvNtzrXDo6Uxw8nK6I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 04 Apr 2026 11:02:15 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-VGl0VJ4fWss1K52Pe+3aDeU1JkvNtzrXDo6Uxw8nK6I="
         }
       ]
     },

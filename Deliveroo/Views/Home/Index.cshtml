@@ -16,13 +16,10 @@ Il numero per fila può essere modificato all'interno dell site.css nell'apposit
                 <div class="macro-item">
                     <a asp-controller="Home" asp-action="Articoli" asp-route-idCategoria="@categoria.IdCategoria" class="macro-main-box">
                         <div class="macro-img-wrap">
-                            <!-- PRIMA <img src="@categoria.PercorsoFoto" alt="@categoria.Nome" class="macro-image" /> -->
-                            
-                            <img src="@categoria.ImageUrl" alt="@categoria.ImageUrl" class="macro-image" />
-                            
-                            <!-- API 
-                            <img src="@(string.IsNullOrEmpty(categoria.ImageUrl) ? categoria.PercorsoFoto : categoria.ImageUrl)" alt="@categoria.Nome" class="macro-image" />-->
-                            
+                            <img src="@categoria.ImageUrl" 
+                                 alt="@categoria.Nome" 
+                                 class="macro-image" 
+                                 loading="lazy"/>
                         </div>
                         <div class="macro-info">
                             <span>@categoria.Nome</span>
