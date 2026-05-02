@@ -17,6 +17,8 @@ builder.Services.AddSession(options =>
 builder.Services.AddScoped<GestioneDati>();
 //builder.Services.AddScoped<GestioneCarrello>();
 
+builder.Services.AddSingleton<CloudinaryService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

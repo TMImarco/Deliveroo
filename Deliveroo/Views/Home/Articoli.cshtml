@@ -24,7 +24,7 @@
                 var isActive = currentCategoria == cat.Nome ? "active" : "";
                 <li class="nav-item">
                     <a class="nav-link text-dark @isActive" 
-                       asp-controller="Home" 
+                       asp-controller="Home"
                        asp-action="Articoli" 
                        asp-route-idCategoria="@cat.IdCategoria">
                         @cat.Nome

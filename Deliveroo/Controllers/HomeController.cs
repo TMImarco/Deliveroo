@@ -11,6 +11,8 @@ public class HomeController : Controller
 	private readonly ILogger<HomeController> _logger;
 	private readonly IConfiguration _configuration;
 	private readonly GestioneDati _gestioneDati;
+	
+	private readonly CloudinaryService _cloudinaryService;
 
 	private readonly GestioneCarrello _gestioneCarrello;
 	private int contatore; //variabile che non serve a niente ma esempio con contextAccessore
@@ -18,7 +20,7 @@ public class HomeController : Controller
 	private readonly IHttpContextAccessor _contextAccessor;
 
 	public HomeController(ILogger<HomeController> logger, IConfiguration configuration,
-		IHttpContextAccessor contextAccessor)
+		IHttpContextAccessor contextAccessor, CloudinaryService cloudinaryService)
 	{
 		_logger = logger;
 		_configuration = configuration; //NON RIMUOVERE (file di configurazione)
@@ -26,6 +28,7 @@ public class HomeController : Controller
 		_gestioneDati = new GestioneDati();
 		contatore = 0;
 		_gestioneCarrello = new GestioneCarrello(_contextAccessor.HttpContext.Session);
+		_cloudinaryService = cloudinaryService;
 	}
 
 	//-----------------------------------------PAGINA ARTICOLI------------------------------------------------
@@ -323,7 +326,9 @@ public class HomeController : Controller
 		//<input type="text" id="nome" name="nome"> il contenuto di questa text box andra' in Nome di AggiungiNuovoArticoloAdminViewModel (e' case insensitive)
 
 		var categoriaDb = _gestioneDati.GetCategoria(model.IdCategoria);
-
+		var imageUrl = _cloudinaryService.UploadImage(model.UrlFoto);
+		var nomeImmagine = model.UrlFoto.FileName;
+		
 		Categoria cat = new Categoria()
 		{
 			IdCategoria = categoriaDb.IdCategoria,
@@ -335,11 +340,12 @@ public class HomeController : Controller
 		{
 			IdArticolo = -1,
 			Nome = model.Nome,
-			Foto = model.Foto,
+			Foto = nomeImmagine,
 			Descrizione = model.Descrizione,
 			Prezzo = model.Prezzo,
 			NumeroOrdini = 0,
 			Categoria = cat,
+			ImageUrl = imageUrl
 		};
 
 		// Ora puoi usare i valori per salvare l'articolo nel DB

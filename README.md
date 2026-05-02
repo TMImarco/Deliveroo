@@ -21,6 +21,9 @@ Dividiamo il progetto in tre macro argomenti:
 2. Modificare schermate di visualizzazione per modifica/elimina articolo (forse?)
 3. Modificare fase di riepilogo dopo avere eliminato un articolo e mettere una schermata di conferma con il riepilogo
 4. Modificare la visualizzazione delle associazioni
+5. Ottimizzazione caricamento immagini
+6. Modificare caricamento immagini (come ha fatto la stefania sulle sue pagine di Articoli e Categorie)
+7. Fare in modo che si una preview dell'immagine una volta carcata nella modifica articoli
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate (per ora?)
@@ -37,7 +40,7 @@ Dividiamo il progetto in tre macro argomenti:
 6. Visualizzazione delle foto Categorie e Articoli
 
 ### Funzioni da implementare:
-1. Migliorare la grafica e codice (Utente e Admin) 
+1. Migliorare la grafica e codice (Utente e Admin)
 
 ## Database
 ###### Programmatore: Agapi,Garbin
@@ -54,6 +57,7 @@ Dividiamo il progetto in tre macro argomenti:
 ### Funzioni da implementare
 1. Costrains totaleImporto (forse?):
    (La somma delle righe dettaglio di un certo ordine deve essere uguale all'importo totale scritto nella tabella articoli - per controllo che le righe dettaglio siano inserite correttamente)
+2. Eliminare la colonna foto dalla tabella articoli e anche da categoria (modificare tutti i metodi crud)
 
 ### Note:
 1. Assicurarsi sempre se il TUO dumb del DB sia agggiornato. (MI raccomando Agapi. Grazie)

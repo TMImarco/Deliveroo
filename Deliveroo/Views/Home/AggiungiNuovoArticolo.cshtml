@@ -16,12 +16,13 @@
                 <a asp-action="IndexAdmin" class="btn btn-primary">ANNULLA</a>
 
                 <form method="post"
-                      asp-action="AggiungiNuovoArticolo">
+                      asp-action="AggiungiNuovoArticolo"
+                      enctype="multipart/form-data">
                     <div class="article-split">
                         <div class="article-left">
                             <!-- INPUT PATH per FOTO -->
                             <h3>FOTO</h3>
-                            <input type="text" id="foto" name="foto">
+                            <input type="file" id="UrlFoto" name="UrlFoto">
                         </div>
 
                         <!--da sostituire con bottoni per aggiungere tutti gli elementi + aggiungere categoria-->

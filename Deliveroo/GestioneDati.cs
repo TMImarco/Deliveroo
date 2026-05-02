@@ -327,8 +327,8 @@ GROUP BY c.id, c.nomeCategoria";
 	//numero_ordini = 0, perchè se è un articolo nuovo nessuno può averlo mai ordinato
 	public void AggiungiArticolo(Articolo articolo)
 	{
-		string query = @"INSERT INTO articoli(nome,foto,prezzo_listino,numero_ordini,idCategoria,descrizione)
-VALUES (@nome,@foto,@prezzo_listino,@numero_ordini,@idCategoria,@descrizione)";
+		string query = @"INSERT INTO articoli(nome,foto,prezzo_listino,numero_ordini,idCategoria,descrizione,imageUrl)
+VALUES (@nome,@foto,@prezzo_listino,@numero_ordini,@idCategoria,@descrizione,@imageUrl)";
 		MySqlCommand command = new MySqlCommand(query, _connection);
 		command.Parameters.AddWithValue("@nome", articolo.Nome);
 		command.Parameters.AddWithValue("@foto", articolo.Foto);
@@ -336,6 +336,7 @@ VALUES (@nome,@foto,@prezzo_listino,@numero_ordini,@idCategoria,@descrizione)";
 		command.Parameters.AddWithValue("@numero_ordini", articolo.NumeroOrdini);
 		command.Parameters.AddWithValue("@idCategoria", articolo.Categoria.IdCategoria);
 		command.Parameters.AddWithValue("@descrizione", articolo.Descrizione);
+		command.Parameters.AddWithValue("@imageUrl", articolo.ImageUrl);
 
 		//DA FARE:
 		//che quando c'è un errore nell'esecuzione della query venga un errore a schermo
