@@ -39,7 +39,10 @@ Dividiamo il progetto in tre macro argomenti:
 6. Visualizzazione delle foto Categorie e Articoli
 
 ### Funzioni da implementare:
-1. Migliorare la grafica e codice (Utente e Admin)
+1. Sistemare il codice (es: dividere i vari controller come HomeController, ArticoliController ecc...)
+2. Implementare i controlli di digitazione nel Riepilogo quando l'Utente compila i campi ("Nome" contiene solo lettere, "Telefono" solo numeri con max caratteri ecc...)
+3. ???Pagina del pagamento (con inserimento dei dati della carta ecc...)
+4. ???Raccomandazioni anche quando si sceglie l'articolo da inserire nel carrello ("Best Paired With" ecc...)
 
 ## Database
 ###### Programmatore: Agapi,Garbin
@@ -69,7 +72,7 @@ Dividiamo il progetto in tre macro argomenti:
    var refindeUrl = rawUrl.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
 
 ### Note:
-1. Assicurarsi sempre se il TUO dumb del DB sia agggiornato. (Ultimo aggiornamento 02-04-2026)
+1. Assicurarsi sempre se il TUO dumb del DB sia agggiornato. (Ultimo aggiornamento 02-05-2026)
 2. Come ho gestito l'eliminazione di un articolo:
    1. idArticolo e' FK con ON DELETE CASCADE nella tabella righe_dettaglio, quindi quando elimino un articolo si elimina tutte le righe_dettaglio che hanno la sua FK 
    2. idArticolo e' FK con ON DELETE CASCADE nella tabella associaizoni, quindi quando elimino un articolo si elimina anche tutte le righe di associazioni che hanno la sua FK
