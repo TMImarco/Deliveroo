@@ -12,16 +12,22 @@
 
 <div class="text-center"><!--per centrare il testo-->
     
+    <!-- BOTTONE BACK -->
+    <a class="nav-arrow back-btn"
+       asp-action="Index">
+        ↵
+    </a>
+    
     <form method="post"
           asp-controller="Home"
           asp-action="LoginAdmin">
-        
+
         <p class="testo-rosso">@ViewData["errore"]</p>
-        
+
         <div class="mt-2"><!--mt-=margine top(pargine superiore)di 2-->
             <!--from-group -->
             <label asp-for="Username">Username</label><!--per i computer per i ceci che parlano,perche leggono ad alta voce-->
-            <input asp-for="Username" class="form-control" /><!--se voglio che il nome sia obbligatorio-->
+            <input asp-for="Username" class="form-control"/><!--se voglio che il nome sia obbligatorio-->
         </div>
         <div class="mt-2" style="margin-bottom: 10px;"><!--mt-=margine top(margine superiore)di 2-->
             <!--from-group -->
@@ -33,3 +39,8 @@
         </p>
     </form> 
 </div>
+
+@section Styles
+{
+    <link rel="stylesheet" href="/cssAdmin/Login.css" />
+}

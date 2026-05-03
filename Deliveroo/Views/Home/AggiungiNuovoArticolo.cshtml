@@ -8,6 +8,12 @@
 <div class="macro-section">
     <div class="container">
         <div class="page-split">
+            
+            <!-- BOTTONE BACK -->
+            <a class="nav-arrow back-btn"
+               asp-action="IndexAdmin">
+                ↵
+            </a>
 
             <!-- SINISTRA (da togliere e centrare)-->
             <div class="left-col">
@@ -22,8 +28,8 @@
                         <div class="article-left">
                             <!-- INPUT PATH per FOTO -->
                             <h3>FOTO</h3>
-                            <input type="file" 
-                                   id="UrlFoto" 
+                            <input type="file"
+                                   id="UrlFoto"
                                    name="UrlFoto"
                                    required>
                         </div>
@@ -34,8 +40,8 @@
                                 <!-- nome articolo (h1) -->
                                 <!--INPUT NOME-->
                                 <h3>NOME</h3>
-                                <input type="text" 
-                                       id="nome" 
+                                <input type="text"
+                                       id="nome"
                                        name="nome"
                                        required>
 
@@ -50,10 +56,10 @@
                                 <!-- prezzo articolo (<p class="prezzo">) -->
                                 <!--INPUT PREZZO-->
                                 <h3>PREZZO</h3>
-                                <input type="number" 
-                                       id="prezzo" 
-                                       name="prezzo" 
-                                       step="0.01" 
+                                <input type="number"
+                                       id="prezzo"
+                                       name="prezzo"
+                                       step="0.01"
                                        min="0"
                                        required>
 
@@ -61,8 +67,8 @@
 
                                 <!--INPUT CATEGORIA-->
                                 <h3>CATEGORIA</h3>
-                                <select name="idcategoria" 
-                                        id="idcategoria" 
+                                <select name="idcategoria"
+                                        id="idcategoria"
                                         required>
                                     <option value=""></option>
                                     @foreach (var c in Model)
@@ -71,8 +77,8 @@
                                     }
                                 </select>
                             </div>
-                            <input type="submit" 
-                                   value="FINE" 
+                            <input type="submit"
+                                   value="FINE"
                                    class="add-btn"/>
                         </div>
                     </div>
@@ -85,7 +91,7 @@
 <!--da modificare-->
 
 @section Styles {
-    <link rel="stylesheet" href="/cssAdmin/ModificaArticolo.css"/>
+    <link rel="stylesheet" href="/cssAdmin/AggiungiArticolo.css"/>
 }
 @section Scripts
 {

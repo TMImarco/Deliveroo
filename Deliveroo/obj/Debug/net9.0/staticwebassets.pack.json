@@ -5,8 +5,16 @@
       "PackagePath": "staticwebassets\\Deliveroo.6nuyz1lmyp.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\cssAdmin\\AggiungiArticolo.css",
+      "PackagePath": "staticwebassets\\cssAdmin\\AggiungiArticolo.css"
+    },
+    {
       "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\cssAdmin\\Articoli.css",
       "PackagePath": "staticwebassets\\cssAdmin\\Articoli.css"
+    },
+    {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\cssAdmin\\Associazioni.css",
+      "PackagePath": "staticwebassets\\cssAdmin\\Associazioni.css"
     },
     {
       "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\cssAdmin\\Categorie.css",
@@ -19,6 +27,10 @@
     {
       "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\cssAdmin\\Index.css",
       "PackagePath": "staticwebassets\\cssAdmin\\Index.css"
+    },
+    {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\cssAdmin\\Login.css",
+      "PackagePath": "staticwebassets\\cssAdmin\\Login.css"
     },
     {
       "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\cssAdmin\\ModificaArticolo.css",

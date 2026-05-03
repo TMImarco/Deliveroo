@@ -38,13 +38,20 @@
 <!-- TUTTI GLI ARTICOLI -->
 <div class="macro-section">
     <div class="container">
+        
+        <!-- BOTTONE BACK -->
+        <a class="nav-arrow back-btn"
+           asp-action="Index">
+            ↵
+        </a>
+        
         <div class="macro-grid">
             @foreach (var articolo in Model)
             {
                 <a asp-controller="Home" asp-action="InserimentoArticolo" asp-route-id="@articolo.IdArticolo" class="articolo-card">
                     <div class="articolo-img-wrap">
-                        <img src="@articolo.ImageUrl" 
-                             alt="@articolo.Nome" 
+                        <img src="@articolo.ImageUrl"
+                             alt="@articolo.Nome"
                              class="macro-image"/>
                     </div>
                     <div class="articolo-info">

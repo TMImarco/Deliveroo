@@ -6,6 +6,13 @@
 }
 
 <div class="container">
+    
+    <!-- BOTTONE BACK -->
+    <a class="nav-arrow back-btn"
+       asp-action="IndexAdmin">
+        ↵
+    </a>
+    
     <h1>SCEGLI ASSOCIAZIONIE</h1>
     <form method="post" asp-action="AssociazioniAdmin">
         <select name="IdArticoloSelezionato" id="idArticolo">
@@ -78,4 +85,5 @@
 {
     <!--stile sheet per le data tables-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="/cssAdmin/Associazioni.css"/>
 }

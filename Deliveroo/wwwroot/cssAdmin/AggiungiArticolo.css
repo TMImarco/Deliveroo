@@ -203,7 +203,7 @@
     background-color: #333;
 }
 
-/*----------- GRAFICA DEL BOTTON CARRELLO -----------
+/*----------- GRAFICA DEL BOTTON CARRELLO -----------*/
 .cart-fab {
     position: fixed;
     bottom: 1.8rem;
@@ -243,4 +243,4 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}*/
+}
