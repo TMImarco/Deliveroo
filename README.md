@@ -37,12 +37,12 @@ Dividiamo il progetto in tre macro argomenti:
 4. Pagina del Riepilogo + Aggiungere l'ordine nel DB
 5. Raccomandazioni nel Riepilogo
 6. Visualizzazione delle foto Categorie e Articoli
+7. Controller organizzati (Utente e Admin)
 
 ### Funzioni da implementare:
-1. Sistemare il codice (es: dividere i vari controller come HomeController, ArticoliController ecc...)
-2. Implementare i controlli di digitazione nel Riepilogo quando l'Utente compila i campi ("Nome" contiene solo lettere, "Telefono" solo numeri con max caratteri ecc...)
-3. ???Pagina del pagamento (con inserimento dei dati della carta ecc...)
-4. ???Raccomandazioni anche quando si sceglie l'articolo da inserire nel carrello ("Best Paired With" ecc...)
+1. Implementare i controlli di digitazione nel Riepilogo quando l'Utente compila i campi ("Nome" contiene solo lettere, "Telefono" solo numeri con max caratteri ecc...)
+2. ???Pagina del pagamento (con inserimento dei dati della carta ecc...)
+3. ???Raccomandazioni anche quando si sceglie l'articolo da inserire nel carrello ("Best Paired With" ecc...)
 
 ## Database
 ###### Programmatore: Agapi,Garbin
