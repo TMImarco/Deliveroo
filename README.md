@@ -18,11 +18,9 @@ Dividiamo il progetto in tre macro argomenti:
 
 ### Funzioni da implementare:
 1. Grafica
-2. Modificare schermate per modificare/eliminare un articolo (forse?)
 3. Modificare la visualizzazione delle associazioni
 4. Fare in modo che si una preview dell'immagine una volta cambiata nella modifica articoli e aggiungi nuovo articolo
-5. Fare schermata di errori personalizzata per ogni metodo che puo' fallire (?)
-6. Migliorare visualizzazione del riepilogo prima di eliminare (fare pop-up forse? - come ha fatto stefi sul carrello)
+5. Fare schermata di errori PERSONALIZZATI per ogni metodo che puo' fallire (?)
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate (per ora?)
