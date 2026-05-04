@@ -124,25 +124,19 @@ public class ArticoliAdminController : Controller
         return RedirectToAction("ModificaArticolo", new { id });
     }
 
-    [HttpPost]
     public IActionResult EliminaArticolo(int id)
     {
-        return RedirectToAction("ArticoloEliminato", new { id });
-    }
-
-    [HttpGet]
-    public IActionResult ArticoloEliminato(int id)
-    {
-        var articolo = _gestioneDati.GetArticoloScelto(id);
-        return View(articolo);
-    }
-
-    [HttpPost]
-    public IActionResult ArticoloEliminatoFine(int id)
-    {
-        var idCategoria = _gestioneDati.GetArticoloScelto(id).Categoria.IdCategoria;
-        try { _gestioneDati.EliminaArticolo(id); }
-        catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
-        return RedirectToAction("ArticoliAdmin", new { idCategoria });
+        var art = _gestioneDati.GetArticoloScelto(id);
+        
+        try
+        {
+            _gestioneDati.EliminaArticolo(id);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return RedirectToAction("Error", "Home");
+        }
+        return RedirectToAction("ArticoliAdmin", new { art.Categoria.IdCategoria });
     }
 }

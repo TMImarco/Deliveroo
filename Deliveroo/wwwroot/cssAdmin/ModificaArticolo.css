@@ -203,6 +203,49 @@
     background-color: #333;
 }
 
+/* MESSAGGIO DI CONFERMA */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-box {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 320px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.modal-box p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+.modal-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+.modal-btn {
+    padding: 0.55rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+.modal-btn.cancel { background: #eee; color: #555; }
+.modal-btn.cancel:hover { background: #ddd; }
+.modal-btn.confirm { background: #00ccbc; color: white; }
+.modal-btn.confirm:hover { background: #00b5a6; }
+
 /*----------- GRAFICA DEL BOTTON CARRELLO -----------
 .cart-fab {
     position: fixed;

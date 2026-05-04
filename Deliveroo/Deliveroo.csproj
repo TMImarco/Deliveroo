@@ -54,7 +54,6 @@
       <AdditionalFiles Include="Views\ArticoliAdmin\ModificaArticolo.cshtml" />
       <AdditionalFiles Include="Views\AssociazioniAdmin\AssociazioniAdmin.cshtml" />
       <AdditionalFiles Include="Views\CategorieAdmin\CategorieAdmin.cshtml" />
-      <AdditionalFiles Include="Views\Home\AssociazioniAdmin.cshtml" />
     </ItemGroup>
 
     <ItemGroup>

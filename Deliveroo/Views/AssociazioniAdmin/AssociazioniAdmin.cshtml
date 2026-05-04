@@ -15,7 +15,9 @@
     
     <h1>SCEGLI ASSOCIAZIONIE</h1>
     <form method="post" asp-action="AssociazioniAdmin">
-        <select name="IdArticoloSelezionato" id="idArticolo">
+        <select name="IdArticoloSelezionato"
+                id="idArticolo"
+                onchange="this.form.submit()">
 
             <option value="">-- Seleziona articolo --</option>
 
@@ -31,10 +33,6 @@
             }
 
         </select>
-
-        <button type="submit" class="btn btn-primary">
-            Carica associazioni
-        </button>
     </form>
 
     <table id="associazioniTable" class="display">
