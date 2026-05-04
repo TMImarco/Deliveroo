@@ -24,7 +24,7 @@
                 var isActive = currentCategoria == cat.Nome ? "active" : "";
                 <li class="nav-item">
                     <a class="nav-link text-dark @isActive" 
-                       asp-controller="Home" 
+                       asp-controller="ArticoliAdmin" 
                        asp-action="ArticoliAdmin" 
                        asp-route-idCategoria="@cat.IdCategoria">
                         @cat.Nome
@@ -43,14 +43,14 @@
 
         <!-- BOTTONE BACK -->
         <a class="nav-arrow back-btn"
-           asp-action="CategorieAdmin">
+           asp-action="CategorieAdmin" asp-controller="CategorieAdmin">
             ↵
         </a>
         
         <div class="macro-grid">
             @foreach (var articolo in Model)
             {
-                <a asp-controller="Home" asp-action="ModificaArticolo" asp-route-id="@articolo.IdArticolo" class="articolo-card">
+                <a asp-controller="ArticoliAdmin" asp-action="ModificaArticolo" asp-route-id="@articolo.IdArticolo" class="articolo-card">
                     <div class="articolo-img-wrap">
                         <img src="@articolo.ImageUrl" alt="@articolo.Nome" class="articolo-img"/>
                     </div>

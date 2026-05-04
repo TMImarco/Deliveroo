@@ -84,7 +84,7 @@ Articolo art = Model;
 </div>
 
 <!-- CARRELLO -->
-<a asp-controller="Home" asp-action="Carrello" class="cart-fab" title="Carrello">
+<a asp-controller="Carrello" asp-action="Carrello" class="cart-fab" title="Carrello">
     🛒
     <span class="cart-badge"></span>
 </a>
@@ -97,7 +97,7 @@ Articolo art = Model;
 <script>
     /* AUMENTARE LA QUANTITA DELL'ARTICOLO */
     const prezzo = @art.Prezzo.ToString(System.Globalization.CultureInfo.InvariantCulture);
-    const aggiungiUrl = '@Url.Action("MettiNelCarrello", "Home", new { id = art.IdArticolo })';
+    const aggiungiUrl = '@Url.Action("MettiNelCarrello", "Carrello", new { id = art.IdArticolo })';
     let qty = 1;
 
     function aggiornaTotale() {

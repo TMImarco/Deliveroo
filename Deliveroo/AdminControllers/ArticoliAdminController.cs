@@ -1,0 +1,148 @@
+using System.Diagnostics;
+using System.Globalization;
+using Microsoft.AspNetCore.Mvc;
+using Deliveroo.Models;
+using Deliveroo.Tabelle;
+
+namespace Deliveroo.Controllers;
+
+public class ArticoliAdminController : Controller
+{
+    private readonly GestioneDati _gestioneDati;
+    private readonly CloudinaryService _cloudinaryService;
+
+    public ArticoliAdminController(CloudinaryService cloudinaryService)
+    {
+        _gestioneDati = new GestioneDati();
+        _cloudinaryService = cloudinaryService;
+    }
+
+    public IActionResult ArticoliAdmin(int idCategoria)
+    {
+        var listArticoli = _gestioneDati.GetArticoliPerCategoria(idCategoria);
+        return View(listArticoli);
+    }
+
+    [HttpGet]
+    public IActionResult AggiungiNuovoArticolo()
+    {
+        var categorie = _gestioneDati.GetTutteCategorie();
+        return View(categorie);
+    }
+
+    [HttpPost]
+    public IActionResult AggiungiNuovoArticolo(AggiungiNuovoArticoloAdminViewModel model)
+    {
+        var categoriaDb = _gestioneDati.GetCategoria(model.IdCategoria);
+        var imageUrl = _cloudinaryService.UploadImage(model.UrlFoto);
+
+        Categoria cat = new Categoria()
+        {
+            IdCategoria = categoriaDb.IdCategoria,
+            Nome = categoriaDb.Nome,
+            ImageUrl = categoriaDb.ImageUrl,
+        };
+
+        Articolo art = new Articolo()
+        {
+            IdArticolo = -1,
+            Nome = model.Nome,
+            Descrizione = model.Descrizione,
+            Prezzo = model.Prezzo,
+            NumeroOrdini = 0,
+            Categoria = cat,
+            ImageUrl = imageUrl
+        };
+
+        try
+        {
+            _gestioneDati.AggiungiArticolo(art);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return RedirectToAction("Error", "Home");
+        }
+
+        return RedirectToAction("ArticoliAdmin", new { idCategoria = model.IdCategoria });
+    }
+
+    [HttpGet]
+    public IActionResult ModificaArticolo(int id)
+    {
+        var categorie = _gestioneDati.GetTutteCategorie();
+        var articoloScelto = _gestioneDati.GetArticoloScelto(id);
+
+        var articoliCategoria = _gestioneDati.GetArticoliPerCategoria(articoloScelto.Categoria.IdCategoria);
+        var ids = articoliCategoria.Select(a => a.IdArticolo).ToList();
+
+        int index = ids.IndexOf(id);
+        ViewBag.IdPrev = index > 0 ? ids[index - 1] : (int?)null;
+        ViewBag.IdNext = index < ids.Count - 1 ? ids[index + 1] : (int?)null;
+        ViewBag.IdCategoria = articoloScelto.Categoria.IdCategoria;
+
+        return View((articoloScelto, categorie));
+    }
+
+    [HttpPost]
+    public IActionResult ModificaFotoArticolo(string percorsoFoto, int id)
+    {
+        try { _gestioneDati.ModificaFotoArticolo(id, percorsoFoto); }
+        catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
+        return RedirectToAction("ModificaArticolo", new { id });
+    }
+
+    [HttpPost]
+    public IActionResult ModificaNomeArticolo(string nome, int id)
+    {
+        try { _gestioneDati.ModificaNomeArticolo(id, nome); }
+        catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
+        return RedirectToAction("ModificaArticolo", new { id });
+    }
+
+    [HttpPost]
+    public IActionResult ModificaDescrizioneArticolo(string descrizione, int id)
+    {
+        try { _gestioneDati.ModificaDescrizioneArticolo(id, descrizione); }
+        catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
+        return RedirectToAction("ModificaArticolo", new { id });
+    }
+
+    [HttpPost]
+    public IActionResult ModificaPrezzo_listinoArticolo(double prezzo_listino, int id)
+    {
+        try { _gestioneDati.ModificaPrezzo_listinoArticolo(id, prezzo_listino); }
+        catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
+        return RedirectToAction("ModificaArticolo", new { id });
+    }
+
+    [HttpPost]
+    public IActionResult ModificaCategoriaArticolo(int idCategoria, int id)
+    {
+        try { _gestioneDati.ModificaIdCategoriaArticolo(id, idCategoria); }
+        catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
+        return RedirectToAction("ModificaArticolo", new { id });
+    }
+
+    [HttpPost]
+    public IActionResult EliminaArticolo(int id)
+    {
+        return RedirectToAction("ArticoloEliminato", new { id });
+    }
+
+    [HttpGet]
+    public IActionResult ArticoloEliminato(int id)
+    {
+        var articolo = _gestioneDati.GetArticoloScelto(id);
+        return View(articolo);
+    }
+
+    [HttpPost]
+    public IActionResult ArticoloEliminatoFine(int id)
+    {
+        var idCategoria = _gestioneDati.GetArticoloScelto(id).Categoria.IdCategoria;
+        try { _gestioneDati.EliminaArticolo(id); }
+        catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
+        return RedirectToAction("ArticoliAdmin", new { idCategoria });
+    }
+}

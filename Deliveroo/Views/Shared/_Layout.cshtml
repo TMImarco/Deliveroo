@@ -25,7 +25,7 @@
 <div class="sidebar">
     <nav>
         <a asp-controller="Home" asp-action="Index">Home</a>
-        <a asp-controller="Home" asp-action="LoginAdmin">Admin</a>
+        <a asp-controller="Auth" asp-action="LoginAdmin">Admin</a>
         <a asp-controller="Home" asp-action="Privacy">Privacy</a>
     </nav>
 </div>
@@ -79,7 +79,7 @@
 <!-- ___________ SCRIPT per il funzionamento del BADGE DEL CARRELLO (il numero in alto a destra del bottoncino) ___________-->
 <script>
     async function aggiornaBadge() {
-        const res = await fetch('/Home/NumeroElementi');
+        const res = await fetch('/Carrello/NumeroElementi');
         const count = await res.text();
         document.querySelectorAll('.cart-badge').forEach(b => b.textContent = count);
     }

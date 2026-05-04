@@ -11,7 +11,7 @@
             
             <!-- BOTTONE BACK -->
             <a class="nav-arrow back-btn"
-               asp-action="IndexAdmin">
+               asp-action="IndexAdmin" asp-controller="Admin">
                 ↵
             </a>
 
@@ -19,7 +19,7 @@
             <div class="left-col">
 
                 <!-- BOTTONE BACK (fare un pulsante per annullare l'operazione-->
-                <a asp-action="IndexAdmin" class="btn btn-primary">ANNULLA</a>
+                <a asp-action="IndexAdmin" asp-controller="Admin" class="btn btn-primary">ANNULLA</a>
 
                 <form method="post"
                       asp-action="AggiungiNuovoArticolo"

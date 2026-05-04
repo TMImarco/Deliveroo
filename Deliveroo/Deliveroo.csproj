@@ -48,6 +48,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <AdditionalFiles Include="Views\ArticoliAdmin\AggiungiNuovoArticolo.cshtml" />
+      <AdditionalFiles Include="Views\ArticoliAdmin\ArticoliAdmin.cshtml" />
+      <AdditionalFiles Include="Views\ArticoliAdmin\ArticoloEliminato.cshtml" />
+      <AdditionalFiles Include="Views\ArticoliAdmin\ModificaArticolo.cshtml" />
+      <AdditionalFiles Include="Views\AssociazioniAdmin\AssociazioniAdmin.cshtml" />
+      <AdditionalFiles Include="Views\CategorieAdmin\CategorieAdmin.cshtml" />
       <AdditionalFiles Include="Views\Home\AssociazioniAdmin.cshtml" />
     </ItemGroup>
 
@@ -62,6 +68,11 @@
       <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\primi_piatti.jpg" />
       <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\secondi_piatti.jpg" />
       <_ContentIncludedByDefault Remove="wwwroot\FotoCategoria\sushi.jpg" />
+      <_ContentIncludedByDefault Remove="Views\AdminViews\ArticoliAdmin\AggiungiNuovoArticolo.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminViews\ArticoliAdmin\ArticoliAdmin.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminViews\ArticoliAdmin\ArticoloEliminato.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminViews\ArticoliAdmin\ModificaArticolo.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminViews\AssociazioniAdmin\AssociazioniAdmin.cshtml" />
     </ItemGroup>
 
 </Project>

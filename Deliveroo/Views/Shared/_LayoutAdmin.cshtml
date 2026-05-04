@@ -22,17 +22,17 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <nav>
-        <a asp-controller="Home" asp-action="IndexAdmin">Admin Dashboard </a>
+        <a asp-controller="Admin" asp-action="IndexAdmin">Admin Dashboard </a>
         <a asp-controller="Home" asp-action="Privacy">Privacy</a>
 
-        <a asp-controller="Home" asp-action="Logout" class="sidebar-logout">Esci</a>
+        <a asp-controller="Auth" asp-action="Logout" class="sidebar-logout">Esci</a>
     </nav>
 </div>
 <!-- ___________ NAVBAR ___________-->
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container justify-content-center">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="IndexAdmin">
+            <a class="navbar-brand" asp-area="" asp-controller="Admin" asp-action="IndexAdmin">
                 <h2 class="section-title">
                     Deliveroo
                     <small class="text-muted">admin dashboard</small>

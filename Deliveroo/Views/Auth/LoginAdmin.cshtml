@@ -14,12 +14,12 @@
     
     <!-- BOTTONE BACK -->
     <a class="nav-arrow back-btn"
-       asp-action="Index">
+       asp-action="Index" asp-controller="Home">
         ↵
     </a>
     
     <form method="post"
-          asp-controller="Home"
+          asp-controller="Auth"
           asp-action="LoginAdmin">
 
         <p class="testo-rosso">@ViewData["errore"]</p>
