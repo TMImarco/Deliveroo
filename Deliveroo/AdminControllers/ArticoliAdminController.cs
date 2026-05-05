@@ -79,14 +79,33 @@ public class ArticoliAdminController : Controller
         ViewBag.IdNext = index < ids.Count - 1 ? ids[index + 1] : (int?)null;
         ViewBag.IdCategoria = articoloScelto.Categoria.IdCategoria;
 
-        return View((articoloScelto, categorie));
+        ModificaArticoloViewModel model = new ModificaArticoloViewModel()
+        {
+            ArticoloScelto = articoloScelto,
+            ListaCategorie = categorie
+        };
+        
+        return View(model);
     }
 
     [HttpPost]
-    public IActionResult ModificaFotoArticolo(string percorsoFoto, int id)
+    public IActionResult ModificaFotoArticolo(IFormFile imageFile, int id)
     {
+        string? percorsoFoto = null;
+        try
+        {
+            percorsoFoto = _cloudinaryService.UploadImage(imageFile);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return RedirectToAction("Error", "Home");
+        }
+        
+        
         try { _gestioneDati.ModificaFotoArticolo(id, percorsoFoto); }
         catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
+        
         return RedirectToAction("ModificaArticolo", new { id });
     }
 

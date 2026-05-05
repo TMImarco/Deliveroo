@@ -246,6 +246,39 @@
 .modal-btn.confirm { background: #00ccbc; color: white; }
 .modal-btn.confirm:hover { background: #00b5a6; }
 
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+/* spinner */
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #ccc;
+    border-top: 6px solid #007bff; /* colore animato */
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
+/* animazione */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 /*----------- GRAFICA DEL BOTTON CARRELLO -----------
 .cart-fab {
     position: fixed;

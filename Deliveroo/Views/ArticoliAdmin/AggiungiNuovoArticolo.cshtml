@@ -1,14 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Admin - Aggiungi Articolo";
     Layout = "_LayoutAdmin"; //il layout è quello dell'utente (va bene)
-
     @model List<Deliveroo.Tabelle.Categoria>
 }
 
 <div class="macro-section">
     <div class="container">
         <div class="page-split">
-            
+
             <!-- BOTTONE BACK -->
             <a class="nav-arrow back-btn"
                asp-action="IndexAdmin" asp-controller="Admin">
@@ -18,7 +17,8 @@
             <!-- SINISTRA (da togliere e centrare)-->
             <div class="left-col">
 
-                <form method="post"
+                <form id="AggiungiNuovoArticoloFormUpload"
+                      method="post"
                       asp-action="AggiungiNuovoArticolo"
                       enctype="multipart/form-data">
                     <div class="article-split">
@@ -29,6 +29,11 @@
                                    id="UrlFoto"
                                    name="UrlFoto"
                                    required>
+
+                            <!--Prende l'antepreima dell'immagine che carichi con il input sopra-->
+                            <img id="previewImage"
+                                 src="#"
+                                 alt="Anteprima immagine"/>
                         </div>
 
                         <!--da sostituire con bottoni per aggiungere tutti gli elementi + aggiungere categoria-->
@@ -85,13 +90,42 @@
     </div>
 </div>
 
+<div id="aggiungiNuovoArticoloLoadingOverlay" class="overlay">
+    <div class="spinner"></div>
+    <p>Caricamento in corso...</p>
+</div>
+
 <!--da modificare-->
 
 @section Styles {
     <link rel="stylesheet" href="/cssAdmin/AggiungiArticolo.css"/>
 }
+
 @section Scripts
 {
+    <!--script per l'overlay di caricamento immagine-->
+    <script>
+        document.getElementById("AggiungiNuovoArticoloFormUpload").addEventListener("submit", function () {
+            document.getElementById("aggiungiNuovoArticoloLoadingOverlay").style.display = "flex";
+        });
+    </script>
+
+    <!--Script per la preview dell'immagine caricata-->
+    <script>
+        const inputFile = document.getElementById("UrlFoto");
+        const preview = document.getElementById("previewImage");
+
+        inputFile.addEventListener("change", function () {
+            const file = this.files[0];
+
+            if (file) {
+                const url = URL.createObjectURL(file);
+                preview.src = url;
+                preview.style.display = "block";
+            }
+        });
+    </script>
+
     <!--script per adattare la larghezza della <textarea> dells descrizione-->
     <script>
         const ta = document.getElementById("descrizione");

@@ -18,12 +18,12 @@ Dividiamo il progetto in tre macro argomenti:
 
 ### Funzioni da implementare:
 1. Grafica
+2. ModificaArticoli: pulsante unico "salva modifiche" alla fine, i pulsanti piccoli vicino ad ogni elemento solo per abilitare la modifica
 3. Modificare la visualizzazione delle associazioni
-4. Fare in modo che si una preview dell'immagine una volta cambiata nella modifica articoli e aggiungi nuovo articolo
-5. Fare schermata di errori PERSONALIZZATI per ogni metodo che puo' fallire (?)
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate (per ora?)
+2. Quando seleziono un articolo da modificare, ci mette sempre tantissimo, PERCHE'?
 
 ## Utente
 ###### Programmatore: Agapi
@@ -66,7 +66,7 @@ Dividiamo il progetto in tre macro argomenti:
 1. Ricavo l'url "crudo" cioe' la foto a qualita' (dimensioni) massima
    var rawUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
 2. Rimpiazzio una parte dell'url con una stringa per ridurre le dimensione dell'immagine
-   var refindeUrl = rawUrl.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
+   var refinedUrl = rawUrl.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
 
 ### Note:
 1. Assicurarsi sempre se il TUO dumb del DB sia agggiornato. (Ultimo aggiornamento 02-05-2026)

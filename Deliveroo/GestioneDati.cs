@@ -32,13 +32,15 @@ password=root";
 
 		while (reader.Read())
 		{
+			var rawUrlCat = (reader["foto_categoria"] is DBNull) ? "" : (string)reader["foto_categoria"];
 			Categoria categoria = new Categoria()
 			{
 				IdCategoria = (int)reader["idCategoria"],
 				Nome = (string)reader["nomeCategoria"],
-				ImageUrl = (string)reader["foto_categoria"]
+				ImageUrl = rawUrlCat.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
 			};
 
+			var rawUrlArt = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
 			Articolo articolo = new Articolo()
 			{
 				IdArticolo = (int)reader["id"],
@@ -47,7 +49,7 @@ password=root";
 				NumeroOrdini = (int)reader["numero_ordini"],
 				Descrizione = (string)reader["descrizione"],
 				Categoria = categoria,
-				ImageUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"]
+				ImageUrl = rawUrlArt.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
 			};
 
 			listaArticoli.Add(articolo);
@@ -375,6 +377,8 @@ WHERE id = @id";
 	//ATTENZIONE DA RIVEDERE!!
 	public void ModificaFotoArticolo(int id, string foto)
 	{
+		
+		
 		string query = @"UPDATE articoli
 SET imageUrl = @imageUrl
 WHERE id = @id";
