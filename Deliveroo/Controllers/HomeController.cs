@@ -1,8 +1,6 @@
 using System.Diagnostics;
-using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using Deliveroo.Models;
-using Deliveroo.Tabelle;
 
 namespace Deliveroo.Controllers;
 

@@ -1,10 +1,8 @@
-using System.Diagnostics;
-using System.Globalization;
-using Microsoft.AspNetCore.Mvc;
-using Deliveroo.Models;
+using Deliveroo.AdminViewModels;
 using Deliveroo.Tabelle;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Deliveroo.Controllers;
+namespace Deliveroo.AdminControllers;
 
 public class ArticoliAdminController : Controller
 {
