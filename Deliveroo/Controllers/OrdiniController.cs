@@ -38,6 +38,14 @@ public class OrdiniController : Controller
 	{
 		ordine.Data = DateTime.Now;
 		ordine.ImportoTotale = _gestioneCarrello.RecuperaCarrello().Sum(a => a.Prezzo);
+		
+		foreach (var entry in ModelState)
+		{
+			foreach (var error in entry.Value.Errors)
+			{
+				Console.WriteLine($"Campo: {entry.Key} | Errore: {error.ErrorMessage}");
+			}
+		}
 
 		if (ModelState.IsValid)
 		{

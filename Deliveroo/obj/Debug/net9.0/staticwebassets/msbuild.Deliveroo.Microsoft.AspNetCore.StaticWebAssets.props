@@ -102,8 +102,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>j8l6hlhxg5</Fingerprint>
-      <Integrity>AyaypQjvzjVHA1lj1a3AVnIJ0JYptH+rlbrDRCGdfi0=</Integrity>
+      <Fingerprint>ju3h3cl1gj</Fingerprint>
+      <Integrity>Ra+wZHl8q8ud7WtyP5ITIknai0/nk+iNJCvyIZZoUao=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Riepilogo.css'))</OriginalItemSpec>
@@ -264,8 +264,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>3sjuf475so</Fingerprint>
-      <Integrity>XZGyoUhxxH3EbhzgWmLEdoOsDZKd9RHkElKo72sr6eQ=</Integrity>
+      <Fingerprint>vbob4hieh1</Fingerprint>
+      <Integrity>61cvhJMctEoZ3BQE5mzER/L5S11XkIaNzb8Ns40Dlow=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\cssAdmin\ModificaArticolo.css'))</OriginalItemSpec>

@@ -6,7 +6,7 @@ public class Ordine
     public DateTime Data { get; set; }
     public string NomeCliente { get; set; }
     public string Indirizzo { get; set; }
-    public int Telefono {get;set;}
+    public string Telefono {get;set;}
     public double ImportoTotale { get; set; }
 
 }

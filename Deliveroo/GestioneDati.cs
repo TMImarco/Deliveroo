@@ -101,7 +101,7 @@ password=root";
 				NomeCliente = (string)reader["nome_cliente"],
 				Indirizzo = (string)reader["indirizzo"],
 				ImportoTotale = (double)reader["importo_totale"],
-				Telefono = (int)reader["telefono"],
+				Telefono = (string)reader["telefono"],
 			};
 
 
