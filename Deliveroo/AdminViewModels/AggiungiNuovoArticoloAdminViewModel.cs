@@ -1,4 +1,4 @@
-﻿namespace Deliveroo;
+﻿namespace Deliveroo.AdminViewModels;
 
 public class AggiungiNuovoArticoloAdminViewModel
 {

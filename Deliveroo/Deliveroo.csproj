@@ -50,7 +50,6 @@
     <ItemGroup>
       <AdditionalFiles Include="Views\ArticoliAdmin\AggiungiNuovoArticolo.cshtml" />
       <AdditionalFiles Include="Views\ArticoliAdmin\ArticoliAdmin.cshtml" />
-      <AdditionalFiles Include="Views\ArticoliAdmin\ArticoloEliminato.cshtml" />
       <AdditionalFiles Include="Views\ArticoliAdmin\ModificaArticolo.cshtml" />
       <AdditionalFiles Include="Views\AssociazioniAdmin\AssociazioniAdmin.cshtml" />
       <AdditionalFiles Include="Views\CategorieAdmin\CategorieAdmin.cshtml" />

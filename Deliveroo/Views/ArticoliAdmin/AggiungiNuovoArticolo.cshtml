@@ -2,7 +2,7 @@
     ViewData["Title"] = "Admin - Aggiungi Articolo";
     Layout = "_LayoutAdmin"; //il layout è quello dell'utente (va bene)
 
-    @model List<Categoria>
+    @model List<Deliveroo.Tabelle.Categoria>
 }
 
 <div class="macro-section">
@@ -17,9 +17,6 @@
 
             <!-- SINISTRA (da togliere e centrare)-->
             <div class="left-col">
-
-                <!-- BOTTONE BACK (fare un pulsante per annullare l'operazione-->
-                <a asp-action="IndexAdmin" asp-controller="Admin" class="btn btn-primary">ANNULLA</a>
 
                 <form method="post"
                       asp-action="AggiungiNuovoArticolo"

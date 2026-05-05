@@ -1,6 +1,6 @@
 ﻿using Deliveroo.Tabelle;
 
-namespace Deliveroo;
+namespace Deliveroo.AdminViewModels;
 
 public class IndexAdminViewModel
 {

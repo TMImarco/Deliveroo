@@ -9,107 +9,103 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Deliveroo
 build_property.RootNamespace = Deliveroo
-build_property.ProjectDir = C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\
+build_property.ProjectDir = C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo
+build_property.MSBuildProjectDirectory = C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/ArticoliAdmin/AggiungiNuovoArticolo.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/ArticoliAdmin/AggiungiNuovoArticolo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNvbGlBZG1pblxBZ2dpdW5naU51b3ZvQXJ0aWNvbG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/ArticoliAdmin/ArticoliAdmin.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/ArticoliAdmin/ArticoliAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNvbGlBZG1pblxBcnRpY29saUFkbWluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/ArticoliAdmin/ArticoloEliminato.cshtml]
-build_metadata.AdditionalFiles.TargetPath = 
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/ArticoliAdmin/ModificaArticolo.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/ArticoliAdmin/ModificaArticolo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNvbGlBZG1pblxNb2RpZmljYUFydGljb2xvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/AssociazioniAdmin/AssociazioniAdmin.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/AssociazioniAdmin/AssociazioniAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzb2NpYXppb25pQWRtaW5cQXNzb2NpYXppb25pQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/CategorieAdmin/CategorieAdmin.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/CategorieAdmin/CategorieAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllQWRtaW5cQ2F0ZWdvcmllQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Admin/IndexAdmin.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Admin/IndexAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXhBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Articoli/Articoli.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Articoli/Articoli.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNvbGlcQXJ0aWNvbGkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Articoli/InserimentoArticolo.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Articoli/InserimentoArticolo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNvbGlcSW5zZXJpbWVudG9BcnRpY29sby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Auth/LoginAdmin.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Auth/LoginAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbkFkbWluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Carrello/Carrello.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Carrello/Carrello.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FycmVsbG9cQ2FycmVsbG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Home/Index.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Home/Privacy.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Ordini/Conferma.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Ordini/Conferma.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkaW5pXENvbmZlcm1hLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Ordini/Riepilogo.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Ordini/Riepilogo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkaW5pXFJpZXBpbG9nby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Shared/Error.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/_ViewImports.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/_ViewStart.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Shared/_Layout.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-qgn06afi62
 
-[C:/Users/ovidi/Desktop/Informatica/DeliverooClonata/Deliveroo/Deliveroo/Views/Shared/_LayoutAdmin.cshtml]
+[C:/Users/marco/Documents/1 Scuola/Informatica/Deliveroo/Deliveroo/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-qpa08mvz5o

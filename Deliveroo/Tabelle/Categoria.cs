@@ -1,4 +1,4 @@
-﻿namespace Deliveroo;
+﻿namespace Deliveroo.Tabelle;
 
 
 // UNA CLASSE PER VISUALIZZARE LA CATEGORIA CON LA SUA FOTO NELLA HOME
