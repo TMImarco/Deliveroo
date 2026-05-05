@@ -36,11 +36,10 @@ Dividiamo il progetto in tre macro argomenti:
 5. Raccomandazioni nel Riepilogo
 6. Visualizzazione delle foto Categorie e Articoli
 7. Controller organizzati (Utente e Admin)
+8. Popup dei dettagli del pagamento (dati della carta; scopo di bellezza)
 
 ### Funzioni da implementare:
-1. Implementare i controlli di digitazione nel Riepilogo quando l'Utente compila i campi ("Nome" contiene solo lettere, "Telefono" solo numeri con max caratteri ecc...)
-2. ???Pagina del pagamento (con inserimento dei dati della carta ecc...)
-3. ???Raccomandazioni anche quando si sceglie l'articolo da inserire nel carrello ("Best Paired With" ecc...)
+1. ???Raccomandazioni anche quando si sceglie l'articolo da inserire nel carrello ("Best Paired With" ecc...)
 
 ## Database
 ###### Programmatore: Agapi,Garbin
