@@ -37,9 +37,16 @@ Dividiamo il progetto in tre macro argomenti:
 6. Visualizzazione delle foto Categorie e Articoli
 7. Controller organizzati (Utente e Admin)
 8. Popup dei dettagli del pagamento (dati della carta; scopo di bellezza)
+9. Raccomandazioni nell'InserimentoArticolo ("Consigliati per te")
 
 ### Funzioni da implementare:
-1. ???Raccomandazioni anche quando si sceglie l'articolo da inserire nel carrello ("Best Paired With" ecc...)
+1. Grafica!!!
+2. ???Barra di ricerca/filtri negli articoli
+3. ???Toast Notification quando aggiungo/tolgo un articolo dal carrello (and somewhere else)
+4. ???Sistema di recensioni + Articoli preferiti (questo significa che l'utente ha un suo proprio login)
+
+### Note
+TUTTE IDEE che sarebbero carine da implementare, ma visto la scadenza in 2gg it's challenging 
 
 ## Database
 ###### Programmatore: Agapi,Garbin
