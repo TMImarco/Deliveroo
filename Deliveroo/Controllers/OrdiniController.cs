@@ -34,7 +34,7 @@ public class OrdiniController : Controller
 	public IActionResult Conferma(Ordine ordine)
 	{
 		ordine.Data = DateTime.Now;
-		ordine.ImportoTotale = _gestioneCarrello.RecuperaCarrello().Sum(a => a.Prezzo);
+		ordine.ImportoTotale = (double)_gestioneCarrello.RecuperaCarrello().Sum(a => a.Prezzo);
 		
 		foreach (var entry in ModelState)
 		{

@@ -1,664 +1,666 @@
-﻿using Deliveroo.Tabelle;
+﻿using Deliveroo.AdminViewModels;
+using Deliveroo.Tabelle;
 using MySql.Data.MySqlClient;
 
 namespace Deliveroo;
 
 public class GestioneDati
 {
-	private readonly MySqlConnection _connection;
+    private readonly MySqlConnection _connection;
 
-	public GestioneDati()
-	{
-		string connectionString = @"database=deliveroo;
+    public GestioneDati()
+    {
+        string connectionString = @"database=deliveroo;
 host=localhost;
 port=3306;
 user=root;
 password=root";
-		_connection = new MySqlConnection(connectionString);
-		_connection.Open();
-	}
+        _connection = new MySqlConnection(connectionString);
+        _connection.Open();
+    }
 
-	public List<Articolo> GetTuttiArticoli()
-	{
-		List<Articolo> listaArticoli = new List<Articolo>();
+    public List<Articolo> GetTuttiArticoli()
+    {
+        List<Articolo> listaArticoli = new List<Articolo>();
 
-		string query = @"SELECT a.*, c.nomeCategoria, c.imageUrl AS foto_categoria
+        string query = @"SELECT a.*, c.nomeCategoria, c.imageUrl AS foto_categoria
                      FROM articoli a
                      JOIN categorie c ON a.idCategoria = c.id
                      ORDER BY a.id";
 
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		MySqlDataReader reader = command.ExecuteReader();
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
 
-		while (reader.Read())
-		{
-			var rawUrlCat = (reader["foto_categoria"] is DBNull) ? "" : (string)reader["foto_categoria"];
-			Categoria categoria = new Categoria()
-			{
-				IdCategoria = (int)reader["idCategoria"],
-				Nome = (string)reader["nomeCategoria"],
-				ImageUrl = rawUrlCat.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
-			};
+        while (reader.Read())
+        {
+            var rawUrlCat = (reader["foto_categoria"] is DBNull) ? "" : (string)reader["foto_categoria"];
+            Categoria categoria = new Categoria()
+            {
+                IdCategoria = (int)reader["idCategoria"],
+                Nome = (string)reader["nomeCategoria"],
+                ImageUrl = rawUrlCat.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
+            };
 
-			var rawUrlArt = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
-			Articolo articolo = new Articolo()
-			{
-				IdArticolo = (int)reader["id"],
-				Nome = (string)reader["nome"],
-				Prezzo = (double)reader["prezzo_listino"],
-				NumeroOrdini = (int)reader["numero_ordini"],
-				Descrizione = (string)reader["descrizione"],
-				Categoria = categoria,
-				ImageUrl = rawUrlArt.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
-			};
+            var rawUrlArt = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
+            Articolo articolo = new Articolo()
+            {
+                IdArticolo = (int)reader["id"],
+                Nome = (string)reader["nome"],
+                Prezzo = Convert.ToDecimal((double)reader["prezzo_listino"]),
+                NumeroOrdini = (int)reader["numero_ordini"],
+                Descrizione = (string)reader["descrizione"],
+                Categoria = categoria,
+                ImageUrl = rawUrlArt.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
+            };
 
-			listaArticoli.Add(articolo);
-		}
+            listaArticoli.Add(articolo);
+        }
 
-		reader.Close();
-		return listaArticoli;
-	}
+        reader.Close();
+        return listaArticoli;
+    }
 
-	public List<Associazione> GetTutteAssociazioni()
-	{
-		List<Associazione> listaAssociazioni = new List<Associazione>();
+    public List<Associazione> GetTutteAssociazioni()
+    {
+        List<Associazione> listaAssociazioni = new List<Associazione>();
 
-		string query = "SELECT * FROM associazioni order by id_articolo1";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		MySqlDataReader reader = command.ExecuteReader();
+        string query = "SELECT * FROM associazioni order by id_articolo1";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
 
-		while (reader.Read())
-		{
-			Associazione articolo = new Associazione()
-			{
-				IdArticolo1 = (int)reader["id_articolo1"],
-				IdArticolo2 = (int)reader["id_articolo2"],
-				NumeroOrdini = (int)reader["Numero_ordini"],
-				Confidence = (double)reader["confidence"]
-			};
-
-
-			listaAssociazioni.Add(articolo);
-		}
-
-		reader.Close();
-
-		return listaAssociazioni;
-	}
-
-	public List<Ordine> GetTuttiOrdini()
-	{
-		List<Ordine> listaOrdini = new List<Ordine>();
-
-		string query = "SELECT * FROM ordini order by id";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		MySqlDataReader reader = command.ExecuteReader();
-
-		while (reader.Read())
-		{
-			Ordine ordine = new Ordine()
-			{
-				IdOrdine = (int)reader["id"],
-				Data = (DateTime)reader["data"],
-				NomeCliente = (string)reader["nome_cliente"],
-				Indirizzo = (string)reader["indirizzo"],
-				ImportoTotale = (double)reader["importo_totale"],
-				Telefono = (string)reader["telefono"],
-			};
+        while (reader.Read())
+        {
+            Associazione articolo = new Associazione()
+            {
+                IdArticolo1 = (int)reader["id_articolo1"],
+                IdArticolo2 = (int)reader["id_articolo2"],
+                NumeroOrdini = (int)reader["Numero_ordini"],
+                Confidence = (double)reader["confidence"]
+            };
 
 
-			listaOrdini.Add(ordine);
-		}
+            listaAssociazioni.Add(articolo);
+        }
 
-		reader.Close();
+        reader.Close();
 
-		return listaOrdini;
-	}
+        return listaAssociazioni;
+    }
 
-	public List<RigaDettaglio> GetRigheDettaglio()
-	{
-		List<RigaDettaglio> listaRigheDettaglio = new List<RigaDettaglio>();
+    public List<Ordine> GetTuttiOrdini()
+    {
+        List<Ordine> listaOrdini = new List<Ordine>();
 
-		string query = "SELECT * FROM righe_dettaglio order by id_ordine";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		MySqlDataReader reader = command.ExecuteReader();
+        string query = "SELECT * FROM ordini order by id";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
 
-		while (reader.Read())
-		{
-			RigaDettaglio rigaDettaglio = new RigaDettaglio()
-			{
-				IdOrdine = (int)reader["id_ordine"],
-				IdArticolo = (int)reader["id_articolo"],
-				Quantita = (int)reader["quantita"],
-				Prezzo = (double)reader["prezzo"],
-			};
+        while (reader.Read())
+        {
+            Ordine ordine = new Ordine()
+            {
+                IdOrdine = (int)reader["id"],
+                Data = (DateTime)reader["data"],
+                NomeCliente = (string)reader["nome_cliente"],
+                Indirizzo = (string)reader["indirizzo"],
+                ImportoTotale = (double)reader["importo_totale"],
+                Telefono = (string)reader["telefono"],
+            };
 
 
-			listaRigheDettaglio.Add(rigaDettaglio);
-		}
+            listaOrdini.Add(ordine);
+        }
 
-		reader.Close();
+        reader.Close();
 
-		return listaRigheDettaglio;
-	}
+        return listaOrdini;
+    }
 
-	// METODI AGGIUNTIVI
-	public List<Categoria> GetTutteCategorie()
-	{
-		List<Categoria> listCategorie = new();
-		string query = "SELECT * FROM categorie order by id;";
+    public List<RigaDettaglio> GetRigheDettaglio()
+    {
+        List<RigaDettaglio> listaRigheDettaglio = new List<RigaDettaglio>();
 
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		MySqlDataReader reader = command.ExecuteReader();
+        string query = "SELECT * FROM righe_dettaglio order by id_ordine";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
 
-		while (reader.Read())
-		{
-			/* per ottimizzare il peso delle foto cambio il suo url */
-			var rawUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
-			Categoria cat = new()
-			{
-				IdCategoria = (int)reader["id"],
-				Nome = (string)reader["nomeCategoria"],
-				ImageUrl = rawUrl.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
-			};
+        while (reader.Read())
+        {
+            RigaDettaglio rigaDettaglio = new RigaDettaglio()
+            {
+                IdOrdine = (int)reader["id_ordine"],
+                IdArticolo = (int)reader["id_articolo"],
+                Quantita = (int)reader["quantita"],
+                Prezzo = (double)reader["prezzo"],
+            };
 
-			listCategorie.Add(cat);
-		}
 
-		reader.Close();
-		return listCategorie;
-	}
+            listaRigheDettaglio.Add(rigaDettaglio);
+        }
 
-	public List<Articolo> GetArticoliPerCategoria(int idCategoria)
-	{
-		List<Articolo> listaArticoli = new List<Articolo>();
+        reader.Close();
 
-		string query = @"SELECT a.*, c.nomeCategoria, c.imageUrl AS foto_categoria
+        return listaRigheDettaglio;
+    }
+
+    // METODI AGGIUNTIVI
+    public List<Categoria> GetTutteCategorie()
+    {
+        List<Categoria> listCategorie = new();
+        string query = "SELECT * FROM categorie order by id;";
+
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            /* per ottimizzare il peso delle foto cambio il suo url */
+            var rawUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
+            Categoria cat = new()
+            {
+                IdCategoria = (int)reader["id"],
+                Nome = (string)reader["nomeCategoria"],
+                ImageUrl = rawUrl.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
+            };
+
+            listCategorie.Add(cat);
+        }
+
+        reader.Close();
+        return listCategorie;
+    }
+
+    public List<Articolo> GetArticoliPerCategoria(int idCategoria)
+    {
+        List<Articolo> listaArticoli = new List<Articolo>();
+
+        string query = @"SELECT a.*, c.nomeCategoria, c.imageUrl AS foto_categoria
                      FROM articoli a
                      JOIN categorie c ON a.idCategoria = c.id
                      WHERE a.idCategoria = @idCategoria
                      ORDER BY a.id";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		command.Parameters.AddWithValue("@idCategoria", idCategoria);
-		MySqlDataReader reader = command.ExecuteReader();
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@idCategoria", idCategoria);
+        MySqlDataReader reader = command.ExecuteReader();
 
-		while (reader.Read())
-		{
-			Categoria categoria = new Categoria()
-			{
-				IdCategoria = (int)reader["idCategoria"],
-				Nome = (string)reader["nomeCategoria"],
-				ImageUrl = ((string)reader["foto_categoria"]).Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
-			};
-			
-			/* per ottimizzare il peso delle foto cambio il suo url */
-			var rawUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
-			Articolo articolo = new Articolo()
-			{
-				IdArticolo = (int)reader["id"],
-				Nome = (string)reader["nome"],
-				Prezzo = (double)reader["prezzo_listino"],
-				Descrizione = (string)reader["descrizione"],
-				NumeroOrdini = (int)reader["Numero_ordini"],
-				Categoria = categoria,
-				ImageUrl = rawUrl.Replace("/upload/", "/upload/w_200,h_200,c_fill,g_auto,f_auto,q_auto/")
-			};
+        while (reader.Read())
+        {
+            Categoria categoria = new Categoria()
+            {
+                IdCategoria = (int)reader["idCategoria"],
+                Nome = (string)reader["nomeCategoria"],
+                ImageUrl = ((string)reader["foto_categoria"]).Replace("/upload/",
+                    "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
+            };
 
-			listaArticoli.Add(articolo);
-		}
+            /* per ottimizzare il peso delle foto cambio il suo url */
+            var rawUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
+            Articolo articolo = new Articolo()
+            {
+                IdArticolo = (int)reader["id"],
+                Nome = (string)reader["nome"],
+                Prezzo = Convert.ToDecimal((double)reader["prezzo_listino"]),
+                Descrizione = (string)reader["descrizione"],
+                NumeroOrdini = (int)reader["Numero_ordini"],
+                Categoria = categoria,
+                ImageUrl = rawUrl.Replace("/upload/", "/upload/w_200,h_200,c_fill,g_auto,f_auto,q_auto/")
+            };
 
-		reader.Close();
-		return listaArticoli;
-	}
+            listaArticoli.Add(articolo);
+        }
 
-	public Articolo GetArticoloScelto(int id)
-	{
-		Articolo articolo = null;
+        reader.Close();
+        return listaArticoli;
+    }
 
-		string query = @"SELECT a.*, c.nomeCategoria, c.imageUrl AS foto_categoria
+    public Articolo GetArticoloScelto(int id)
+    {
+        Articolo articolo = null;
+
+        string query = @"SELECT a.*, c.nomeCategoria, c.imageUrl AS foto_categoria
 FROM articoli a
 JOIN categorie c ON a.idCategoria = c.id
 WHERE a.id = @id;";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		command.Parameters.AddWithValue("@id", id);
-		MySqlDataReader reader = command.ExecuteReader();
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        MySqlDataReader reader = command.ExecuteReader();
 
-		if (reader.Read())
-		{
-			Categoria categoria = new Categoria()
-			{
-				IdCategoria = (int)reader["idCategoria"],
-				Nome = (string)reader["nomeCategoria"],
-				ImageUrl = ((string)reader["foto_categoria"]).Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
-			};
+        if (reader.Read())
+        {
+            Categoria categoria = new Categoria()
+            {
+                IdCategoria = (int)reader["idCategoria"],
+                Nome = (string)reader["nomeCategoria"],
+                ImageUrl = ((string)reader["foto_categoria"]).Replace("/upload/",
+                    "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
+            };
 
-			/* per ottimizzare il peso delle foto cambio il suo url */
-			var rawUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
-			articolo = new Articolo()
-			{
-				IdArticolo = (int)reader["id"],
-				Nome = (string)reader["nome"],
-				Prezzo = (double)reader["prezzo_listino"],
-				Descrizione = (string)reader["descrizione"],
-				NumeroOrdini = (int)reader["Numero_ordini"],
-				Categoria = categoria,
-				ImageUrl = rawUrl.Replace("/upload/", "/upload/w_500,h_600,c_fill,f_auto,q_auto/")
-			};
-		}
+            /* per ottimizzare il peso delle foto cambio il suo url */
+            var rawUrl = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
+            articolo = new Articolo()
+            {
+                IdArticolo = (int)reader["id"],
+                Nome = (string)reader["nome"],
+                Prezzo = Convert.ToDecimal((double)reader["prezzo_listino"]),
+                Descrizione = (string)reader["descrizione"],
+                NumeroOrdini = (int)reader["Numero_ordini"],
+                Categoria = categoria,
+                ImageUrl = rawUrl.Replace("/upload/", "/upload/w_500,h_600,c_fill,f_auto,q_auto/")
+            };
+        }
 
-		reader.Close();
-		return articolo;
-	}
+        reader.Close();
+        return articolo;
+    }
 
-	//il metodo restituirà una lista con tutte le categorie e associato il loro numero totale di ordini che ogni articolo di quella categoria ha fatto
-	public List<Dictionary<string, int>> GetOrdiniTotaliDiOgniCategoria()
-	{
-		//key: nome della categoria
-		//value: numero di ordini totali per quella categoria
-		List<Dictionary<string, int>> categorieENumeroOrdiniTotali = new List<Dictionary<string, int>>();
+    //il metodo restituirà una lista con tutte le categorie e associato il loro numero totale di ordini che ogni articolo di quella categoria ha fatto
+    public List<Dictionary<string, int>> GetOrdiniTotaliDiOgniCategoria()
+    {
+        //key: nome della categoria
+        //value: numero di ordini totali per quella categoria
+        List<Dictionary<string, int>> categorieENumeroOrdiniTotali = new List<Dictionary<string, int>>();
 
-		//la query restituisce la categoria e il numero di ordini totale che tutti gli articoli di quella categoria hanno fatto
-		string query = @"SELECT c.nomeCategoria, SUM(a.numero_ordini) AS totale_ordini
+        //la query restituisce la categoria e il numero di ordini totale che tutti gli articoli di quella categoria hanno fatto
+        string query = @"SELECT c.nomeCategoria, SUM(a.numero_ordini) AS totale_ordini
 FROM categorie c
     JOIN articoli a ON c.id = a.idCategoria
 GROUP BY c.id, c.nomeCategoria";
 
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		MySqlDataReader reader = command.ExecuteReader();
-		while (reader.Read())
-		{
-			//lettura dei dati della tabella
-			string nomeCategoria = (string)reader["nomeCategoria"];
-			int totaleOrdiniCategoria = reader.GetInt32("totale_ordini");
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            //lettura dei dati della tabella
+            string nomeCategoria = (string)reader["nomeCategoria"];
+            int totaleOrdiniCategoria = reader.GetInt32("totale_ordini");
 
-			//uso un dizionario di appoggio per inserire i dati su quello totale
-			Dictionary<string, int> dict = new Dictionary<string, int>();
-			dict.Add(nomeCategoria, totaleOrdiniCategoria);
+            //uso un dizionario di appoggio per inserire i dati su quello totale
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            dict.Add(nomeCategoria, totaleOrdiniCategoria);
 
-			categorieENumeroOrdiniTotali.Add(dict);
-		}
+            categorieENumeroOrdiniTotali.Add(dict);
+        }
 
-		reader.Close();
+        reader.Close();
 
-		return categorieENumeroOrdiniTotali;
-	}
+        return categorieENumeroOrdiniTotali;
+    }
 
-	public List<Articolo> GetArticoliOrdineNumero_ordini()
-	{
-		List<Articolo> classifica = new List<Articolo>();
+    public List<Articolo> GetArticoliOrdineNumero_ordini()
+    {
+        List<Articolo> classifica = new List<Articolo>();
 
-		string query = @"SELECT a.*, c.nomeCategoria, c.imageUrl AS foto_categoria
+        string query = @"SELECT a.*, c.nomeCategoria, c.imageUrl AS foto_categoria
                      FROM articoli a
                      JOIN categorie c ON a.idCategoria = c.id
                      ORDER BY a.numero_ordini DESC";
 
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		MySqlDataReader reader = command.ExecuteReader();
-		while (reader.Read())
-		{
-			Categoria categoria = new Categoria()
-			{
-				IdCategoria = (int)reader["idCategoria"],
-				Nome = (string)reader["nomeCategoria"]
-			};
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            Categoria categoria = new Categoria()
+            {
+                IdCategoria = (int)reader["idCategoria"],
+                Nome = (string)reader["nomeCategoria"]
+            };
 
-			Articolo articolo = new Articolo()
-			{
-				IdArticolo = (int)reader["id"],
-				Nome = (string)reader["nome"],
-				Prezzo = (double)reader["prezzo_listino"],
-				NumeroOrdini = (int)reader["numero_ordini"],
-				Categoria = categoria
-			};
+            Articolo articolo = new Articolo()
+            {
+                IdArticolo = (int)reader["id"],
+                Nome = (string)reader["nome"],
+                Prezzo = Convert.ToDecimal((double)reader["prezzo_listino"]),
+                NumeroOrdini = (int)reader["numero_ordini"],
+                Categoria = categoria
+            };
 
-			classifica.Add(articolo);
-		}
+            classifica.Add(articolo);
+        }
 
-		return classifica;
-	}
+        return classifica;
+    }
 
-	//metodo per aggiungere un nuovo articolo da 0
-	//id = null, perchè è un autoincrement nel DB
-	//numero_ordini = 0, perchè se è un articolo nuovo nessuno può averlo mai ordinato
-	public void AggiungiArticolo(Articolo articolo)
-	{
-		string query = @"INSERT INTO articoli(nome,prezzo_listino,numero_ordini,idCategoria,descrizione,imageUrl)
+    //metodo per aggiungere un nuovo articolo da 0
+    //id = null, perchè è un autoincrement nel DB
+    //numero_ordini = 0, perchè se è un articolo nuovo nessuno può averlo mai ordinato
+    public void AggiungiArticolo(Articolo articolo)
+    {
+        string query = @"INSERT INTO articoli(nome,prezzo_listino,numero_ordini,idCategoria,descrizione,imageUrl)
 VALUES (@nome,@prezzo_listino,@numero_ordini,@idCategoria,@descrizione,@imageUrl)";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		command.Parameters.AddWithValue("@nome", articolo.Nome);
-		command.Parameters.AddWithValue("@prezzo_listino", articolo.Prezzo);
-		command.Parameters.AddWithValue("@numero_ordini", articolo.NumeroOrdini);
-		command.Parameters.AddWithValue("@idCategoria", articolo.Categoria.IdCategoria);
-		command.Parameters.AddWithValue("@descrizione", articolo.Descrizione);
-		command.Parameters.AddWithValue("@imageUrl", articolo.ImageUrl);
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@nome", articolo.Nome);
+        command.Parameters.AddWithValue("@prezzo_listino", articolo.Prezzo);
+        command.Parameters.AddWithValue("@numero_ordini", articolo.NumeroOrdini);
+        command.Parameters.AddWithValue("@idCategoria", articolo.Categoria.IdCategoria);
+        command.Parameters.AddWithValue("@descrizione", articolo.Descrizione);
+        command.Parameters.AddWithValue("@imageUrl", articolo.ImageUrl);
 
-		//DA FARE:
-		//che quando c'è un errore nell'esecuzione della query venga un errore a schermo
-		try
-		{
-			command.ExecuteNonQuery();
-		}
-		catch (Exception e)
-		{
-			Console.WriteLine(e);
-			throw;
-		}
-	}
+        //DA FARE:
+        //che quando c'è un errore nell'esecuzione della query venga un errore a schermo
+        try
+        {
+            command.ExecuteNonQuery();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 
-	//----------METODI MODIFICA ARTICOLO ---------------
-	public void ModificaNomeArticolo(int id, string nome)
-	{
-		string query = @"UPDATE articoli
+    //----------METODI MODIFICA ARTICOLO ---------------
+    public void ModificaNomeArticolo(int id, string nome)
+    {
+        string query = @"UPDATE articoli
 SET nome = @nome
 WHERE id = @id";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		command.Parameters.AddWithValue("@id", id);
-		command.Parameters.AddWithValue("@nome", nome);
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@nome", nome);
 
-		//DA FARE:
-		//se errore e/o articolo non trovato fare errore a schermo
-		try
-		{
-			//se 0 = articolo non trovato e modifica non fatta
-			//se 1 = articolo trovato e modifica fatta
-			int esito = command.ExecuteNonQuery();
-			if (esito == 0)
-			{
-				Console.WriteLine("Riga non trovata");
-			}
-		}
-		catch (Exception e)
-		{
-			Console.WriteLine(e);
-			throw;
-		}
-	}
+        //DA FARE:
+        //se errore e/o articolo non trovato fare errore a schermo
+        try
+        {
+            //se 0 = articolo non trovato e modifica non fatta
+            //se 1 = articolo trovato e modifica fatta
+            int esito = command.ExecuteNonQuery();
+            if (esito == 0)
+            {
+                Console.WriteLine("Riga non trovata");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 
-	//ATTENZIONE DA RIVEDERE!!
-	public void ModificaFotoArticolo(int id, string foto)
-	{
-		
-		
-		string query = @"UPDATE articoli
+    //ATTENZIONE DA RIVEDERE!!
+    public void ModificaFotoArticolo(int id, string foto)
+    {
+        string query = @"UPDATE articoli
 SET imageUrl = @imageUrl
 WHERE id = @id";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		command.Parameters.AddWithValue("@id", id);
-		command.Parameters.AddWithValue("@imageUrl", foto);
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@imageUrl", foto);
 
-		//DA FARE:
-		//se errore e/o articolo non trovato fare errore a schermo
-		try
-		{
-			//se 0 = articolo non trovato e modifica non fatta
-			//se 1 = articolo trovato e modifica fatta
-			int esito = command.ExecuteNonQuery();
-			if (esito == 0)
-			{
-				Console.WriteLine("Riga non trovata");
-			}
-		}
-		catch (Exception e)
-		{
-			Console.WriteLine(e);
-			throw;
-		}
-	}
+        //DA FARE:
+        //se errore e/o articolo non trovato fare errore a schermo
+        try
+        {
+            //se 0 = articolo non trovato e modifica non fatta
+            //se 1 = articolo trovato e modifica fatta
+            int esito = command.ExecuteNonQuery();
+            if (esito == 0)
+            {
+                Console.WriteLine("Riga non trovata");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 
-	public void ModificaPrezzo_listinoArticolo(int id, double prezzoListino)
-	{
-		string query = @"UPDATE articoli
+    public void ModificaPrezzo_listinoArticolo(int id, double prezzoListino)
+    {
+        string query = @"UPDATE articoli
 SET prezzo_listino = @prezzo_listino
 WHERE id = @id";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		command.Parameters.AddWithValue("@id", id);
-		command.Parameters.AddWithValue("@prezzo_listino", prezzoListino);
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@prezzo_listino", prezzoListino);
 
-		//DA FARE:
-		//se errore e/o articolo non trovato fare errore a schermo
-		try
-		{
-			//se 0 = articolo non trovato e modifica non fatta
-			//se 1 = articolo trovato e modifica fatta
-			int esito = command.ExecuteNonQuery();
-			if (esito == 0)
-			{
-				Console.WriteLine("Riga non trovata");
-			}
-		}
-		catch (Exception e)
-		{
-			Console.WriteLine(e);
-			throw;
-		}
-	}
+        //DA FARE:
+        //se errore e/o articolo non trovato fare errore a schermo
+        try
+        {
+            //se 0 = articolo non trovato e modifica non fatta
+            //se 1 = articolo trovato e modifica fatta
+            int esito = command.ExecuteNonQuery();
+            if (esito == 0)
+            {
+                Console.WriteLine("Riga non trovata");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 
-	//numero_ordini non si modifica?
+    //numero_ordini non si modifica?
 
-	public void ModificaIdCategoriaArticolo(int id, int idCategoria)
-	{
-		string query = @"UPDATE articoli
+    public void ModificaIdCategoriaArticolo(int id, int idCategoria)
+    {
+        string query = @"UPDATE articoli
 SET idCategoria = @idCategoria
 WHERE id = @id";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		command.Parameters.AddWithValue("@id", id);
-		command.Parameters.AddWithValue("@idCategoria", idCategoria);
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@idCategoria", idCategoria);
 
-		//DA FARE:
-		//se errore e/o articolo non trovato fare errore a schermo
-		try
-		{
-			//se 0 = articolo non trovato e modifica non fatta
-			//se 1 = articolo trovato e modifica fatta
-			int esito = command.ExecuteNonQuery();
-			if (esito == 0)
-			{
-				Console.WriteLine("Riga non trovata");
-			}
-		}
-		catch (Exception e)
-		{
-			Console.WriteLine(e);
-			throw;
-		}
-	}
+        //DA FARE:
+        //se errore e/o articolo non trovato fare errore a schermo
+        try
+        {
+            //se 0 = articolo non trovato e modifica non fatta
+            //se 1 = articolo trovato e modifica fatta
+            int esito = command.ExecuteNonQuery();
+            if (esito == 0)
+            {
+                Console.WriteLine("Riga non trovata");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 
-	public void ModificaDescrizioneArticolo(int id, string descrizione)
-	{
-		string query = @"UPDATE articoli
+    public void ModificaDescrizioneArticolo(int id, string descrizione)
+    {
+        string query = @"UPDATE articoli
 SET descrizione = @descrizione
 WHERE id = @id";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		command.Parameters.AddWithValue("@id", id);
-		command.Parameters.AddWithValue("@descrizione", descrizione);
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@descrizione", descrizione);
 
-		//DA FARE:
-		//se errore e/o articolo non trovato fare errore a schermo
-		try
-		{
-			//se 0 = articolo non trovato e modifica non fatta
-			//se 1 = articolo trovato e modifica fatta
-			int esito = command.ExecuteNonQuery();
-			if (esito == 0)
-			{
-				Console.WriteLine("Riga non trovata");
-			}
-		}
-		catch (Exception e)
-		{
-			Console.WriteLine(e);
-			throw;
-		}
-	}
-	//--------------------------------------------------------------------------------
+        //DA FARE:
+        //se errore e/o articolo non trovato fare errore a schermo
+        try
+        {
+            //se 0 = articolo non trovato e modifica non fatta
+            //se 1 = articolo trovato e modifica fatta
+            int esito = command.ExecuteNonQuery();
+            if (esito == 0)
+            {
+                Console.WriteLine("Riga non trovata");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    //--------------------------------------------------------------------------------
 
-	public Categoria GetCategoria(int idCategoria)
-	{
-		Categoria cat = null;
+    public Categoria GetCategoria(int idCategoria)
+    {
+        Categoria cat = null;
 
-		string query = @"SELECT *
+        string query = @"SELECT *
 FROM categorie
 WHERE id = @idCategoria";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		command.Parameters.AddWithValue("@idCategoria", idCategoria);
-		MySqlDataReader reader = command.ExecuteReader();
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@idCategoria", idCategoria);
+        MySqlDataReader reader = command.ExecuteReader();
 
-		if (reader.Read())
-		{
-			cat = new Categoria()
-			{
-				IdCategoria = (int)reader["id"],
-				Nome = (string)reader["nomeCategoria"],
-				ImageUrl = ((string)reader["imageUrl"]).Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
-			};
-		}
+        if (reader.Read())
+        {
+            cat = new Categoria()
+            {
+                IdCategoria = (int)reader["id"],
+                Nome = (string)reader["nomeCategoria"],
+                ImageUrl = ((string)reader["imageUrl"]).Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
+            };
+        }
 
-		reader.Close();
+        reader.Close();
 
-		return cat;
-	}
-	
-	public void EliminaArticolo(int id)
-	{
-		string query = @"DELETE FROM articoli where id = @id";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		command.Parameters.AddWithValue("@id", id);
-		try
-		{
-			int esito = command.ExecuteNonQuery();
-			if (esito == 0)
-			{
-				Console.WriteLine("ID articolo non trovato");
-			}
-		} catch (Exception e)
-		{
-			Console.WriteLine(e);
-			throw;
-		}
-	}
+        return cat;
+    }
 
-	public void AggiungiCategoria(Categoria categoria)
-	{
-		//semplice creazione di una nuova categorias
-	}
+    public void EliminaArticolo(int id)
+    {
+        string query = @"DELETE FROM articoli where id = @id";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        try
+        {
+            int esito = command.ExecuteNonQuery();
+            if (esito == 0)
+            {
+                Console.WriteLine("ID articolo non trovato");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 
-	//----------METODI AGGIUNGI ORDINE NEL DATABASE ---------------
-	public long AggiungiOrdine(Ordine ordine)
-	{
-		string query = @"INSERT INTO ordini(nome_cliente,indirizzo,data,importo_totale, telefono)
+    public void AggiungiCategoria(Categoria categoria)
+    {
+        //semplice creazione di una nuova categorias
+    }
+
+    //----------METODI AGGIUNGI ORDINE NEL DATABASE ---------------
+    public long AggiungiOrdine(Ordine ordine)
+    {
+        string query = @"INSERT INTO ordini(nome_cliente,indirizzo,data,importo_totale, telefono)
 VALUES (@nome_cliente,@indirizzo,@data,@importo_totale, @telefono)";
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		command.Parameters.AddWithValue("@nome_cliente", ordine.NomeCliente);
-		command.Parameters.AddWithValue("@indirizzo", ordine.Indirizzo);
-		command.Parameters.AddWithValue("@importo_totale", ordine.ImportoTotale);
-		command.Parameters.AddWithValue("@data", ordine.Data);
-		command.Parameters.AddWithValue("@telefono", ordine.Telefono);
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@nome_cliente", ordine.NomeCliente);
+        command.Parameters.AddWithValue("@indirizzo", ordine.Indirizzo);
+        command.Parameters.AddWithValue("@importo_totale", ordine.ImportoTotale);
+        command.Parameters.AddWithValue("@data", ordine.Data);
+        command.Parameters.AddWithValue("@telefono", ordine.Telefono);
 
-		try
-		{
-			command.ExecuteNonQuery();
-			return command.LastInsertedId; // proprietà di MySqlCommand
-		}
-		catch (Exception e)
-		{
-			Console.WriteLine(e);
-			throw;
-		}
-	}
+        try
+        {
+            command.ExecuteNonQuery();
+            return command.LastInsertedId; // proprietà di MySqlCommand
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 
-	public void AggiungiRigheDettaglio(long idOrdine, List<Articolo> articoli)
-	{
-		string query = @"INSERT INTO righe_dettaglio(id_ordine, id_articolo, quantita, prezzo)
+    public void AggiungiRigheDettaglio(long idOrdine, List<Articolo> articoli)
+    {
+        string query = @"INSERT INTO righe_dettaglio(id_ordine, id_articolo, quantita, prezzo)
 VALUES (@id_ordine, @id_articolo, @quantita, @prezzo)";
 
-		var righe = articoli
-			.GroupBy(a => a.IdArticolo)
-			.Select(g => new
-			{
-				IdArticolo = g.Key,
-				Quantita = g.Count(),
-				Prezzo = g.Sum(a => a.Prezzo)
-			});
+        var righe = articoli
+            .GroupBy(a => a.IdArticolo)
+            .Select(g => new
+            {
+                IdArticolo = g.Key,
+                Quantita = g.Count(),
+                Prezzo = g.Sum(a => a.Prezzo)
+            });
 
-		foreach (var riga in righe)
-		{
-			MySqlCommand command = new MySqlCommand(query, _connection);
-			command.Parameters.AddWithValue("@id_ordine", idOrdine);
-			command.Parameters.AddWithValue("@id_articolo", riga.IdArticolo);
-			command.Parameters.AddWithValue("@quantita", riga.Quantita);
-			command.Parameters.AddWithValue("@prezzo", riga.Prezzo);
+        foreach (var riga in righe)
+        {
+            MySqlCommand command = new MySqlCommand(query, _connection);
+            command.Parameters.AddWithValue("@id_ordine", idOrdine);
+            command.Parameters.AddWithValue("@id_articolo", riga.IdArticolo);
+            command.Parameters.AddWithValue("@quantita", riga.Quantita);
+            command.Parameters.AddWithValue("@prezzo", riga.Prezzo);
 
-			try
-			{
-				command.ExecuteNonQuery();
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e);
-				throw;
-			}
-		}
-	}
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+    }
 
-	public void AggiornaAssociazioni(List<Articolo> articoli)
-	{
-		var ids = articoli.Select(a => a.IdArticolo).Distinct().ToList();
+    public void AggiornaAssociazioni(List<Articolo> articoli)
+    {
+        var ids = articoli.Select(a => a.IdArticolo).Distinct().ToList();
 
-		var coppie = ids
-			.SelectMany((id1, i) => ids.Skip(i + 1), (id1, id2) => new
-			{
-				Id1 = Math.Min(id1, id2),
-				Id2 = Math.Max(id1, id2)
-			});
+        var coppie = ids
+            .SelectMany((id1, i) => ids.Skip(i + 1), (id1, id2) => new
+            {
+                Id1 = Math.Min(id1, id2),
+                Id2 = Math.Max(id1, id2)
+            });
 
-		foreach (var coppia in coppie)
-		{
-			string queryCheck = "SELECT COUNT(*) FROM associazioni WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
-			MySqlCommand cmdCheck = new MySqlCommand(queryCheck, _connection);
-			cmdCheck.Parameters.AddWithValue("@id1", coppia.Id1);
-			cmdCheck.Parameters.AddWithValue("@id2", coppia.Id2);
-			long count = (long)cmdCheck.ExecuteScalar();
+        foreach (var coppia in coppie)
+        {
+            string queryCheck = "SELECT COUNT(*) FROM associazioni WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
+            MySqlCommand cmdCheck = new MySqlCommand(queryCheck, _connection);
+            cmdCheck.Parameters.AddWithValue("@id1", coppia.Id1);
+            cmdCheck.Parameters.AddWithValue("@id2", coppia.Id2);
+            long count = (long)cmdCheck.ExecuteScalar();
 
-			if (count > 0)
-			{
-				string queryUpdate =
-					"UPDATE associazioni SET numero_ordini = numero_ordini + 1 WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
-				MySqlCommand cmdUpdate = new MySqlCommand(queryUpdate, _connection);
-				cmdUpdate.Parameters.AddWithValue("@id1", coppia.Id1);
-				cmdUpdate.Parameters.AddWithValue("@id2", coppia.Id2);
-				cmdUpdate.ExecuteNonQuery();
-			}
-			else
-			{
-				// 1. Conta quante volte id_articolo1 appare in totale negli ordini
-				string queryTotale = "SELECT COUNT(*) FROM ordini WHERE id = @id1";
-				MySqlCommand cmdTotale = new MySqlCommand(queryTotale, _connection);
-				cmdTotale.Parameters.AddWithValue("@id1", coppia.Id1);
-				int totaleOrdiniA = Convert.ToInt32(cmdTotale.ExecuteScalar());
+            if (count > 0)
+            {
+                string queryUpdate =
+                    "UPDATE associazioni SET numero_ordini = numero_ordini + 1 WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
+                MySqlCommand cmdUpdate = new MySqlCommand(queryUpdate, _connection);
+                cmdUpdate.Parameters.AddWithValue("@id1", coppia.Id1);
+                cmdUpdate.Parameters.AddWithValue("@id2", coppia.Id2);
+                cmdUpdate.ExecuteNonQuery();
+            }
+            else
+            {
+                // 1. Conta quante volte id_articolo1 appare in totale negli ordini
+                string queryTotale = "SELECT COUNT(*) FROM ordini WHERE id = @id1";
+                MySqlCommand cmdTotale = new MySqlCommand(queryTotale, _connection);
+                cmdTotale.Parameters.AddWithValue("@id1", coppia.Id1);
+                int totaleOrdiniA = Convert.ToInt32(cmdTotale.ExecuteScalar());
 
 // 2. Calcola confidence
-				double confidence = totaleOrdiniA > 0 ? 1.0 / totaleOrdiniA : 0.0;
+                double confidence = totaleOrdiniA > 0 ? 1.0 / totaleOrdiniA : 0.0;
 // (numero_ordini è 1 perché è la prima volta che compaiono insieme)
 // 3. Inserisci con confidence
-				string queryInsert =
-					"INSERT INTO associazioni(id_articolo1, id_articolo2, numero_ordini, confidence) VALUES (@id1, @id2, 1, @conf)";
-				MySqlCommand cmdInsert = new MySqlCommand(queryInsert, _connection);
-				cmdInsert.Parameters.AddWithValue("@id1", coppia.Id1);
-				cmdInsert.Parameters.AddWithValue("@id2", coppia.Id2);
-				cmdInsert.Parameters.AddWithValue("@conf", confidence);
-				cmdInsert.ExecuteNonQuery();
-			}
-		}
+                string queryInsert =
+                    "INSERT INTO associazioni(id_articolo1, id_articolo2, numero_ordini, confidence) VALUES (@id1, @id2, 1, @conf)";
+                MySqlCommand cmdInsert = new MySqlCommand(queryInsert, _connection);
+                cmdInsert.Parameters.AddWithValue("@id1", coppia.Id1);
+                cmdInsert.Parameters.AddWithValue("@id2", coppia.Id2);
+                cmdInsert.Parameters.AddWithValue("@conf", confidence);
+                cmdInsert.ExecuteNonQuery();
+            }
+        }
 
-		// Ricalcola confidence per tutta la tabella dopo l'aggiornamento
-		AggiornaConfidence();
-	}
+        // Ricalcola confidence per tutta la tabella dopo l'aggiornamento
+        AggiornaConfidence();
+    }
 
-	public void AggiornaConfidence()
-	{
-		string queryTruncate = @"TRUNCATE TABLE associazioni";
+    public void AggiornaConfidence()
+    {
+        string queryTruncate = @"TRUNCATE TABLE associazioni";
 
-		string queryConfidence = @"
+        string queryConfidence = @"
 INSERT INTO associazioni (
     id_articolo1,
     id_articolo2,
@@ -686,70 +688,97 @@ ON DUPLICATE KEY UPDATE
     numero_ordini = VALUES(numero_ordini),
     confidence = VALUES(confidence);";
 
-		MySqlCommand commandTruncate = new MySqlCommand(queryTruncate, _connection);
-		MySqlCommand commandConfidence = new MySqlCommand(queryConfidence, _connection);
-		try
-		{
-			commandTruncate.ExecuteNonQuery();
-			commandConfidence.ExecuteNonQuery();
-		}
-		catch (Exception e)
-		{
-			Console.WriteLine(e);
-			throw;
-		}
-	}
+        MySqlCommand commandTruncate = new MySqlCommand(queryTruncate, _connection);
+        MySqlCommand commandConfidence = new MySqlCommand(queryConfidence, _connection);
+        try
+        {
+            commandTruncate.ExecuteNonQuery();
+            commandConfidence.ExecuteNonQuery();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 
-	//----------METODI PER LE RACCOMANDAZIONI ---------------
-	public List<Associazione> GetAssociazione(int id_articolo1)
-	{
-		string query = "SELECT * FROM associazioni WHERE id_articolo1 = @id";
-		List<Associazione> lista = new List<Associazione>();
+    //----------METODI PER LE RACCOMANDAZIONI ---------------
+    public List<Associazione> GetAssociazione(int id_articolo1)
+    {
+        string query = "SELECT * FROM associazioni WHERE id_articolo1 = @id";
+        List<Associazione> lista = new List<Associazione>();
 
-		MySqlCommand cmd = new MySqlCommand(query, _connection);
-		cmd.Parameters.AddWithValue("@id", id_articolo1);
+        MySqlCommand cmd = new MySqlCommand(query, _connection);
+        cmd.Parameters.AddWithValue("@id", id_articolo1);
 
-		using (MySqlDataReader reader = cmd.ExecuteReader())
-		{
-			while (reader.Read())
-			{
-				lista.Add(new Associazione
-				{
-					IdArticolo1 = reader.GetInt32("id_articolo1"),
-					IdArticolo2 = reader.GetInt32("id_articolo2"),
-					NumeroOrdini = reader.GetInt32("numero_ordini"),
-					Confidence = reader.GetDouble("confidence")
-				});
-			}
-		}
+        using (MySqlDataReader reader = cmd.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                lista.Add(new Associazione
+                {
+                    IdArticolo1 = reader.GetInt32("id_articolo1"),
+                    IdArticolo2 = reader.GetInt32("id_articolo2"),
+                    NumeroOrdini = reader.GetInt32("numero_ordini"),
+                    Confidence = reader.GetDouble("confidence")
+                });
+            }
+        }
 
-		return lista;
-	}
+        return lista;
+    }
 
-	public List<Dictionary<int, string>> GetTutteIdArticolo1ENomi()
-	{
-		List<Dictionary<int, string>> ListaIdArticolo1ENome = new List<Dictionary<int, string>>();
+    public List<Dictionary<int, string>> GetTutteIdArticolo1ENomi()
+    {
+        List<Dictionary<int, string>> ListaIdArticolo1ENome = new List<Dictionary<int, string>>();
 
-		string query = @"SELECT ass.id_articolo1, art.nome
+        string query = @"SELECT ass.id_articolo1, art.nome
 from associazioni ass
 inner join articoli art on ass.id_articolo1 = art.id
 group by id_articolo1;";
 
-		MySqlCommand command = new MySqlCommand(query, _connection);
-		MySqlDataReader reader = command.ExecuteReader();
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
 
-		while (reader.Read())
-		{
-			var id_articolo1 = reader.GetInt32("id_articolo1");
-			var nomeArticolo = reader.GetString("nome");
+        while (reader.Read())
+        {
+            var id_articolo1 = reader.GetInt32("id_articolo1");
+            var nomeArticolo = reader.GetString("nome");
 
-			Dictionary<int, string> tempDic = new Dictionary<int, string>();
-			tempDic.Add(id_articolo1, nomeArticolo);
+            Dictionary<int, string> tempDic = new Dictionary<int, string>();
+            tempDic.Add(id_articolo1, nomeArticolo);
 
-			ListaIdArticolo1ENome.Add(tempDic);
-		}
+            ListaIdArticolo1ENome.Add(tempDic);
+        }
 
-		reader.Close();
-		return ListaIdArticolo1ENome;
-	}
+        reader.Close();
+        return ListaIdArticolo1ENome;
+    }
+
+    public void ModificaArticolo(int id, Articolo modificheArticolo)
+    {
+        string query = @"UPDATE articoli
+SET nome = @nome,
+    imageUrl = @foto,
+    prezzo_listino = @prezzo_listino,
+    idCategoria = @idCategoria,
+    descrizione = @descrizione
+WHERE id = @id;";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@nome", modificheArticolo.Nome);
+        command.Parameters.AddWithValue("@foto", modificheArticolo.ImageUrl);
+        command.Parameters.AddWithValue("@prezzo_listino", modificheArticolo.Prezzo);
+        command.Parameters.AddWithValue("@descrizione", modificheArticolo.Descrizione);
+        command.Parameters.AddWithValue("@idCategoria", modificheArticolo.Categoria.IdCategoria);
+        try
+        {
+            command.ExecuteNonQuery();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 }

@@ -84,10 +84,67 @@ public class ArticoliAdminController : Controller
             ArticoloScelto = articoloScelto,
             ListaCategorie = categorie
         };
-        
+
         return View(model);
     }
 
+    [HttpPost]
+    public IActionResult ModificaArticolo(int id, ArticoloModificaArticolo input)
+    {
+        var articoloDb = _gestioneDati.GetArticoloScelto(id);
+
+        // Nome
+        if (!string.IsNullOrWhiteSpace(input.Nome) &&
+            input.Nome != articoloDb.Nome)
+        {
+            articoloDb.Nome = input.Nome;
+        }
+
+        // Descrizione
+        if (!string.IsNullOrWhiteSpace(input.Descrizione) &&
+            input.Descrizione != articoloDb.Descrizione)
+        {
+            articoloDb.Descrizione = input.Descrizione;
+        }
+
+        // Prezzo
+        if (input.Prezzo != articoloDb.Prezzo)
+        {
+            articoloDb.Prezzo = (decimal)input.Prezzo!;
+        }
+
+        // Categoria
+        if (input.IdCategoria != articoloDb.Categoria.IdCategoria)
+        {
+            articoloDb.Categoria.IdCategoria = (int)input.IdCategoria!;
+        }
+
+        // Immagine
+        if (input.ImageUrl != null && input.ImageUrl.Length > 0)
+        {
+            var percorso = _cloudinaryService.UploadImage(input.ImageUrl);
+
+            if (percorso != articoloDb.ImageUrl)
+            {
+                articoloDb.ImageUrl = percorso;
+            }
+        }
+
+        try
+        {
+            _gestioneDati.ModificaArticolo(id, articoloDb);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return RedirectToAction("Error", "Home");
+        }
+
+
+        return RedirectToAction("ArticoliAdmin", new { idCategoria = articoloDb.Categoria.IdCategoria });
+    }
+
+    /*
     [HttpPost]
     public IActionResult ModificaFotoArticolo(IFormFile imageFile, int id)
     {
@@ -101,11 +158,11 @@ public class ArticoliAdminController : Controller
             Console.WriteLine(e);
             return RedirectToAction("Error", "Home");
         }
-        
-        
+
+
         try { _gestioneDati.ModificaFotoArticolo(id, percorsoFoto); }
         catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
-        
+
         return RedirectToAction("ModificaArticolo", new { id });
     }
 
@@ -140,11 +197,12 @@ public class ArticoliAdminController : Controller
         catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
         return RedirectToAction("ModificaArticolo", new { id });
     }
+    */
 
     public IActionResult EliminaArticolo(int id)
     {
         var art = _gestioneDati.GetArticoloScelto(id);
-        
+
         try
         {
             _gestioneDati.EliminaArticolo(id);
@@ -154,6 +212,7 @@ public class ArticoliAdminController : Controller
             Console.WriteLine(e);
             return RedirectToAction("Error", "Home");
         }
+
         return RedirectToAction("ArticoliAdmin", new { art.Categoria.IdCategoria });
     }
 }

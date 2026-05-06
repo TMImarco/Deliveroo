@@ -1,12 +1,12 @@
 ﻿<!-- permetto l'utilizzo della classe GestioneDati -->
-@inject GestioneDati _gestione
+@inject GestioneDati Gestione
 
 @{
     ViewData["Title"] = "Admin - Articoli";
     Layout = "_LayoutAdmin";
 
     <!-- prendo tutte le categorie per visualizzarle nella tab bar -->
-    var categorie = _gestione.GetTutteCategorie();
+    var categorie = Gestione.GetTutteCategorie();
     
     <!-- per personalizzare la navbar, tengo conto della categoria selezionata da evidenziarla -->
     var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString() 

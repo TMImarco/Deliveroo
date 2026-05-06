@@ -46,47 +46,96 @@
                    asp-route-idCategoria="@art.Categoria.IdCategoria">
                     ↵
                 </a>
-                <form id="ModificaArticoloFormUpload"
-                      method="post"
-                      asp-action="ModificaArticolo"
-                      asp-route-id="@art.IdArticolo"
-                      enctype="multipart/form-data">
-                    <div class="article-split">
+                
+                <div class="article-split">
 
-                        <!--Riquadro a sinistra-->
-                        <div class="article-left">
+                    <div class="article-left">
 
-                            <!--Modifica immagine-->
+                        <!--Si modifica solo il percorso della foto per ora-->
+                        <form id="ModificaArticoloFormUpload"
+                              method="post"
+                              asp-action="ModificaFotoArticolo"
+                              asp-route-id="@art.IdArticolo"
+                              enctype="multipart/form-data">
+
+                            <!--questo input passa la ModificaFotoArticolo il nuovo percorso della foto-->
                             <img src="@art.ImageUrl"/>
                             <input type="file"
-                                   name="ImageUrl"/>
-                        </div>
+                                   name="imageFile"
+                                   value="@art.ImageUrl"
+                                   required/>
+                            <input type="submit"
+                                   name="SubmitPercorsoFoto"
+                                   value="EDIT"
+                                   class="btn btn-primary"/>
+                        </form>
+                    </div>
 
-                        <!--Riquadro a destra-->
-                        <div class="article-right">
+                    <div class="article-right">
+                        <div class="article-right-content">
+                            <!--questo form passa al ModificaNomeArticolo il art.IdArticolo-->
+                            <form method="post"
+                                  asp-action="ModificaNomeArticolo"
+                                  asp-route-id="@art.IdArticolo">
 
-                            <div class="article-right-content">
-
-                                <!--Modifica descrizione-->
+                                <!--questo input passa la ModificaNomeArticolo il nuovo nome-->
                                 <input type="text"
-                                       name="Nome"
-                                       value="@art.Nome"/>
-                                <textarea name="Descrizione" id="txaModificaDescrizione"
-                                          style="width:200px; overflow:hidden; resize:none;">@art.Descrizione</textarea>
+                                       name="nome"
+                                       value="@art.Nome"
+                                       required/>
+                                <!-- su css fare simile a <h1>@art.Nome</h1>-->
+                                <input type="submit"
+                                       name="SubmitNome"
+                                       value="EDIT"
+                                       class="btn btn-primary"/>
+                            </form>
 
-                                <div class="article-divider"></div>
+                            <form method="post"
+                                  asp-action="ModificaDescrizioneArticolo"
+                                  asp-route-id="@art.IdArticolo">
+                                <textarea name="descrizione" id="txaModificaDescrizione"
+                                          style="width:200px; overflow:hidden; resize:none;"
+                                          required>@art.Descrizione</textarea>
+                                <!-- su css fare simile a <p>@art.Descrizione</p>-->
+                                <input type="submit"
+                                       name="SubmitDescrizione"
+                                       value="EDIT"
+                                       class="btn btn-primary"/>
+                            </form>
 
-                                <!--Input prezzo-->
+                            <div class="article-divider"></div>
+
+                            <form method="post"
+                                  asp-action="ModificaPrezzo_listinoArticolo"
+                                  asp-route-id="@art.IdArticolo">
+
+                                <!--gli va bene input="number" e dopo nel metodo post e' double?
+                                con questo modo di fare scritto sotto ToString(InvariantCulture) forza il punto come separatore decimale
+                                step="0.01" permette i decimali nell'input
+                                min="0" evita prezzi negativi-->
                                 <input type="number"
-                                       name="Prezzo"
+                                       name="prezzo_listino"
                                        value="@art.Prezzo.ToString(System.Globalization.CultureInfo.InvariantCulture)"
                                        step="0.01"
-                                       min="0"/>
+                                       min="0"
+                                       required/>
 
-                                <div class="article-divider"></div>
+                                <!-- su css fare simile a <p class="prezzo">€ @art.Prezzo.ToString("0.00")</p>-->
+                                <input type="submit"
+                                       name="SubmitPrezzo_listino"
+                                       value="EDIT"
+                                       class="btn btn-primary"/>
+                            </form>
 
-                                <!--Input categoria-->
-                                <select name="IdCategoria">
+                            <div class="article-divider"></div>
+
+                            <!-- su css fare simile a <p>@art.Categoria.Nome</p>-->
+                            <form method="post"
+                                  asp-action="ModificaCategoriaArticolo"
+                                  asp-route-id="@art.IdArticolo">
+                                <select name="idcategoria"
+                                        id="idcategoria"
+                                        required>
                                     @foreach (var c in categorie)
                                     {
                                         var isSelected = c.IdCategoria == art.Categoria.IdCategoria;
@@ -95,20 +144,20 @@
                                         </option>
                                     }
                                 </select>
-                            </div>
-                            <!--Pulsante salva modifiche finale-->
-                            <input type="submit"
-                                   value="SALVA MODIFICHE"
-                                   class="add-btn"/>
+
+                                <input type="submit"
+                                       name="SubmitCategoria"
+                                       value="EDIT"
+                                       class="btn btn-primary"/>
+                            </form>
                         </div>
                     </div>
-                </form>
+                </div>
+
             </div>
 
-            <!--A destra dell'articolo-->
+            <!-- DESTRA (raccomandazioni future) -->
             <div class="right-col">
-
-                <!--Pulsante elimina articolo-->
                 <a href="@Url.Action("EliminaArticolo", new { id = art.IdArticolo })"
                    class="btn btn-primary confirm-action"
                    data-msg="Rimuovere @art.Nome dal carrello?">ELIMINA</a>
@@ -146,7 +195,7 @@
             document.getElementById("ModificaArticoloLoadingOverlay").style.display = "flex";
         });
     </script>
-
+    
     <!--script per adattare la larghezza della <textarea> dells descrizione-->
     <script>
         const ta = document.getElementById("txaModificaDescrizione");
