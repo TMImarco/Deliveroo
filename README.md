@@ -11,18 +11,18 @@ Dividiamo il progetto in tre macro argomenti:
 1. Login (utente: admin pwd: admin)
 2. Logout
 3. Pagina principale (IndexAdmin)
-4. Modifica articolo (per ora si puo' modificare solo il percorso della foto)
-5. Aggiungi articolo (da vedere per le foto, per ora si inserisce solo il path + fare in modo che si debbano riempire tutti gli input)
+4. Modifica articolo
+5. Aggiungi articolo
 6. Vedere le associazioni di acquisto con le "confidence" in 'A' + refresh confidence
-7. Elimina articolo (insieme a modifica) + pagina di riepigolo prima di eliminare (fare pop up magari?)
+7. Elimina articolo
 
 ### Funzioni da implementare:
 1. Grafica
-2. ModificaArticoli: pulsante unico "salva modifiche" alla fine, i pulsanti piccoli vicino ad ogni elemento solo per abilitare la modifica
+2. ModificaArticoli: i pulsanti piccoli vicino ad ogni elemento solo per abilitare la modifica
 3. Modificare la visualizzazione delle associazioni
 
 ### Note
-1. Opzione elimina/modifica/aggiungi categoria scartate (per ora?)
+1. Opzione elimina/modifica/aggiungi categoria scartate
 2. Quando seleziono un articolo da modificare, ci mette sempre tantissimo, PERCHE'?
 
 ## Utente
