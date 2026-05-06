@@ -1,3 +1,5 @@
+using Deliveroo.Models;
+using Deliveroo.Tabelle;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Deliveroo.Controllers;
@@ -14,7 +16,7 @@ public class ArticoliController : Controller
 	public IActionResult Articoli(int idCategoria)
 	{
 		var listArticoli = _gestioneDati.GetArticoliPerCategoria(idCategoria);
-		return View(listArticoli);
+		return View("Articoli", listArticoli);
 	}
 
 	public IActionResult InserimentoArticolo(int id)
@@ -29,6 +31,26 @@ public class ArticoliController : Controller
 		ViewBag.IdNext = index < ids.Count - 1 ? ids[index + 1] : (int?)null;
 		ViewBag.IdCategoria = articoloScelto.Categoria.IdCategoria;
 
-		return View(articoloScelto);
+		var listRaccomandazioni = GetRaccomandazioni(id);
+		var viewmodel = new InserimentoArticoloViewModel
+		{
+			ArticoloScelto = articoloScelto,
+			Raccomandazioni = listRaccomandazioni,
+		};
+
+		return View("InserimentoArticolo", viewmodel);
+	}
+	
+	public List<Articolo> GetRaccomandazioni(int idArticolo)
+	{
+		List<int> idRaccomandati = _gestioneDati.GetAssociazione(idArticolo)
+			.Where(a => a.IdArticolo2 != idArticolo)
+			.OrderByDescending(a => a.Confidence)
+			.Select(a => a.IdArticolo2)
+			.Distinct()
+			.Take(4)
+			.ToList();
+
+		return idRaccomandati.Select(id => _gestioneDati.GetArticoloScelto(id)).ToList();
 	}
 }

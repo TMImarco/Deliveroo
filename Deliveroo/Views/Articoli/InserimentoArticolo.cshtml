@@ -1,8 +1,9 @@
 ﻿@using Deliveroo.Tabelle
+@model Deliveroo.Models.InserimentoArticoloViewModel
 @{
 ViewData["Title"] = "Articoli";
 Layout = "_Layout";
-Articolo art = Model;
+Articolo art = Model.ArticoloScelto;
 }
 
 <div class="macro-section">
@@ -77,7 +78,32 @@ Articolo art = Model;
             </div>
 
             <!-- DESTRA (raccomandazioni future) -->
-            <div class="right-col"></div>
+            <div class="right-col">
+                <div class="col-header">
+                    <h2>Consigliati per te</h2>
+                </div>
+                @if (Model.Raccomandazioni != null && Model.Raccomandazioni.Any())
+                {
+                    <div class="rec-list">
+                        @foreach (var articolo in Model.Raccomandazioni)
+                        {
+                            <a asp-action="InserimentoArticolo" asp-route-id="@articolo.IdArticolo" class="rec-row">
+                                <img class="rec-thumb" src="@Url.Content(articolo.ImageUrl)" alt="@articolo.Nome"/>
+                                <div class="rec-info">
+                                    <div class="rec-name">@articolo.Nome</div>
+                                    <div class="rec-price">€@articolo.Prezzo.ToString("F2")</div>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div style="padding: 20px; color: #aaa; font-size: 13px; text-align: center;">
+                        Nessun consiglio disponibile
+                    </div>
+                }
+            </div>
 
         </div>
     </div>
@@ -96,8 +122,8 @@ Articolo art = Model;
 @section Scripts {
 <script>
     /* AUMENTARE LA QUANTITA DELL'ARTICOLO */
-    const prezzo = @art.Prezzo.ToString(System.Globalization.CultureInfo.InvariantCulture);
-    const aggiungiUrl = '@Url.Action("MettiNelCarrello", "Carrello", new { id = art.IdArticolo })';
+    const prezzo = @Model.ArticoloScelto.Prezzo.ToString(System.Globalization.CultureInfo.InvariantCulture);
+    const aggiungiUrl = '@Url.Action("MettiNelCarrello", "Carrello", new { id = Model.ArticoloScelto.IdArticolo })';
     let qty = 1;
 
     function aggiornaTotale() {
