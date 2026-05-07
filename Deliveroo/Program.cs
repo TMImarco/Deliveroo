@@ -1,4 +1,6 @@
+using System.Globalization;
 using Deliveroo;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +21,19 @@ builder.Services.AddScoped<GestioneDati>();
 
 builder.Services.AddSingleton<CloudinaryService>();
 
+// Aggiunge la localizzazione per la cultura italiana
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var supportedCultures = new[] { new CultureInfo("it-IT") };
+    options.DefaultRequestCulture = new RequestCulture("it-IT");
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
+});
+
 var app = builder.Build();
+
+// ...poi nell'app:
+app.UseRequestLocalization();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

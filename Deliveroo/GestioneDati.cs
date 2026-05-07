@@ -1,4 +1,5 @@
-﻿using Deliveroo.AdminViewModels;
+﻿using System.Globalization;
+using Deliveroo.AdminViewModels;
 using Deliveroo.Tabelle;
 using MySql.Data.MySqlClient;
 
@@ -757,6 +758,8 @@ group by id_articolo1;";
 
     public void ModificaArticolo(int id, Articolo modificheArticolo)
     {
+        Console.WriteLine("Gestione dati: " + modificheArticolo.Prezzo);
+        
         string query = @"UPDATE articoli
 SET nome = @nome,
     imageUrl = @foto,

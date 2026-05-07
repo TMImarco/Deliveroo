@@ -1,3 +1,4 @@
+using System.Globalization;
 using Deliveroo.AdminViewModels;
 using Deliveroo.Tabelle;
 using Microsoft.AspNetCore.Mvc;
@@ -91,6 +92,8 @@ public class ArticoliAdminController : Controller
     [HttpPost]
     public IActionResult ModificaArticolo(int id, ArticoloModificaArticolo input)
     {
+        Console.WriteLine( "Controller: " +input.Prezzo);
+        
         var articoloDb = _gestioneDati.GetArticoloScelto(id);
 
         // Nome
@@ -108,15 +111,21 @@ public class ArticoliAdminController : Controller
         }
 
         // Prezzo
-        if (input.Prezzo != articoloDb.Prezzo)
+        if (!string.IsNullOrWhiteSpace(input.Prezzo))
         {
-            articoloDb.Prezzo = (decimal)input.Prezzo!;
+            string prezzoNormalizzato = input.Prezzo.Replace(",", ".");
+            if (decimal.TryParse(prezzoNormalizzato, NumberStyles.Any,
+                    CultureInfo.InvariantCulture, out decimal prezzo)
+                && prezzo != articoloDb.Prezzo)
+            {
+                articoloDb.Prezzo = prezzo;
+            }
         }
 
         // Categoria
         if (input.IdCategoria != articoloDb.Categoria.IdCategoria)
         {
-            articoloDb.Categoria.IdCategoria = (int)input.IdCategoria!;
+            articoloDb.Categoria.IdCategoria = input.IdCategoria;
         }
 
         // =========================

@@ -64,7 +64,8 @@
                                        id="inputImage"/>
                                 <button type="button"
                                         class="btn btn-primary"
-                                        id="btnResetImage">RIPRISTINA
+                                        id="btnResetImage">
+                                    RIPRISTINA
                                 </button>
                             </div>
                             <img src="@art.ImageUrl"
@@ -83,28 +84,39 @@
 
                                 <!--Modifica nome-->
                                 <div class="field-edit">
+                                    <!-- visibile ma disabled: non invia nulla -->
                                     <input type="text"
-                                           name="Nome"
                                            value="@art.Nome"
-                                           readonly
+                                           disabled
                                            id="inputNome"/>
-
+                                    <!-- valore reale inviato -->
+                                    <input type="hidden"
+                                           name="Nome"
+                                           id="hiddenNome"
+                                           value="@art.Nome"/>
                                     <button type="button"
                                             class="edit-btn"
-                                            data-target="inputNome">
+                                            data-target="inputNome"
+                                            data-type="text">
                                         ✏️
                                     </button>
                                 </div>
 
                                 <!--Modifica descrizione-->
                                 <div class="field-edit">
-                                <textarea name="Descrizione"
-                                          id="txaModificaDescrizione"
-                                          style="width:200px; overflow:hidden; resize:none;"
-                                          readonly>@art.Descrizione</textarea>
+                                    <!-- visibile ma disabled: non invia nulla -->
+                                    <textarea disabled
+                                              id="txaModificaDescrizione"
+                                              style="width:200px; overflow:hidden; resize:none;">@art.Descrizione</textarea>
+                                    <!-- valore reale inviato -->
+                                    <input type="hidden"
+                                           name="Descrizione"
+                                           id="hiddenDescrizione"
+                                           value="@art.Descrizione"/>
                                     <button type="button"
                                             class="edit-btn"
-                                            data-target="txaModificaDescrizione">
+                                            data-target="txaModificaDescrizione"
+                                            data-type="textarea">
                                         ✏️
                                     </button>
                                 </div>
@@ -113,16 +125,21 @@
 
                                 <!--Input prezzo-->
                                 <div class="field-edit">
-                                    <input type="number"
+                                    <!-- visibile ma disabled: non invia nulla -->
+                                    <input type="text"
+                                           value="@art.Prezzo.ToString(CultureInfo.CurrentCulture)"
+                                           disabled
+                                           id="inputPrezzo"
+                                           inputmode="decimal"/>
+                                    <!-- valore reale inviato -->
+                                    <input type="hidden"
                                            name="Prezzo"
-                                           value="@art.Prezzo.ToString(CultureInfo.InvariantCulture)"
-                                           step="0.01"
-                                           min="0"
-                                           readonly
-                                           id="inputPrezzo"/>
+                                           id="hiddenPrezzo"
+                                           value="@art.Prezzo.ToString(CultureInfo.CurrentCulture)"/>
                                     <button type="button"
                                             class="edit-btn"
-                                            data-target="inputPrezzo">
+                                            data-target="inputPrezzo"
+                                            data-type="text">
                                         ✏️
                                     </button>
                                 </div>
@@ -207,6 +224,8 @@
     <script>
         const ta = document.getElementById("txaModificaDescrizione");
         ta.style.height = ta.scrollHeight + "px";
+        // l'evento "input" è già gestito dallo script di sincronizzazione,
+        // qui agganciamo solo il resize automatico
         ta.addEventListener("input", () => {
             ta.style.height = "auto";
             ta.style.height = ta.scrollHeight + "px";
@@ -254,19 +273,48 @@
         document.querySelectorAll('.edit-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const targetId = btn.getAttribute('data-target');
-                const type = btn.getAttribute('data-type');
                 const el = document.getElementById(targetId);
 
-                if (type === "select" || type === "file") {
-                    el.disabled = false;
-                } else {
-                    el.readOnly = false;
-                }
+                // tutti gli elementi visibili ora sono disabled, non readonly
+                el.disabled = false;
 
                 el.focus();
                 el.classList.add('active-edit');
             });
         });
+    </script>
+
+    <!--Script per sincronizzare inputNome → hiddenNome-->
+    <script>
+        const inputNome = document.getElementById("inputNome");
+        const hiddenNome = document.getElementById("hiddenNome");
+        if (inputNome) {
+            inputNome.addEventListener("input", () => {
+                hiddenNome.value = inputNome.value;
+            });
+        }
+    </script>
+
+    <!--Script per sincronizzare txaModificaDescrizione → hiddenDescrizione-->
+    <script>
+        const txaDescrizione = document.getElementById("txaModificaDescrizione");
+        const hiddenDescrizione = document.getElementById("hiddenDescrizione");
+        if (txaDescrizione) {
+            txaDescrizione.addEventListener("input", () => {
+                hiddenDescrizione.value = txaDescrizione.value;
+            });
+        }
+    </script>
+
+    <!--Script per sincronizzare inputPrezzo → hiddenPrezzo (normalizza la virgola in punto)-->
+    <script>
+        const inputPrezzo = document.getElementById("inputPrezzo");
+        const hiddenPrezzo = document.getElementById("hiddenPrezzo");
+        if (inputPrezzo) {
+            inputPrezzo.addEventListener("input", () => {
+                hiddenPrezzo.value = inputPrezzo.value.replace(",", ".");
+            });
+        }
     </script>
 
     <!--Script per la gestione del select idCategoria-->
