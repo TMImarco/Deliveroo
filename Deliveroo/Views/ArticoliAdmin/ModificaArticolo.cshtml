@@ -1,4 +1,5 @@
-﻿@using Deliveroo.Tabelle
+﻿@using System.Globalization
+@using Deliveroo.Tabelle
 @{
     ViewData["Title"] = "Admin - Modifica Articoli";
     Layout = "_LayoutAdmin";
@@ -57,9 +58,21 @@
                         <div class="article-left">
 
                             <!--Modifica immagine-->
-                            <img src="@art.ImageUrl"/>
-                            <input type="file"
-                                   name="ImageUrl"/>
+                            <div class="d-flex align-items-center gap-2">
+                                <input type="file"
+                                       name="ImageUrl"
+                                       id="inputImage"/>
+                                <button type="button"
+                                        class="btn btn-primary"
+                                        id="btnResetImage">RIPRISTINA
+                                </button>
+                            </div>
+                            <img src="@art.ImageUrl"
+                                 id="previewImage"
+                                 alt="Immagine articolo"/>
+
+                            <!-- flag per il backend -->
+                            <input type="hidden" name="ResetImage" id="ResetImage" value="false"/>
                         </div>
 
                         <!--Riquadro a destra-->
@@ -67,34 +80,77 @@
 
                             <div class="article-right-content">
 
+
+                                <!--Modifica nome-->
+                                <div class="field-edit">
+                                    <input type="text"
+                                           name="Nome"
+                                           value="@art.Nome"
+                                           readonly
+                                           id="inputNome"/>
+
+                                    <button type="button"
+                                            class="edit-btn"
+                                            data-target="inputNome">
+                                        ✏️
+                                    </button>
+                                </div>
+
                                 <!--Modifica descrizione-->
-                                <input type="text"
-                                       name="Nome"
-                                       value="@art.Nome"/>
-                                <textarea name="Descrizione" id="txaModificaDescrizione"
-                                          style="width:200px; overflow:hidden; resize:none;">@art.Descrizione</textarea>
+                                <div class="field-edit">
+                                <textarea name="Descrizione"
+                                          id="txaModificaDescrizione"
+                                          style="width:200px; overflow:hidden; resize:none;"
+                                          readonly>@art.Descrizione</textarea>
+                                    <button type="button"
+                                            class="edit-btn"
+                                            data-target="txaModificaDescrizione">
+                                        ✏️
+                                    </button>
+                                </div>
 
                                 <div class="article-divider"></div>
 
                                 <!--Input prezzo-->
-                                <input type="number"
-                                       name="Prezzo"
-                                       value="@art.Prezzo.ToString(System.Globalization.CultureInfo.InvariantCulture)"
-                                       step="0.01"
-                                       min="0"/>
+                                <div class="field-edit">
+                                    <input type="number"
+                                           name="Prezzo"
+                                           value="@art.Prezzo.ToString(CultureInfo.InvariantCulture)"
+                                           step="0.01"
+                                           min="0"
+                                           readonly
+                                           id="inputPrezzo"/>
+                                    <button type="button"
+                                            class="edit-btn"
+                                            data-target="inputPrezzo">
+                                        ✏️
+                                    </button>
+                                </div>
 
                                 <div class="article-divider"></div>
 
                                 <!--Input categoria-->
-                                <select name="IdCategoria">
-                                    @foreach (var c in categorie)
-                                    {
-                                        var isSelected = c.IdCategoria == art.Categoria.IdCategoria;
-                                        <option value="@c.IdCategoria" selected="@(isSelected ? "selected" : "")">
-                                            @c.Nome
-                                        </option>
-                                    }
-                                </select>
+                                <div class="field-edit">
+                                    <select id="selectCategoria" disabled>
+                                        @foreach (var c in categorie)
+                                        {
+                                            var isSelected = c.IdCategoria == art.Categoria.IdCategoria;
+                                            <option value="@c.IdCategoria" selected="@(isSelected ? "selected" : "")">
+                                                @c.Nome
+                                            </option>
+                                        }
+                                    </select>
+                                    <!-- valore reale inviato -->
+                                    <input type="hidden" name="IdCategoria" value="@art.Categoria.IdCategoria"
+                                           id="hiddenCategoria"/>
+                                    <button type="button"
+                                            class="edit-btn"
+                                            data-target="selectCategoria"
+                                            data-type="select">
+                                        ✏️
+                                    </button>
+                                </div>
+
                             </div>
                             <!--Pulsante salva modifiche finale-->
                             <input type="submit"
@@ -123,7 +179,7 @@
     <p>Caricamento in corso...</p>
 </div>
 
-<!-- MODAL CONFERMA -->
+<!-- POP-UP per la conferma di ELIMINAZIONE -->
 <div id="confirm-modal" class="modal-overlay" style="display:none">
     <div class="modal-box">
         <p id="modal-msg"></p>
@@ -147,7 +203,7 @@
         });
     </script>
 
-    <!--script per adattare la larghezza della <textarea> dells descrizione-->
+    <!--script per adattare la larghezza della <textarea> della descrizione-->
     <script>
         const ta = document.getElementById("txaModificaDescrizione");
         ta.style.height = ta.scrollHeight + "px";
@@ -157,7 +213,7 @@
         });
     </script>
 
-    <!--Script per il pop up-->
+    <!--Script per il pop up quando ELIMINI l'articolo-->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('confirm-modal');
@@ -190,6 +246,63 @@
                     pendingUrl = null;
                 }
             });
+        });
+    </script>
+
+    <!--Script per abilitare la modifica degli input-->
+    <script>
+        document.querySelectorAll('.edit-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+                const type = btn.getAttribute('data-type');
+                const el = document.getElementById(targetId);
+
+                if (type === "select" || type === "file") {
+                    el.disabled = false;
+                } else {
+                    el.readOnly = false;
+                }
+
+                el.focus();
+                el.classList.add('active-edit');
+            });
+        });
+    </script>
+
+    <!--Script per la gestione del select idCategoria-->
+    <script>
+        const select = document.getElementById("selectCategoria");
+        const hidden = document.getElementById("hiddenCategoria");
+
+        if (select) {
+            select.addEventListener("change", () => {
+                hidden.value = select.value;
+            });
+        }
+    </script>
+
+    <!--Script per preview immagine caricata e ripristina immagine (da immagine caricata lo ripristina a immagine già nel db-->
+    <script>
+        const input = document.getElementById("inputImage");
+        const preview = document.getElementById("previewImage");
+        const resetBtn = document.getElementById("btnResetImage");
+        const resetFlag = document.getElementById("ResetImage");
+
+        const originalImage = preview.src;
+
+        input.addEventListener("change", function () {
+            const file = this.files[0];
+
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+                resetFlag.value = "false";
+            }
+        });
+
+        resetBtn.addEventListener("click", function () {
+            preview.src = originalImage;
+            input.value = "";
+            resetFlag.value = "true";
         });
     </script>
 }

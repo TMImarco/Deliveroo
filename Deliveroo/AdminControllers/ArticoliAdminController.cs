@@ -119,16 +119,27 @@ public class ArticoliAdminController : Controller
             articoloDb.Categoria.IdCategoria = (int)input.IdCategoria!;
         }
 
-        // Immagine
-        if (input.ImageUrl != null && input.ImageUrl.Length > 0)
+        // =========================
+        // GESTIONE IMMAGINE
+        // =========================
+
+        if (input.ResetImage)
         {
+            // Caso 1: l'utente ha cliccato "Ripristina"
+            // → NON fare nulla → mantieni immagine attuale
+        }
+        else if (input.ImageUrl != null && input.ImageUrl.Length > 0)
+        {
+            // Caso 2: nuova immagine caricata
             var percorso = _cloudinaryService.UploadImage(input.ImageUrl);
 
-            if (percorso != articoloDb.ImageUrl)
+            if (!string.IsNullOrEmpty(percorso) &&
+                percorso != articoloDb.ImageUrl)
             {
                 articoloDb.ImageUrl = percorso;
             }
         }
+        // Caso 3: nessuna modifica → non fare nulla
 
         try
         {
@@ -140,64 +151,9 @@ public class ArticoliAdminController : Controller
             return RedirectToAction("Error", "Home");
         }
 
-
-        return RedirectToAction("ArticoliAdmin", new { idCategoria = articoloDb.Categoria.IdCategoria });
+        return RedirectToAction("ArticoliAdmin",
+            new { idCategoria = articoloDb.Categoria.IdCategoria });
     }
-
-    /*
-    [HttpPost]
-    public IActionResult ModificaFotoArticolo(IFormFile imageFile, int id)
-    {
-        string? percorsoFoto = null;
-        try
-        {
-            percorsoFoto = _cloudinaryService.UploadImage(imageFile);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            return RedirectToAction("Error", "Home");
-        }
-
-
-        try { _gestioneDati.ModificaFotoArticolo(id, percorsoFoto); }
-        catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
-
-        return RedirectToAction("ModificaArticolo", new { id });
-    }
-
-    [HttpPost]
-    public IActionResult ModificaNomeArticolo(string nome, int id)
-    {
-        try { _gestioneDati.ModificaNomeArticolo(id, nome); }
-        catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
-        return RedirectToAction("ModificaArticolo", new { id });
-    }
-
-    [HttpPost]
-    public IActionResult ModificaDescrizioneArticolo(string descrizione, int id)
-    {
-        try { _gestioneDati.ModificaDescrizioneArticolo(id, descrizione); }
-        catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
-        return RedirectToAction("ModificaArticolo", new { id });
-    }
-
-    [HttpPost]
-    public IActionResult ModificaPrezzo_listinoArticolo(double prezzo_listino, int id)
-    {
-        try { _gestioneDati.ModificaPrezzo_listinoArticolo(id, prezzo_listino); }
-        catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
-        return RedirectToAction("ModificaArticolo", new { id });
-    }
-
-    [HttpPost]
-    public IActionResult ModificaCategoriaArticolo(int idCategoria, int id)
-    {
-        try { _gestioneDati.ModificaIdCategoriaArticolo(id, idCategoria); }
-        catch (Exception e) { Console.WriteLine(e); return RedirectToAction("Error", "Home"); }
-        return RedirectToAction("ModificaArticolo", new { id });
-    }
-    */
 
     public IActionResult EliminaArticolo(int id)
     {

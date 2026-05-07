@@ -11,14 +11,13 @@ Dividiamo il progetto in tre macro argomenti:
 1. Login (utente: admin pwd: admin)
 2. Logout
 3. Pagina principale (IndexAdmin)
-4. Modifica articolo
+4. Modifica articolo (Mini-pulsanti EDIT per abilitare la modifica di ogni elemento)
 5. Aggiungi articolo
 6. Vedere le associazioni di acquisto con le "confidence" in 'A' + refresh confidence
 7. Elimina articolo
 
 ### Funzioni da implementare:
 1. Grafica
-2. ModificaArticoli: i pulsanti piccoli vicino ad ogni elemento solo per abilitare la modifica
 3. Modificare la visualizzazione delle associazioni
 
 ### Note
