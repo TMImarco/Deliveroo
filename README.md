@@ -19,6 +19,7 @@ Dividiamo il progetto in tre macro argomenti:
 ### Funzioni da implementare:
 1. Grafica
 3. Modificare la visualizzazione delle associazioni
+4. Quando clicco un ordine sulla lista ordini in IndexAdmin, si apre una schermata con tutti i dettagli di quell'ordini (articoli ordinati, indirizzo di consegna, ecc...). Al cliccare di un articolo ordinato, ti porta ad una schermata semplificata dell'articolo (senza pulsante inserimento ecc).
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate
@@ -40,12 +41,14 @@ Dividiamo il progetto in tre macro argomenti:
 
 ### Funzioni da implementare:
 1. Grafica!!!
-2. ???Barra di ricerca/filtri negli articoli
-3. ???Toast Notification quando aggiungo/tolgo un articolo dal carrello (and somewhere else)
-4. ???Sistema di recensioni + Articoli preferiti (questo significa che l'utente ha un suo proprio login)
+2. Barra di ricerca
+3. Toast Notification quando aggiungo/tolgo un articolo dal carrello (and somewhere else)
+4. ???Sistema di recensioni + Articoli preferiti (questo significa che l'utente ha un suo proprio login) - Troppo complicato
+5. Aggiungere pulsante aggiungi articolo nelle raccomandazioni in inserimento articolo.
 
 ### Note
-TUTTE IDEE che sarebbero carine da implementare, ma visto la scadenza in 2gg it's challenging 
+TUTTE IDEE che sarebbero carine da implementare, ma visto la scadenza in 2gg it's challenging
+Idee per la barra di ricerca: Icona della lente di ingrandimento, quando clicco compare la text box e posso cercare. Cerca globale su tutti gli articoli. Anche se sei su cat. sushi e cerchi Hamburger ti porta direttamente all'articolo Hamburger.
 
 ## Database
 ###### Programmatore: Agapi,Garbin
