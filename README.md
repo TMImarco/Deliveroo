@@ -41,12 +41,13 @@ Dividiamo il progetto in tre macro argomenti:
 
 ### Funzioni da implementare:
 1. Grafica!!!
-2. ???Barra di ricerca/filtri negli articoli
-3. ???Toast Notification quando aggiungo/tolgo un articolo dal carrello (and somewhere else)
+2. Barra di ricerca
+3. Toast Notification quando aggiungo/tolgo un articolo dal carrello (and somewhere else)
 4. ???Sistema di recensioni + Articoli preferiti (questo significa che l'utente ha un suo proprio login)
 
 ### Note
-TUTTE IDEE che sarebbero carine da implementare, ma visto la scadenza in 2gg it's challenging 
+TUTTE IDEE che sarebbero carine da implementare, ma visto la scadenza in 2gg it's challenging
+Idee per la barra di ricerca: Icona della lente di ingrandimento, quando clicco compare la text box e posso cercare. Cerca globale su tutti gli articoli. Anche se sei su cat. sushi e cerchi Hamburger ti porta direttamente all'articolo Hamburger.
 
 ## Database
 ###### Programmatore: Agapi,Garbin
