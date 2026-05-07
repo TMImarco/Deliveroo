@@ -53,4 +53,25 @@ public class ArticoliController : Controller
 
 		return idRaccomandati.Select(id => _gestioneDati.GetArticoloScelto(id)).ToList();
 	}
+	
+	/* BARRA DI RICERCA */
+	[HttpGet]
+	public IActionResult Cerca(string q)
+	{
+		if (string.IsNullOrWhiteSpace(q))
+			return Json(new List<object>());
+
+		var risultati = _gestioneDati.GetTuttiArticoli()
+			.Where(a => a.Nome.Contains(q, StringComparison.OrdinalIgnoreCase))
+			.Take(8)
+			.Select(a => new {
+				a.IdArticolo,
+				a.Nome,
+				a.ImageUrl,
+				Prezzo = a.Prezzo.ToString("F2"),
+				Categoria = a.Categoria.Nome
+			});
+
+		return Json(risultati);
+	}
 }

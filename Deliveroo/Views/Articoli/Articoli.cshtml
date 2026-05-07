@@ -20,18 +20,46 @@
         <ul class="navbar-nav flex-row gap-3">
             @foreach (var cat in categorie)
             {
-                <!-- categoria selezionata-->
                 var isActive = currentCategoria == cat.Nome ? "active" : "";
                 <li class="nav-item">
-                    <a class="nav-link text-dark @isActive" 
+                    <a class="nav-link text-dark @isActive"
                        asp-controller="Articoli"
-                       asp-action="Articoli" 
+                       asp-action="Articoli"
                        asp-route-idCategoria="@cat.IdCategoria">
                         @cat.Nome
                     </a>
                 </li>
             }
         </ul>
+    </div>
+
+    <!-- ICONA CERCA -->
+    <div class="search-wrapper ms-auto">
+        <button class="search-toggle" id="searchToggle" title="Cerca articoli">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+        </button>
+
+        <!-- POPUP RICERCA -->
+        <div class="search-popup" id="searchPopup">
+            <div class="search-input-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                     fill="none" stroke="#999" stroke-width="2.2"
+                     stroke-linecap="round" stroke-linejoin="round" class="search-icon-inner">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Cerca un articolo..." autocomplete="off"/>
+                <button class="search-clear" id="searchClear">✕</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <p class="search-hint">Inizia a digitare per cercare…</p>
+            </div>
+        </div>
     </div>
 }
 
@@ -72,4 +100,110 @@
 
 @section Styles {
     <link rel="stylesheet" href="/css/Articoli.css"/>
+}
+
+<!-- BARRA DI RICERCA -->
+@section Scripts {
+<script>
+(function () {
+    const toggle   = document.getElementById('searchToggle');
+    const popup    = document.getElementById('searchPopup');
+    const input    = document.getElementById('searchInput');
+    const results  = document.getElementById('searchResults');
+    const clearBtn = document.getElementById('searchClear');
+
+    let debounce;
+
+    // apri/chiudi popup
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = popup.classList.toggle('open');
+        toggle.classList.toggle('active', isOpen);
+        if (isOpen) setTimeout(() => input.focus(), 50);
+        else resetSearch();
+    });
+
+    // chiudi cliccando fuori
+    document.addEventListener('click', (e) => {
+        if (!popup.contains(e.target) && e.target !== toggle) {
+            popup.classList.remove('open');
+            toggle.classList.remove('active');
+            resetSearch();
+        }
+    });
+
+    // tasto ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            popup.classList.remove('open');
+            toggle.classList.remove('active');
+            resetSearch();
+        }
+    });
+
+    // ricerca con debounce
+    input.addEventListener('input', () => {
+        const q = input.value.trim();
+        clearBtn.classList.toggle('visible', q.length > 0);
+        clearTimeout(debounce);
+        if (q.length < 2) {
+            results.innerHTML = '<p class="search-hint">Inizia a digitare per cercare…</p>';
+            return;
+        }
+        results.innerHTML = '<p class="search-hint">Ricerca in corso…</p>';
+        debounce = setTimeout(() => cerca(q), 280);
+    });
+
+    // clear
+    clearBtn.addEventListener('click', () => {
+        input.value = '';
+        clearBtn.classList.remove('visible');
+        results.innerHTML = '<p class="search-hint">Inizia a digitare per cercare…</p>';
+        input.focus();
+    });
+
+    async function cerca(q) {
+        try {
+            const res  = await fetch(`/Articoli/Cerca?q=${encodeURIComponent(q)}`);
+            const data = await res.json();
+            renderResults(data, q);
+        } catch {
+            results.innerHTML = '<p class="search-no-results">Errore durante la ricerca.</p>';
+        }
+    }
+
+    function renderResults(data, q) {
+        if (!data.length) {
+            results.innerHTML = `<p class="search-no-results">Nessun risultato per "<strong>${q}</strong>"</p>`;
+            return;
+        }
+        results.innerHTML = data.map(a => `
+            <a class="search-result-item"
+               href="/Articoli/InserimentoArticolo/${a.idArticolo}">
+                <img class="search-result-img"
+                     src="${a.imageUrl || '/img/placeholder.png'}"
+                     alt="${a.nome}"/>
+                <div class="search-result-info">
+                    <span class="search-result-nome">${highlight(a.nome, q)}</span>
+                    <div class="search-result-meta">
+                        <span class="search-result-cat">${a.categoria}</span>
+                        <span>€ ${a.prezzo}</span>
+                    </div>
+                </div>
+            </a>
+        `).join('');
+    }
+
+    function highlight(text, q) {
+        const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return text.replace(re, '<mark style="background:#e0faf8;color:#00ccbc;border-radius:3px;padding:0 2px">$1</mark>');
+    }
+
+    function resetSearch() {
+        input.value = '';
+        clearBtn.classList.remove('visible');
+        results.innerHTML = '<p class="search-hint">Inizia a digitare per cercare…</p>';
+    }
+})();
+</script>
 }
