@@ -15,11 +15,13 @@ Dividiamo il progetto in tre macro argomenti:
 5. Aggiungi articolo
 6. Vedere le associazioni di acquisto con le "confidence" in 'A' + refresh confidence
 7. Elimina articolo
+8. Ogni entri della tabella articolo e' cliccabile e mostra tutte le info dell'ordine (modificare la grafica che e' di Claude)
 
 ### Funzioni da implementare:
 1. Grafica
-3. Modificare la visualizzazione delle associazioni
-4. Quando clicco un ordine sulla lista ordini in IndexAdmin, si apre una schermata con tutti i dettagli di quell'ordini (articoli ordinati, indirizzo di consegna, ecc...). Al cliccare di un articolo ordinato, ti porta ad una schermata semplificata dell'articolo (senza pulsante inserimento ecc).
+2. Modificare la visualizzazione delle associazioni
+3. Fare in modo che il pulsante ripristina in modifaArticolo e' disabilitato finche' non faccio il upload di una immagine
+4. Mettere il overlay di caricamento un po dapperutto?
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate

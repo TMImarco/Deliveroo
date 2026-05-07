@@ -110,7 +110,8 @@
     <div class="container">
         <h4>ORDINI</h4>
         <!--data table per gli ORDINI-->
-        <table id="ordiniTable" class="display">
+        <table id="ordiniTable" 
+               class="display">
             <thead>
             <tr>
                 <th>ID ordine</th>
@@ -151,6 +152,11 @@
             $('#ordiniTable').DataTable();
             $('#associazioniTable').DataTable();
             $('#classificaArticoliTable').DataTable();
+        });
+
+        $('#ordiniTable tbody').on('click', 'tr', function () {
+            var id = $(this).find('td:first').text();
+            window.location.href = '@Url.Action("DettaglioOrdine", "Admin")/' + id;
         });
     </script>
 

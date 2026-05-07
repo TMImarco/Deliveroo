@@ -41,4 +41,18 @@ public class AdminController : Controller
 		};
 		return View(adminViewModel);
 	}
+	
+	[HttpGet]
+	public IActionResult DettaglioOrdine(int id)
+	{
+		var ordine = _gestioneDati.GetOrdinePerId(id);
+		if (ordine == null) return NotFound();
+
+		var viewModel = new DettaglioOrdineViewModel()
+		{
+			Ordine = ordine,
+			Righe = _gestioneDati.GetRigheDettaglioPerOrdine(id)
+		};
+		return View(viewModel);
+	}
 }
