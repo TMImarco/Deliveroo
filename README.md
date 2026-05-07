@@ -44,6 +44,7 @@ Dividiamo il progetto in tre macro argomenti:
 2. Barra di ricerca
 3. Toast Notification quando aggiungo/tolgo un articolo dal carrello (and somewhere else)
 4. ???Sistema di recensioni + Articoli preferiti (questo significa che l'utente ha un suo proprio login)
+5. Aggiungere pulsante aggiungi articolo nelle raccomandazioni in inserimento articolo.
 
 ### Note
 TUTTE IDEE che sarebbero carine da implementare, ma visto la scadenza in 2gg it's challenging
