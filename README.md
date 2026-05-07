@@ -38,16 +38,16 @@ Dividiamo il progetto in tre macro argomenti:
 7. Controller organizzati (Utente e Admin)
 8. Popup dei dettagli del pagamento (dati della carta; scopo di bellezza)
 9. Raccomandazioni nell'InserimentoArticolo ("Consigliati per te")
+10. Barra di ricerca negli Articoli
 
 ### Funzioni da implementare:
 1. Grafica!!!
-2. Barra di ricerca
-3. Toast Notification quando aggiungo/tolgo un articolo dal carrello (and somewhere else)
-4. Account Utente che contiene: Articoli preferiti + Ordini passati + Recensione su un'ordine - NON assicurato
-5. Aggiungere pulsante aggiungi articolo nelle raccomandazioni in inserimento articolo.
+2. Messaggio di successo quando aggiungo/tolgo un articolo dal carrello (and somewhere else): modifico il nome del bottone per tot sec.
+3. Account Utente che contiene: Articoli preferiti + Ordini passati + Recensione su un'ordine - NON assicurato
+4. Aggiungere pulsante aggiungi articolo nelle raccomandazioni in inserimento articolo.
 
 ### Note
-Idee per la barra di ricerca: Icona della lente di ingrandimento, quando clicco compare la text box e posso cercare. Cerca globale su tutti gli articoli. Anche se sei su cat. sushi e cerchi Hamburger ti porta direttamente all'articolo Hamburger.
+---------
 
 ## Database
 ###### Programmatore: Agapi,Garbin
