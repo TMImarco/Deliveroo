@@ -20,6 +20,7 @@ Dividiamo il progetto in tre macro argomenti:
 1. Grafica
 2. ModificaArticoli: i pulsanti piccoli vicino ad ogni elemento solo per abilitare la modifica
 3. Modificare la visualizzazione delle associazioni
+4. Quando clicco un ordine sulla lista ordini in IndexAdmin, si apre una schermata con tutti i dettagli di quell'ordini (articoli ordinati, indirizzo di consegna, ecc...). Al cliccare di un articolo ordinato, ti porta ad una schermata semplificata dell'articolo (senza pulsante inserimento ecc).
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate
@@ -43,7 +44,7 @@ Dividiamo il progetto in tre macro argomenti:
 1. Grafica!!!
 2. Barra di ricerca
 3. Toast Notification quando aggiungo/tolgo un articolo dal carrello (and somewhere else)
-4. ???Sistema di recensioni + Articoli preferiti (questo significa che l'utente ha un suo proprio login)
+4. ???Sistema di recensioni + Articoli preferiti (questo significa che l'utente ha un suo proprio login) - Troppo complicato
 5. Aggiungere pulsante aggiungi articolo nelle raccomandazioni in inserimento articolo.
 
 ### Note
