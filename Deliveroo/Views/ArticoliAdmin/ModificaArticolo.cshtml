@@ -64,16 +64,46 @@
                                        id="inputImage"/>
                                 <button type="button"
                                         class="btn btn-primary"
-                                        id="btnResetImage">
+                                        id="btnResetImage"
+                                        disabled>
                                     RIPRISTINA
                                 </button>
                             </div>
+
+                            <!-- Bottone per aprire la galleria -->
+                            <button type="button" id="btnSfogliaCloud" class="btn btn-secondary">
+                                📂 SCEGLI DA CLOUDINARY
+                            </button>
+
+                            <!-- Hidden input per passare l'url scelto al backend -->
+                            <input type="hidden" name="CloudinaryImageUrl" id="hiddenImageUrl"/>
+
+                            <!-- MODALE GALLERIA -->
+                            <div id="cloudModal" style="display:none">
+                                <div id="cloudModalBox">
+
+                                    <div id="cloudModalHeader">
+                                        <span>Scegli un'immagine</span>
+                                        <button type="button" id="btnChiudiModal">✕</button>
+                                    </div>
+
+                                    <!-- Griglia immagini -->
+                                    <div id="cloudGallery">
+                                        <p>Caricamento...</p>
+                                    </div>
+
+                                </div>
+                            </div>
+
                             <img src="@art.ImageUrl"
                                  id="previewImage"
                                  alt="Immagine articolo"/>
 
                             <!-- flag per il backend -->
-                            <input type="hidden" name="ResetImage" id="ResetImage" value="false"/>
+                            <input type="hidden"
+                                   name="ResetImage"
+                                   id="ResetImage"
+                                   value="false"/>
                         </div>
 
                         <!--Riquadro a destra-->
@@ -338,19 +368,82 @@
 
         const originalImage = preview.src;
 
+        // Disabilitato di default
+        resetBtn.disabled = true;
+
         input.addEventListener("change", function () {
             const file = this.files[0];
 
             if (file) {
                 preview.src = URL.createObjectURL(file);
                 resetFlag.value = "false";
+                resetBtn.disabled = false; // ← abilita il bottone
             }
+
+
         });
 
         resetBtn.addEventListener("click", function () {
             preview.src = originalImage;
             input.value = "";
             resetFlag.value = "true";
+            resetBtn.disabled = true; // ← torna disabilitato dopo il reset
+        });
+    </script>
+
+    <script>
+        const btnSfogliaCloud = document.getElementById("btnSfogliaCloud");
+        const cloudModal = document.getElementById("cloudModal");
+        const btnChiudiModal = document.getElementById("btnChiudiModal");
+        const cloudGallery = document.getElementById("cloudGallery");
+        const hiddenImageUrl = document.getElementById("hiddenImageUrl");
+
+        // Apri il modale e carica le immagini
+        btnSfogliaCloud.addEventListener("click", async () => {
+            cloudModal.style.display = "flex";
+            cloudGallery.innerHTML = "<p>Caricamento...</p>";
+
+            try {
+                const response = await fetch("/ArticoliAdmin/GetImmaginiCloud");  // ✅ CORRETTO
+                const immagini = await response.json();
+
+                cloudGallery.innerHTML = ""; // pulisci
+
+                immagini.forEach(img => {
+                    const el = document.createElement("img");
+                    el.src = img.thumbUrl;   // ← thumbnail leggero per la griglia
+                    el.alt = img.publicId;
+                    el.classList.add("cloud-thumb");
+
+                    el.addEventListener("click", () => {
+                        preview.src = img.url;          // ← originale per il preview
+                        hiddenImageUrl.value = img.url; // ← originale salvato nel DB
+                        resetFlag.value = "false";
+                        resetBtn.disabled = false;
+                        cloudModal.style.display = "none";
+                    });
+
+                    cloudGallery.appendChild(el);
+                });
+
+            } catch (err) {
+                cloudGallery.innerHTML = "<p>Errore nel caricamento.</p>";
+                console.error(err);
+            }
+        });
+
+        // Chiudi il modale
+        btnChiudiModal.addEventListener("click", () => {
+            cloudModal.style.display = "none";
+        });
+
+        // Chiudi cliccando fuori
+        cloudModal.addEventListener("click", (e) => {
+            if (e.target === cloudModal) {
+                cloudModal.style.display = "none";
+            }
+            
+
         });
     </script>
 }

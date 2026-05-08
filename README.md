@@ -16,11 +16,11 @@ Dividiamo il progetto in tre macro argomenti:
 6. Vedere le associazioni di acquisto con le "confidence" in 'A' + refresh confidence
 7. Elimina articolo
 8. Ogni entri della tabella articolo e' cliccabile e mostra tutte le info dell'ordine (modificare la grafica che e' di Claude)
+9. In ModificaArticolo possibilita' di usare immagini gia' caricate su Cloudinary
 
 ### Funzioni da implementare:
 1. Grafica
 2. Modificare la visualizzazione delle associazioni
-3. Fare in modo che il pulsante ripristina in modifaArticolo e' disabilitato finche' non faccio il upload di una immagine
 4. Mettere il overlay di caricamento un po dapperutto?
 
 ### Note

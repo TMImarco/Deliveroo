@@ -10,5 +10,6 @@ public class ArticoloModificaArticolo
     public int IdCategoria { get; set; }
     public IFormFile? ImageUrl { get; set; }
     public bool ResetImage { get; set; }
+    public string? CloudinaryImageUrl { get; set; }
 
 }

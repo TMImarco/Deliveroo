@@ -92,8 +92,8 @@ public class ArticoliAdminController : Controller
     [HttpPost]
     public IActionResult ModificaArticolo(int id, ArticoloModificaArticolo input)
     {
-        Console.WriteLine( "Controller: " +input.Prezzo);
-        
+        Console.WriteLine("Controller: " + input.Prezzo);
+
         var articoloDb = _gestioneDati.GetArticoloScelto(id);
 
         // Nome
@@ -128,10 +128,7 @@ public class ArticoliAdminController : Controller
             articoloDb.Categoria.IdCategoria = input.IdCategoria;
         }
 
-        // =========================
-        // GESTIONE IMMAGINE
-        // =========================
-
+        // Immagine
         if (input.ResetImage)
         {
             // Caso 1: l'utente ha cliccato "Ripristina"
@@ -139,7 +136,7 @@ public class ArticoliAdminController : Controller
         }
         else if (input.ImageUrl != null && input.ImageUrl.Length > 0)
         {
-            // Caso 2: nuova immagine caricata
+            // Caso 2: nuova immagine caricata tramite file upload
             var percorso = _cloudinaryService.UploadImage(input.ImageUrl);
 
             if (!string.IsNullOrEmpty(percorso) &&
@@ -148,7 +145,12 @@ public class ArticoliAdminController : Controller
                 articoloDb.ImageUrl = percorso;
             }
         }
-        // Caso 3: nessuna modifica → non fare nulla
+        else if (!string.IsNullOrEmpty(input.CloudinaryImageUrl)) // ← NUOVO
+        {
+            // Caso 3: immagine scelta dalla galleria Cloudinary
+            articoloDb.ImageUrl = input.CloudinaryImageUrl;
+        }
+        // Caso 4: nessuna modifica → non fare nulla
 
         try
         {
@@ -179,5 +181,20 @@ public class ArticoliAdminController : Controller
         }
 
         return RedirectToAction("ArticoliAdmin", new { art.Categoria.IdCategoria });
+    }
+
+    [HttpGet]
+    public IActionResult GetImmaginiCloud()
+    {
+        try
+        {
+            var immagini = _cloudinaryService.GetImmagini();
+            return Json(immagini);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, "Errore nel recupero immagini");
+        }
     }
 }
