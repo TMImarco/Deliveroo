@@ -2,6 +2,8 @@
 
 public class Utente
 {
-    public string Username{ get; set; }
-    public string Password{ get; set; }
+    public int Id { get; set; }
+    public string Nome { get; set; }
+    public string Indirizzo { get; set; }
+    public string Telefono { get; set; }
 }

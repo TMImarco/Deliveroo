@@ -16,16 +16,26 @@
 <body>
 
 <!-- ___________ SIDEBAR ___________-->
-<!-- Burger Button -->
-<button class="burger-btn" onclick="toggleSidebar()" title="Menu">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-         fill="none" stroke="currentColor" stroke-width="2.2"
-         stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <line x1="3" y1="12" x2="21" y2="12"/>
-        <line x1="3" y1="18" x2="21" y2="18"/>
-    </svg>
-</button>
+<!-- Burger Button + Login -->
+<!--<div class="top-left-btns">
+    <a class="login-btn" asp-action="LoginUtente" asp-controller="Auth" title="Accedi">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+        </svg>
+    </a>
+    <button class="burger-btn" onclick="toggleSidebar()" title="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+    </button>
+</div>-->
 
 <!-- Sidebar Overlay -->
 <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
@@ -41,13 +51,34 @@
 
 <!-- ___________ NAVBAR ___________-->
 <header class="sticky-top">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container justify-content-center">
+    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container justify-content-center position-relative">
+            
+            <!-- Bottoni a sinistra -->
+            <div class="top-left-btns">
+                <a class="login-btn" asp-action="LoginUtente" asp-controller="Auth" title="Accedi">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2.2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </a>
+                <button class="burger-btn" onclick="toggleSidebar()" title="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2.2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                 <h2 class="section-title">Deliveroo</h2>
             </a>
 
-            <!-- se la vista dichiara "section Styles" il CSS aggiuntivo viene caricato nell'<head> -->
             @await RenderSectionAsync("NavbarLinks", required: false)
         </div>
     </nav>

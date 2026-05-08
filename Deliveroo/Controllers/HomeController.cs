@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Deliveroo.Models;
+using Deliveroo.Tabelle;
 
 namespace Deliveroo.Controllers;
 
@@ -23,22 +24,37 @@ public class HomeController : Controller
     }
     public IActionResult Index()
     {
-        /* CREO LA SESSIONE DELL'UTENTE */
-        int? contatore = _contextAccessor.HttpContext.Session.GetInt32("contatore");
+        // CONTATORE SESSIONE
+        int? contatore = HttpContext.Session.GetInt32("contatore");
+
         if (contatore == null)
-        {
             contatore = 1;
-        }
         else
-        {
             contatore++;
+
+        HttpContext.Session.SetInt32("contatore", contatore.Value);
+
+        // UTENTE (OPZIONALE)
+        int? userId = HttpContext.Session.GetInt32("userId");
+
+        Utente? utente = null;
+
+        if (userId != null)
+        {
+            utente = _gestioneDati.GetUtente(userId.Value);
         }
 
-        _contextAccessor.HttpContext.Session.SetInt32("contatore", (int)contatore);
-
-        // Visualizzo le categorie nell'Index
+        // CATEGORIE
         var listCategorie = _gestioneDati.GetTutteCategorie();
-        return View(listCategorie);
+
+        // VIEWMODEL
+        var model = new HomeViewModel
+        {
+            Utente = utente,
+            Categorie = listCategorie
+        };
+
+        return View(model);
     }
 
     public IActionResult Privacy()

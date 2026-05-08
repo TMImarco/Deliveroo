@@ -9,6 +9,37 @@
 }
 
 /*----------- GRAFICA DELL'ARTICOLO VISUALIZZATO -----------*/
+/*----------- GRAFICA DELLA NAVBAR = CATEGORIA SELEZIONATA -----------*/
+.navbar .nav-link {
+    position: relative;
+    font-weight: 500;
+    color: #333;
+    padding-bottom: 6px;
+    transition: color 0.2s;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #00CCBC;
+    transition: width 0.25s ease;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+    width: 70%;
+}
+
+.navbar .nav-link.active {
+    color: #00CCBC;
+    font-weight: 600;
+}
+
 /* divide la pagina in due (sinistra: articolo; destra: raccomandazioni)*/
 .page-split {
     display: grid;
@@ -375,4 +406,38 @@
 .rec-add-btn:hover {
     background: var(--teal);
     color: #fff;
+}
+
+.rec-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rec-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+}
+
+.rec-add-btn {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: #00ccbc;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: background 0.2s;
+}
+
+.rec-add-btn:hover {
+    background: #00b5a6;
 }

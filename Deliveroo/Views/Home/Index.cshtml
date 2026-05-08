@@ -1,50 +1,68 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Deliveroo.Models.HomeViewModel
+@{
+    ViewData["Title"] = Model.Utente != null ? Model.Utente.Nome : "Home";
     Layout = "_Layout";
 }
 
-<!-- Macro-section e Container sono puramente di grafica, invece macro-grid suddivide le categorie in 5 per fila 
-Il numero per fila può essere modificato all'interno dell site.css nell'apposita classe -->
-<div class="macro-section">
-    <div class="container">
-        <div class="macro-grid">
-            <!-- Dalla Model (lista delle categorie)
-            faccio una box di categoria per ciascuno >> se vogliamo aggiungere una nuova categoria, tutto sarà automatico -->
-            @foreach (var categoria in Model)
-            {
-                <!-- Box principale della macro-categoria che contiene una foto rappresentativa e il nome -->
-                <div class="macro-item">
-                    <a asp-controller="Articoli" asp-action="Articoli" asp-route-idCategoria="@categoria.IdCategoria" class="macro-main-box">
-                        <div class="macro-img-wrap">
-                            <img src="@categoria.ImageUrl" 
-                                 alt="@categoria.Nome" 
-                                 class="macro-image" 
-                                 loading="lazy"/>
-                        </div>
-                        <div class="macro-info">
-                            <span>@categoria.Nome</span>
-                        </div>
-                    </a>
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<div class="idx-hero">
+    <div class="idx-hero-left">
+        <div class="idx-tag">
+            <span class="idx-tag-dot"></span>
+            Ordina ora
+        </div>
+        <h1 class="idx-title">
+            Cosa vuoi<br><strong>mangiare?</strong>
+        </h1>
+    </div>
 
-                    <!-- Sono i due rettangolini sotto agli box delle categorie
-                    Me l'ha messo Claude e sto pensando a cosa si potrebbe aggiungere, sennò li tolgo-->
-                    <div class="macro-sub-row">
-                        <div class="macro-sub-box"></div>
-                        <div class="macro-sub-box"></div>
+    @if (Model.Utente != null)
+    {
+        <div class="idx-greeting">
+            <p class="idx-greeting-label">Bentornato</p>
+            <p class="idx-greeting-name">@Model.Utente.Nome</p>
+        </div>
+    }
+</div>
+
+<!-- ── GRIGLIA CATEGORIE ──────────────────────────────────── -->
+<div class="idx-section">
+    <div class="idx-grid">
+        @foreach (var categoria in Model.Categorie)
+        {
+            <a asp-controller="Articoli"
+               asp-action="Articoli"
+               asp-route-idCategoria="@categoria.IdCategoria"
+               class="idx-card">
+
+                <!-- FOTO -->
+                <div class="idx-img-wrap">
+                    <img src="@categoria.ImageUrl"
+                         alt="@categoria.Nome"
+                         class="idx-img"
+                         loading="lazy" />
+                    <div class="idx-img-overlay"></div>
+                </div>
+
+                <!-- NOME + BARRA -->
+                <div class="idx-info">
+                    <span class="idx-name">@categoria.Nome</span>
+                    <div class="idx-bar">
+                        <div class="idx-bar-fill"></div>
                     </div>
                 </div>
-            }
-        </div>
+
+            </a>
+        }
     </div>
 </div>
 
-<!-- CARRELLO -->
+<!-- ── CARRELLO ───────────────────────────────────────────── -->
 <a asp-controller="Carrello" asp-action="Carrello" class="cart-fab" title="Carrello">
     🛒
     <span class="cart-badge"></span>
 </a>
 
-<!-- CSS specifico per questa vista, caricato solo qui e non nelle altre pagine -->
 @section Styles {
     <link rel="stylesheet" href="/css/Index.css" />
 }

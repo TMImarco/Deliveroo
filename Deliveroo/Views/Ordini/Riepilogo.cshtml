@@ -5,10 +5,21 @@
     Layout = "_Layout";
 }
 
+@section NavbarLinks {
+    <div class="search-wrapper ms-auto">
+        <!-- BOTTONE BACK -->
+        <a class="search-toggle back-btn" asp-action="Carrello" asp-controller="Carrello" title="Torna al carrello">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
+        </a>
+    </div>
+}
+
 <div class="macro-section">
 
-    <!-- BOTTONE BACK -->
-    <a class="nav-arrow back-btn" href="@ViewBag.BackUrl">↵</a>
     <div class="container riepilogo-container">
         <h1 class="riepilogo-title">Riepilogo Ordine</h1>
         <div class="riepilogo-grid">

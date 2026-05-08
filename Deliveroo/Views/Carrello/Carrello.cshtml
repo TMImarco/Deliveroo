@@ -2,13 +2,31 @@
 @{
     ViewData["Title"] = "Articoli";
     Layout = "_Layout";
+
+    var carrelloVuoto = false;
+    if (Model.ArticoliCarrello.Count == 0)
+    {
+        carrelloVuoto = true;
+    }
+    else
+    { carrelloVuoto = false; }
+}
+
+@section NavbarLinks {
+    <div class="search-wrapper ms-auto">
+        <!-- BOTTONE BACK -->
+        <a class="search-toggle back-btn" href="@ViewBag.BackUrl" title="Torna al carrello">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
+        </a>
+    </div>
 }
 
 <div class="macro-section">
-    
-    <!-- BOTTONE BACK -->
-    <a class="nav-arrow back-btn" href="@ViewBag.BackUrl">↵</a>
-    
+
     <div class="container">
         <div class="carrello-wrapper">
 
@@ -45,7 +63,8 @@
                                     }
                                     else
                                     {
-                                        <a asp-action="Decrementa" asp-route-id="@articolo.IdArticolo" class="qty-btn">−</a>
+                                        <a asp-action="Decrementa" asp-route-id="@articolo.IdArticolo"
+                                           class="qty-btn">−</a>
                                     }
                                     <span class="qty-val">@quantita</span>
                                     <a asp-action="Incrementa" asp-route-id="@articolo.IdArticolo" class="qty-btn">+</a>
@@ -63,12 +82,17 @@
                     <div class="total-overlay">
                         <div>
                             <div class="footer-info">@Model.ArticoliCarrello.Count articoli</div>
-                            <div class="footer-total">Totale: €@Model.ArticoliCarrello.Sum(a => a.Prezzo).ToString("F2")</div>
+                            <div class="footer-total">Totale:
+                                €@Model.ArticoliCarrello.Sum(a => a.Prezzo).ToString("F2")</div>
                         </div>
                         <a href="@Url.Action("SvuotaCarrello")"
                            class="clear-btn confirm-action"
                            data-msg="Svuotare l'intero carrello?">Svuota</a>
-                        <a asp-action="Riepilogo" asp-controller="Ordini" class="procedi-btn">Procedi</a>
+                        <a asp-action="Riepilogo" asp-controller="Ordini"
+                           class="procedi-btn @(carrelloVuoto ? "disabled" : "")"
+                           aria-disabled="@(carrelloVuoto ? "true" : "false")">
+                            Procedi
+                        </a>
                     </div>
                 }
 
@@ -134,6 +158,8 @@
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            /* ── MODAL CONFERMA ── */
             const modal = document.getElementById('confirm-modal');
             const modalMsg = document.getElementById('modal-msg');
             const btnConfirm = document.getElementById('modal-confirm');
@@ -164,57 +190,20 @@
                     pendingUrl = null;
                 }
             });
+
+            /* ── TOAST DA TEMPDATA ── */
+            @if (TempData["Toast"] != null)
+            {
+                var msg = TempData["Toast"].ToString();
+                var icon = msg.Contains("svuotato") ? "🗑️" : "✕";
+                <text>
+                    document.getElementById('toast-msg').textContent = '@msg';
+                    document.getElementById('toast-icon').innerHTML = '@icon';
+                    const toastEl = document.getElementById('toastCarrello');
+                    bootstrap.Toast.getOrCreateInstance(toastEl).show();
+                </text>
+            }
+
         });
     </script>
-    
-    /* MODAL DI SUCCESSO */
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-        /* ── MODAL CONFERMA ── */
-        const modal = document.getElementById('confirm-modal');
-        const modalMsg = document.getElementById('modal-msg');
-        const btnConfirm = document.getElementById('modal-confirm');
-        const btnCancel = document.getElementById('modal-cancel');
-        let pendingUrl = null;
-
-        document.querySelectorAll('.confirm-action').forEach(el => {
-            el.addEventListener('click', e => {
-                e.preventDefault();
-                pendingUrl = el.getAttribute('href');
-                modalMsg.textContent = el.getAttribute('data-msg');
-                modal.style.display = 'flex';
-            });
-        });
-
-        btnConfirm.addEventListener('click', () => {
-            if (pendingUrl) window.location.href = pendingUrl;
-        });
-
-        btnCancel.addEventListener('click', () => {
-            modal.style.display = 'none';
-            pendingUrl = null;
-        });
-
-        modal.addEventListener('click', e => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                pendingUrl = null;
-            }
-        });
-
-        /* ── TOAST DA TEMPDATA ── */
-        @if (TempData["Toast"] != null)
-        {
-            var msg = TempData["Toast"].ToString();
-            var icon = msg.Contains("svuotato") ? "🗑️" : "✕";
-            <text>
-            document.getElementById('toast-msg').textContent = '@msg';
-            document.getElementById('toast-icon').innerHTML = '@icon';
-            const toastEl = document.getElementById('toastCarrello');
-            bootstrap.Toast.getOrCreateInstance(toastEl).show();
-            </text>
-        }
-    });
-</script>
 }

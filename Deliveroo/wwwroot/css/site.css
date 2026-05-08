@@ -34,13 +34,24 @@ body {
 }
 
 /*----------- GRAFICA DELLA SIDEBAR -----------*/
+/* I Bottoni in alto a destra */
+.top-left-btns {
+  position: absolute;
+  top: 12px;
+  right: 12px; /* stesso lato del burger */
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
 /* Burger Button */
 .burger-btn {
   background: none;
   border: none;
   cursor: pointer;
   color: #333;
-  padding: 5px 8px;
+  padding: 5px 4px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -105,4 +116,23 @@ body {
 
 .sidebar-logout:hover {
   color: #e8572a !important;
+}
+
+/* LOGIN */
+.login-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  padding: 4.5px 4px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.login-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #00ccbc;
 }

@@ -220,7 +220,7 @@ WHERE a.id = @id;";
 
         foreach (var coppia in coppie)
         {
-            string queryCheck = "SELECT COUT(*) FROM associazioni WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
+            string queryCheck = "SELECT COUNT(*) FROM associazioni WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
             MySqlCommand cmdCheck = new MySqlCommand(queryCheck, _connection);
             cmdCheck.Parameters.AddWithValue("@id1", coppia.Id1);
             cmdCheck.Parameters.AddWithValue("@id2", coppia.Id2);
@@ -646,6 +646,89 @@ WHERE id = @id;";
         }
     }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+    //>>>>>>>>>>>> METODI UTENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    public int GetLoginUtente(string username, string password)
+    {
+        int idUtente = 0;
+        
+        string query = @"SELECT id
+FROM utenti
+WHERE username = @username AND password = @password";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@username", username);
+        command.Parameters.AddWithValue("@password", password);
+        MySqlDataReader reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            idUtente = (int)reader["id"];
+        }
+
+        reader.Close();
+        return idUtente;
+    }
+
+    public Utente GetUtente(int id)
+    {
+        Utente utente = null;
+        string query = @"SELECT *
+FROM utenti
+WHERE Id = @id";
+        MySqlCommand command = new (query, _connection);
+        command.Parameters.AddWithValue("@id", id);
+        MySqlDataReader reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            utente = new Utente()
+            {
+                Id = (int)reader["id"],
+                Nome = (string)reader["nome"],
+                Indirizzo = (string)reader["indirizzo"],
+                Telefono = (string)reader["telefono"],
+            };
+        }
+        
+        reader.Close();
+        return utente;
+    }
+
+    public List<Articolo> GetArticoliPreferitiPerUtente(int idUtente)
+    {
+        List<Articolo> listArticoliPreferiti = new();
+        string query = @"SELECT a.*
+FROM articoli a
+INNER JOIN articoli_preferiti f ON a.Id = f.IdArticolo
+WHERE f.IdUtente = @idUtente";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@idUtente", idUtente);
+        MySqlDataReader reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            Categoria categoria = new Categoria()
+            {
+                IdCategoria = (int)reader["idCategoria"],
+                Nome = (string)reader["nomeCategoria"]
+            };
+
+            Articolo articolo = new Articolo()
+            {
+                IdArticolo = (int)reader["id"],
+                Nome = (string)reader["nome"],
+                Prezzo = Convert.ToDecimal((double)reader["prezzo_listino"]),
+                NumeroOrdini = (int)reader["numero_ordini"],
+                Categoria = categoria
+            };
+            
+            listArticoliPreferiti.Add(articolo);
+        }
+        
+        reader.Close();
+        return listArticoliPreferiti;
+    }
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     //^^^^^^^^^ ALTRO ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     public List<Dictionary<int, string>> GetTutteIdArticolo1ENomi()
