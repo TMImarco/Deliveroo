@@ -20,8 +20,13 @@ Dividiamo il progetto in tre macro argomenti:
 
 ### Funzioni da implementare:
 1. Grafica
-2. Modificare la visualizzazione delle associazioni
-4. Mettere il overlay di caricamento un po dapperutto?
+2. Modificare la visualizzazione delle associazioni (troppo basic)
+3. Modificare dettaglio ordine (troppo claude)
+4. Modificare la classifica (troppo claude)
+5. Modificare la lista ordini (troppo basic)
+6. Sistemare dettaglio ordine che fa un po' di confusione con gli importi
+7. Mettere il overlay di caricamento un po dapperutto?
+8. In ModificaArticolo, nella pagina dove ti chiedere di scegliere la categoria, mettere la barra di ricerca che ha fatto la Stefi (mettina in grande tipo Google e sotto le categorie, poi nelle altre pagine in alto come in articoli normali)
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate
@@ -47,9 +52,9 @@ Dividiamo il progetto in tre macro argomenti:
 2. Messaggio di successo quando aggiungo/tolgo un articolo dal carrello (and somewhere else): modifico il nome del bottone per tot sec.
 3. Account Utente che contiene: Articoli preferiti + Ordini passati + Recensione su un'ordine - NON assicurato
 4. Aggiungere pulsante aggiungi articolo nelle raccomandazioni in inserimento articolo.
+5. navbar superiore (quella con scritto deliveroo) fissa, allo scrollare della pagina non si muove
 
 ### Note
-1.navbar superiore (quella con scritto deliveroo) fissa, allo scrollare della pagina non si muove
 
 ## Database
 ###### Programmatore: Agapi,Garbin
