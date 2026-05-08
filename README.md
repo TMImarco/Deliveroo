@@ -46,15 +46,17 @@ Dividiamo il progetto in tre macro argomenti:
 8. Popup dei dettagli del pagamento (dati della carta; scopo di bellezza)
 9. Raccomandazioni nell'InserimentoArticolo ("Consigliati per te")
 10. Barra di ricerca negli Articoli
+11. Toast Notification di successo
 
 ### Funzioni da implementare:
 1. Grafica!!!
-2. Messaggio di successo quando aggiungo/tolgo un articolo dal carrello (and somewhere else): modifico il nome del bottone per tot sec.
-3. Account Utente che contiene: Articoli preferiti + Ordini passati + Recensione su un'ordine - NON assicurato
-4. Aggiungere pulsante aggiungi articolo nelle raccomandazioni in inserimento articolo.
-5. navbar superiore (quella con scritto deliveroo) fissa, allo scrollare della pagina non si muove
+2. Account Utente che contiene: Articoli preferiti + Ordini passati + Recensione su un'ordine - NON assicurato
+3. Aggiungere pulsante aggiungi articolo nelle raccomandazioni in inserimento articolo
 
 ### Note
+1. Quando il carrello è vuoto, NON ha senso proseguire all'ordine
+2. Manca il pulsante di tornare indietro dal riepilogo
+3. Aggiungere le tabItem nell'InserimentoArticolo
 
 ## Database
 ###### Programmatore: Agapi,Garbin
