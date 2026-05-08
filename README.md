@@ -49,7 +49,7 @@ Dividiamo il progetto in tre macro argomenti:
 4. Aggiungere pulsante aggiungi articolo nelle raccomandazioni in inserimento articolo.
 
 ### Note
----------
+1.navbar superiore (quella con scritto deliveroo) fissa, allo scrollare della pagina non si muove
 
 ## Database
 ###### Programmatore: Agapi,Garbin
