@@ -8,6 +8,20 @@
     List<Categoria> categorie = Model.ListaCategorie;
 }
 
+@section NavbarLinks {
+    <div class="search-wrapper ms-auto">
+        <!-- BOTTONE BACK -->
+        <a class="search-toggle back-btn" asp-action="ArticoliAdmin" title="Torna alla home"
+           asp-route-idCategoria="@art.Categoria.IdCategoria">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
+        </a>
+    </div>
+}
+
 <h1>MODIFICA L'ARTICOLO</h1>
 
 <div class="macro-section">
@@ -40,13 +54,7 @@
                         <span class="nav-arrow next disabled">&#8594;</span>
                     }
                 </div>
-
-                <!-- BOTTONE BACK -->
-                <a class="nav-arrow back-btn"
-                   asp-action="ArticoliAdmin"
-                   asp-route-idCategoria="@art.Categoria.IdCategoria">
-                    ↵
-                </a>
+                
                 <form id="ModificaArticoloFormUpload"
                       method="post"
                       asp-action="ModificaArticolo"
