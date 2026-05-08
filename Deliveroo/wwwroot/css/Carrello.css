@@ -306,6 +306,10 @@
     background-color: #333;
 }
 
+#toastCarrello {
+    background-color: #00ccbc;
+}
+
 /* colonna destra vuota */
 /* ── RACCOMANDAZIONI ── */
 .right-col {

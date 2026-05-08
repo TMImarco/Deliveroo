@@ -92,6 +92,8 @@ public class CarrelloController : Controller
         if (daRimuovere != null)
             lista.Remove(daRimuovere);
         _gestioneCarrello.SalvaCarrello(lista);
+        
+        TempData["Toast"] = "Articolo rimosso dal carrello.";
         return RedirectToAction("Carrello");
     }
 
@@ -100,6 +102,8 @@ public class CarrelloController : Controller
         List<Articolo> lista = _gestioneCarrello.RecuperaCarrello();
         lista.RemoveAll(a => a.IdArticolo == id);
         _gestioneCarrello.SalvaCarrello(lista);
+        
+        TempData["Toast"] = "Articolo rimosso dal carrello.";
         return RedirectToAction("Carrello");
     }
 
@@ -108,6 +112,8 @@ public class CarrelloController : Controller
         _gestioneCarrello.SvuotaCarrello();
         List<Articolo> lista = _gestioneCarrello.RecuperaCarrello();
         _gestioneCarrello.SalvaCarrello(lista);
+        
+        TempData["Toast"] = "Carrello svuotato.";
         return RedirectToAction("Carrello");
     }
 

@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>a2iaigmod3</Fingerprint>
-      <Integrity>DpTG0Z9FHTCbr5CGSIG4DXfcaEO4shKdZX+KteL7N5Y=</Integrity>
+      <Fingerprint>8hwddbw8og</Fingerprint>
+      <Integrity>rB4YFJi6wIoPZ3b92ST5mGm1yPKWskRwzO4f6Ndz4RA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Carrello.css'))</OriginalItemSpec>
@@ -84,8 +84,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>p3l4s86zcv</Fingerprint>
-      <Integrity>K+AEaDWP2YDR6gtZSXfF8o55qPf1x2f9o7mv1aADArQ=</Integrity>
+      <Fingerprint>yi0oqldiqq</Fingerprint>
+      <Integrity>VsmuMXr034fdPAis2TjCgyyYxIPPcqx1QQh6S4i5dUw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\InserimentoArticolo.css'))</OriginalItemSpec>

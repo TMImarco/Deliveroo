@@ -13,7 +13,8 @@ public class GestioneDati
 host=localhost;
 port=3306;
 user=root;
-password=root";
+password=root;
+Allow User Variables=True;";
         _connection = new MySqlConnection(connectionString);
         _connection.Open();
     }
@@ -219,7 +220,7 @@ WHERE a.id = @id;";
 
         foreach (var coppia in coppie)
         {
-            string queryCheck = "SELECT COUNT(*) FROM associazioni WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
+            string queryCheck = "SELECT COUT(*) FROM associazioni WHERE id_articolo1 = @id1 AND id_articolo2 = @id2";
             MySqlCommand cmdCheck = new MySqlCommand(queryCheck, _connection);
             cmdCheck.Parameters.AddWithValue("@id1", coppia.Id1);
             cmdCheck.Parameters.AddWithValue("@id2", coppia.Id2);

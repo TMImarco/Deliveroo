@@ -255,6 +255,10 @@
     justify-content: center;
 }
 
+#toastCarrello {
+    background-color: #00ccbc;
+}
+
 /* colonna destra vuota */
 /* ── RACCOMANDAZIONI ── */
 .right-col {

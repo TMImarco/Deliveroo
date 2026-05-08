@@ -108,6 +108,16 @@ Articolo art = Model.ArticoloScelto;
     </div>
 </div>
 
+<!-- TOAST CONFERMA AGGIUNTA -->
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index: 9999">
+    <div id="toastCarrello" class="toast align-items-center text-white border-0" role="alert" data-bs-delay="2000">
+        <div class="toast-body d-flex align-items-center gap-2">
+            <span style="font-size:1.2rem">🛒</span>
+            <span>Articolo aggiunto al carrello!</span>
+        </div>
+    </div>
+</div>
+
 <!-- CARRELLO -->
 <a asp-controller="Carrello" asp-action="Carrello" class="cart-fab" title="Carrello">
     🛒
@@ -144,24 +154,13 @@ Articolo art = Model.ArticoloScelto;
     }
 
     async function aggiungiAlCarrello() {
-    const btn = document.getElementById('btn-aggiungi');
-    const res = await fetch(aggiungiUrl + '?qty=' + qty);
-    const data = await res.json();
-    console.log('RISPOSTA:', data); // ← aggiungi questa riga
-    await aggiornaBadge();
+        const res = await fetch(aggiungiUrl + '?qty=' + qty);
+        await aggiornaBadge();
 
-    if (data.success) {
-        btn.textContent = '✓ Aggiunto!';
-        btn.disabled = true;
-        btn.style.background = '#00a899';
-        setTimeout(() => {
-            btn.textContent = 'Aggiungi';
-            btn.disabled = false;
-            btn.style.background = '';
-        }, 2000);
+        const toastEl = document.getElementById('toastCarrello');
+        const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
+        toast.show();
     }
-}
-
     // Badge al caricamento
     aggiornaBadge();
 </script>
