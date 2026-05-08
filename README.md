@@ -51,12 +51,8 @@ Dividiamo il progetto in tre macro argomenti:
 ### Funzioni da implementare:
 1. Grafica!!!
 2. Account Utente che contiene: Articoli preferiti + Ordini passati + Recensione su un'ordine - NON assicurato
-3. Aggiungere pulsante aggiungi articolo nelle raccomandazioni in inserimento articolo
 
 ### Note
-1. Quando il carrello è vuoto, NON ha senso proseguire all'ordine
-2. Manca il pulsante di tornare indietro dal riepilogo
-3. Aggiungere le tabItem nell'InserimentoArticolo
 
 ## Database
 ###### Programmatore: Agapi,Garbin
