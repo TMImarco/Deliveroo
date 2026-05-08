@@ -1,17 +1,32 @@
 ﻿@using Deliveroo.Tabelle
 @model Deliveroo.Models.InserimentoArticoloViewModel
 @{
-ViewData["Title"] = "Articoli";
-Layout = "_Layout";
-Articolo art = Model.ArticoloScelto;
+    ViewData["Title"] = "Articoli";
+    Layout = "_Layout";
+    Articolo art = Model.ArticoloScelto;
 }
+
+@section NavbarLinks {
+    <div class="search-wrapper ms-auto">
+        <!-- BOTTONE BACK -->
+        <a class="search-toggle back-btn" asp-action="Articoli" asp-controller="Articoli" title="Torna alla home"
+           asp-route-idCategoria="@art.Categoria.IdCategoria">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
+        </a>
+    </div>
+}
+
 <div class="macro-section">
     <div class="container">
         <div class="page-split">
 
             <!-- SINISTRA -->
             <div class="left-col">
-                
+
                 <!-- NAVIGAZIONE PREV / NEXT 
                 Piuttosto di ritornare sempre alla pagina di tutti gli articoli, ci sono i bottoni avanti e indietro per navigare facilmente -->
                 <div class="article-nav">
@@ -33,19 +48,12 @@ Articolo art = Model.ArticoloScelto;
                         <span class="nav-arrow next disabled">&#8594;</span>
                     }
                 </div>
-                
-                <!-- BOTTONE BACK -->
-                <a class="nav-arrow back-btn"
-                   asp-action="Articoli"
-                   asp-route-idCategoria="@ViewBag.IdCategoria">
-                    ↵
-                </a>
 
                 <div class="article-split">
                     <div class="article-left">
-                        <img src="@art.ImageUrl" 
-                             alt="@art.Nome" 
-                             class="article-left" 
+                        <img src="@art.ImageUrl"
+                             alt="@art.Nome"
+                             class="article-left"
                              loading="lazy"/>
                     </div>
                     <div class="article-right">
@@ -108,6 +116,16 @@ Articolo art = Model.ArticoloScelto;
     </div>
 </div>
 
+<!-- TOAST CONFERMA AGGIUNTA -->
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index: 9999">
+    <div id="toastCarrello" class="toast align-items-center text-white border-0" role="alert" data-bs-delay="2000">
+        <div class="toast-body d-flex align-items-center gap-2">
+            <span style="font-size:1.2rem">🛒</span>
+            <span>Articolo aggiunto al carrello!</span>
+        </div>
+    </div>
+</div>
+
 <!-- CARRELLO -->
 <a asp-controller="Carrello" asp-action="Carrello" class="cart-fab" title="Carrello">
     🛒
@@ -115,54 +133,44 @@ Articolo art = Model.ArticoloScelto;
 </a>
 
 @section Styles {
-<link rel="stylesheet" href="/css/InserimentoArticolo.css"/>
+    <link rel="stylesheet" href="/css/InserimentoArticolo.css"/>
 }
 
 @section Scripts {
-<script>
-    /* AUMENTARE LA QUANTITA DELL'ARTICOLO */
-    const prezzo = @Model.ArticoloScelto.Prezzo.ToString(System.Globalization.CultureInfo.InvariantCulture);
-    const aggiungiUrl = '@Url.Action("MettiNelCarrello", "Carrello", new { id = Model.ArticoloScelto.IdArticolo })';
-    let qty = 1;
+    <script>
+        /* AUMENTARE LA QUANTITA DELL'ARTICOLO */
+        const prezzo = @Model.ArticoloScelto.Prezzo.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        const aggiungiUrl = '@Url.Action("MettiNelCarrello", "Carrello", new { id = Model.ArticoloScelto.IdArticolo })';
+        let qty = 1;
 
-    function aggiornaTotale() {
-        document.getElementById('totale').textContent =
-            '€ ' + (prezzo * qty).toFixed(2);
-    }
+        function aggiornaTotale() {
+            document.getElementById('totale').textContent =
+                '€ ' + (prezzo * qty).toFixed(2);
+        }
 
-    function cambiaQty(d) {
-        qty = Math.max(1, qty + d);
-        document.getElementById('qty').textContent = qty;
-        aggiornaTotale();
-    }
+        function cambiaQty(d) {
+            qty = Math.max(1, qty + d);
+            document.getElementById('qty').textContent = qty;
+            aggiornaTotale();
+        }
 
-    /* AGGIORNARE IL BADGE */
-    async function aggiornaBadge() {
-        const res = await fetch('/Carrello/NumeroElementi');
-        const count = await res.text();
-        document.querySelectorAll('.cart-badge').forEach(b => b.textContent = count);
-    }
+        /* AGGIORNARE IL BADGE */
+        async function aggiornaBadge() {
+            const res = await fetch('/Carrello/NumeroElementi');
+            const count = await res.text();
+            document.querySelectorAll('.cart-badge').forEach(b => b.textContent = count);
+        }
 
-    async function aggiungiAlCarrello() {
-    const btn = document.getElementById('btn-aggiungi');
-    const res = await fetch(aggiungiUrl + '?qty=' + qty);
-    const data = await res.json();
-    console.log('RISPOSTA:', data); // ← aggiungi questa riga
-    await aggiornaBadge();
+        async function aggiungiAlCarrello() {
+            const res = await fetch(aggiungiUrl + '?qty=' + qty);
+            await aggiornaBadge();
 
-    if (data.success) {
-        btn.textContent = '✓ Aggiunto!';
-        btn.disabled = true;
-        btn.style.background = '#00a899';
-        setTimeout(() => {
-            btn.textContent = 'Aggiungi';
-            btn.disabled = false;
-            btn.style.background = '';
-        }, 2000);
-    }
-}
+            const toastEl = document.getElementById('toastCarrello');
+            const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
+            toast.show();
+        }
 
-    // Badge al caricamento
-    aggiornaBadge();
-</script>
+        // Badge al caricamento
+        aggiornaBadge();
+    </script>
 }

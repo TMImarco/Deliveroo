@@ -12,8 +12,8 @@
     var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString() 
                            ?? Context.Request.Query["categoria"].ToString();
 }
-<!-- Contenuto della sezione NavbarLinks per questa vista specifica -->
 
+<!-- Contenuto della sezione NavbarLinks per questa vista specifica -->
 @section NavbarLinks {
     <!-- LA TAB BAR -->
     <div class="navbar-collapse collapse">
@@ -35,6 +35,17 @@
 
     <!-- ICONA CERCA -->
     <div class="search-wrapper ms-auto">
+        
+        <!-- BOTTONE BACK -->
+        <a class="search-toggle back-btn" asp-action="Index" asp-controller="Home" title="Torna alla home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
+        </a>
+
+        <!-- CERCA -->
         <button class="search-toggle" id="searchToggle" title="Cerca articoli">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                  fill="none" stroke="currentColor" stroke-width="2.2"
@@ -66,12 +77,6 @@
 <!-- TUTTI GLI ARTICOLI -->
 <div class="macro-section">
     <div class="container">
-        
-        <!-- BOTTONE BACK -->
-        <a class="nav-arrow back-btn"
-           asp-action="Index" asp-controller="Home">
-            ↵
-        </a>
         
         <div class="macro-grid">
             @foreach (var articolo in Model)

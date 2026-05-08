@@ -21,6 +21,7 @@ html {
 body {
   margin: 0;
   padding-bottom: 108px;
+  padding-top:0;
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
@@ -33,6 +34,19 @@ body {
 }
 
 /*----------- GRAFICA DELLA SIDEBAR -----------*/
+/* Burger Button */
+.burger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  padding: 5px 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s, color 0.2s;
+}
+
 /* Sidebar */
 .sidebar {
   position: fixed;

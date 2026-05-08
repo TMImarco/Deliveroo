@@ -202,15 +202,45 @@
 
 /* BOTTONE INDIETRO */
 .back-btn {
+    line-height: 1;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
-    top: 2rem;
     left: 1rem;
-    background-color: #555;
-    z-index: 100;
+    text-decoration: none;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 8px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    padding: 6px 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s, color 0.2s;
 }
 
 .back-btn:hover {
-    background-color: #333;
+    background-color: #e0faf8;
+    color:#00ccbc;
 }
 
 /*----------- GRAFICA DEL BOTTON CARRELLO -----------*/
@@ -253,6 +283,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#toastCarrello {
+    background-color: #00ccbc;
 }
 
 /* colonna destra vuota */
