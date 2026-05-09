@@ -1,3 +1,4 @@
+using Deliveroo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Deliveroo.Tabelle;
 
@@ -15,58 +16,61 @@ public class AuthController : Controller
 		_contextAccessor = contextAccessor;
 		_gestioneDati = new GestioneDati();
 	}
-
-	public IActionResult LoginAdmin()
+	
+	[HttpGet]
+	public IActionResult Login()
 	{
 		return View();
 	}
-	
-	/* ---------------------- LOGIN ADMIN ---------------------- */
-	[HttpPost]
-	public IActionResult LoginAdmin(UtenteAdmin utenteAdmin)
-	{
-		string username = _configuration.GetRequiredSection("AdminCredentials").GetValue<string>("UserName");
-		string password = _configuration.GetRequiredSection("AdminCredentials").GetValue<string>("Password");
 
-		if (utenteAdmin.Username == username && utenteAdmin.Password == password)
-		{
-			_contextAccessor.HttpContext.Session.SetString("user", "admin");
-			return RedirectToAction("IndexAdmin", "Admin");
-		}
-		else
+	[HttpPost]
+	public IActionResult Login(LoginViewModel model)
+	{
+		if (string.IsNullOrWhiteSpace(model.Username) ||
+		    string.IsNullOrWhiteSpace(model.Password))
 		{
 			ViewData["errore"] = "Credenziali non valide";
 			return View();
 		}
-	}
 
+		/* ADMIN */
+
+		string adminUsername = _configuration
+			.GetRequiredSection("AdminCredentials")
+			.GetValue<string>("UserName");
+
+		string adminPassword = _configuration
+			.GetRequiredSection("AdminCredentials")
+			.GetValue<string>("Password");
+
+		if (model.Username == adminUsername &&
+		    model.Password == adminPassword)
+		{
+			HttpContext.Session.SetString("role", "admin");
+
+			return RedirectToAction("IndexAdmin", "Admin");
+		}
+
+		/* UTENTE */
+
+		int idUtente = _gestioneDati
+			.GetLoginUtente(model.Username, model.Password);
+
+		if (idUtente != 0)
+		{
+			HttpContext.Session.SetInt32("userId", idUtente);
+			HttpContext.Session.SetString("role", "user");
+
+			return RedirectToAction("Index", "Home");
+		}
+
+		ViewData["errore"] = "Credenziali non valide";
+		return View();
+	}
+	
 	public IActionResult Logout()
 	{
 		_contextAccessor.HttpContext.Session.Clear();
 		return RedirectToAction("Index", "Home");
-	}
-	
-	/* ---------------------- LOGIN UTENTE ---------------------- */
-	public IActionResult LoginUtente(string username, string password)
-	{
-		if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
-		{
-			ViewData["errore"] = "Credenziali non valide";
-			return View();
-		}
-		else
-		{
-			int idUtente = _gestioneDati.GetLoginUtente(username, password);
-			if (idUtente != 0)
-			{
-				HttpContext.Session.SetInt32("userId", idUtente);
-				HttpContext.Session.SetString("role", "user");
-				
-				return RedirectToAction("Index", "Home");
-			}
-			
-			ViewData["errore"] = "Credenziali non valide";
-			return View();
-		}
 	}
 }

@@ -147,44 +147,43 @@
     color:#00ccbc;
 }
 
-/*----------- GRAFICA DEL BOTTON CARRELLO -----------
-.cart-fab {
-    position: fixed;
-    bottom: 1.8rem;
-    right: 1.8rem;
-    width: 58px;
-    height: 58px;
-    background: var(--teal);
-    border-radius: 50%;
+/* ── TAB BAR CATEGORIE (dentro .lm-navbar-slot-left) ──────── */
+.art-tabs {
     display: flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 20px rgba(0, 204, 188, 0.4);
+    gap: 0.1rem;
+    overflow-x: auto;      /* scroll se le tab non ci stanno */
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    flex: 1;               /* occupa tutto lo spazio della colonna sinistra */
+    min-width: 0;          /* fondamentale: permette al flex item di restringersi */
+}
+
+.art-tabs::-webkit-scrollbar { display: none; }
+
+.art-tab {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--muted);
     text-decoration: none;
-    font-size: 1.4rem;
-    color: white;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    z-index: 1100;
+    padding: 5px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+    position: relative;
+    letter-spacing: 0.01em;
 }
 
-.cart-fab:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 30px rgba(0, 204, 188, 0.5);
-    color: white;
+.art-tab:hover {
+    color: var(--teal-mid);
+    background: var(--teal-light);
+    text-decoration: none;
 }
 
-.cart-badge {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    background: var(--ink);
-    color: #fff;
-    font-size: 0.58rem;
-    font-weight: 700;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}*/
+.art-tab.active {
+    color: var(--teal-mid);
+    background: var(--teal-light);
+    font-weight: 500;
+}

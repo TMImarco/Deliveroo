@@ -11,16 +11,16 @@ var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString()
 }
 
 @section NavbarLinks {
-@foreach (var cat in categorie)
-{
-var isActive = currentCategoria == cat.Nome ? "active" : "";
-<a class="art-tab @isActive"
-   asp-controller="Articoli"
-   asp-action="Articoli"
-   asp-route-idCategoria="@cat.IdCategoria">
-    @cat.Nome
-</a>
-}
+    @foreach (var cat in categorie)
+    {
+        var isActive = currentCategoria == cat.Nome ? "active" : "";
+        <a class="art-tab @isActive"
+           asp-controller="Articoli"
+           asp-action="Articoli"
+           asp-route-idCategoria="@cat.IdCategoria">
+            @cat.Nome
+        </a>
+    }
 }
 
 <!-- ── GRIGLIA ARTICOLI ──────────────────────────────────────── -->

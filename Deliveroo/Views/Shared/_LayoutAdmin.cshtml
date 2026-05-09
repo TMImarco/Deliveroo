@@ -1,84 +1,207 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - Deliveroo Admin Dashboard</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DeliverooAdmin</title>
     <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/Deliveroo.styles.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Deliveroo.styles.css" asp-append-version="true" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
 
-<!-- ___________ SIDEBAR ___________-->
-<!-- Burger Button -->
-<button class="burger-btn" onclick="toggleSidebar()" title="Menu">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-         fill="none" stroke="currentColor" stroke-width="2.2"
-         stroke-linecap="round" stroke-linejoin="round">
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <line x1="3" y1="12" x2="21" y2="12"/>
-        <line x1="3" y1="18" x2="21" y2="18"/>
-    </svg>
-</button>
+<!-- ── SIDEBAR OVERLAY ──────────────────────────────────────── -->
+<div class="lm-sidebar-overlay" onclick="toggleSidebar()"></div>
 
+<!-- ── SIDEBAR ──────────────────────────────────────────────── -->
+<div class="lm-sidebar">
 
-<!-- Sidebar Overlay -->
-<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <div class="lm-sidebar-header">
+        <span class="lm-sidebar-title">Menu</span>
+        <button class="lm-sidebar-close" onclick="toggleSidebar()" title="Chiudi">✕</button>
+    </div>
 
-<!-- Sidebar -->
-<div class="sidebar">
     <nav>
-        <a asp-controller="Admin" asp-action="IndexAdmin">Admin Dashboard </a>
-        <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <a asp-controller="Admin" asp-action="IndexAdmin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            Admin Dashboard
+        </a>
+        
+        <a asp-controller="Home" asp-action="Privacy">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            Privacy
+        </a>
+    </nav>
 
-        <a asp-controller="Auth" asp-action="Logout" class="sidebar-logout">Esci</a>
-    </nav>
+    <div class="lm-sidebar-logout">
+        <a asp-controller="Auth" asp-action="Logout">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                <polyline points="16 17 21 12 16 7"/>
+                <line x1="21" y1="12" x2="9" y2="12"/>
+            </svg>
+            Esci
+        </a>
+    </div>
 </div>
-<!-- ___________ NAVBAR ___________-->
-<header class="sticky-top">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container justify-content-center">
-            <a class="navbar-brand" asp-area="" asp-controller="Admin" asp-action="IndexAdmin">
-                <h2 class="section-title">
-                    Deliveroo
-                    <small class="text-muted">admin dashboard</small>
-                </h2>
+
+<!-- ── NAVBAR ────────────────────────────────────────────────── -->
+@{
+    bool hasNavbarLinks = IsSectionDefined("NavbarLinks");
+}
+<header id ="mainNavbar" class="lm-navbar">
+    <div class="lm-navbar-inner @(hasNavbarLinks ? "lm-navbar-inner--wide" : "")">
+
+        @if (hasNavbarLinks)
+        {
+            <!-- 1. BACK -->
+            <a class="lm-login-btn"  href="javascript:history.back()" title="Torna alla home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2.2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
             </a>
-            
-            <!-- se la vista dichiara "section Styles" il CSS aggiuntivo viene caricato nell'<head> -->
-            @await RenderSectionAsync("NavbarLinks", required: false)
-        </div>
-    </nav>
+
+            <!-- 2. BRAND -->
+            <a class="lm-brand" asp-area="" asp-controller="Admin" asp-action="IndexAdmin">
+                <span class="lm-brand-dot"></span>
+                Deliveroo Admin Dashboard
+            </a>
+
+            <!-- separatore verticale -->
+            <span class="lm-nav-sep"></span>
+
+            <!-- 3. TAB (iniettate dalla vista tramite NavbarLinks) -->
+            <div class="lm-navbar-slot-tabs">
+                @await RenderSectionAsync("NavbarLinks", required: false)
+            </div>
+
+            <!-- 4. SEARCH + 5. UTENTE + 6. BURGER -->
+            <div class="lm-nav-actions--inline">
+                <div class="lm-search-wrapper">
+                    <button class="lm-login-btn" id="lmSearchToggle" title="Cerca articoli">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2.2"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                    </button>
+                    <div class="lm-search-popup" id="lmSearchPopup">
+                        <div class="lm-search-input-wrap">
+                            <svg class="lm-search-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                 stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                            <input type="text" id="lmSearchInput" placeholder="Cerca un articolo…" autocomplete="off" />
+                            <button class="lm-search-clear" id="lmSearchClear">✕</button>
+                        </div>
+                        <div class="lm-search-results" id="lmSearchResults">
+                            <p class="lm-search-hint">Inizia a digitare per cercare…</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="lm-login-btn" asp-action="Login" asp-controller="Auth" title="Accedi">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2.2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </a>
+                <button class="lm-burger-btn" onclick="toggleSidebar()" title="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2.2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        }
+        else
+        {
+            <!-- Layout semplice: brand centrato, azioni a destra -->
+            <a class="lm-brand" asp-area="" asp-controller="Admin" asp-action="IndexAdmin">
+                <span class="lm-brand-dot"></span>
+                Deliveroo Admin Dashboard
+            </a>
+            <div class="lm-nav-actions">
+                <a class="lm-login-btn" asp-action="Login" asp-controller="Auth" title="Accedi">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2.2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </a>
+                <button class="lm-burger-btn" onclick="toggleSidebar()" title="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2.2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        }
+
+    </div>
 </header>
 
-
-<div class="container">
-    <main role="main" class="pb-3">
+<!-- ── BODY ──────────────────────────────────────────────────── -->
+<div class="lm-body-container">
+    <main role="main">
         @RenderBody()
     </main>
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2026 - Deliveroo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-</footer>
+<!-- ── ABOVE NAVBAR SECTION (per overlay fissi delle viste) ─── -->
+@RenderSection("AboveNavbar", required: false)
 
+<!-- ── BOTTOM NAVBAR ─────────────────────────────────────────── -->
+<nav class="bottom-navbar"></nav>
+
+<!-- ── SCRIPT ────────────────────────────────────────────────── -->
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-
 @await RenderSectionAsync("Scripts", required: false)
 
-<!-- ___________ SCRIPT per il funzionamento della SIDEBAR ___________-->
+<!-- Sidebar toggle -->
 <script>
     function toggleSidebar() {
-        document.querySelector('.sidebar').classList.toggle('open');
-        document.querySelector('.sidebar-overlay').classList.toggle('active');
+        document.querySelector('.lm-sidebar').classList.toggle('open');
+        document.querySelector('.lm-sidebar-overlay').classList.toggle('active');
     }
 </script>
+
+<!-- Badge carrello -->
+<script>
+    async function aggiornaBadge() {
+        const res = await fetch('/Carrello/NumeroElementi');
+        const count = await res.text();
+        document.querySelectorAll('.cart-badge').forEach(b => b.textContent = count);
+    }
+    aggiornaBadge();
+    setInterval(aggiornaBadge, 2000);
+</script>
+
 </body>
 </html>

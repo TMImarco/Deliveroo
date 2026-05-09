@@ -69,6 +69,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\js\\Articoli.js",
+      "PackagePath": "staticwebassets\\js\\Articoli.js"
+    },
+    {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\js\\InserimentoArticolo.js",
+      "PackagePath": "staticwebassets\\js\\InserimentoArticolo.js"
+    },
+    {
       "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

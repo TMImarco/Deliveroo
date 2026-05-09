@@ -15,28 +15,21 @@
 
 <!-- Contenuto della sezione NavbarLinks per questa vista specifica -->
 @section NavbarLinks {
-    <!-- LA TAB BAR -->
-    <div class="navbar-collapse collapse">
-        <ul class="navbar-nav flex-row gap-3">
-            @foreach (var cat in categorie)
-            {
-                <!-- categoria selezionata-->
-                var isActive = currentCategoria == cat.Nome ? "active" : "";
-                <li class="nav-item">
-                    <a class="nav-link text-dark @isActive" 
-                       asp-controller="ArticoliAdmin" 
-                       asp-action="ArticoliAdmin" 
-                       asp-route-idCategoria="@cat.IdCategoria">
-                        @cat.Nome
-                    </a>
-                </li>
-            }
-        </ul>
-    </div>
+    <!--TAB ITEM-->
+    @foreach (var cat in categorie)
+    {
+        var isActive = currentCategoria == cat.Nome ? "active" : "";
+        <a class="art-tab @isActive"
+           asp-controller="ArticoliAdmin"
+           asp-action="ArticoliAdmin"
+           asp-route-idCategoria="@cat.IdCategoria">
+            @cat.Nome
+        </a>
+    }
     
-    <!-- BOTTONE BACK -->
+    <!-- BOTTONE BACK 
     <div class="search-wrapper ms-auto">
-        <!-- BOTTONE BACK -->
+         BOTTONE BACK
         <a class="search-toggle back-btn" asp-action="CategorieAdmin" asp-controller="CategorieAdmin" title="Torna alla home">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                  fill="none" stroke="currentColor" stroke-width="2.2"
@@ -44,7 +37,7 @@
                 <polyline points="15 18 9 12 15 6"/>
             </svg>
         </a>
-    </div>
+    </div>-->
 }
 
 <h1>SELEZIONA ARTICOLO DA CAMBIARE</h1>

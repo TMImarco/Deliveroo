@@ -326,9 +326,13 @@ input[readonly], textarea[readonly] {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.6);
-    z-index: 1000;
     justify-content: center;
     align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
 }
 
 #cloudModalBox {
@@ -368,4 +372,45 @@ input[readonly], textarea[readonly] {
 
 .cloud-thumb:hover {
     border-color: #007bff;
+}
+
+/* ── TAB BAR CATEGORIE (dentro .lm-navbar-slot-left) ──────── */
+.art-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    overflow-x: auto;      /* scroll se le tab non ci stanno */
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    flex: 1;               /* occupa tutto lo spazio della colonna sinistra */
+    min-width: 0;          /* fondamentale: permette al flex item di restringersi */
+}
+
+.art-tabs::-webkit-scrollbar { display: none; }
+
+.art-tab {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+    position: relative;
+    letter-spacing: 0.01em;
+}
+
+.art-tab:hover {
+    color: var(--teal-mid);
+    background: var(--teal-light);
+    text-decoration: none;
+}
+
+.art-tab.active {
+    color: var(--teal-mid);
+    background: var(--teal-light);
+    font-weight: 500;
 }

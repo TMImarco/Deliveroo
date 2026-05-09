@@ -34,8 +34,8 @@
         </ul>
     </div>
     
-    <div class="search-wrapper ms-auto">
-        <!-- BOTTONE BACK -->
+    <!--<div class="search-wrapper ms-auto">
+         BOTTONE BACK
         <a class="search-toggle back-btn" asp-action="Articoli" asp-controller="Articoli" title="Torna alla home"
            asp-route-idCategoria="@art.Categoria.IdCategoria">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -44,7 +44,7 @@
                 <polyline points="15 18 9 12 15 6"/>
             </svg>
         </a>
-    </div>
+    </div>-->
 }
 
 <div class="macro-section">
@@ -131,12 +131,11 @@
                                 </a>
 
                                 <button class="rec-add-btn"
-                                        id="btn-aggiungi"
+                                        id="btn-aggiungiConsigliati"
                                         data-id="@articolo.IdArticolo"
                                         data-nome="@articolo.Nome"
                                         data-prezzo="@articolo.Prezzo"
-                                        data-image="@articolo.ImageUrl"
-                                        onclick="aggiungiAlCarrello()">+</button>
+                                        data-image="@articolo.ImageUrl">+</button>
                             </div>
                         }
                     </div>
@@ -206,31 +205,27 @@
             const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
             toast.show();
         }
-
-        // Badge al caricamento
-        aggiornaBadge();
         
-        /*BOTTONI DEI CONSIGLIATI PER TE
+        /*BOTTONI DEI CONSIGLIATI PER TE*/
         document.querySelectorAll('.rec-add-btn').forEach(btn => {
             btn.addEventListener('click', async (e) => {
                 e.stopPropagation();
 
                 const id      = btn.dataset.id;
-                const nome    = btn.dataset.nome;
-                const prezzo  = btn.dataset.prezzo;
-                const image   = btn.dataset.image;
-
-                await fetch('/Carrello/Incrementa', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ idArticolo: id, nome, prezzo, imageUrl: image })
+                await fetch(`/Carrello/MettiNelCarrello?id=${id}`, {
+                    method: 'POST'
                 });
-
                 // feedback visivo opzionale
                 btn.textContent = '✓';
                 btn.disabled = true;
                 setTimeout(() => { btn.textContent = '+'; btn.disabled = false; }, 1000);
+                const toastEl = document.getElementById('toastCarrello');
+                const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
+                toast.show();
             });
-        });*/
+        });
+
+        // Badge al caricamento
+        aggiornaBadge();
     </script>
 }

@@ -6,11 +6,27 @@
 
     Articolo art = Model.ArticoloScelto;
     List<Categoria> categorie = Model.ListaCategorie;
+    
+    var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString() 
+                           ?? Context.Request.Query["categoria"].ToString();
 }
 
 @section NavbarLinks {
-    <div class="search-wrapper ms-auto">
-        <!-- BOTTONE BACK -->
+    
+    <!--TAB ITEM-->
+    @foreach (var cat in categorie)
+    {
+        var isActive = currentCategoria == cat.Nome ? "active" : "";
+        <a class="art-tab @isActive"
+           asp-controller="ArticoliAdmin"
+           asp-action="ArticoliAdmin"
+           asp-route-idCategoria="@cat.IdCategoria">
+            @cat.Nome
+        </a>
+    }
+    
+    <!--<div class="search-wrapper ms-auto">
+         BOTTONE BACK 
         <a class="search-toggle back-btn" asp-action="ArticoliAdmin" title="Torna alla home"
            asp-route-idCategoria="@art.Categoria.IdCategoria">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -19,7 +35,7 @@
                 <polyline points="15 18 9 12 15 6"/>
             </svg>
         </a>
-    </div>
+    </div>-->
 }
 
 <h1>MODIFICA L'ARTICOLO</h1>
@@ -247,6 +263,7 @@
 
 @section Styles {
     <link rel="stylesheet" href="/cssAdmin/ModificaArticolo.css"/>
+    <link rel="stylesheet" href="/css/site.css"/>
 }
 
 @section Scripts

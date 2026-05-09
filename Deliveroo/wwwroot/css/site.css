@@ -63,12 +63,12 @@ body {
 .lm-navbar {
   position: sticky;
   top: 0;
-  z-index: 1050;
   background: var(--white);
   border-bottom: 1px solid var(--border);
   height: 56px;
   display: flex;
   align-items: center;
+  z-index: 1000;
   /* nessun box-shadow pesante — stile minimal */
 }
 
@@ -487,4 +487,10 @@ body {
   color: var(--teal-dark);
   letter-spacing: -0.03em;
   margin: 0;
+}
+
+
+/* nascondere la navbar */
+.hidden {
+  display: none !important;
 }
