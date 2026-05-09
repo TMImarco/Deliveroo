@@ -17,6 +17,8 @@ Dividiamo il progetto in tre macro argomenti:
 7. Elimina articolo
 8. Ogni entri della tabella articolo e' cliccabile e mostra tutte le info dell'ordine (modificare la grafica che e' di Claude)
 9. In ModificaArticolo possibilita' di usare immagini gia' caricate su Cloudinary
+10. In AggiungiArticolo implementare anche li il pulsante "prendi foto da Cloudinary"
+11. Fare in modo che nel riquadro della classifica ci sia anche una classifica per vedere gli articolo piu' preferiti
 
 ### Funzioni da implementare:
 1. Grafica
