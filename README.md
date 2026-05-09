@@ -27,6 +27,7 @@ Dividiamo il progetto in tre macro argomenti:
 6. Sistemare dettaglio ordine che fa un po' di confusione con gli importi
 7. Mettere il overlay di caricamento un po dapperutto?
 8. In ModificaArticolo, nella pagina dove ti chiedere di scegliere la categoria, mettere la barra di ricerca che ha fatto la Stefi (mettina in grande tipo Google e sotto le categorie, poi nelle altre pagine in alto come in articoli normali)
+9. Separare gli script dalle pagine cshtml in un nuovo file js seguendo il pattern organizzativo concordato
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate
@@ -51,6 +52,7 @@ Dividiamo il progetto in tre macro argomenti:
 ### Funzioni da implementare:
 1. Grafica!!!
 2. Account Utente che contiene: Articoli preferiti + Ordini passati + Recensione su un'ordine - NON assicurato
+3. Separare gli script dalle pagine cshtml in un nuovo file js seguendo il pattern organizzativo concordato
 
 ### Note
 
