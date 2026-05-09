@@ -1,214 +1,163 @@
-﻿<!-- permetto l'utilizzo della classe GestioneDati -->
-@inject GestioneDati Gestione
+﻿@inject GestioneDati Gestione
 
 @{
-    ViewData["Title"] = "Articoli";
-    Layout = "_Layout";
+ViewData["Title"] = "Articoli";
+Layout = "_Layout";
 
-    <!-- prendo tutte le categorie per visualizzarle nella tab bar -->
-    var categorie = Gestione.GetTutteCategorie();
-    
-    <!-- per personalizzare la navbar, tengo conto della categoria selezionata da evidenziarla -->
-    var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString() 
-                           ?? Context.Request.Query["categoria"].ToString();
+var categorie = Gestione.GetTutteCategorie();
+
+var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString()
+?? Context.Request.Query["categoria"].ToString();
 }
 
-<!-- Contenuto della sezione NavbarLinks per questa vista specifica -->
 @section NavbarLinks {
-    <!-- LA TAB BAR -->
-    <div class="navbar-collapse collapse">
-        <ul class="navbar-nav flex-row gap-3">
-            @foreach (var cat in categorie)
-            {
-                var isActive = currentCategoria == cat.Nome ? "active" : "";
-                <li class="nav-item">
-                    <a class="nav-link text-dark @isActive"
-                       asp-controller="Articoli"
-                       asp-action="Articoli"
-                       asp-route-idCategoria="@cat.IdCategoria">
-                        @cat.Nome
-                    </a>
-                </li>
-            }
-        </ul>
-    </div>
-
-    <!-- ICONA CERCA -->
-    <div class="search-wrapper ms-auto">
-        
-        <!-- BOTTONE BACK -->
-        <a class="search-toggle back-btn" asp-action="Index" asp-controller="Home" title="Torna alla home">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2.2"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"/>
-            </svg>
-        </a>
-
-        <!-- CERCA -->
-        <button class="search-toggle" id="searchToggle" title="Cerca articoli">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2.2"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"/>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-        </button>
-
-        <!-- POPUP RICERCA -->
-        <div class="search-popup" id="searchPopup">
-            <div class="search-input-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                     fill="none" stroke="#999" stroke-width="2.2"
-                     stroke-linecap="round" stroke-linejoin="round" class="search-icon-inner">
-                    <circle cx="11" cy="11" r="8"/>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                </svg>
-                <input type="text" id="searchInput" placeholder="Cerca un articolo..." autocomplete="off"/>
-                <button class="search-clear" id="searchClear">✕</button>
-            </div>
-            <div class="search-results" id="searchResults">
-                <p class="search-hint">Inizia a digitare per cercare…</p>
-            </div>
-        </div>
-    </div>
+@foreach (var cat in categorie)
+{
+var isActive = currentCategoria == cat.Nome ? "active" : "";
+<a class="art-tab @isActive"
+   asp-controller="Articoli"
+   asp-action="Articoli"
+   asp-route-idCategoria="@cat.IdCategoria">
+    @cat.Nome
+</a>
+}
 }
 
-<!-- TUTTI GLI ARTICOLI -->
-<div class="macro-section">
-    <div class="container">
-        
-        <div class="macro-grid">
-            @foreach (var articolo in Model)
-            {
-                <a asp-controller="Articoli" asp-action="InserimentoArticolo" asp-route-id="@articolo.IdArticolo" class="articolo-card">
-                    <div class="articolo-img-wrap">
-                        <img src="@articolo.ImageUrl"
-                             alt="@articolo.Nome"
-                             class="macro-image"/>
-                    </div>
-                    <div class="articolo-info">
-                        <span class="articolo-nome">@articolo.Nome</span>
-                        <span class="articolo-prezzo">€ @articolo.Prezzo.ToString("F2")</span>
-                    </div>
-                </a>
-            }
-        </div>
+<!-- ── GRIGLIA ARTICOLI ──────────────────────────────────────── -->
+<div class="art-section">
+    <div class="art-grid">
+        @foreach (var articolo in Model)
+        {
+        <a asp-controller="Articoli"
+           asp-action="InserimentoArticolo"
+           asp-route-id="@articolo.IdArticolo"
+           class="art-card">
+
+            <div class="art-img-wrap">
+                <img src="@articolo.ImageUrl"
+                     alt="@articolo.Nome"
+                     class="art-img"
+                     loading="lazy" />
+            </div>
+
+            <div class="art-info">
+                <span class="art-nome">@articolo.Nome</span>
+                <span class="art-prezzo">€ @articolo.Prezzo.ToString("F2")</span>
+            </div>
+
+        </a>
+        }
     </div>
 </div>
 
-<!-- CARRELLO -->
+<!-- ── CARRELLO ──────────────────────────────────────────────── -->
 <a asp-controller="Carrello" asp-action="Carrello" class="cart-fab" title="Carrello">
     🛒
     <span class="cart-badge"></span>
 </a>
 
 @section Styles {
-    <link rel="stylesheet" href="/css/Articoli.css"/>
+<link rel="stylesheet" href="/css/Articoli.css" />
 }
 
-<!-- BARRA DI RICERCA -->
 @section Scripts {
 <script>
-(function () {
-    const toggle   = document.getElementById('searchToggle');
-    const popup    = document.getElementById('searchPopup');
-    const input    = document.getElementById('searchInput');
-    const results  = document.getElementById('searchResults');
-    const clearBtn = document.getElementById('searchClear');
+    (function () {
+        const toggle   = document.getElementById('lmSearchToggle');
+        const popup    = document.getElementById('lmSearchPopup');
+        const input    = document.getElementById('lmSearchInput');
+        const results  = document.getElementById('lmSearchResults');
+        const clearBtn = document.getElementById('lmSearchClear');
 
-    let debounce;
+        if (!toggle) return; // sicurezza: esci se la navbar wide non è presente
 
-    // apri/chiudi popup
-    toggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = popup.classList.toggle('open');
-        toggle.classList.toggle('active', isOpen);
-        if (isOpen) setTimeout(() => input.focus(), 50);
-        else resetSearch();
-    });
+        let debounce;
 
-    // chiudi cliccando fuori
-    document.addEventListener('click', (e) => {
-        if (!popup.contains(e.target) && e.target !== toggle) {
-            popup.classList.remove('open');
-            toggle.classList.remove('active');
-            resetSearch();
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = popup.classList.toggle('open');
+            toggle.classList.toggle('active', isOpen);
+            if (isOpen) setTimeout(() => input.focus(), 50);
+            else resetSearch();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!popup.contains(e.target) && e.target !== toggle) {
+                popup.classList.remove('open');
+                toggle.classList.remove('active');
+                resetSearch();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                popup.classList.remove('open');
+                toggle.classList.remove('active');
+                resetSearch();
+            }
+        });
+
+        input.addEventListener('input', () => {
+            const q = input.value.trim();
+            clearBtn.classList.toggle('visible', q.length > 0);
+            clearTimeout(debounce);
+            if (q.length < 2) {
+                results.innerHTML = '<p class="lm-search-hint">Inizia a digitare per cercare…</p>';
+                return;
+            }
+            results.innerHTML = '<p class="lm-search-hint">Ricerca in corso…</p>';
+            debounce = setTimeout(() => cerca(q), 280);
+        });
+
+        clearBtn.addEventListener('click', () => {
+            input.value = '';
+            clearBtn.classList.remove('visible');
+            results.innerHTML = '<p class="lm-search-hint">Inizia a digitare per cercare…</p>';
+            input.focus();
+        });
+
+        async function cerca(q) {
+            try {
+                const res  = await fetch(`/Articoli/Cerca?q=${encodeURIComponent(q)}`);
+                const data = await res.json();
+                renderResults(data, q);
+            } catch {
+                results.innerHTML = '<p class="lm-search-no-results">Errore durante la ricerca.</p>';
+            }
         }
-    });
 
-    // tasto ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            popup.classList.remove('open');
-            toggle.classList.remove('active');
-            resetSearch();
-        }
-    });
-
-    // ricerca con debounce
-    input.addEventListener('input', () => {
-        const q = input.value.trim();
-        clearBtn.classList.toggle('visible', q.length > 0);
-        clearTimeout(debounce);
-        if (q.length < 2) {
-            results.innerHTML = '<p class="search-hint">Inizia a digitare per cercare…</p>';
-            return;
-        }
-        results.innerHTML = '<p class="search-hint">Ricerca in corso…</p>';
-        debounce = setTimeout(() => cerca(q), 280);
-    });
-
-    // clear
-    clearBtn.addEventListener('click', () => {
-        input.value = '';
-        clearBtn.classList.remove('visible');
-        results.innerHTML = '<p class="search-hint">Inizia a digitare per cercare…</p>';
-        input.focus();
-    });
-
-    async function cerca(q) {
-        try {
-            const res  = await fetch(`/Articoli/Cerca?q=${encodeURIComponent(q)}`);
-            const data = await res.json();
-            renderResults(data, q);
-        } catch {
-            results.innerHTML = '<p class="search-no-results">Errore durante la ricerca.</p>';
-        }
-    }
-
-    function renderResults(data, q) {
-        if (!data.length) {
-            results.innerHTML = `<p class="search-no-results">Nessun risultato per "<strong>${q}</strong>"</p>`;
-            return;
-        }
-        results.innerHTML = data.map(a => `
-            <a class="search-result-item"
-               href="/Articoli/InserimentoArticolo/${a.idArticolo}">
-                <img class="search-result-img"
+        function renderResults(data, q) {
+            if (!data.length) {
+                results.innerHTML = `<p class="lm-search-no-results">Nessun risultato per "<strong>${q}</strong>"</p>`;
+                return;
+            }
+            results.innerHTML = data.map(a => `
+            <a class="lm-search-result-item" href="/Articoli/InserimentoArticolo/${a.idArticolo}">
+                <img class="lm-search-result-img"
                      src="${a.imageUrl || '/img/placeholder.png'}"
-                     alt="${a.nome}"/>
-                <div class="search-result-info">
-                    <span class="search-result-nome">${highlight(a.nome, q)}</span>
-                    <div class="search-result-meta">
-                        <span class="search-result-cat">${a.categoria}</span>
+                     alt="${a.nome}" />
+                <div class="lm-search-result-info">
+                    <span class="lm-search-result-nome">${highlight(a.nome, q)}</span>
+                    <div class="lm-search-result-meta">
+                        <span class="lm-search-result-cat">${a.categoria}</span>
                         <span>€ ${a.prezzo}</span>
                     </div>
                 </div>
             </a>
         `).join('');
-    }
+        }
 
-    function highlight(text, q) {
-        const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-        return text.replace(re, '<mark style="background:#e0faf8;color:#00ccbc;border-radius:3px;padding:0 2px">$1</mark>');
-    }
+        function highlight(text, q) {
+            const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            return text.replace(re,
+                '<mark style="background:var(--teal-light);color:var(--teal-dark);border-radius:3px;padding:0 2px">$1</mark>');
+        }
 
-    function resetSearch() {
-        input.value = '';
-        clearBtn.classList.remove('visible');
-        results.innerHTML = '<p class="search-hint">Inizia a digitare per cercare…</p>';
-    }
+        function resetSearch() {
+            input.value = '';
+            clearBtn.classList.remove('visible');
+            results.innerHTML = '<p class="lm-search-hint">Inizia a digitare per cercare…</p>';
+        }
 })();
 </script>
 }
