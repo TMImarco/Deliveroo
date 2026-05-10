@@ -93,10 +93,6 @@
                                 Totale pagato
                                 <strong>€ @ordine.ImportoTotale.ToString("F2")</strong>
                             </span>
-                            <button class="btn-teal btn-teal--sm"
-                                    onclick="riordina(@ordine.IdOrdine)">
-                                Riordina
-                            </button>
                         </div>
                     </div>
 
@@ -107,14 +103,18 @@
 
 </div>
 
+@section Styles {
+    <link rel="stylesheet" href="/css/OrdiniPassati.css"/>
+}
+
 @section Scripts {
 <script>
-function toggleOrdine(id) {
-    const body  = document.getElementById('body-' + id);
-    const chev  = document.getElementById('chev-' + id);
-    const aperto = body.classList.toggle('aperto');
-    chev.style.transform = aperto ? 'rotate(180deg)' : 'rotate(0deg)';
-}
+    function toggleOrdine(id) {
+        const body = document.getElementById('body-' + id);
+        const chev = document.getElementById('chev-' + id);
+        const isOpen = body.classList.toggle('open');
+        chev.classList.toggle('open', isOpen);
+    }
 
 async function riordina(idOrdine) {
     const res = await fetch('/Ordini/RiordinaDa?idOrdine=' + idOrdine, { method: 'POST' });
