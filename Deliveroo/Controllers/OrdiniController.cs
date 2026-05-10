@@ -18,13 +18,26 @@ public class OrdiniController : Controller
 
 	public IActionResult Riepilogo()
 	{
+		/* se non ha fatto l'accesso o non ha l'account, è obbligato a farlo per completare l'ordine */
+		if (HttpContext.Session.GetInt32("userId") == null)
+			return RedirectToAction("Login", "Auth", new { returnUrl = "/Ordini/Riepilogo" });
+		
 		var referer = Request.Headers["Referer"].ToString();
 		if (!string.IsNullOrEmpty(referer) && !referer.Contains("Carrello"))
 		{
 			HttpContext.Session.SetString("CarrelloReferer", referer);
 		}
-
 		ViewBag.BackUrl = HttpContext.Session.GetString("CarrelloReferer") ?? "/";
+		
+		// Autocompila se loggato
+		int? idUtente = HttpContext.Session.GetInt32("userId");
+		if (idUtente != null)
+		{
+			var utente = _gestioneDati.GetUtente(idUtente.Value);
+			ViewBag.NomeUtente = utente?.Nome;
+			ViewBag.TelefonoUtente = utente?.Telefono;
+			ViewBag.IndirizzoUtente = utente?.Indirizzo;
+		}
 
 		var lista = _gestioneCarrello.RecuperaCarrello();
 		return View(lista);

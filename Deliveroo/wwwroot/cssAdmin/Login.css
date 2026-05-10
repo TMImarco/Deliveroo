@@ -41,3 +41,113 @@
 .back-btn:hover {
     background-color: #333;
 }
+
+/* ════════════════════════════════════════════════
+   AUTH (Login + Registrazione)
+════════════════════════════════════════════════ */
+.auth-wrapper {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+.auth-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.06);
+}
+.auth-header { margin-bottom: 1.75rem; }
+.auth-eyebrow {
+    font-family: 'Syne', sans-serif;
+    font-size: .7rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: block;
+    margin-bottom: .4rem;
+}
+.auth-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 .2rem;
+}
+.auth-sub {
+    font-family: 'DM Sans', sans-serif;
+    color: #888;
+    font-size: .88rem;
+    margin: 0;
+}
+.auth-error {
+    background: #fff0f0;
+    border: 1px solid #fcc;
+    color: #c0392b;
+    border-radius: 8px;
+    padding: .65rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .85rem;
+    margin-bottom: 1.25rem;
+}
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    margin-bottom: 1rem;
+}
+.auth-field label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .82rem;
+    font-weight: 600;
+    color: #444;
+}
+.auth-field input {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .6rem .85rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .9rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color .2s;
+}
+.auth-field input:focus { border-color: var(--teal); }
+.auth-validation {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .78rem;
+    color: #c0392b;
+}
+.auth-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1.25rem 0;
+}
+.auth-btn {
+    width: 100%;
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: .75rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background .2s;
+    margin-top: .5rem;
+}
+.auth-btn:hover { background: var(--teal-dark); }
+.auth-switch {
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .85rem;
+    color: #888;
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+}
+.auth-switch a { color: var(--teal); font-weight: 600; }

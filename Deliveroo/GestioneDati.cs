@@ -1,4 +1,5 @@
-﻿using Deliveroo.Tabelle;
+﻿using Deliveroo.Models;
+using Deliveroo.Tabelle;
 using MySql.Data.MySqlClient;
 
 namespace Deliveroo;
@@ -767,6 +768,29 @@ VALUES (@idUtente, @idArticolo);";
         command.Parameters.AddWithValue("@idUtente", idUtente);
         command.Parameters.AddWithValue("@idArticolo", idArticolo);
         command.ExecuteNonQuery();
+    }
+    
+    /* REGISTRAZIONE UTENTE */
+    public bool UsernameEsiste(string username)
+    {
+        string query = "SELECT COUNT(*) FROM utenti WHERE username = @username";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@username", username);
+        return Convert.ToInt32(command.ExecuteScalar()) > 0;
+    }
+
+    public int RegistraUtente(RegistrazioneViewModel model)
+    {
+        string query = @"INSERT INTO utenti (nome, telefono, indirizzo, username, password) 
+                     VALUES (@nome, @telefono, @indirizzo, @username, @password);
+                     SELECT LAST_INSERT_ID();";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@nome", model.Nome);
+        command.Parameters.AddWithValue("@telefono", model.Telefono);
+        command.Parameters.AddWithValue("@indirizzo", model.Indirizzo);
+        command.Parameters.AddWithValue("@username", model.Username);
+        command.Parameters.AddWithValue("@password", model.Password);
+        return Convert.ToInt32(command.ExecuteScalar());
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     

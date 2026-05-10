@@ -22,6 +22,8 @@
           asp-action="Login">
 
         <p class="testo-rosso">@ViewData["errore"]</p>
+        
+        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
 
         <div class="mt-2">
             <label asp-for="Username"></label>
@@ -40,6 +42,12 @@
                     class="btn btn-primary">
                 Entra
             </button>
+        </p>
+        
+        <p class="auth-switch">
+            Non hai un account?
+            <a asp-controller="Auth" asp-action="Registrazione"
+               asp-route-returnUrl="@ViewBag.ReturnUrl">Registrati</a>
         </p>
 
     </form>
