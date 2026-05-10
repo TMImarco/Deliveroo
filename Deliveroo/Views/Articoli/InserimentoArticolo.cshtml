@@ -5,35 +5,28 @@
     ViewData["Title"] = "Articoli";
     Layout = "_Layout";
     Articolo art = Model.ArticoloScelto;
-    
+
     <!-- prendo tutte le categorie per visualizzarle nella tab bar -->
     var categorie = Gestione.GetTutteCategorie();
-    
+
     <!-- per personalizzare la navbar, tengo conto della categoria selezionata da evidenziarla -->
-    var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString() 
+    var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString()
                            ?? Context.Request.Query["categoria"].ToString();
 }
 
 @section NavbarLinks {
-    
-    <!-- LA TAB BAR -->
-    <div class="navbar-collapse collapse">
-        <ul class="navbar-nav flex-row gap-3">
-            @foreach (var cat in categorie)
-            {
-                var isActive = currentCategoria == cat.Nome ? "active" : "";
-                <li class="nav-item">
-                    <a class="nav-link text-dark @isActive"
-                       asp-controller="Articoli"
-                       asp-action="Articoli"
-                       asp-route-idCategoria="@cat.IdCategoria">
-                        @cat.Nome
-                    </a>
-                </li>
-            }
-        </ul>
-    </div>
-    
+    <!--TAB ITEM-->
+    @foreach (var cat in categorie)
+    {
+        var isActive = currentCategoria == cat.Nome ? "active" : "";
+        <a class="art-tab @isActive"
+           asp-controller="Articoli"
+           asp-action="Articoli"
+           asp-route-idCategoria="@cat.IdCategoria">
+            @cat.Nome
+        </a>
+    }
+
     <!--<div class="search-wrapper ms-auto">
          BOTTONE BACK
         <a class="search-toggle back-btn" asp-action="Articoli" asp-controller="Articoli" title="Torna alla home"
@@ -96,6 +89,18 @@
                                     <span class="qty-val" id="qty">1</span>
                                     <button class="qty-btn" onclick="cambiaQty(1)">+</button>
                                 </div>
+                                <!-- PREFERITO -->
+                                <button class="btn-cuore @(ViewBag.IsPreferitoAttivo ? "attivo" : "")"
+                                        id="btn-preferito"
+                                        title="Aggiungi ai preferiti">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06
+                     a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78
+                     1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                         <button id="btn-aggiungi" class="add-btn" onclick="aggiungiAlCarrello()">Aggiungi</button>
@@ -122,7 +127,8 @@
                         @foreach (var articolo in Model.Raccomandazioni)
                         {
                             <div class="rec-row">
-                                <a asp-action="InserimentoArticolo" asp-route-id="@articolo.IdArticolo" class="rec-link">
+                                <a asp-action="InserimentoArticolo" asp-route-id="@articolo.IdArticolo"
+                                   class="rec-link">
                                     <img class="rec-thumb" src="@Url.Content(articolo.ImageUrl)" alt="@articolo.Nome"/>
                                     <div class="rec-info">
                                         <div class="rec-name">@articolo.Nome</div>
@@ -135,7 +141,8 @@
                                         data-id="@articolo.IdArticolo"
                                         data-nome="@articolo.Nome"
                                         data-prezzo="@articolo.Prezzo"
-                                        data-image="@articolo.ImageUrl">+</button>
+                                        data-image="@articolo.ImageUrl">+
+                                </button>
                             </div>
                         }
                     </div>
@@ -205,20 +212,23 @@
             const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
             toast.show();
         }
-        
+
         /*BOTTONI DEI CONSIGLIATI PER TE*/
         document.querySelectorAll('.rec-add-btn').forEach(btn => {
             btn.addEventListener('click', async (e) => {
                 e.stopPropagation();
 
-                const id      = btn.dataset.id;
+                const id = btn.dataset.id;
                 await fetch(`/Carrello/MettiNelCarrello?id=${id}`, {
                     method: 'POST'
                 });
                 // feedback visivo opzionale
                 btn.textContent = '✓';
                 btn.disabled = true;
-                setTimeout(() => { btn.textContent = '+'; btn.disabled = false; }, 1000);
+                setTimeout(() => {
+                    btn.textContent = '+';
+                    btn.disabled = false;
+                }, 1000);
                 const toastEl = document.getElementById('toastCarrello');
                 const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
                 toast.show();
@@ -227,5 +237,18 @@
 
         // Badge al caricamento
         aggiornaBadge();
+
+        /* PREFERITI */
+        const btnPreferito = document.getElementById('btn-preferito');
+        if (btnPreferito) {
+            btnPreferito.addEventListener('click', async () => {
+                const res = await fetch('/Articoli/TogglePreferito?idArticolo=@art.IdArticolo', {
+                    method: 'POST'
+                });
+                if (res.ok) {
+                    btnPreferito.classList.toggle('attivo');
+                }
+            });
+        }
     </script>
 }

@@ -17,6 +17,7 @@
   --border:      #DCF0EC;
   --border-soft: #EEF6F4;
   --danger:      #E8572A;
+  --color-text-secondary: #555;
 }
 
 /* ── RESET / BASE ──────────────────────────────────────────── */
@@ -198,6 +199,21 @@ body {
 .lm-burger-btn:hover {
   background: var(--teal-light);
   color: var(--teal-mid);
+}
+
+/* ── Icona preferiti ─────────────────────────────── */
+.nav-icon-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-secondary);
+  transition: color .2s;
+}
+.nav-icon-link:hover .icon-heart {
+  color: #e05b5b;
+  fill: #e05b5b22;
+}
+.icon-heart {
+  transition: color .2s, fill .2s;
 }
 
 /* Links aggiuntivi navbar (sezione Razor) */

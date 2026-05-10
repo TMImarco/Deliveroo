@@ -694,12 +694,13 @@ WHERE Id = @id";
         return utente;
     }
 
-    public List<Articolo> GetArticoliPreferitiPerUtente(int idUtente)
+    public List<Articolo> GetPreferitiPerUtente(int idUtente)
     {
         List<Articolo> listArticoliPreferiti = new();
-        string query = @"SELECT a.*
+        string query = @"SELECT a.*, c.nomeCategoria AS nomeCategoria
 FROM articoli a
 INNER JOIN articoli_preferiti f ON a.Id = f.IdArticolo
+INNER JOIN categorie c ON a.idCategoria = c.id
 WHERE f.IdUtente = @idUtente";
         MySqlCommand command = new MySqlCommand(query, _connection);
         command.Parameters.AddWithValue("@idUtente", idUtente);
@@ -713,13 +714,15 @@ WHERE f.IdUtente = @idUtente";
                 Nome = (string)reader["nomeCategoria"]
             };
 
+            var rawUrlArt = (reader["imageUrl"] is DBNull) ? "" : (string)reader["imageUrl"];
             Articolo articolo = new Articolo()
             {
                 IdArticolo = (int)reader["id"],
                 Nome = (string)reader["nome"],
                 Prezzo = Convert.ToDecimal((double)reader["prezzo_listino"]),
                 NumeroOrdini = (int)reader["numero_ordini"],
-                Categoria = categoria
+                Categoria = categoria,
+                ImageUrl = rawUrlArt.Replace("/upload/", "/upload/w_400,h_300,c_fill,f_auto,q_auto/")
             };
             
             listArticoliPreferiti.Add(articolo);
@@ -727,6 +730,43 @@ WHERE f.IdUtente = @idUtente";
         
         reader.Close();
         return listArticoliPreferiti;
+    }
+    
+    public void AggiungiPreferitoPerUtente(int idUtente, int idArticolo)
+    {
+        string query = @"INSERT INTO articoli_preferiti (idUtente, idArticolo)
+VALUES (@idUtente, @idArticolo);";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@idUtente", idUtente);
+        command.Parameters.AddWithValue("@idArticolo", idArticolo);
+        
+        try
+        {
+            command.ExecuteNonQuery();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    public bool IsPreferitoPerUtente(int idUtente, int idArticolo)
+    {
+        string query = "SELECT COUNT(*) FROM articoli_preferiti WHERE idUtente=@idUtente AND idArticolo=@idArticolo";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@idUtente", idUtente);
+        command.Parameters.AddWithValue("@idArticolo", idArticolo);
+        return Convert.ToInt32(command.ExecuteScalar()) > 0;
+    }
+
+    public void RimuoviPreferitoPerUtente(int idUtente, int idArticolo)
+    {
+        string query = "DELETE FROM articoli_preferiti WHERE idUtente=@idUtente AND idArticolo=@idArticolo";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@idUtente", idUtente);
+        command.Parameters.AddWithValue("@idArticolo", idArticolo);
+        command.ExecuteNonQuery();
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     

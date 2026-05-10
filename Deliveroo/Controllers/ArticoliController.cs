@@ -1,6 +1,7 @@
 using Deliveroo.Models;
 using Deliveroo.Tabelle;
 using Microsoft.AspNetCore.Mvc;
+using MySqlX.XDevAPI;
 
 namespace Deliveroo.Controllers;
 
@@ -37,7 +38,10 @@ public class ArticoliController : Controller
 			ArticoloScelto = articoloScelto,
 			Raccomandazioni = listRaccomandazioni,
 		};
-
+		
+		int? idUtente = HttpContext.Session.GetInt32("userId");
+		ViewBag.IsPreferitoAttivo = idUtente != null && _gestioneDati.IsPreferitoPerUtente(idUtente.Value, articoloScelto.IdArticolo);
+		
 		return View("InserimentoArticolo", viewmodel);
 	}
 	
@@ -73,5 +77,29 @@ public class ArticoliController : Controller
 			});
 
 		return Json(risultati);
+	}
+	
+	/* PAGINA PREFERITI */
+	public IActionResult Preferiti(int idUtente)
+	{
+		var preferiti = _gestioneDati.GetPreferitiPerUtente(idUtente);
+		return View(preferiti);
+	}
+
+	[HttpPost]
+	public IActionResult TogglePreferito(int idArticolo)
+	{
+		int? idUtente = HttpContext.Session.GetInt32("userId");
+		if (idUtente == null)
+			return Unauthorized();
+
+		bool isPreferitoAttivo = _gestioneDati.IsPreferitoPerUtente(idUtente.Value, idArticolo);
+    
+		if (isPreferitoAttivo)
+			_gestioneDati.RimuoviPreferitoPerUtente(idUtente.Value, idArticolo);
+		else
+			_gestioneDati.AggiungiPreferitoPerUtente(idUtente.Value, idArticolo);
+
+		return Ok();
 	}
 }

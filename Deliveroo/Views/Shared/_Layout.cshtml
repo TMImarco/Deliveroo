@@ -33,19 +33,31 @@
             </svg>
             Home
         </a>
-        <a asp-controller="Auth" asp-action="Login">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2.2"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-            </svg>
-            Accedi
-        </a>
-        @if (Context.Session.GetString("role") != null)
+        @if (Context.Session.GetString("role") == null)
         {
-            <a asp-controller="" asp-action="">
-                ARTICOLI PREFERITI
+            <a asp-controller="Auth" asp-action="Login">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2.2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                Accedi
+            </a>
+        }
+        @if (Context.Session.GetString("role") == "user")
+        {
+            <a asp-controller="Articoli" asp-action="Preferiti" title="Articoli preferiti"
+               asp-route-idUtente="@Context.Session.GetInt32("userId")">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="icon-heart">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06
+                     a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78
+                     1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+                Articoli Preferiti
             </a>
         }
         <a asp-controller="Home" asp-action="Privacy">
@@ -133,14 +145,18 @@
                         </div>
                     </div>
                 </div>
-                <a class="lm-login-btn" asp-action="Login" asp-controller="Auth" title="Accedi">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="2.2"
-                         stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                </a>
+                
+                @if (Context.Session.GetString("role") == null)
+                {
+                    <a class="lm-login-btn" asp-action="Login" asp-controller="Auth" title="Accedi">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2.2"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </a>
+                }
                 <button class="lm-burger-btn" onclick="toggleSidebar()" title="Menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                          fill="none" stroke="currentColor" stroke-width="2.2"
@@ -160,14 +176,17 @@
                 Deliveroo
             </a>
             <div class="lm-nav-actions">
-                <a class="lm-login-btn" asp-action="Login" asp-controller="Auth" title="Accedi">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="2.2"
-                         stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                </a>
+                @if (Context.Session.GetString("role") == null)
+                {
+                    <a class="lm-login-btn" asp-action="Login" asp-controller="Auth" title="Accedi">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2.2"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </a>
+                }
                 <button class="lm-burger-btn" onclick="toggleSidebar()" title="Menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                          fill="none" stroke="currentColor" stroke-width="2.2"
