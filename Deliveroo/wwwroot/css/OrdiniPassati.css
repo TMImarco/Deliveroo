@@ -4,117 +4,121 @@
 .ordini-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: .75rem;
 }
 
 .ordine-card {
-    background: #fff;
-    border: 1px solid var(--border, #eee);
-    border-radius: 14px;
+    background: var(--surface, #fff);
+    border: 0.5px solid var(--color-border-tertiary, #eee);
+    border-radius: var(--border-radius-lg, 12px);
     overflow: hidden;
-    transition: box-shadow .2s;
+    transition: border-color .2s;
 }
-.ordine-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+.ordine-card:hover {
+    border-color: var(--color-border-secondary, #ddd);
+}
 
+/* HEADER */
 .ordine-card__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.25rem;
+    padding: .85rem 1rem;
     cursor: pointer;
     user-select: none;
-    gap: 1rem;
+    gap: 12px;
 }
 
 .ordine-card__meta {
     display: flex;
     flex-direction: column;
-    gap: .25rem;
+    gap: 4px;
     flex: 1;
 }
 
 .ordine-card__top-row {
     display: flex;
     align-items: center;
-    gap: .6rem;
+    gap: 8px;
 }
 
 .ordine-card__id {
     font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: .95rem;
+    font-size: 14px;
+    font-weight: 600;
     color: #111;
 }
 
 .ordine-card__badge {
-    background: var(--teal-light, #E8FAF9);
-    color: var(--teal, #00ccbc);
+    background: #E8FAF9;
+    color: #0F6E56;
     font-family: 'DM Sans', sans-serif;
-    font-size: .72rem;
+    font-size: 11px;
     font-weight: 600;
-    padding: .15rem .55rem;
+    padding: 2px 8px;
     border-radius: 20px;
 }
 
 .ordine-card__data {
     font-family: 'DM Sans', sans-serif;
-    font-size: .8rem;
+    font-size: 12px;
     color: #999;
 }
 
 .ordine-card__right {
     display: flex;
     align-items: center;
-    gap: .75rem;
+    gap: 10px;
     flex-shrink: 0;
 }
 
 .ordine-card__totale {
     font-family: 'Syne', sans-serif;
+    font-size: 15px;
     font-weight: 700;
-    font-size: 1rem;
-    color: var(--teal, #00ccbc);
+    color: #00ccbc;
 }
 
 .ordine-chevron {
     transition: transform .25s ease;
-    flex-shrink: 0;
+    color: #bbb;
+    font-size: 16px;
+}
+.ordine-chevron.open {
+    transform: rotate(180deg);
 }
 
 /* CORPO COLLASSABILE */
 .ordine-card__body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .3s ease;
-    border-top: 0px solid var(--border, #eee);
+    display: none;
+    border-top: 0.5px solid var(--color-border-tertiary, #eee);
 }
-.ordine-card__body.aperto {
-    max-height: 600px;
-    border-top: 1px solid var(--border, #eee);
+.ordine-card__body.open {
+    display: block;
 }
 
 .ordine-card__righe {
-    padding: .85rem 1.25rem;
+    padding: .75rem 1rem;
     display: flex;
     flex-direction: column;
-    gap: .55rem;
+    gap: .5rem;
 }
 
 .ordine-riga {
     display: flex;
     align-items: center;
-    gap: .75rem;
+    gap: 10px;
     font-family: 'DM Sans', sans-serif;
-    font-size: .88rem;
+    font-size: 13px;
 }
 
 .ordine-riga__qty {
     background: #f3f4f6;
     color: #555;
     border-radius: 6px;
-    padding: .15rem .5rem;
+    padding: 2px 7px;
+    font-size: 12px;
     font-weight: 600;
-    font-size: .8rem;
     flex-shrink: 0;
 }
 
@@ -124,29 +128,38 @@
 }
 
 .ordine-riga__prezzo {
-    color: #888;
-    font-size: .85rem;
+    color: #999;
+    font-size: 12px;
     flex-shrink: 0;
 }
 
+/* FOOTER CARD */
 .ordine-card__footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: .75rem 1.25rem 1rem;
-    border-top: 1px solid var(--border, #eee);
+    padding: .65rem 1rem;
+    border-top: 0.5px solid var(--color-border-tertiary, #eee);
+    background: #f9f9f9;
 }
 
 .ordine-card__footer-label {
     font-family: 'DM Sans', sans-serif;
-    font-size: .85rem;
+    font-size: 12px;
     color: #888;
     display: flex;
-    gap: .4rem;
     align-items: center;
+    gap: 6px;
 }
 
 .ordine-card__footer-label strong {
     color: #111;
-    font-weight: 700;
+    font-weight: 600;
+}
+
+.ordine-chevron {
+    transition: transform .25s ease;
+}
+.ordine-chevron.open {
+    transform: rotate(180deg);
 }

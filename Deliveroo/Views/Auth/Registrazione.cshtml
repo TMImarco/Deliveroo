@@ -25,39 +25,49 @@
 
             <div class="auth-field">
                 <label>Nome completo</label>
-                <input asp-for="Nome" type="text" placeholder="Mario Rossi" autocomplete="name" />
+                <input asp-for="Nome" type="text" placeholder="Mario Rossi" autocomplete="name"
+                       pattern="[A-Za-zÀ-ÿ\s']+" 
+                       title="Solo lettere e spazi" />
                 <span asp-validation-for="Nome" class="auth-validation"></span>
             </div>
 
             <div class="auth-field">
                 <label>Telefono</label>
-                <input asp-for="Telefono" type="tel" placeholder="+39 333 1234567" autocomplete="tel" />
+                <input asp-for="Telefono" type="tel" placeholder="+39 333 1234567" autocomplete="tel"
+                       pattern="[\+]?[0-9\s]{7,15}"
+                       title="Solo numeri, spazi e + iniziale" />
                 <span asp-validation-for="Telefono" class="auth-validation"></span>
             </div>
 
             <div class="auth-field">
                 <label>Indirizzo di consegna</label>
-                <input asp-for="Indirizzo" type="text" placeholder="Via Roma 1, Milano" autocomplete="street-address" />
+                <input asp-for="Indirizzo" type="text" placeholder="Via Roma 1, Milano" autocomplete="street-address"
+                       pattern="[A-Za-zÀ-ÿ0-9\s,\.']+"
+                       title="Lettere, numeri, spazi e punteggiatura base" />
                 <span asp-validation-for="Indirizzo" class="auth-validation"></span>
             </div>
 
-            <div class="auth-divider"></div>
-
             <div class="auth-field">
                 <label>Username</label>
-                <input asp-for="Username" type="text" placeholder="il_tuo_username" autocomplete="username" />
+                <input asp-for="Username" type="text" placeholder="il_tuo_username" autocomplete="username"
+                       pattern="[A-Za-z0-9_]{3,20}"
+                       title="3-20 caratteri: lettere, numeri e underscore" />
                 <span asp-validation-for="Username" class="auth-validation"></span>
             </div>
 
             <div class="auth-field">
                 <label>Password</label>
-                <input asp-for="Password" type="password" placeholder="Min. 6 caratteri" autocomplete="new-password" />
+                <input asp-for="Password" type="password" placeholder="Min. 6 caratteri" autocomplete="new-password"
+                       pattern=".{6,}"
+                       title="Almeno 6 caratteri" />
                 <span asp-validation-for="Password" class="auth-validation"></span>
             </div>
 
             <div class="auth-field">
                 <label>Conferma password</label>
-                <input asp-for="ConfermaPassword" type="password" placeholder="Ripeti la password" autocomplete="new-password" />
+                <input asp-for="ConfermaPassword" type="password" placeholder="Ripeti la password" autocomplete="new-password"
+                       pattern=".{6,}"
+                       title="Almeno 6 caratteri" />
                 <span asp-validation-for="ConfermaPassword" class="auth-validation"></span>
             </div>
 

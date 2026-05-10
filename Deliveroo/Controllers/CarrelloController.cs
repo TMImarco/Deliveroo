@@ -135,7 +135,7 @@ public class CarrelloController : Controller
                 a.Confidence) // non serve GetConfidence perché ordina di base in base alla confidence piu alta
             .Select(a => a.IdArticolo2)
             .Distinct()
-            .Take(4)
+            .Take(6)
             .ToList();
 
         // Recupero gli articoli completi
