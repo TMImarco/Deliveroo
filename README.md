@@ -47,11 +47,9 @@ Dividiamo il progetto in tre macro argomenti:
 9. Raccomandazioni nell'InserimentoArticolo ("Consigliati per te")
 10. Barra di ricerca negli Articoli
 11. Toast Notification di successo
+12. Account Utente: Pagina dei suoi Articoli Preferiti e lo Storico dei suoi Ordini 
 
 ### Funzioni da implementare:
-1. Grafica!!!
-2. Account Utente che contiene: Articoli preferiti + Ordini passati + Recensione su un'ordine - NON assicurato
-3. Separare gli script dalle pagine cshtml in un nuovo file js seguendo il pattern organizzativo concordato
 
 ### Note
 

@@ -3,24 +3,26 @@
 @{
     ViewData["Title"] = "I tuoi ordini";
     Layout = "_Layout";
+    ViewData["HideSearch"] = true;
     var righePerOrdine = ViewBag.RighePerOrdine as Dictionary<int, List<RigaDettaglio>>;
 }
 
 @section NavbarLinks { }
 
+<!-- ── HERO ───────────────────────────────────────────────── -->
 <div class="preferiti-hero">
     <div class="preferiti-hero__inner">
         <span class="preferiti-eyebrow">Il tuo storico</span>
         <h1 class="preferiti-title">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
-                 viewBox="0 0 24 24" fill="none" stroke="#00ccbc"
-                 stroke-width="2" style="vertical-align:-4px;margin-right:8px">
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" style="vertical-align:-4px;margin-right:8px;color:var(--teal)">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                 <polyline points="14 2 14 8 20 8"/>
                 <line x1="16" y1="13" x2="8" y2="13"/>
                 <line x1="16" y1="17" x2="8" y2="17"/>
             </svg>
-            Ordini passati
+            Ordini <strong style="font-weight:600;color:var(--teal-dark)">passati</strong>
         </h1>
         <p class="preferiti-subtitle">
             @Model.Count ordin@(Model.Count == 1 ? "e effettuato" : "i effettuati")
@@ -28,15 +30,20 @@
     </div>
 </div>
 
+<!-- ── CONTENUTO ─────────────────────────────────────────── -->
 <div class="preferiti-container">
 
     @if (!Model.Any())
     {
+        <!-- stato vuoto -->
         <div class="preferiti-empty">
             <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56"
-                 viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.2">
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+                 style="color:var(--border)">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                 <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
             </svg>
             <p>Non hai ancora effettuato nessun ordine.</p>
             <a asp-controller="Home" asp-action="Index" class="btn-teal">
@@ -54,12 +61,14 @@
 
                 <div class="ordine-card fadeUp">
 
-                    <!-- HEADER cliccabile per aprire/chiudere -->
+                    <!-- HEADER cliccabile -->
                     <div class="ordine-card__header" onclick="toggleOrdine(@ordine.IdOrdine)">
                         <div class="ordine-card__meta">
                             <div class="ordine-card__top-row">
                                 <span class="ordine-card__id">#@ordine.IdOrdine</span>
-                                <span class="ordine-card__badge">@totArticoli articol@(totArticoli == 1 ? "o" : "i")</span>
+                                <span class="ordine-card__badge">
+                                    @totArticoli articol@(totArticoli == 1 ? "o" : "i")
+                                </span>
                             </div>
                             <span class="ordine-card__data">
                                 @ordine.Data.ToString("dd MMM yyyy · HH:mm")
@@ -69,7 +78,7 @@
                             <span class="ordine-card__totale">€ @ordine.ImportoTotale.ToString("F2")</span>
                             <svg class="ordine-chevron" id="chev-@ordine.IdOrdine"
                                  xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                 viewBox="0 0 24 24" fill="none" stroke="#aaa"
+                                 viewBox="0 0 24 24" fill="none" stroke="var(--muted)"
                                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="6 9 12 15 18 9"/>
                             </svg>
@@ -104,7 +113,7 @@
 </div>
 
 @section Styles {
-    <link rel="stylesheet" href="/css/OrdiniPassati.css"/>
+    <link rel="stylesheet" href="/css/OrdiniPassati.css" />
 }
 
 @section Scripts {
@@ -116,9 +125,9 @@
         chev.classList.toggle('open', isOpen);
     }
 
-async function riordina(idOrdine) {
-    const res = await fetch('/Ordini/RiordinaDa?idOrdine=' + idOrdine, { method: 'POST' });
-    if (res.ok) window.location.href = '/Carrello/Carrello';
-}
+    async function riordina(idOrdine) {
+        const res = await fetch('/Ordini/RiordinaDa?idOrdine=' + idOrdine, { method: 'POST' });
+        if (res.ok) window.location.href = '/Carrello/Carrello';
+    }
 </script>
 }

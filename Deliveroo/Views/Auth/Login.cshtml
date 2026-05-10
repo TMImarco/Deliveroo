@@ -3,57 +3,58 @@
 @{
     ViewData["Title"] = "Login";
     Layout = "_Layout";
+    ViewData["HideSearch"] = true;
 }
 
 @section NavbarLinks { }
 
-<h1>@ViewData["Title"]</h1>
+<div class="auth-wrapper">
+    <div class="auth-card">
 
-<div class="text-center">
-
-    <a class="nav-arrow back-btn"
-       asp-action="Index"
-       asp-controller="Home">
-        ↵
-    </a>
-
-    <form method="post"
-          asp-controller="Auth"
-          asp-action="Login">
-
-        <p class="testo-rosso">@ViewData["errore"]</p>
-        
-        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
-
-        <div class="mt-2">
-            <label asp-for="Username"></label>
-            <input asp-for="Username" class="form-control" />
+        <div class="auth-header">
+            <span class="auth-eyebrow">Bentornato</span>
+            <h1 class="auth-title">Accedi</h1>
+            <p class="auth-sub">Inserisci le tue credenziali per continuare</p>
         </div>
 
-        <div class="mt-2" style="margin-bottom: 10px;">
-            <label asp-for="Password"></label>
-            <input type="password"
-                   asp-for="Password"
-                   class="form-control" />
-        </div>
+        @if (ViewData["errore"] != null)
+        {
+            <div class="auth-error">@ViewData["errore"]</div>
+        }
 
-        <p>
-            <button type="submit"
-                    class="btn btn-primary">
-                Entra
-            </button>
-        </p>
-        
+        <form method="post"
+              asp-controller="Auth"
+              asp-action="Login">
+
+            <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+
+            <div class="auth-field">
+                <label asp-for="Username">Username</label>
+                <input asp-for="Username" autocomplete="username" />
+                <span asp-validation-for="Username" class="auth-validation"></span>
+            </div>
+
+            <div class="auth-field">
+                <label asp-for="Password">Password</label>
+                <input type="password" asp-for="Password" autocomplete="current-password" />
+                <span asp-validation-for="Password" class="auth-validation"></span>
+            </div>
+
+            <hr class="auth-divider" />
+
+            <button type="submit" class="auth-btn">Entra</button>
+
+        </form>
+
         <p class="auth-switch">
             Non hai un account?
             <a asp-controller="Auth" asp-action="Registrazione"
                asp-route-returnUrl="@ViewBag.ReturnUrl">Registrati</a>
         </p>
 
-    </form>
+    </div>
 </div>
 
-@section Styles
-{
+@section Styles {
     <link rel="stylesheet" href="/cssAdmin/Login.css" />
 }

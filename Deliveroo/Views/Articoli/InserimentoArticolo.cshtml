@@ -6,16 +6,12 @@
     Layout = "_Layout";
     Articolo art = Model.ArticoloScelto;
 
-    <!-- prendo tutte le categorie per visualizzarle nella tab bar -->
     var categorie = Gestione.GetTutteCategorie();
-
-    <!-- per personalizzare la navbar, tengo conto della categoria selezionata da evidenziarla -->
     var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString()
                            ?? Context.Request.Query["categoria"].ToString();
 }
 
 @section NavbarLinks {
-    <!--TAB ITEM-->
     @foreach (var cat in categorie)
     {
         var isActive = currentCategoria == cat.Nome ? "active" : "";
@@ -26,130 +22,144 @@
             @cat.Nome
         </a>
     }
-
-    <!--<div class="search-wrapper ms-auto">
-         BOTTONE BACK
-        <a class="search-toggle back-btn" asp-action="Articoli" asp-controller="Articoli" title="Torna alla home"
-           asp-route-idCategoria="@art.Categoria.IdCategoria">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2.2"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"/>
-            </svg>
-        </a>
-    </div>-->
 }
 
 <div class="macro-section">
     <div class="container">
         <div class="page-split">
 
-            <!-- SINISTRA -->
+            <!-- ── SINISTRA ─────────────────────────────── -->
             <div class="left-col">
 
-                <!-- NAVIGAZIONE PREV / NEXT 
-                Piuttosto di ritornare sempre alla pagina di tutti gli articoli, ci sono i bottoni avanti e indietro per navigare facilmente -->
-                <div class="article-nav">
-                    @if (ViewBag.IdPrev != null)
-                    {
-                        <a class="nav-arrow prev" asp-action="InserimentoArticolo" asp-route-id="@ViewBag.IdPrev">&#8592;</a>
-                    }
-                    else
-                    {
-                        <span class="nav-arrow prev disabled">&#8592;</span>
-                    }
+                <!-- Frecce prev / next -->
+                @if (ViewBag.IdPrev != null)
+                {
+                    <a class="nav-arrow prev"
+                       asp-action="InserimentoArticolo"
+                       asp-route-id="@ViewBag.IdPrev"
+                       title="Articolo precedente">&#8592;</a>
+                }
+                else
+                {
+                    <span class="nav-arrow prev disabled">&#8592;</span>
+                }
 
-                    @if (ViewBag.IdNext != null)
-                    {
-                        <a class="nav-arrow next" asp-action="InserimentoArticolo" asp-route-id="@ViewBag.IdNext">&#8594;</a>
-                    }
-                    else
-                    {
-                        <span class="nav-arrow next disabled">&#8594;</span>
-                    }
-                </div>
+                @if (ViewBag.IdNext != null)
+                {
+                    <a class="nav-arrow next"
+                       asp-action="InserimentoArticolo"
+                       asp-route-id="@ViewBag.IdNext"
+                       title="Articolo successivo">&#8594;</a>
+                }
+                else
+                {
+                    <span class="nav-arrow next disabled">&#8594;</span>
+                }
 
+                <!-- Card articolo -->
                 <div class="article-split">
+
+                    <!-- Foto -->
                     <div class="article-left">
                         <img src="@art.ImageUrl"
                              alt="@art.Nome"
-                             class="article-left"
-                             loading="lazy"/>
+                             loading="lazy" />
                     </div>
+
+                    <!-- Dettagli -->
                     <div class="article-right">
                         <div class="article-right-content">
+
                             <h1>@art.Nome</h1>
+
                             <p class="descrizione">@art.Descrizione</p>
+
                             <div class="article-divider"></div>
-                            <p class="prezzo">€ @art.Prezzo.ToString("0.00")</p>
+
+                            <p class="prezzo">€&nbsp;@art.Prezzo.ToString("0.00")</p>
+
                             <div class="article-divider"></div>
+
+                            <!-- Barra teal (coerente con idx-bar) -->
+                            <div class="art-bar">
+                                <div class="art-bar-fill"></div>
+                            </div>
+
+                            <!-- Quantità + cuore -->
                             <div class="qty-add-row">
                                 <div class="qty-row">
                                     <button class="qty-btn" onclick="cambiaQty(-1)">−</button>
                                     <span class="qty-val" id="qty">1</span>
                                     <button class="qty-btn" onclick="cambiaQty(1)">+</button>
                                 </div>
-                                <!-- PREFERITO -->
+
                                 <button class="btn-cuore @(ViewBag.IsPreferitoAttivo ? "attivo" : "")"
                                         id="btn-preferito"
                                         title="Aggiungi ai preferiti">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                          viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06
-                     a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78
-                     1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                                 a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78
+                                                 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                                     </svg>
                                 </button>
                             </div>
+
                         </div>
-                        <button id="btn-aggiungi" class="add-btn" onclick="aggiungiAlCarrello()">Aggiungi</button>
+
+                        <button id="btn-aggiungi" class="add-btn" onclick="aggiungiAlCarrello()">
+                            Aggiungi al carrello
+                        </button>
                     </div>
                 </div>
 
                 @section AboveNavbar {
                     <div class="total-overlay">
-                        <span class="label">Totale: </span>
+                        <span class="label">Totale:</span>
                         <span class="valore" id="totale">€ @art.Prezzo.ToString("0.00")</span>
                     </div>
                 }
 
             </div>
 
-            <!-- DESTRA (raccomandazioni future) -->
+            <!-- ── DESTRA — CONSIGLIATI ──────────────────── -->
             <div class="right-col">
                 <div class="col-header">
                     <h2>Consigliati per te</h2>
                 </div>
+
                 @if (Model.Raccomandazioni != null && Model.Raccomandazioni.Any())
                 {
                     <div class="rec-list">
                         @foreach (var articolo in Model.Raccomandazioni)
                         {
                             <div class="rec-row">
-                                <a asp-action="InserimentoArticolo" asp-route-id="@articolo.IdArticolo"
+                                <a asp-action="InserimentoArticolo"
+                                   asp-route-id="@articolo.IdArticolo"
                                    class="rec-link">
-                                    <img class="rec-thumb" src="@Url.Content(articolo.ImageUrl)" alt="@articolo.Nome"/>
+                                    <img class="rec-thumb"
+                                         src="@Url.Content(articolo.ImageUrl)"
+                                         alt="@articolo.Nome" />
                                     <div class="rec-info">
                                         <div class="rec-name">@articolo.Nome</div>
-                                        <div class="rec-price">€@articolo.Prezzo.ToString("F2")</div>
+                                        <div class="rec-price">€&nbsp;@articolo.Prezzo.ToString("F2")</div>
                                     </div>
                                 </a>
 
                                 <button class="rec-add-btn"
-                                        id="btn-aggiungiConsigliati"
                                         data-id="@articolo.IdArticolo"
                                         data-nome="@articolo.Nome"
                                         data-prezzo="@articolo.Prezzo"
-                                        data-image="@articolo.ImageUrl">+
-                                </button>
+                                        data-image="@articolo.ImageUrl">+</button>
                             </div>
                         }
                     </div>
                 }
                 else
                 {
-                    <div style="padding: 20px; color: #aaa; font-size: 13px; text-align: center;">
+                    <div style="padding: 1.5rem; color: var(--muted); font-size: 0.82rem;
+                                text-align: center; font-family: 'DM Sans', sans-serif;">
                         Nessun consiglio disponibile
                     </div>
                 }
@@ -159,30 +169,33 @@
     </div>
 </div>
 
-<!-- TOAST CONFERMA AGGIUNTA -->
-<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index: 9999">
-    <div id="toastCarrello" class="toast align-items-center text-white border-0" role="alert" data-bs-delay="2000">
+<!-- ── TOAST ──────────────────────────────────────────────── -->
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3"
+     style="z-index: 9999">
+    <div id="toastCarrello"
+         class="toast align-items-center text-white border-0"
+         role="alert"
+         data-bs-delay="2000">
         <div class="toast-body d-flex align-items-center gap-2">
-            <span style="font-size:1.2rem">🛒</span>
+            <span style="font-size:1.1rem">🛒</span>
             <span>Articolo aggiunto al carrello!</span>
         </div>
     </div>
 </div>
 
-<!-- CARRELLO -->
+<!-- ── CART FAB (identico all'Index) ─────────────────────── -->
 <a asp-controller="Carrello" asp-action="Carrello" class="cart-fab" title="Carrello">
     🛒
     <span class="cart-badge"></span>
 </a>
 
 @section Styles {
-    <link rel="stylesheet" href="/css/InserimentoArticolo.css"/>
+    <link rel="stylesheet" href="/css/InserimentoArticolo.css" />
 }
 
 @section Scripts {
     <script>
-        /* AUMENTARE LA QUANTITA DELL'ARTICOLO */
-        const prezzo = @Model.ArticoloScelto.Prezzo.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        const prezzo      = @Model.ArticoloScelto.Prezzo.ToString(System.Globalization.CultureInfo.InvariantCulture);
         const aggiungiUrl = '@Url.Action("MettiNelCarrello", "Carrello", new { id = Model.ArticoloScelto.IdArticolo })';
         let qty = 1;
 
@@ -197,57 +210,49 @@
             aggiornaTotale();
         }
 
-        /* AGGIORNARE IL BADGE */
         async function aggiornaBadge() {
-            const res = await fetch('/Carrello/NumeroElementi');
+            const res   = await fetch('/Carrello/NumeroElementi');
             const count = await res.text();
             document.querySelectorAll('.cart-badge').forEach(b => b.textContent = count);
         }
 
         async function aggiungiAlCarrello() {
-            const res = await fetch(aggiungiUrl + '?qty=' + qty);
+            await fetch(aggiungiUrl + '?qty=' + qty);
             await aggiornaBadge();
-
-            const toastEl = document.getElementById('toastCarrello');
-            const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
-            toast.show();
+            bootstrap.Toast.getOrCreateInstance(
+                document.getElementById('toastCarrello')
+            ).show();
         }
 
-        /*BOTTONI DEI CONSIGLIATI PER TE*/
+        /* Bottoni "+" nei consigliati */
         document.querySelectorAll('.rec-add-btn').forEach(btn => {
             btn.addEventListener('click', async (e) => {
                 e.stopPropagation();
-
                 const id = btn.dataset.id;
-                await fetch(`/Carrello/MettiNelCarrello?id=${id}`, {
-                    method: 'POST'
-                });
-                // feedback visivo opzionale
+                await fetch(`/Carrello/MettiNelCarrello?id=${id}`, { method: 'POST' });
+
                 btn.textContent = '✓';
-                btn.disabled = true;
-                setTimeout(() => {
-                    btn.textContent = '+';
-                    btn.disabled = false;
-                }, 1000);
-                const toastEl = document.getElementById('toastCarrello');
-                const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
-                toast.show();
+                btn.disabled    = true;
+                setTimeout(() => { btn.textContent = '+'; btn.disabled = false; }, 1200);
+
+                bootstrap.Toast.getOrCreateInstance(
+                    document.getElementById('toastCarrello')
+                ).show();
+
+                await aggiornaBadge();
             });
         });
 
-        // Badge al caricamento
+        /* Badge al caricamento */
         aggiornaBadge();
 
-        /* PREFERITI */
+        /* Preferiti */
         const btnPreferito = document.getElementById('btn-preferito');
         if (btnPreferito) {
             btnPreferito.addEventListener('click', async () => {
-                const res = await fetch('/Articoli/TogglePreferito?idArticolo=@art.IdArticolo', {
-                    method: 'POST'
-                });
-                if (res.ok) {
-                    btnPreferito.classList.toggle('attivo');
-                }
+                const res = await fetch('/Articoli/TogglePreferito?idArticolo=@art.IdArticolo',
+                    { method: 'POST' });
+                if (res.ok) btnPreferito.classList.toggle('attivo');
             });
         }
     </script>
