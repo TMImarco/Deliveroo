@@ -1791,6 +1791,304 @@
       ]
     },
     {
+      "Route": "css/OrdiniPassati.39gb7zatjw.css",
+      "AssetFile": "css/OrdiniPassati.css.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001219512195"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "819"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 10 May 2026 17:11:52 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "39gb7zatjw"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA="
+        },
+        {
+          "Name": "label",
+          "Value": "css/OrdiniPassati.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/OrdiniPassati.39gb7zatjw.css",
+      "AssetFile": "css/OrdiniPassati.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3229"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 10 May 2026 17:11:52 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "39gb7zatjw"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA="
+        },
+        {
+          "Name": "label",
+          "Value": "css/OrdiniPassati.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/OrdiniPassati.39gb7zatjw.css.gz",
+      "AssetFile": "css/OrdiniPassati.css.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "819"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 10 May 2026 17:11:52 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "39gb7zatjw"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8="
+        },
+        {
+          "Name": "label",
+          "Value": "css/OrdiniPassati.css.gz"
+        }
+      ]
+    },
+    {
+      "Route": "css/OrdiniPassati.css",
+      "AssetFile": "css/OrdiniPassati.css.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001219512195"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "819"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 10 May 2026 17:11:52 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA="
+        }
+      ]
+    },
+    {
+      "Route": "css/OrdiniPassati.css",
+      "AssetFile": "css/OrdiniPassati.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3229"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 10 May 2026 17:11:52 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA="
+        }
+      ]
+    },
+    {
+      "Route": "css/OrdiniPassati.css.gz",
+      "AssetFile": "css/OrdiniPassati.css.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "819"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 10 May 2026 17:11:52 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8="
+        }
+      ]
+    },
+    {
       "Route": "css/Preferiti.css",
       "AssetFile": "css/Preferiti.css.gz",
       "Selectors": [

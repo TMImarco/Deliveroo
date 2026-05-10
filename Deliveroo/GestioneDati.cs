@@ -293,7 +293,12 @@ WHERE a.id = @id;";
     {
         List<Ordine> listaOrdini = new List<Ordine>();
 
-        string query = "SELECT * FROM ordini order by id";
+        string query = @"SELECT o.id, o.data, o.importo_totale, o.idUtente,
+                            u.nome, u.indirizzo, u.telefono
+                     FROM ordini o
+                     JOIN utenti u ON u.id = o.idUtente
+                     ORDER BY o.id";
+
         MySqlCommand command = new MySqlCommand(query, _connection);
         MySqlDataReader reader = command.ExecuteReader();
 
@@ -301,26 +306,29 @@ WHERE a.id = @id;";
         {
             Ordine ordine = new Ordine()
             {
-                IdOrdine = (int)reader["id"],
-                Data = (DateTime)reader["data"],
-                NomeCliente = (string)reader["nome_cliente"],
-                Indirizzo = (string)reader["indirizzo"],
-                ImportoTotale = (double)reader["importo_totale"],
-                Telefono = (string)reader["telefono"],
+                IdOrdine      = reader.GetInt32("id"),
+                Data          = reader.GetDateTime("data"),
+                ImportoTotale = reader.GetDouble("importo_totale"),
+                IdUtente      = reader.GetInt32("idUtente"),
+                NomeCliente   = reader.GetString("nome"),
+                Indirizzo     = reader.GetString("indirizzo"),
+                Telefono      = reader.GetString("telefono")
             };
-
 
             listaOrdini.Add(ordine);
         }
 
         reader.Close();
-
         return listaOrdini;
     }
 
     public Ordine? GetOrdinePerId(int id)
     {
-        string query = "SELECT * FROM ordini WHERE id = @id";
+        string query = @"SELECT o.id, o.data, o.importo_totale, o.idUtente,
+                            u.nome, u.indirizzo, u.telefono
+                     FROM ordini o
+                     JOIN utenti u ON u.id = o.idUtente
+                     WHERE o.id = @id";
         MySqlCommand command = new MySqlCommand(query, _connection);
         command.Parameters.AddWithValue("@id", id);
         MySqlDataReader reader = command.ExecuteReader();
@@ -330,12 +338,13 @@ WHERE a.id = @id;";
         {
             ordine = new Ordine()
             {
-                IdOrdine = (int)reader["id"],
-                Data = (DateTime)reader["data"],
-                NomeCliente = (string)reader["nome_cliente"],
-                Indirizzo = (string)reader["indirizzo"],
-                ImportoTotale = (double)reader["importo_totale"],
-                Telefono = (string)reader["telefono"],
+                IdOrdine      = reader.GetInt32("id"),
+                Data          = reader.GetDateTime("data"),
+                ImportoTotale = reader.GetDouble("importo_totale"),
+                IdUtente      = reader.GetInt32("idUtente"),
+                NomeCliente   = reader.GetString("nome"),
+                Indirizzo     = reader.GetString("indirizzo"),
+                Telefono      = reader.GetString("telefono")
             };
         }
 
@@ -537,16 +546,14 @@ VALUES (@nome,@prezzo_listino,@numero_ordini,@idCategoria,@descrizione,@imageUrl
         }
     }
 
-    public long AggiungiOrdine(Ordine ordine)
+    public long AggiungiOrdine(Ordine ordine, int idUtente)
     {
-        string query = @"INSERT INTO ordini(nome_cliente,indirizzo,data,importo_totale, telefono)
-VALUES (@nome_cliente,@indirizzo,@data,@importo_totale, @telefono)";
+        string query = @"INSERT INTO ordini(data,importo_totale, idUtente)
+VALUES (@data,@importo_totale, @idUtente)";
         MySqlCommand command = new MySqlCommand(query, _connection);
-        command.Parameters.AddWithValue("@nome_cliente", ordine.NomeCliente);
-        command.Parameters.AddWithValue("@indirizzo", ordine.Indirizzo);
         command.Parameters.AddWithValue("@importo_totale", ordine.ImportoTotale);
         command.Parameters.AddWithValue("@data", ordine.Data);
-        command.Parameters.AddWithValue("@telefono", ordine.Telefono);
+        command.Parameters.AddWithValue("@idUtente", idUtente);
 
         try
         {
@@ -768,6 +775,55 @@ VALUES (@idUtente, @idArticolo);";
         command.Parameters.AddWithValue("@idUtente", idUtente);
         command.Parameters.AddWithValue("@idArticolo", idArticolo);
         command.ExecuteNonQuery();
+    }
+    
+    /* ORDINI PASSATI */
+    public List<Ordine> GetOrdiniPerUtente(int idUtente)
+    {
+        string query = @"SELECT id, data, importo_totale
+                     FROM ordini WHERE idUtente = @idUtente ORDER BY data DESC";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@idUtente", idUtente);
+        MySqlDataReader reader = command.ExecuteReader();
+
+        var ordini = new List<Ordine>();
+        while (reader.Read())
+        {
+            ordini.Add(new Ordine
+            {
+                IdOrdine      = reader.GetInt32("id"),
+                Data          = reader.GetDateTime("data"),
+                ImportoTotale = reader.GetDouble("importo_totale")
+            });
+        }
+        reader.Close();
+        return ordini;
+    }
+
+    public List<RigaDettaglio> GetRighePerOrdine(int idOrdine)
+    {
+        string query = @"SELECT rd.id_ordine, rd.id_articolo, rd.quantita, rd.prezzo, a.nome
+                     FROM righe_dettaglio rd
+                     JOIN articoli a ON a.id = rd.id_articolo
+                     WHERE rd.id_ordine = @idOrdine";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@idOrdine", idOrdine);
+        MySqlDataReader reader = command.ExecuteReader();
+
+        var righe = new List<RigaDettaglio>();
+        while (reader.Read())
+        {
+            righe.Add(new RigaDettaglio
+            {
+                IdOrdine   = reader.GetInt32("id_ordine"),
+                IdArticolo = reader.GetInt32("id_articolo"),
+                Quantita   = reader.GetInt32("quantita"),
+                Prezzo     = reader.GetDouble("prezzo"),
+                NomeArticolo = reader.GetString("nome")
+            });
+        }
+        reader.Close();
+        return righe;
     }
     
     /* REGISTRAZIONE UTENTE */

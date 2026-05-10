@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZpGhJXpJUDf3AXpEbq7qAFIUczNjBRbH9imm8Bf3aPU=",
+  "Hash": "o9BeP1Lv/kO5W8BQutdB6LsCe8ikRcRvA3MuIbAOfpw=",
   "Source": "Deliveroo",
   "BasePath": "_content/Deliveroo",
   "Mode": "Default",
@@ -1361,6 +1361,27 @@
       "OriginalItemSpec": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
+      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\saxkl731t5-39gb7zatjw.gz",
+      "SourceId": "Deliveroo",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/Deliveroo",
+      "RelativePath": "css/OrdiniPassati#[.{fingerprint=39gb7zatjw}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\OrdiniPassati.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "ew4243nlod",
+      "Integrity": "TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\OrdiniPassati.css"
+    },
+    {
       "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\sd19b1who1-ee0r1s7dh0.gz",
       "SourceId": "Deliveroo",
       "SourceType": "Discovered",
@@ -1821,6 +1842,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\InserimentoArticolo.css"
+    },
+    {
+      "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\OrdiniPassati.css",
+      "SourceId": "Deliveroo",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\",
+      "BasePath": "_content/Deliveroo",
+      "RelativePath": "css/OrdiniPassati#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "39gb7zatjw",
+      "Integrity": "B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\OrdiniPassati.css"
     },
     {
       "Identity": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\Preferiti.css",
@@ -4844,6 +4886,304 @@
         {
           "Name": "integrity",
           "Value": "sha256-yWiJ7w8gwTcakbmnUimIJwAG8IMfsUQJ11nKoA5Yhgk="
+        }
+      ]
+    },
+    {
+      "Route": "css/OrdiniPassati.39gb7zatjw.css",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\saxkl731t5-39gb7zatjw.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001219512195"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "819"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 10 May 2026 17:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "39gb7zatjw"
+        },
+        {
+          "Name": "label",
+          "Value": "css/OrdiniPassati.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA="
+        }
+      ]
+    },
+    {
+      "Route": "css/OrdiniPassati.39gb7zatjw.css",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\OrdiniPassati.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3229"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 10 May 2026 17:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "39gb7zatjw"
+        },
+        {
+          "Name": "label",
+          "Value": "css/OrdiniPassati.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA="
+        }
+      ]
+    },
+    {
+      "Route": "css/OrdiniPassati.39gb7zatjw.css.gz",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\saxkl731t5-39gb7zatjw.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "819"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 10 May 2026 17:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "39gb7zatjw"
+        },
+        {
+          "Name": "label",
+          "Value": "css/OrdiniPassati.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8="
+        }
+      ]
+    },
+    {
+      "Route": "css/OrdiniPassati.css",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\saxkl731t5-39gb7zatjw.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001219512195"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "819"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 10 May 2026 17:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA="
+        }
+      ]
+    },
+    {
+      "Route": "css/OrdiniPassati.css",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\OrdiniPassati.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3229"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 10 May 2026 17:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA="
+        }
+      ]
+    },
+    {
+      "Route": "css/OrdiniPassati.css.gz",
+      "AssetFile": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\obj\\Debug\\net9.0\\compressed\\saxkl731t5-39gb7zatjw.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "819"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 10 May 2026 17:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TqWJeL+H0i5js1EK0H2Sq6G3tenKg9s8vUQWehPucv8="
         }
       ]
     },

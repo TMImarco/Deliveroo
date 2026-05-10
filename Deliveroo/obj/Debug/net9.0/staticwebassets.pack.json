@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\css\\InserimentoArticolo.css"
     },
     {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\OrdiniPassati.css",
+      "PackagePath": "staticwebassets\\css\\OrdiniPassati.css"
+    },
+    {
       "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\Preferiti.css",
       "PackagePath": "staticwebassets\\css\\Preferiti.css"
     },

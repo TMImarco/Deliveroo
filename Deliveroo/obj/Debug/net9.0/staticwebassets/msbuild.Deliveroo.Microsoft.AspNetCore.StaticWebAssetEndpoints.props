@@ -60,6 +60,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"qk1arfw5oi"},{"Name":"integrity","Value":"sha256-hgL80yZ28zqbFZ\u002BOS8BrcGQ0FboyM6O5fUBseMMK/x0="},{"Name":"label","Value":"_content/Deliveroo/css/InserimentoArticolo.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"10437"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022hgL80yZ28zqbFZ\u002BOS8BrcGQ0FboyM6O5fUBseMMK/x0=\u0022"},{"Name":"Last-Modified","Value":"Sun, 10 May 2026 14:17:21 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Deliveroo/css/OrdiniPassati.39gb7zatjw.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\OrdiniPassati.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"39gb7zatjw"},{"Name":"integrity","Value":"sha256-B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA="},{"Name":"label","Value":"_content/Deliveroo/css/OrdiniPassati.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3229"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA=\u0022"},{"Name":"Last-Modified","Value":"Sun, 10 May 2026 17:11:52 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Deliveroo/css/OrdiniPassati.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\OrdiniPassati.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3229"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022B9qGvQsG24EjxWzIDas1e0RsKoHsDIYTt4nXYJeHsoA=\u0022"},{"Name":"Last-Modified","Value":"Sun, 10 May 2026 17:11:52 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Deliveroo/css/Preferiti.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Preferiti.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

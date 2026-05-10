@@ -59,7 +59,8 @@ public class OrdiniController : Controller
 
 		if (ModelState.IsValid)
 		{
-			long idOrdine = _gestioneDati.AggiungiOrdine(ordine);
+			int? idUtente = HttpContext.Session.GetInt32("userId");
+			long idOrdine = _gestioneDati.AggiungiOrdine(ordine, idUtente.Value);
 			var articoli = _gestioneCarrello.RecuperaCarrello();
 			_gestioneDati.AggiungiRigheDettaglio(idOrdine, articoli);
 			_gestioneDati.AggiornaAssociazioni(articoli);
@@ -68,5 +69,22 @@ public class OrdiniController : Controller
 		}
 
 		return RedirectToAction("Riepilogo");
+	}
+	
+	public IActionResult OrdiniPassati()
+	{
+		int? idUtente = HttpContext.Session.GetInt32("userId");
+		if (idUtente == null)
+			return RedirectToAction("Login", "Auth");
+
+		var ordini = _gestioneDati.GetOrdiniPerUtente(idUtente.Value);
+    
+		// Per ogni ordine carico le righe
+		var righePerOrdine = new Dictionary<int, List<RigaDettaglio>>();
+		foreach (var ordine in ordini)
+			righePerOrdine[ordine.IdOrdine] = _gestioneDati.GetRighePerOrdine(ordine.IdOrdine);
+
+		ViewBag.RighePerOrdine = righePerOrdine;
+		return View(ordini);
 	}
 }

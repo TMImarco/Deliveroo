@@ -8,5 +8,6 @@ public class Ordine
     public string Indirizzo { get; set; }
     public string Telefono {get;set;}
     public double ImportoTotale { get; set; }
+    public int IdUtente { get; set; }
 
 }
