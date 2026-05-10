@@ -181,6 +181,7 @@ WHERE a.id = @id;";
     //----------------------------------------------------------------------------
 
     //======= ASSOCIAZIONI =========================================================
+    
     public List<Associazione> GetTutteAssociazioni()
     {
         List<Associazione> listaAssociazioni = new List<Associazione>();

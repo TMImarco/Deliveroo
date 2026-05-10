@@ -52,3 +52,21 @@
     background-color: #e0faf8;
     color:#00ccbc;
 }
+
+.grid-container-ass {
+    display: grid;
+    /*grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;*/
+    grid-template-columns: 50% 50%;
+    gap: 20px;
+
+}
+.container-ass{
+    row-gap: 20px;
+}
+#associazioniTable img {
+    width: 60px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+}

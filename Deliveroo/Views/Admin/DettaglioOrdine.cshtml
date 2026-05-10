@@ -2,14 +2,17 @@
 @{
     ViewData["Title"] = "Dettaglio Ordine #" + Model.Ordine.IdOrdine;
     Layout = "_LayoutAdmin";
+    ViewData["HideSearchBurger"] = true;
 }
-<div class="page">
 
+@section NavbarLinks
+{
+    <!--Attiva la nav bar-->
+}
+
+<div class="page">
     <!--TOPBAR: back + titolo-->
     <div class="topbar">
-        <a class="back-btn" asp-controller="Admin" asp-action="IndexAdmin">
-            &#8592; Dashboard
-        </a>
         <h1 class="page-title">Ordine #@Model.Ordine.IdOrdine</h1>
     </div>
 
@@ -58,8 +61,8 @@
             <div class="food-row">
                 <span class="food-name">@r.NomeArticolo</span>
                 <span class="food-qty">× @r.Quantita</span>
-                <span class="food-price">€ @r.Prezzo.ToString("0.00")</span>
-                <span class="food-sub">€ @((r.Prezzo * r.Quantita).ToString("0.00"))</span>
+                <span class="food-price">€ @((r.Prezzo / r.Quantita).ToString("0.00"))</span>
+                <span class="food-sub">€ @r.Prezzo.ToString("0.00")</span>
             </div>
         }
 
@@ -68,179 +71,8 @@
             <span class="totale-value">€ @Model.Ordine.ImportoTotale.ToString("0.00")</span>
         </div>
     </div>
-
 </div>
 
 @section Styles {
-    <style>
-        .page {
-            padding: 1.5rem 0;
-            max-width: 720px;
-        }
-
-        .topbar {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 1.5rem;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-            color: #6c757d;
-            text-decoration: none;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            padding: 6px 12px;
-        }
-
-        .back-btn:hover {
-            background: #f8f9fa;
-        }
-
-        .page-title {
-            font-size: 22px;
-            font-weight: 500;
-            margin: 0;
-        }
-
-        .grid-top {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .metric {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 1rem;
-        }
-
-        .metric-label {
-            font-size: 13px;
-            color: #6c757d;
-            margin: 0 0 4px;
-        }
-
-        .metric-value {
-            font-size: 24px;
-            font-weight: 500;
-            margin: 0;
-        }
-
-        .metric-value--sm {
-            font-size: 18px;
-        }
-
-        .card {
-            border: 1px solid #dee2e6;
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 12px;
-        }
-
-        .card-title {
-            font-size: 13px;
-            font-weight: 500;
-            color: #6c757d;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin: 0 0 1rem;
-        }
-
-        .info-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 14px;
-        }
-
-        .info-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .info-label {
-            color: #6c757d;
-            min-width: 110px;
-        }
-
-        .info-value {
-            font-weight: 500;
-        }
-
-        .food-header {
-            display: flex;
-            align-items: center;
-            font-size: 12px;
-            color: #6c757d;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #dee2e6;
-            margin-bottom: 4px;
-        }
-
-        .food-row {
-            display: flex;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 14px;
-        }
-
-        .food-row:last-of-type {
-            border-bottom: none;
-        }
-
-        .food-name {
-            flex: 1;
-            font-weight: 500;
-        }
-
-        .food-qty {
-            min-width: 60px;
-            text-align: center;
-            color: #6c757d;
-        }
-
-        .food-price {
-            min-width: 100px;
-            text-align: right;
-            color: #6c757d;
-        }
-
-        .food-sub {
-            min-width: 100px;
-            text-align: right;
-            font-weight: 500;
-        }
-
-        .food-header .food-name {
-            font-weight: 400;
-        }
-
-        .totale-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1rem;
-            border-top: 1px solid #dee2e6;
-            margin-top: 0.5rem;
-        }
-
-        .totale-label {
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        .totale-value {
-            font-size: 22px;
-            font-weight: 500;
-        }
-    </style>
+    <link rel="stylesheet" href="/cssAdmin/DettaglioOrdine.css"/>
 }

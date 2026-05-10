@@ -22,12 +22,10 @@ Dividiamo il progetto in tre macro argomenti:
 
 ### Funzioni da implementare:
 1. Grafica
-2. Modificare la visualizzazione delle associazioni (troppo basic)
-3. Modificare dettaglio ordine (troppo claude)
-4. Modificare la classifica (troppo claude)
-5. Modificare la lista ordini (troppo basic)
-6. Sistemare dettaglio ordine che fa un po' di confusione con gli importi
-7. Mettere il overlay di caricamento un po dapperutto?
+2. Modificare grafica delle associazioni (troppo basic)
+3. Modificare grafica dettaglio ordine (troppo claude)
+4. Modificare grafica classifica (troppo claude)
+5. Modificare grafica lista ordini (troppo basic)
 8. In ModificaArticolo, nella pagina dove ti chiedere di scegliere la categoria, mettere la barra di ricerca che ha fatto la Stefi (mettina in grande tipo Google e sotto le categorie, poi nelle altre pagine in alto come in articoli normali)
 9. Separare gli script dalle pagine cshtml in un nuovo file js seguendo il pattern organizzativo concordato
 

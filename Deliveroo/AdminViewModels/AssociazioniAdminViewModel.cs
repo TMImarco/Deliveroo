@@ -9,4 +9,5 @@ public class AssociazioniAdminViewModel
     public List<Dictionary<int, string>> ListaArticoliENomi { get; set; } = new();
 
     public List<Associazione> ListaAssociazioni { get; set; } = new();
+    public List<Articolo> ListaArticoliPresi { get; set; } = new();
 }

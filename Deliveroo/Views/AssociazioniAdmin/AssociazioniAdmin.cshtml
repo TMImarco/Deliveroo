@@ -1,38 +1,44 @@
 ﻿@model Deliveroo.AdminViewModels.AssociazioniAdminViewModel
 @{
     ViewData["Title"] = "Admin - Associazioni";
+    ViewData["HideBack"] = true;
+    ViewData["HideSearchBurger"] = true;
     Layout = "_LayoutAdmin";
+
+    var primoId = Model.ListaArticoliENomi
+        .SelectMany(d => d.Keys)
+        .FirstOrDefault();
+
+    var idSelezionato = Model.IdArticoloSelezionato.HasValue
+        ? Model.IdArticoloSelezionato.Value
+        : primoId;
+
+    // dizionario serializzato per il JS
+    var imgMap = Model.ListaArticoliPresi
+        .ToDictionary(a => a.IdArticolo, a => a.ImageUrl);
+    var imgMapJson = System.Text.Json.JsonSerializer.Serialize(imgMap);
+    
+    string imgUrl = imgMap.ContainsKey(idSelezionato) ? imgMap[idSelezionato] : null;
 }
 
 @section NavbarLinks {
-    <!--<div class="search-wrapper ms-auto">
-    BOTTONE BACK
-        <a class="search-toggle back-btn" asp-action="IndexAdmin" asp-controller="Admin" title="Torna alla home">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2.2"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"/>
-            </svg>
-        </a>
-    </div>-->
+    <!--Attiva la nav bar-->
 }
 
 <div class="container">
-    
+
     <h1>SCEGLI ASSOCIAZIONIE</h1>
+    
     <form method="post" asp-action="AssociazioniAdmin">
         <select name="IdArticoloSelezionato"
-                id="idArticolo"
-                onchange="this.form.submit()">
-
-            <option value="">-- Seleziona articolo --</option>
+                id="idArticolo">
 
             @foreach (var dic in Model.ListaArticoliENomi)
             {
                 foreach (var kvp in dic)
                 {
                     <option value="@kvp.Key"
-                            selected="@(Model.IdArticoloSelezionato == kvp.Key)">
+                            selected="@(idSelezionato == kvp.Key)">
                         @kvp.Value
                     </option>
                 }
@@ -41,53 +47,94 @@
         </select>
     </form>
 
-    <table id="associazioniTable" class="display">
-        <thead>
-        <tr>
-            <th>Articolo 1</th>
-            <th>Articolo 2</th>
-            <th>Numero Ordini</th>
-            <th>Confidence</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var o in Model.ListaAssociazioni)
-        {
-            <tr>
-                <td>@o.IdArticolo1</td>
-                <td>@o.IdArticolo2</td>
-                <td>@o.NumeroOrdini</td>
-                <td>@o.Confidence</td>
-            </tr>
-        }
-        </tbody>
-    </table>
+    <div class="grid-container-ass">
+        <!--Colonna 1-->
+        <div class="container">
+            <img id="articoloImg"
+                 src="@imgUrl">
+        </div>
 
-    <form method="post"
-          asp-action="AggiornaConfidence">
-        <button type="submit"
-                class="btn btn-primary">
-            Aggiorna Confidence
-        </button>
-    </form>
+        <!--Colonna 2-->
+        <div class="container">
+            <table id="associazioniTable" class="display">
+                <thead>
+                <tr>
+                    <th>Articolo 2</th>
+                    <th>Nome</th>
+                    <th>Immagine</th>  <!-- ← aggiunta -->
+                    <th>Numero Ordini</th>
+                    <th>Confidence</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var o in Model.ListaAssociazioni)
+                {
+                    <tr>
+                        <td>@o.IdArticolo2</td>
+                        <td>
+                            @foreach (var art in Model.ListaArticoliPresi)
+                            {
+                                @if (o.IdArticolo2 == art.IdArticolo)
+                                {
+                                    @art.Nome;
+                                }
+                            }
+                        </td>
+                        <td>
+                            @if (imgMap.ContainsKey(o.IdArticolo2))
+                            {
+                                <img src="@imgMap[o.IdArticolo2]" 
+                                     style="width:60px; height:70px; object-fit:cover;">
+                            }
+                        </td>
+                        <td>@o.NumeroOrdini</td>
+                        <td>@o.Confidence</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            
+            <form method="post"
+                  asp-action="AggiornaConfidence">
+                <button type="submit"
+                        class="btn btn-primary">
+                    Aggiorna Confidence
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    
 </div>
 
 @section Scripts
 {
-    <!--SCRIPT per DATA TABLE-->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
-    <!--SCRIPT per la creazione delle DATA TABLE-->
+    
+    <!--Script per data table + immagine-->
     <script>
+        const imgMap = @Html.Raw(imgMapJson);
+
         $(document).ready(function () {
             $('#associazioniTable').DataTable();
+
+            $('#idArticolo').on('change', function () {
+                const id = parseInt($(this).val());
+                const url = imgMap[id];
+                if (url) $('#articoloImg').attr('src', url);
+
+                // submit solo per aggiornare tabella e dati
+                $(this).closest('form').submit();
+            });
         });
     </script>
+    
+    
 }
 
 @section Styles
 {
-    <!--stile sheet per le data tables-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
     <link rel="stylesheet" href="/cssAdmin/Associazioni.css"/>
 }
