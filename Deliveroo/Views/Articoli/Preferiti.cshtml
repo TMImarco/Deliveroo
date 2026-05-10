@@ -2,22 +2,17 @@
 @{
     ViewData["Title"] = "I tuoi preferiti";
     Layout = "_Layout";
+    ViewData["HideSearch"] = true;
 }
 
 @section NavbarLinks { }
 
+<!-- ── HERO (come idx-hero) ──────────────────────────────── -->
 <div class="preferiti-hero">
     <div class="preferiti-hero__inner">
         <span class="preferiti-eyebrow">La tua lista</span>
         <h1 class="preferiti-title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
-                 viewBox="0 0 24 24" fill="#e05b5b" stroke="#e05b5b"
-                 stroke-width="1.5" style="vertical-align:-4px;margin-right:8px">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06
-                         a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78
-                         1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
-            Articoli preferiti
+            Articoli <strong>preferiti</strong>
         </h1>
         <p class="preferiti-subtitle">
             @Model.Count articol@(Model.Count == 1 ? "o salvato" : "i salvati")
@@ -25,13 +20,14 @@
     </div>
 </div>
 
+<!-- ── GRIGLIA ───────────────────────────────────────────── -->
 <div class="preferiti-container">
 
     @if (!Model.Any())
     {
         <div class="preferiti-empty">
-            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56"
-                 viewBox="0 0 24 24" fill="none" stroke="#ccc"
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                 viewBox="0 0 24 24" fill="none" stroke="var(--border)"
                  stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06
                          a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78
@@ -48,23 +44,28 @@
         <div class="preferiti-grid">
             @foreach (var art in Model)
             {
-                <div class="pref-card fadeUp">
-                    <a asp-controller="Articoli" asp-action="Articoli"
+                <div class="pref-card">
+
+                    <!-- Foto -->
+                    <a asp-controller="Articoli" asp-action="InserimentoArticolo"
                        asp-route-id="@art.IdArticolo" class="pref-card__img-wrap">
                         <img src="@art.ImageUrl" alt="@art.Nome"
-                             onerror="this.src='/img/placeholder.png'"/>
+                             loading="lazy"
+                             onerror="this.src='/img/placeholder.png'" />
                     </a>
 
+                    <!-- Body -->
                     <div class="pref-card__body">
+
                         <div class="pref-card__top">
-                            <a asp-controller="Articoli" asp-action="Articoli"
+                            <a asp-controller="Articoli" asp-action="InserimentoArticolo"
                                asp-route-id="@art.IdArticolo" class="pref-card__name">
                                 @art.Nome
                             </a>
                             <button class="btn-preferito attivo"
                                     onclick="togglePreferito(this, @art.IdArticolo, true)"
                                     title="Rimuovi dai preferiti">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
                                      viewBox="0 0 24 24" fill="currentColor" stroke="currentColor"
                                      stroke-width="1.5">
                                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06
@@ -80,21 +81,18 @@
                                 : art.Descrizione)
                         </p>
 
+                        <!-- Barra teal animata (come idx-bar) -->
+                        <div class="pref-bar">
+                            <div class="pref-bar-fill"></div>
+                        </div>
+
                         <div class="pref-card__footer">
-                            <span class="pref-card__price">
-                                €@art.Prezzo.ToString("F2")
-                            </span>
-                            <!--<div class="pref-card__stars">
-                                @for (int i = 0; i < 5; i++)
-                                {
-                                    <span class="@(i < art.IdArticolo ? "star on" : "star")">★</span>
-                                }
-                            </div>-->
-                            <button class="btn-teal btn-teal--sm"
-                                    data-id="@art.IdArticolo">
+                            <span class="pref-card__price">€&nbsp;@art.Prezzo.ToString("F2")</span>
+                            <button class="btn-teal btn-teal--sm" data-id="@art.IdArticolo">
                                 Aggiungi
                             </button>
                         </div>
+
                     </div>
                 </div>
             }
@@ -102,7 +100,23 @@
     }
 </div>
 
-<!-- ── CARRELLO ───────────────────────────────────────────── -->
+<!-- ── TOAST ─────────────────────────────────────────────── -->
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3"
+     style="z-index: 9999">
+    <div id="toastCarrello"
+         class="toast align-items-center text-white border-0"
+         role="alert"
+         data-bs-delay="2000"
+         style="background: var(--teal); border-radius: 10px;
+                font-family: 'DM Sans', sans-serif; font-size: 0.88rem;">
+        <div class="toast-body d-flex align-items-center gap-2">
+            <span style="font-size:1.1rem">🛒</span>
+            <span>Articolo aggiunto al carrello!</span>
+        </div>
+    </div>
+</div>
+
+<!-- ── CART FAB ──────────────────────────────────────────── -->
 <a asp-controller="Carrello" asp-action="Carrello" class="cart-fab" title="Carrello">
     🛒
     <span class="cart-badge"></span>
@@ -113,45 +127,43 @@
 }
 
 @section Scripts {
-<script>
-function togglePreferito(btn, id, rimuoviDallaPagina = false) {
-    fetch('/Articoli/TogglePreferito', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `id=${id}`
-    }).then(() => {
-        if (rimuoviDallaPagina) {
-            const card = btn.closest('.pref-card');
-            card.style.opacity = '0';
-            card.style.transform = 'scale(.95)';
-            card.style.transition = 'all .25s ease';
-            setTimeout(() => card.remove(), 260);
-        } else {
-            btn.classList.toggle('attivo');
+    <script>
+        function togglePreferito(btn, id, rimuoviDallaPagina = false) {
+            fetch('/Articoli/TogglePreferito', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `id=${id}`
+            }).then(() => {
+                if (rimuoviDallaPagina) {
+                    const card = btn.closest('.pref-card');
+                    card.style.opacity    = '0';
+                    card.style.transform  = 'scale(.95)';
+                    card.style.transition = 'all .25s ease';
+                    setTimeout(() => card.remove(), 260);
+                } else {
+                    btn.classList.toggle('attivo');
+                }
+            });
         }
-    });
-}
 
-/* AGGIORNARE IL BADGE */
-async function aggiornaBadge() {
-    const res = await fetch('/Carrello/NumeroElementi');
-    const count = await res.text();
-    document.querySelectorAll('.cart-badge').forEach(b => b.textContent = count);
-}
-document.querySelectorAll('.btn-teal--sm').forEach(btn => {
-    btn.addEventListener('click', async (e) => {
-        e.stopPropagation();
+        async function aggiornaBadge() {
+            const res   = await fetch('/Carrello/NumeroElementi');
+            const count = await res.text();
+            document.querySelectorAll('.cart-badge').forEach(b => b.textContent = count);
+        }
 
-        const id = btn.dataset.id;
-        await fetch(`/Carrello/MettiNelCarrello?id=${id}`, {
-            method: 'POST'
+        document.querySelectorAll('.btn-teal--sm').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                const id = btn.dataset.id;
+                await fetch(`/Carrello/MettiNelCarrello?id=${id}`, { method: 'POST' });
+                await aggiornaBadge();
+                bootstrap.Toast.getOrCreateInstance(
+                    document.getElementById('toastCarrello')
+                ).show();
+            });
         });
-        const toastEl = document.getElementById('toastCarrello');
-        const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
-        toast.show();
-    });
-});
 
-aggiornaBadge();
-</script>
+        aggiornaBadge();
+    </script>
 }

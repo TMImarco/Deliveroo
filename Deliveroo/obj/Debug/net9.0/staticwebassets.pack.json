@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\cssAdmin\\Classifica.css"
     },
     {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\cssAdmin\\DettaglioOrdine.css",
+      "PackagePath": "staticwebassets\\cssAdmin\\DettaglioOrdine.css"
+    },
+    {
       "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\cssAdmin\\Index.css",
       "PackagePath": "staticwebassets\\cssAdmin\\Index.css"
     },
@@ -63,6 +67,10 @@
     {
       "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\Preferiti.css",
       "PackagePath": "staticwebassets\\css\\Preferiti.css"
+    },
+    {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\Privacy.css",
+      "PackagePath": "staticwebassets\\css\\Privacy.css"
     },
     {
       "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\Riepilogo.css",

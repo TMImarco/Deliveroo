@@ -1,35 +1,17 @@
 ﻿@model Deliveroo.Models.CarrelloViewModel
 @{
-    ViewData["Title"] = "Articoli";
+    ViewData["Title"] = "Carrello";
     Layout = "_Layout";
-
-    var carrelloVuoto = false;
-    if (Model.ArticoliCarrello.Count == 0)
-    {
-        carrelloVuoto = true;
-    }
-    else
-    { carrelloVuoto = false; }
+    ViewData["HideSearch"] = true;
+    var carrelloVuoto = !Model.ArticoliCarrello.Any();
 }
-
-@section NavbarLinks {
-    <!--<div class="search-wrapper ms-auto">
-         BOTTONE BACK 
-        <a class="search-toggle back-btn" href="@ViewBag.BackUrl" title="Torna al carrello">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2.2"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"/>
-            </svg>
-        </a>
-    </div>-->
-}
+@section NavbarLinks {}
 
 <div class="macro-section">
-
     <div class="container">
         <div class="carrello-wrapper">
 
+            <!-- ── SINISTRA — ARTICOLI ───────────────────── -->
             <div class="left-col">
                 <div class="col-header">
                     <h2>Carrello</h2>
@@ -38,22 +20,25 @@
                        data-msg="Svuotare l'intero carrello?">Svuota</a>
                 </div>
 
-                <!-- SINISTRA -->
                 <div class="item-list">
                     @if (Model != null && Model.ArticoliCarrello.Any())
                     {
                         @foreach (var gruppo in Model.ArticoliCarrello.GroupBy(a => a.IdArticolo))
                         {
-                            var articolo = gruppo.First();
-                            var quantita = gruppo.Count();
+                            var articolo    = gruppo.First();
+                            var quantita    = gruppo.Count();
                             var prezzoTotale = articolo.Prezzo * quantita;
 
                             <div class="item-row">
-                                <img class="item-thumb" src="@Url.Content(articolo.ImageUrl)" alt="@articolo.Nome"/>
+                                <img class="item-thumb"
+                                     src="@Url.Content(articolo.ImageUrl)"
+                                     alt="@articolo.Nome" />
+
                                 <div class="item-info">
                                     <div class="item-name">@articolo.Nome</div>
-                                    <div class="item-unit-price">€@articolo.Prezzo.ToString("F2") cad.</div>
+                                    <div class="item-unit-price">€&nbsp;@articolo.Prezzo.ToString("F2") cad.</div>
                                 </div>
+
                                 <div class="qty-controls">
                                     @if (quantita == 1)
                                     {
@@ -63,96 +48,123 @@
                                     }
                                     else
                                     {
-                                        <a asp-action="Decrementa" asp-route-id="@articolo.IdArticolo"
+                                        <a asp-action="Decrementa"
+                                           asp-route-id="@articolo.IdArticolo"
                                            class="qty-btn">−</a>
                                     }
                                     <span class="qty-val">@quantita</span>
-                                    <a asp-action="Incrementa" asp-route-id="@articolo.IdArticolo" class="qty-btn">+</a>
+                                    <a asp-action="Incrementa"
+                                       asp-route-id="@articolo.IdArticolo"
+                                       class="qty-btn">+</a>
                                 </div>
-                                <div class="item-price">€@prezzoTotale.ToString("F2")</div>
+
+                                <div class="item-price">€&nbsp;@prezzoTotale.ToString("F2")</div>
+
                                 <a href="@Url.Action("Rimuovi", new { id = articolo.IdArticolo })"
                                    class="remove-btn confirm-action"
                                    data-msg="Rimuovere @articolo.Nome dal carrello?">✕</a>
                             </div>
                         }
                     }
-                </div>
-
-                @section AboveNavbar {
-                    <div class="total-overlay">
-                        <div>
-                            <div class="footer-info">@Model.ArticoliCarrello.Count articoli</div>
-                            <div class="footer-total">Totale:
-                                €@Model.ArticoliCarrello.Sum(a => a.Prezzo).ToString("F2")</div>
+                    else
+                    {
+                        <div style="padding: 2.5rem; text-align: center;
+                                    font-family: 'DM Sans', sans-serif;
+                                    font-size: 0.88rem; color: var(--muted);">
+                            Il carrello è vuoto
                         </div>
-                        <a href="@Url.Action("SvuotaCarrello")"
-                           class="clear-btn confirm-action"
-                           data-msg="Svuotare l'intero carrello?">Svuota</a>
-                        <a asp-action="Riepilogo" asp-controller="Ordini"
-                           class="procedi-btn @(carrelloVuoto ? "disabled" : "")"
-                           aria-disabled="@(carrelloVuoto ? "true" : "false")">
-                            Procedi
-                        </a>
-                    </div>
-                }
-
+                    }
+                </div>
             </div>
 
-            <!-- DESTRA (raccomandazioni) -->
+            <!-- ── DESTRA — CONSIGLIATI ──────────────────── -->
             <div class="right-col">
                 <div class="col-header">
                     <h2>Consigliati per te</h2>
                 </div>
+
                 @if (Model.Raccomandazioni != null && Model.Raccomandazioni.Any())
                 {
                     <div class="rec-list">
                         @foreach (var articolo in Model.Raccomandazioni)
                         {
                             <div class="rec-row">
-                                <img class="rec-thumb" src="@Url.Content(articolo.ImageUrl)" alt="@articolo.Nome"/>
+                                <img class="rec-thumb"
+                                     src="@Url.Content(articolo.ImageUrl)"
+                                     alt="@articolo.Nome" />
                                 <div class="rec-info">
                                     <div class="rec-name">@articolo.Nome</div>
-                                    <div class="rec-price">€@articolo.Prezzo.ToString("F2")</div>
+                                    <div class="rec-price">€&nbsp;@articolo.Prezzo.ToString("F2")</div>
                                 </div>
-                                <a asp-action="Incrementa" asp-route-id="@articolo.IdArticolo" class="rec-add-btn">+</a>
+                                <a asp-action="Incrementa"
+                                   asp-route-id="@articolo.IdArticolo"
+                                   class="rec-add-btn">+</a>
                             </div>
                         }
                     </div>
                 }
                 else
                 {
-                    <div style="padding: 20px; color: #aaa; font-size: 13px; text-align: center;">
+                    <div style="padding: 1.5rem; color: var(--muted); font-size: 0.82rem;
+                                text-align: center; font-family: 'DM Sans', sans-serif;">
                         Nessun consiglio disponibile
                     </div>
                 }
             </div>
+
         </div>
     </div>
 </div>
 
-<!-- MODAL CONFERMA -->
+<!-- ── TOTAL OVERLAY ──────────────────────────────────────── -->
+@section AboveNavbar {
+    <div class="total-overlay">
+        <div>
+            <div class="footer-info">@Model.ArticoliCarrello.Count articoli</div>
+            <div class="footer-total">
+                Totale: €&nbsp;@Model.ArticoliCarrello.Sum(a => a.Prezzo).ToString("F2")
+            </div>
+        </div>
+        <div style="display:flex; gap:0.75rem; align-items:center;">
+            <a href="@Url.Action("SvuotaCarrello")"
+               class="clear-btn confirm-action"
+               data-msg="Svuotare l'intero carrello?">Svuota</a>
+            <a asp-action="Riepilogo" asp-controller="Ordini"
+               class="procedi-btn @(carrelloVuoto ? "disabled" : "")"
+               aria-disabled="@(carrelloVuoto ? "true" : "false")">
+                Procedi →
+            </a>
+        </div>
+    </div>
+}
+
+<!-- ── MODAL CONFERMA ────────────────────────────────────── -->
 <div id="confirm-modal" class="modal-overlay" style="display:none">
     <div class="modal-box">
         <p id="modal-msg"></p>
         <div class="modal-btns">
-            <button id="modal-cancel" class="modal-btn cancel">Annulla</button>
+            <button id="modal-cancel"  class="modal-btn cancel">Annulla</button>
             <button id="modal-confirm" class="modal-btn confirm">Conferma</button>
         </div>
     </div>
 </div>
 
-<!-- TOAST FEEDBACK -->
-<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index: 9999">
-    <div id="toastCarrello" class="toast align-items-center text-white border-0" role="alert" data-bs-delay="2000">
+<!-- ── TOAST ─────────────────────────────────────────────── -->
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3"
+     style="z-index: 9999">
+    <div id="toastCarrello"
+         class="toast align-items-center text-white border-0"
+         role="alert"
+         data-bs-delay="2000">
         <div class="toast-body d-flex align-items-center gap-2">
-            <span id="toast-icon" style="font-size:1.2rem"></span>
+            <span id="toast-icon" style="font-size:1.1rem"></span>
             <span id="toast-msg"></span>
         </div>
     </div>
 </div>
 
 @section Styles {
-    <link rel="stylesheet" href="/css/Carrello.css"/>
+    <link rel="stylesheet" href="/css/Carrello.css" />
 }
 
 @section Scripts {
@@ -160,11 +172,11 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             /* ── MODAL CONFERMA ── */
-            const modal = document.getElementById('confirm-modal');
-            const modalMsg = document.getElementById('modal-msg');
+            const modal      = document.getElementById('confirm-modal');
+            const modalMsg   = document.getElementById('modal-msg');
             const btnConfirm = document.getElementById('modal-confirm');
-            const btnCancel = document.getElementById('modal-cancel');
-            let pendingUrl = null;
+            const btnCancel  = document.getElementById('modal-cancel');
+            let pendingUrl   = null;
 
             document.querySelectorAll('.confirm-action').forEach(el => {
                 el.addEventListener('click', e => {
@@ -194,16 +206,16 @@
             /* ── TOAST DA TEMPDATA ── */
             @if (TempData["Toast"] != null)
             {
-                var msg = TempData["Toast"].ToString();
+                var msg  = TempData["Toast"].ToString();
                 var icon = msg.Contains("svuotato") ? "🗑️" : "✕";
                 <text>
-                    document.getElementById('toast-msg').textContent = '@msg';
-                    document.getElementById('toast-icon').innerHTML = '@icon';
-                    const toastEl = document.getElementById('toastCarrello');
-                    bootstrap.Toast.getOrCreateInstance(toastEl).show();
+                    document.getElementById('toast-msg').textContent  = '@msg';
+                    document.getElementById('toast-icon').innerHTML   = '@icon';
+                    bootstrap.Toast.getOrCreateInstance(
+                        document.getElementById('toastCarrello')
+                    ).show();
                 </text>
             }
-
         });
     </script>
 }
