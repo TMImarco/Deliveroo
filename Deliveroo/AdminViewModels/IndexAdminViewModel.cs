@@ -10,4 +10,5 @@ public class IndexAdminViewModel
     public List<Dictionary<string,int>> OrdiniTotaliDiOgniCategoria { get; set; }
     public List<Articolo> ClassificaArticoli { get; set; }
     public int NumeroTotaleClassificati { get; set; }
+    public List<Utente> Utenti { get; set; }
 }

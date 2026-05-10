@@ -104,6 +104,14 @@
                 ASSOCIAZIONI D'ACQUISTO
             </a>
         </p>
+        
+        <p>
+            <a asp-controller="Admin"
+               asp-action="GestioneUtentiAdmin"
+               class="btn btn-primary">
+                GESTIONE UTENTI
+            </a>
+        </p>
     </div>
 
     <!--BLOCCO 4 della GRID (in basso a destra)-->
@@ -116,11 +124,12 @@
             <thead>
             <tr>
                 <th>ID ordine</th>
-                <th>Cliente</th>
-                <th>Data</th>
+                <th>Nome utente</th>
+                <th>Data di creazione ordine</th>
                 <th>Importo totale</th>
-                <th>Indirizzo</th>
+                <th>Indirizzo di consenga</th>
                 <th>Numero di telefono</th>
+                <th>Username</th>
             </tr>
             </thead>
             <tbody>
@@ -129,10 +138,19 @@
                 <tr>
                     <td>@o.IdOrdine</td>
                     <td>@o.NomeCliente</td>
-                    <td>@o.Data.ToString("dd/MM/yyyy")</td>
+                    <td>@o.Data.ToString("dd/MM/yyyy — HH:mm")</td>
                     <td>@o.ImportoTotale</td>
                     <td>@o.Indirizzo</td>
                     <td>@o.Telefono</td>
+                    <td>
+                        @foreach (var utente in Model.Utenti)
+                        {
+                            if (o.IdUtente == utente.Id)
+                            {
+                                @utente.Username;
+                            }
+                        }
+                    </td>
                 </tr>
             }
             </tbody>
@@ -157,7 +175,7 @@
 
         $('#ordiniTable tbody').on('click', 'tr', function () {
             var id = $(this).find('td:first').text();
-            window.location.href = '@Url.Action("DettaglioOrdine", "Admin")/' + id;
+            window.location.href = '@Url.Action("DettaglioOrdineAdmin", "Admin")/' + id;
         });
     </script>
 

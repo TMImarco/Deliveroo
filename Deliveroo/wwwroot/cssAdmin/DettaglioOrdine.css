@@ -451,7 +451,7 @@ input[readonly], textarea[readonly] {
 
 .grid-top {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 12px;
     margin-bottom: 12px;
 }
@@ -583,4 +583,10 @@ input[readonly], textarea[readonly] {
 .totale-value {
     font-size: 22px;
     font-weight: 500;
+}
+
+.grid-detord{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 20px;
 }

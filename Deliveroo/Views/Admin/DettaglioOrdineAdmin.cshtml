@@ -1,0 +1,89 @@
+@model Deliveroo.AdminViewModels.DettaglioOrdineViewModel
+@{
+    ViewData["Title"] = "Admin - Dettaglio Ordine #" + Model.Ordine.IdOrdine;
+    Layout = "_LayoutAdmin";
+    ViewData["HideSearchUser"] = true;
+}
+
+@section NavbarLinks
+{
+    <!--Attiva la nav bar-->
+}
+
+
+<!--Colonna 1-->
+<div class="container">
+    <!--METRIC CARDS:-->
+    <div class="grid-top">
+        <div class="metric">
+            <p class="metric-label">Ordine</p>
+            <p class="metric-value">#@Model.Ordine.IdOrdine</p>
+        </div>
+        <div class="metric">
+            <p class="metric-label">Importo totale</p>
+            <p class="metric-value">€ @Model.Ordine.ImportoTotale.ToString("0.00")</p>
+        </div>
+        <div class="metric">
+            <p class="metric-label">Data ordine</p>
+            <p class="metric-value metric-value--sm">@Model.Ordine.Data.ToString("dd/MM/yyyy — HH:mm")</p>
+        </div>
+    </div>
+
+    <!--CARD INFO CLIENTE-->
+    <div class="card">
+        <p class="card-title">Informazioni utente</p>
+        <div class="info-row">
+            <span class="info-label">ID</span>
+            <span class="info-value"># @Model.Utente.Id</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Nome</span>
+            <span class="info-value">@Model.Ordine.NomeCliente</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Telefono</span>
+            <span class="info-value">@Model.Ordine.Telefono</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Indirizzo</span>
+            <span class="info-value">@Model.Ordine.Indirizzo</span>
+        </div>
+        <a class="btn btn-primary"
+           asp-controller="Admin"
+           asp-action="DettaglioUtenteAdmin"
+           asp-route-id="@Model.Utente.Id">
+            DETTAGLIO UTENTE
+        </a>
+    </div>
+
+    <!--CARD ARTICOLI-->
+    <div class="card">
+        <p class="card-title">Articoli ordinati</p>
+
+        <div class="food-header">
+            <span class="food-name">Articolo</span>
+            <span class="food-qty">Qtà</span>
+            <span class="food-price">Prezzo unit.</span>
+            <span class="food-sub">Subtotale</span>
+        </div>
+
+        @foreach (var r in Model.Righe)
+        {
+            <div class="food-row">
+                <span class="food-name">@r.NomeArticolo</span>
+                <span class="food-qty">× @r.Quantita</span>
+                <span class="food-price">€ @((r.Prezzo / r.Quantita).ToString("0.00"))</span>
+                <span class="food-sub">€ @r.Prezzo.ToString("0.00")</span>
+            </div>
+        }
+
+        <div class="totale-row">
+            <span class="totale-label">Totale ordine</span>
+            <span class="totale-value">€ @Model.Ordine.ImportoTotale.ToString("0.00")</span>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="/cssAdmin/DettaglioOrdine.css"/>
+}

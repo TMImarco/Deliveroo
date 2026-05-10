@@ -175,7 +175,8 @@ WHERE a.id = @id;";
 
             classifica.Add(articolo);
         }
-
+        reader.Close();
+        
         return classifica;
     }
     //----------------------------------------------------------------------------
@@ -657,6 +658,31 @@ WHERE id = @id;";
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     //>>>>>>>>>>>> METODI UTENTE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    public List<Utente> GetTuttiUtenti()
+    {
+        List<Utente> ListaUtenti = new List<Utente>();
+        
+        string query = @"SELECT * FROM utenti ORDER BY id;";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            var utente = new Utente()
+            {
+                Id = (int)reader["id"],
+                Indirizzo = (string)reader["indirizzo"],
+                Nome = (string)reader["nome"],
+                Telefono = (string)reader["telefono"],
+                Username = (string)reader["username"]
+            };
+            
+            ListaUtenti.Add(utente);
+        }
+        reader.Close();
+        
+        return ListaUtenti;
+    }
+    
     public int GetLoginUtente(string username, string password)
     {
         int idUtente = 0;
@@ -696,6 +722,8 @@ WHERE Id = @id";
                 Nome = (string)reader["nome"],
                 Indirizzo = (string)reader["indirizzo"],
                 Telefono = (string)reader["telefono"],
+                Username = (string)reader["username"],
+                Password = (string)reader["password"]
             };
         }
         

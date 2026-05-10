@@ -2,17 +2,18 @@
 @using Deliveroo.Tabelle
 @{
     ViewData["Title"] = "Admin - Modifica Articoli";
+    ViewData["HideSearchUser"] = true;
     Layout = "_LayoutAdmin";
 
     Articolo art = Model.ArticoloScelto;
     List<Categoria> categorie = Model.ListaCategorie;
-    
-    var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString() 
+
+    var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString()
                            ?? Context.Request.Query["categoria"].ToString();
 }
 
 @section NavbarLinks {
-    
+
     <!--TAB ITEM-->
     @foreach (var cat in categorie)
     {
@@ -58,7 +59,7 @@
                         <span class="nav-arrow next disabled">&#8594;</span>
                     }
                 </div>
-                
+
                 <form id="ModificaArticoloFormUpload"
                       method="post"
                       asp-action="ModificaArticolo"
@@ -455,7 +456,7 @@
             if (e.target === cloudModal) {
                 cloudModal.style.display = "none";
             }
-            
+
 
         });
     </script>

@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Admin - Categorie";
+    ViewData["HideSearchUser"] = true;
     Layout = "_LayoutAdmin";
 }
 
@@ -22,7 +23,7 @@
 Il numero per fila può essere modificato all'interno dell site.css nell'apposita classe -->
 <div class="macro-section">
     <div class="container">
-        
+
         <div class="macro-grid">
             <!-- Dalla Model (lista delle categorie)
             faccio una box di categoria per ciascuno >> se vogliamo aggiungere una nuova categoria, tutto sarà automatico -->
@@ -30,7 +31,8 @@ Il numero per fila può essere modificato all'interno dell site.css nell'apposit
             {
                 <!-- Box principale della macro-categoria che contiene una foto rappresentativa e il nome -->
                 <div class="macro-item">
-                    <a asp-controller="ArticoliAdmin" asp-action="ArticoliAdmin" asp-route-idCategoria="@categoria.IdCategoria" class="macro-main-box">
+                    <a asp-controller="ArticoliAdmin" asp-action="ArticoliAdmin"
+                       asp-route-idCategoria="@categoria.IdCategoria" class="macro-main-box">
                         <div class="macro-img-wrap">
                             <img src="@categoria.ImageUrl" alt="@categoria.Nome" class="macro-image"/>
                         </div>
@@ -52,6 +54,7 @@ Il numero per fila può essere modificato all'interno dell site.css nell'apposit
 </div>
 
 <!-- CSS specifico per questa vista, caricato solo qui e non nelle altre pagine -->
+
 @section Styles {
-    <link rel="stylesheet" href="/cssAdmin/Categorie.css" />
+    <link rel="stylesheet" href="/cssAdmin/Categorie.css"/>
 }

@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = "Admin - Gestione Utenti";
+    ViewData["HideSearchUser"] = true;
+    Layout = "_LayoutAdmin";
+}
+
+@section NavbarLinks
+{
+    <!--Attiva la nav bar-->
+}
+
+<div class="container">
+    <table id="utentiTable"
+           class="display">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome utente</th>
+            <th>Username</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var utente in Model)
+        {
+            <tr>
+                <td>@utente.Id</td>
+                <td>@utente.Nome</td>
+                <td>@utente.Username</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <!--SCRIPT per DATA TABLE-->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <!--SCRIPT per la creazione delle DATA TABLE-->
+    <script>
+        $(document).ready(function () {
+            $('#utentiTable').DataTable();
+        });
+
+        $('#utentiTable tbody').on('click', 'tr', function () {
+            var id = $(this).find('td:first').text();
+            window.location.href = '@Url.Action("DettaglioUtenteAdmin", "Admin")/' + id;
+        });
+    </script>
+}
+
+@section Styles {
+    <!--stile sheet per le data tables-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+}

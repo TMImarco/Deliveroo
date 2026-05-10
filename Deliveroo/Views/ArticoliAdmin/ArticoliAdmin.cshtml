@@ -3,17 +3,19 @@
 
 @{
     ViewData["Title"] = "Admin - Articoli";
+    ViewData["HideUser"] = true;
     Layout = "_LayoutAdmin";
 
     <!-- prendo tutte le categorie per visualizzarle nella tab bar -->
     var categorie = Gestione.GetTutteCategorie();
-    
+
     <!-- per personalizzare la navbar, tengo conto della categoria selezionata da evidenziarla -->
-    var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString() 
+    var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString()
                            ?? Context.Request.Query["categoria"].ToString();
 }
 
 <!-- Contenuto della sezione NavbarLinks per questa vista specifica -->
+
 @section NavbarLinks {
     <!--TAB ITEM-->
     @foreach (var cat in categorie)
@@ -26,18 +28,6 @@
             @cat.Nome
         </a>
     }
-    
-    <!-- BOTTONE BACK 
-    <div class="search-wrapper ms-auto">
-         BOTTONE BACK
-        <a class="search-toggle back-btn" asp-action="CategorieAdmin" asp-controller="CategorieAdmin" title="Torna alla home">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2.2"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"/>
-            </svg>
-        </a>
-    </div>-->
 }
 
 <h1>SELEZIONA ARTICOLO DA CAMBIARE</h1>
@@ -45,11 +35,12 @@
 <!-- TUTTI GLI ARTICOLI -->
 <div class="macro-section">
     <div class="container">
-        
+
         <div class="macro-grid">
             @foreach (var articolo in Model)
             {
-                <a asp-controller="ArticoliAdmin" asp-action="ModificaArticolo" asp-route-id="@articolo.IdArticolo" class="articolo-card">
+                <a asp-controller="ArticoliAdmin" asp-action="ModificaArticolo" asp-route-id="@articolo.IdArticolo"
+                   class="articolo-card">
                     <div class="articolo-img-wrap">
                         <img src="@articolo.ImageUrl" alt="@articolo.Nome" class="articolo-img"/>
                     </div>
@@ -65,4 +56,107 @@
 
 @section Styles {
     <link rel="stylesheet" href="/cssAdmin/Articoli.css"/>
+}
+
+@section Scripts
+{
+    <script>
+        (function () {
+            const toggle = document.getElementById('lmSearchToggle');
+            const popup = document.getElementById('lmSearchPopup');
+            const input = document.getElementById('lmSearchInput');
+            const results = document.getElementById('lmSearchResults');
+            const clearBtn = document.getElementById('lmSearchClear');
+
+            if (!toggle) return; // sicurezza: esci se la navbar wide non è presente
+
+            let debounce;
+
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = popup.classList.toggle('open');
+                toggle.classList.toggle('active', isOpen);
+                if (isOpen) setTimeout(() => input.focus(), 50);
+                else resetSearch();
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!popup.contains(e.target) && e.target !== toggle) {
+                    popup.classList.remove('open');
+                    toggle.classList.remove('active');
+                    resetSearch();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    popup.classList.remove('open');
+                    toggle.classList.remove('active');
+                    resetSearch();
+                }
+            });
+
+            input.addEventListener('input', () => {
+                const q = input.value.trim();
+                clearBtn.classList.toggle('visible', q.length > 0);
+                clearTimeout(debounce);
+                if (q.length < 2) {
+                    results.innerHTML = '<p class="lm-search-hint">Inizia a digitare per cercare…</p>';
+                    return;
+                }
+                results.innerHTML = '<p class="lm-search-hint">Ricerca in corso…</p>';
+                debounce = setTimeout(() => cerca(q), 280);
+            });
+
+            clearBtn.addEventListener('click', () => {
+                input.value = '';
+                clearBtn.classList.remove('visible');
+                results.innerHTML = '<p class="lm-search-hint">Inizia a digitare per cercare…</p>';
+                input.focus();
+            });
+
+            async function cerca(q) {
+                try {
+                    const res = await fetch(`/ArticoliAdmin/Cerca?q=${encodeURIComponent(q)}`);
+                    const data = await res.json();
+                    renderResults(data, q);
+                } catch {
+                    results.innerHTML = '<p class="lm-search-no-results">Errore durante la ricerca.</p>';
+                }
+            }
+
+            function renderResults(data, q) {
+                if (!data.length) {
+                    results.innerHTML = `<p class="lm-search-no-results">Nessun risultato per "<strong>${q}</strong>"</p>`;
+                    return;
+                }
+                results.innerHTML = data.map(a => `
+            <a class="lm-search-result-item" href="/ArticoliAdmin/ModificaArticolo/${a.idArticolo}">
+                <img class="lm-search-result-img"
+                     src="${a.imageUrl || '/img/placeholder.png'}"
+                     alt="${a.nome}" />
+                <div class="lm-search-result-info">
+                    <span class="lm-search-result-nome">${highlight(a.nome, q)}</span>
+                    <div class="lm-search-result-meta">
+                        <span class="lm-search-result-cat">${a.categoria}</span>
+                        <span>€ ${a.prezzo}</span>
+                    </div>
+                </div>
+            </a>
+        `).join('');
+            }
+
+            function highlight(text, q) {
+                const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+                return text.replace(re,
+                    '<mark style="background:var(--teal-light);color:var(--teal-dark);border-radius:3px;padding:0 2px">$1</mark>');
+            }
+
+            function resetSearch() {
+                input.value = '';
+                clearBtn.classList.remove('visible');
+                results.innerHTML = '<p class="lm-search-hint">Inizia a digitare per cercare…</p>';
+            }
+        })();
+    </script>
 }

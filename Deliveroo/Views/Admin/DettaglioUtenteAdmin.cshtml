@@ -1,0 +1,132 @@
+@model Deliveroo.AdminViewModels.DettaglioUtenteViewModel
+@{
+    ViewData["Title"] = "Admin - Dettaglio Utente #" + Model.Utente.Id;
+    ViewData["HideSearchUser"] = true;
+    Layout = "_LayoutAdmin";
+}
+
+@section NavbarLinks
+{
+    <!--Attiva la nav bar-->
+}
+
+
+<!--Colonna 1-->
+<div class="container">
+    <!--METRIC CARDS:-->
+    <div class="grid-top">
+        <div class="metric">
+            <p class="metric-label">Utente</p>
+            <p class="metric-value"># @Model.Utente.Id</p>
+        </div>
+    </div>
+
+    <!--CARD INFO CLIENTE-->
+    <div class="card">
+        <p class="card-title">Informazioni utente</p>
+        <div class="info-row">
+            <span class="info-label">Nome</span>
+            <span class="info-value">@Model.Utente.Nome</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Username</span>
+            <span class="info-value">@Model.Utente.Username</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Telefono</span>
+            <span class="info-value">@Model.Utente.Telefono</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Indirizzo</span>
+            <span class="info-value">@Model.Utente.Indirizzo</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Password</span>
+            <span class="info-value">@Model.Utente.Password</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <p class="card-title">Ordini effettuati</p>
+        <!--ORDINI-->
+        <table id="ordiniTable"
+               class="display">
+            <thead>
+            <tr>
+                <th>ID ordine</th>
+                <th>Data di creazione ordine</th>
+                <th>Importo totale</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var o in Model.ListaOrdini)
+            {
+                <tr>
+                    <td>@o.IdOrdine</td>
+                    <td>@o.Data.ToString("dd/MM/yyyy — HH:mm")</td>
+                    <td>@o.ImportoTotale</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    
+    <!--Ordini preferiti-->
+    <div class="card">
+        <p class="card-title">Articoli preferiti</p>
+        
+        <table id="articoliPreferitiTable"
+               class="display">
+            <thead>
+            <tr>
+                <th>ID Articolo</th>
+                <th>Nome</th>
+                <th>Foto</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var art in Model.ListaArticoliPreferiti)
+            {
+                <tr>
+                    <td>@art.IdArticolo</td>
+                    <td>@art.Nome</td>
+                    <td>
+                        <img src="@art.ImageUrl" 
+                             style="width:60px; height:70px; object-fit:cover;">
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Styles {
+    <!--stile sheet per le data tables-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="/cssAdmin/DettaglioOrdine.css"/>
+}
+
+@section Scripts
+{
+    <!--SCRIPT per DATA TABLE-->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <!--SCRIPT per la creazione delle DATA TABLE-->
+    <script>
+        $(document).ready(function () {
+            $('#ordiniTable').DataTable();
+            $('#articoliPreferitiTable').DataTable();
+        });
+        
+        $('#ordiniTable tbody').on('click', 'tr', function () {
+            var id = $(this).find('td:first').text();
+            window.location.href = '@Url.Action("DettaglioOrdineAdmin", "Admin")/' + id;
+        });
+
+        $('#articoliPreferitiTable tbody').on('click', 'tr', function () {
+            var id = $(this).find('td:first').text();
+            window.location.href = '@Url.Action("ModificaArticolo", "ArticoliAdmin")/' + id;
+        });
+    </script>
+}

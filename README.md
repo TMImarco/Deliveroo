@@ -27,7 +27,6 @@ Dividiamo il progetto in tre macro argomenti:
 4. Modificare grafica classifica (troppo claude)
 5. Modificare grafica lista ordini (troppo basic)
 8. In ModificaArticolo, nella pagina dove ti chiedere di scegliere la categoria, mettere la barra di ricerca che ha fatto la Stefi (mettina in grande tipo Google e sotto le categorie, poi nelle altre pagine in alto come in articoli normali)
-9. Separare gli script dalle pagine cshtml in un nuovo file js seguendo il pattern organizzativo concordato
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate
