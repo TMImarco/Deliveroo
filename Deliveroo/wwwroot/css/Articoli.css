@@ -1,6 +1,8 @@
 ﻿/* ── ARTICOLI.CSS ──────────────────────────────────────────── */
 /* Dipende dalle variabili globali definite in site.css        */
 
+
+
 /* ── SEZIONE PRINCIPALE ────────────────────────────────────── */
 .art-section {
     background: var(--surface);

@@ -5,16 +5,7 @@
 }
 
 @section NavbarLinks {
-    <!--<div class="search-wrapper ms-auto">
-         BOTTONE BACK 
-        <a class="search-toggle back-btn" asp-action="IndexAdmin" asp-controller="Admin" title="Torna alla home">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2.2"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"/>
-            </svg>
-        </a>
-    </div>-->
+    
 }
 
 <h1>SELEZIONA CATEGORIA DELL'ARTICOLO DA CAMBIARE</h1>
@@ -24,31 +15,34 @@ Il numero per fila può essere modificato all'interno dell site.css nell'apposit
 <div class="macro-section">
     <div class="container">
 
-        <div class="macro-grid">
-            <!-- Dalla Model (lista delle categorie)
-            faccio una box di categoria per ciascuno >> se vogliamo aggiungere una nuova categoria, tutto sarà automatico -->
-            @foreach (var categoria in Model)
-            {
-                <!-- Box principale della macro-categoria che contiene una foto rappresentativa e il nome -->
-                <div class="macro-item">
-                    <a asp-controller="ArticoliAdmin" asp-action="ArticoliAdmin"
-                       asp-route-idCategoria="@categoria.IdCategoria" class="macro-main-box">
-                        <div class="macro-img-wrap">
-                            <img src="@categoria.ImageUrl" alt="@categoria.Nome" class="macro-image"/>
+        <div class="idx-section">
+            <div class="idx-grid">
+                @foreach (var categoria in Model)
+                {
+                    <a asp-controller="ArticoliAdmin"
+                       asp-action="ArticoliAdmin"
+                       asp-route-idCategoria="@categoria.IdCategoria"
+                       class="idx-card">
+
+                        <!-- FOTO -->
+                        <div class="idx-img-wrap">
+                            <img src="@categoria.ImageUrl"
+                                 alt="@categoria.Nome"
+                                 class="idx-img"
+                                 loading="lazy" />
+                            <div class="idx-img-overlay"></div>
                         </div>
-                        <div class="macro-info">
-                            <span>@categoria.Nome</span>
+
+                        <!-- NOME + BARRA -->
+                        <div class="idx-info">
+                            <span class="idx-name">@categoria.Nome</span>
+                            <div class="idx-bar">
+                                <div class="idx-bar-fill"></div>
+                            </div>
                         </div>
                     </a>
-
-                    <!-- Sono i due rettangolini sotto agli box delle categorie
-                    Me l'ha messo Claude e sto pensando a cosa si potrebbe aggiungere, sennò li tolgo-->
-                    <div class="macro-sub-row">
-                        <div class="macro-sub-box"></div>
-                        <div class="macro-sub-box"></div>
-                    </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
 </div>

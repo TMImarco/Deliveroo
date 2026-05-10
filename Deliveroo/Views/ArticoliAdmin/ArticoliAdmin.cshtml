@@ -30,27 +30,32 @@
     }
 }
 
-<h1>SELEZIONA ARTICOLO DA CAMBIARE</h1>
+<h1 class="idx-title">SELEZIONA ARTICOLO DA CAMBIARE</h1>
 
 <!-- TUTTI GLI ARTICOLI -->
-<div class="macro-section">
-    <div class="container">
+<div class="art-section">
+    <div class="art-grid">
+        @foreach (var articolo in Model)
+        {
+            <a asp-controller="ArticoliAdmin"
+               asp-action="ModificaArticolo"
+               asp-route-id="@articolo.IdArticolo"
+               class="art-card">
 
-        <div class="macro-grid">
-            @foreach (var articolo in Model)
-            {
-                <a asp-controller="ArticoliAdmin" asp-action="ModificaArticolo" asp-route-id="@articolo.IdArticolo"
-                   class="articolo-card">
-                    <div class="articolo-img-wrap">
-                        <img src="@articolo.ImageUrl" alt="@articolo.Nome" class="articolo-img"/>
-                    </div>
-                    <div class="articolo-info">
-                        <span class="articolo-nome">@articolo.Nome</span>
-                        <span class="articolo-prezzo">€ @articolo.Prezzo.ToString("F2")</span>
-                    </div>
-                </a>
-            }
-        </div>
+                <div class="art-img-wrap">
+                    <img src="@articolo.ImageUrl"
+                         alt="@articolo.Nome"
+                         class="art-img"
+                         loading="lazy" />
+                </div>
+
+                <div class="art-info">
+                    <span class="art-nome">@articolo.Nome</span>
+                    <span class="art-prezzo">€ @articolo.Prezzo.ToString("F2")</span>
+                </div>
+
+            </a>
+        }
     </div>
 </div>
 
