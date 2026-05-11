@@ -38,7 +38,6 @@ C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debu
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\scopedcss\bundle\Deliveroo.styles.css
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\scopedcss\projectbundle\Deliveroo.bundle.scp.css
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\o239syohzx-ktfwbab90y.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\wxja8xoh7f-t7k3p2x9e3.gz
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\wt2bydwzjr-jyp3ugg74x.gz
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\daehgyzymw-61n19gt1b8.gz
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\gesv43rbq0-xtxxf3hu2r.gz
@@ -121,19 +120,9 @@ C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debu
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\bin\Debug\net9.0\CloudinaryDotNet.dll
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\bin\Debug\net9.0\Newtonsoft.Json.dll
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\2feuc0ob8u-abzaomxytg.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\l2ndo6k11k-hf3jpda7sw.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\e3dxko8bht-urct787yaq.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\6i9eyg65jm-baq9z6c62v.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\uo5vltufeq-q51vgk1hyr.gz
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\bbav3rywun-k0q836v486.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\6aho0goxy0-hz8s0kw4ss.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\847d2ata5v-74zpvmj2db.gz
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\k7s0xnpoy4-m6mtei2mic.gz
 C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\vyi5zaj6gz-h3ozx747vv.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\arfh1j56ck-ngx7eaj55e.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\3gh453p1vx-071nxwasbe.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\saxkl731t5-rjzi9pyqv2.gz
-C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\u05j9f0ov9-pt0he6ngqk.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\bin\Debug\net9.0\appsettings.json
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\bin\Debug\net9.0\Deliveroo.staticwebassets.runtime.json
@@ -271,3 +260,17 @@ C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\847d2ata5v-lscpukzhci.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\e3dxko8bht-k0q836v486.gz
 C:\Users\marco\Documents\1 Scuola\Informatica\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\6aho0goxy0-gxnxgi93gv.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\847d2ata5v-lscpukzhci.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\l2ndo6k11k-sl4qsnuk6y.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\e3dxko8bht-k0q836v486.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\55km3p7j5d-1m260cli85.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\wxja8xoh7f-q1p2uq73nf.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\3gh453p1vx-t4k5t3f7lj.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\6aho0goxy0-gxnxgi93gv.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\uo5vltufeq-ff6z27xndy.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\u05j9f0ov9-tslf8auu27.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\saxkl731t5-c2ifocc300.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\arfh1j56ck-eu5z1kas6m.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\6yi31qqicm-4q6zzstc3i.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\6i9eyg65jm-s9p7figukn.gz
+C:\Users\ovidi\Desktop\Informatica\DeliverooClonata\Deliveroo\Deliveroo\obj\Debug\net9.0\compressed\m6tcvhbgsi-6js7yje0l5.gz

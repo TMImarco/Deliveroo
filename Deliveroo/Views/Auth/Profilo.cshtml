@@ -1,0 +1,107 @@
+﻿@model Deliveroo.Tabelle.Utente
+@{
+    ViewData["Title"] = "Profilo";
+    var errore  = TempData["Errore"]  as string;
+    var successo = TempData["Successo"] as string;
+    ViewData["HideSearch"] = true;
+}
+
+@section NavbarLinks
+{}
+
+<div class="idx-hero">
+    <div>
+        <div class="idx-tag"><span class="idx-tag-dot"></span>Area personale</div>
+        <h1 class="idx-title">Il tuo <strong>profilo</strong></h1>
+    </div>
+    <div class="idx-greeting">
+        <div class="idx-greeting-label">Connesso come</div>
+        <div class="idx-greeting-name">@Model.Username</div>
+    </div>
+</div>
+
+<div class="idx-section">
+
+    @if (errore != null)
+    {
+        <div class="profilo-alert profilo-alert--error">
+            <i class="bi bi-exclamation-circle"></i> @errore
+        </div>
+    }
+    @if (successo != null)
+    {
+        <div class="profilo-alert profilo-alert--success">
+            <i class="bi bi-check-circle"></i> @successo
+        </div>
+    }
+
+    <div class="profilo-grid">
+        <div class="profilo-card">
+            <div class="profilo-card__header">
+                <i class="bi bi-person-circle"></i>
+                <span class="profilo-card__title">Dati personali</span>
+            </div>
+
+            <div class="profilo-avatar-row">
+                <div class="profilo-avatar">@Model.Nome[0]</div>
+                <div>
+                    <div class="profilo-avatar-name">@Model.Nome</div>
+                    <div class="profilo-avatar-sub">@Model.Username · Cliente</div>
+                </div>
+            </div>
+
+            <form asp-action="AggiornaProfilo" asp-controller="Auth" method="post">
+                @Html.AntiForgeryToken()
+                <div class="profilo-field">
+                    <label class="profilo-label">Nome</label>
+                    <input class="profilo-input" name="Nome" value="@Model.Nome" required maxlength="50"/>
+                </div>
+                <div class="profilo-field">
+                    <label class="profilo-label">Indirizzo</label>
+                    <input class="profilo-input" name="Indirizzo" value="@Model.Indirizzo" required maxlength="150"/>
+                </div>
+                <div class="profilo-field">
+                    <label class="profilo-label">Telefono</label>
+                    <input class="profilo-input" name="Telefono" value="@Model.Telefono" required maxlength="20"/>
+                </div>
+                <div class="profilo-field">
+                    <label class="profilo-label">Username</label>
+                    <input class="profilo-input" name="Username" value="@Model.Username" required maxlength="50"/>
+                </div>
+                <div class="profilo-bar"><div class="profilo-bar__fill"></div></div>
+                <button type="submit" class="profilo-btn">Salva modifiche</button>
+            </form>
+        </div>
+        
+        <div class="profilo-card">
+            <div class="profilo-card__header">
+                <i class="bi bi-lock"></i>
+                <span class="profilo-card__title">Cambia password</span>
+            </div>
+
+            <form asp-action="CambiaPassword" asp-controller="Auth" method="post">
+                @Html.AntiForgeryToken()
+                <div class="profilo-field">
+                    <label class="profilo-label">Password attuale</label>
+                    <input class="profilo-input" type="password" name="PasswordAttuale" required/>
+                </div>
+                <div class="profilo-field">
+                    <label class="profilo-label">Nuova password</label>
+                    <input class="profilo-input" type="password" name="NuovaPassword" required minlength="8"/>
+                    <span class="profilo-hint">Almeno 8 caratteri</span>
+                </div>
+                <div class="profilo-field">
+                    <label class="profilo-label">Conferma password</label>
+                    <input class="profilo-input" type="password" name="ConfermaPassword" required/>
+                </div>
+                <div class="profilo-bar"><div class="profilo-bar__fill" style="width:40%"></div></div>
+                <button type="submit" class="profilo-btn">Aggiorna password</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="/css/Profilo.css" />
+}

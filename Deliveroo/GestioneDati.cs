@@ -702,7 +702,7 @@ WHERE username = @username AND password = @password";
         return idUtente;
     }
 
-    public Utente GetUtente(int id)
+    public Utente GetUtente(int? id)
     {
         Utente utente = null;
         string query = @"SELECT *
@@ -889,6 +889,24 @@ WHERE id = @id";
         command.Parameters.AddWithValue("@username", username);
         return Convert.ToInt32(command.ExecuteScalar()) > 0;
     }
+    
+    public bool ModificaUsernameEsiste(string username, int? escludiId)
+    {
+        var cmd = new MySqlCommand(
+            "SELECT COUNT(*) FROM utenti WHERE username = @u AND id != @id", _connection);
+        cmd.Parameters.AddWithValue("@u", username);
+        cmd.Parameters.AddWithValue("@id", escludiId);
+        return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+    }
+    
+    public bool PasswordAttualeCorretta(int? id, string passwordInput)
+    {
+        var cmd = new MySqlCommand(
+            "SELECT COUNT(*) FROM utenti WHERE id = @id AND password = @pwd", _connection);
+        cmd.Parameters.AddWithValue("@id", id);
+        cmd.Parameters.AddWithValue("@pwd", passwordInput);
+        return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+    }
 
     public int RegistraUtente(RegistrazioneViewModel model)
     {
@@ -902,6 +920,30 @@ WHERE id = @id";
         command.Parameters.AddWithValue("@username", model.Username);
         command.Parameters.AddWithValue("@password", model.Password);
         return Convert.ToInt32(command.ExecuteScalar());
+    }
+    
+    /* MODIFICA UTENTE */
+    public void ModificaUtente(int? id, string nome, string indirizzo, string telefono, string username)
+    {
+        var cmd = new MySqlCommand(@"
+        UPDATE utenti
+        SET nome = @nome, indirizzo = @indirizzo,
+            telefono = @telefono, username = @username
+        WHERE id = @id", _connection);
+        cmd.Parameters.AddWithValue("@nome", nome);
+        cmd.Parameters.AddWithValue("@indirizzo", indirizzo);
+        cmd.Parameters.AddWithValue("@telefono", telefono);
+        cmd.Parameters.AddWithValue("@username", username);
+        cmd.Parameters.AddWithValue("@id", id);
+        cmd.ExecuteNonQuery();
+    }
+    public void ModificaPassword(int? id, string nuovaPassword)
+    {
+        var cmd = new MySqlCommand(
+            "UPDATE utenti SET password = @pwd WHERE id = @id", _connection);
+        cmd.Parameters.AddWithValue("@pwd", nuovaPassword);
+        cmd.Parameters.AddWithValue("@id", id);
+        cmd.ExecuteNonQuery();
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     

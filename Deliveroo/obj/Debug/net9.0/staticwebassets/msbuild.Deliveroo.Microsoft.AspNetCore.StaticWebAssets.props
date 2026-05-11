@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>hz8s0kw4ss</Fingerprint>
-      <Integrity>feyPAgJbY0ExDa6G2Q3dz/Qj//yQ0eGBxyXhRrBCZqQ=</Integrity>
+      <Fingerprint>gxnxgi93gv</Fingerprint>
+      <Integrity>nCBQZE96l8zhR9sdqvCCF3ES+OBy1vtg8JB8LYACqCQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Articoli.css'))</OriginalItemSpec>
@@ -144,6 +144,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Privacy.css'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Profilo.css'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Deliveroo</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Deliveroo</BasePath>
+      <RelativePath>css/Profilo.css</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>6js7yje0l5</Fingerprint>
+      <Integrity>zgXtcoKt2smg+EOLk5VOYHtH4lJgsf4tXwXuq2fiKLk=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Profilo.css'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Riepilogo.css'))">
       <SourceType>Package</SourceType>
       <SourceId>Deliveroo</SourceId>
@@ -210,8 +228,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>74zpvmj2db</Fingerprint>
-      <Integrity>+TqVT94h2Tu2or+n72BwkPxix68ci/V5kg3aoONRa7c=</Integrity>
+      <Fingerprint>lscpukzhci</Fingerprint>
+      <Integrity>+9Qy08Co/Lz9MtcGiBouFtKPb54AHE6+espRnKKdNZg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\cssAdmin\Articoli.css'))</OriginalItemSpec>
@@ -246,8 +264,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>urct787yaq</Fingerprint>
-      <Integrity>6lxtFw22cRF7sdVrDAanbZIXfD9QkovMcvkrz6CMW68=</Integrity>
+      <Fingerprint>k0q836v486</Fingerprint>
+      <Integrity>TB+Re7PVbESsqnTLi72iDqD+u52vEVKzXqgDZhT6SaA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\cssAdmin\Categorie.css'))</OriginalItemSpec>
@@ -282,8 +300,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>1te88n61kz</Fingerprint>
-      <Integrity>9WAAMl49oaMfAX6pFR2pNp/btYmnyOnFK1d2A6dFxDA=</Integrity>
+      <Fingerprint>1m260cli85</Fingerprint>
+      <Integrity>Ry0zbIWVrd7aHrxRZ8ByEXN9rN5l2/ZTK+BBlbBwqcw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\cssAdmin\DettaglioOrdine.css'))</OriginalItemSpec>
@@ -300,8 +318,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>t7k3p2x9e3</Fingerprint>
-      <Integrity>GdoT9Ej80jwGSiYaidN1+0iicTEwIlf97spzIHxron8=</Integrity>
+      <Fingerprint>q1p2uq73nf</Fingerprint>
+      <Integrity>sl6RAQF6K7e3AcPzqMIZNgnmxEb6H5vxG0pzmUNwBIE=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\cssAdmin\Index.css'))</OriginalItemSpec>
