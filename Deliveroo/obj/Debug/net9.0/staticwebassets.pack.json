@@ -73,6 +73,10 @@
       "PackagePath": "staticwebassets\\css\\Privacy.css"
     },
     {
+      "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\Profilo.css",
+      "PackagePath": "staticwebassets\\css\\Profilo.css"
+    },
+    {
       "Id": "C:\\Users\\ovidi\\Desktop\\Informatica\\DeliverooClonata\\Deliveroo\\Deliveroo\\wwwroot\\css\\Riepilogo.css",
       "PackagePath": "staticwebassets\\css\\Riepilogo.css"
     },

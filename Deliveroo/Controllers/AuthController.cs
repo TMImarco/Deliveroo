@@ -110,4 +110,74 @@ public class AuthController : Controller
         _contextAccessor.HttpContext.Session.Clear();
         return RedirectToAction("Index", "Home");
     }
+    
+    // GET /Auth/Profilo
+[HttpGet]
+public IActionResult Profilo()
+{
+    var idStr = HttpContext.Session.GetString("userId");
+    if (string.IsNullOrEmpty(idStr))
+        return RedirectToAction("Login");
+
+    int? id = HttpContext.Session.GetInt32("userId");
+    var utente = _gestioneDati.GetUtente(id);
+    if (utente == null)
+        return RedirectToAction("Login");
+
+    return View(utente);
+}
+
+// POST /Auth/AggiornaProfilo
+[HttpPost]
+[ValidateAntiForgeryToken]
+public IActionResult AggiornaProfilo(string Nome, string Indirizzo, string Telefono, string Username)
+{
+    var idStr = HttpContext.Session.GetString("userId");
+    if (string.IsNullOrEmpty(idStr))
+        return RedirectToAction("Login");
+
+    int? id = HttpContext.Session.GetInt32("userId");
+
+    // controlla username duplicato (escludendo l'utente corrente)
+    if (_gestioneDati.ModificaUsernameEsiste(Username, id))
+    {
+        TempData["Errore"] = "Username già in uso, scegline un altro.";
+        return RedirectToAction("Profilo");
+    }
+
+    _gestioneDati.ModificaUtente(id, Nome.Trim(), Indirizzo.Trim(), Telefono.Trim(), Username.Trim());
+    HttpContext.Session.SetString("UserName", Username.Trim()); // aggiorna sessione
+    TempData["Successo"] = "Profilo aggiornato con successo.";
+    return RedirectToAction("Profilo");
+}
+
+// POST /Auth/CambiaPassword
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult CambiaPassword(string PasswordAttuale, string NuovaPassword, string ConfermaPassword)
+    {
+        var idStr = HttpContext.Session.GetString("userId");
+        if (string.IsNullOrEmpty(idStr))
+            return RedirectToAction("Login");
+
+        int? id = HttpContext.Session.GetInt32("userId");
+
+        if (NuovaPassword != ConfermaPassword)
+        {
+            TempData["Errore"] = "Le password non coincidono.";
+            return RedirectToAction("Profilo");
+        }
+
+        // verifica password attuale direttamente nel DB
+        bool corretta = _gestioneDati.PasswordAttualeCorretta(id, PasswordAttuale);
+        if (!corretta)
+        {
+            TempData["Errore"] = "Password attuale non corretta.";
+            return RedirectToAction("Profilo");
+        }
+
+        _gestioneDati.ModificaPassword(id, NuovaPassword);
+        TempData["Successo"] = "Password aggiornata con successo.";
+        return RedirectToAction("Profilo");
+    }
 }

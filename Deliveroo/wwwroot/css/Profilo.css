@@ -1,0 +1,285 @@
+﻿/* ── PROFILO ───────────────────────────────────────────────── */
+
+/* ── HERO ──────────────────────────────────────────────────── */
+.idx-hero {
+    background: var(--white);
+    padding: 3rem 3.5rem 2.4rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.idx-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--teal-light);
+    color: var(--teal-mid);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 0.85rem;
+}
+
+.idx-tag-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.idx-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1.9rem, 3.2vw, 3rem);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+}
+
+.idx-title strong {
+    font-weight: 600;
+    color: var(--teal-dark);
+}
+
+/* saluto utente (destra) */
+.idx-greeting {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.idx-greeting-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+}
+
+.idx-greeting-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink-mid);
+    letter-spacing: -0.01em;
+}
+
+/* griglia 2 colonne */
+.profilo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+}
+
+/* ── CARD ──────────────────────────────────────────────────── */
+.profilo-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    animation: fadeUp 0.45s ease both;
+}
+
+.profilo-card:nth-child(1) { animation-delay: 0.03s; }
+.profilo-card:nth-child(2) { animation-delay: 0.10s; }
+.profilo-card:nth-child(3) { animation-delay: 0.17s; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.profilo-card:hover {
+    border-color: var(--teal-border);
+    box-shadow: 0 6px 22px rgba(0, 204, 188, 0.08);
+}
+
+/* ── HEADER CARD ───────────────────────────────────────────── */
+.profilo-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.profilo-card__header i {
+    font-size: 1.1rem;
+    color: var(--teal);
+}
+
+.profilo-card__title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* ── AVATAR ROW ────────────────────────────────────────────── */
+.profilo-avatar-row {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1.2rem;
+}
+
+.profilo-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--teal-mid);
+    border: 2px solid var(--teal-border);
+    flex-shrink: 0;
+    text-transform: uppercase;
+}
+
+.profilo-avatar-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink-mid);
+    line-height: 1.2;
+}
+
+.profilo-avatar-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+/* ── CAMPI FORM ────────────────────────────────────────────── */
+.profilo-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 0.95rem;
+}
+
+.profilo-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.profilo-input {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--ink-mid);
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: var(--white);
+    border: 1px solid var(--teal-border);
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profilo-input:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.12);
+}
+
+.profilo-hint {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
+    color: var(--muted);
+}
+
+/* ── BARRA PROGRESSO ───────────────────────────────────────── */
+.profilo-bar {
+    height: 2px;
+    background: var(--border-soft);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: auto;
+    margin-bottom: 0.9rem;
+}
+
+.profilo-bar__fill {
+    height: 100%;
+    width: 70%;
+    background: var(--teal);
+    border-radius: 2px;
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── BOTTONE ───────────────────────────────────────────────── */
+.profilo-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 9px 20px;
+    border-radius: 8px;
+    border: none;
+    background: var(--teal);
+    color: var(--white);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+    align-self: flex-start;
+}
+
+.profilo-btn:hover {
+    background: var(--teal-dark);
+    transform: translateY(-1px);
+}
+
+.profilo-btn:active {
+    transform: translateY(0);
+}
+
+/* ── ALERT ─────────────────────────────────────────────────── */
+.profilo-alert {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    padding: 10px 16px;
+    border-radius: 10px;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 0.3s ease both;
+}
+
+.profilo-alert--success {
+    background: var(--teal-light);
+    color: var(--teal-mid);
+    border: 1px solid var(--teal-border);
+}
+
+.profilo-alert--error {
+    background: #FEF2F2;
+    color: #991B1B;
+    border: 1px solid #FECACA;
+}
+
+/* ── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .profilo-grid { grid-template-columns: 1fr; }
+}
