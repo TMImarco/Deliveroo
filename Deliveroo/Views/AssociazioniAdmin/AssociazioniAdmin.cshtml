@@ -1,4 +1,4 @@
-﻿@model Deliveroo.AdminViewModels.AssociazioniAdminViewModel
+@model Deliveroo.AdminViewModels.AssociazioniAdminViewModel
 @{
     ViewData["Title"] = "Admin - Associazioni";
     ViewData["HideBack"] = true;
@@ -13,7 +13,6 @@
         ? Model.IdArticoloSelezionato.Value
         : primoId;
 
-    // dizionario serializzato per il JS
     var imgMap = Model.ListaArticoliPresi
         .ToDictionary(a => a.IdArticolo, a => a.ImageUrl);
     var imgMapJson = System.Text.Json.JsonSerializer.Serialize(imgMap);
@@ -25,116 +24,149 @@
     <!--Attiva la nav bar-->
 }
 
-<div class="container">
+<div class="adm-page">
 
-    <h1>SCEGLI ASSOCIAZIONIE</h1>
-
-    <form method="post" asp-action="AssociazioniAdmin">
-        <select name="IdArticoloSelezionato"
-                id="idArticolo">
-
-            @foreach (var dic in Model.ListaArticoliENomi)
-            {
-                foreach (var kvp in dic)
-                {
-                    <option value="@kvp.Key"
-                            selected="@(idSelezionato == kvp.Key)">
-                        @kvp.Value
-                    </option>
-                }
-            }
-        </select>
-    </form>
-
-    <div class="grid-container-ass">
-        <!--Colonna 1-->
-        <div class="container">
-            <a id="articoloLink"
-               href="@Url.Action("ModificaArticolo", "ArticoliAdmin")/@idSelezionato">
-                <img id="articoloImg"
-                     src="@imgUrl"
-                     style="cursor:pointer;">
-            </a>
+    <!-- ── HERO HEADER ─────────────────────────────────────── -->
+    <div class="adm-hero">
+        <div class="adm-hero__left">
+            <span class="adm-eyebrow">Pannello Admin</span>
+            <h1 class="adm-title">Gestione <strong>Associazioni</strong></h1>
         </div>
-
-        <!--Colonna 2-->
-        <div class="container">
-            <table id="associazioniTable" class="display">
-                <thead>
-                <tr>
-                    <th>Articolo 2</th>
-                    <th>Nome</th>
-                    <th>Immagine</th>  <!-- ← aggiunta -->
-                    <th>Numero Ordini</th>
-                    <th>Confidence</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach (var o in Model.ListaAssociazioni)
-                {
-                    <tr>
-                        <td>@o.IdArticolo2</td>
-                        <td>
-                            @foreach (var art in Model.ListaArticoliPresi)
+        <div class="adm-hero__right">
+            <form method="post" asp-action="AssociazioniAdmin" id="formSelezione">
+                <div class="adm-field-wrap" style="display:flex; align-items:center; gap:0.6rem;">
+                    <label for="idArticolo" class="adm-label" style="white-space:nowrap; margin:0;">
+                        Articolo
+                    </label>
+                    <select name="IdArticoloSelezionato"
+                            id="idArticolo"
+                            class="adm-select">
+                        @foreach (var dic in Model.ListaArticoliENomi)
+                        {
+                            foreach (var kvp in dic)
                             {
-                                @if (o.IdArticolo2 == art.IdArticolo)
-                                {
-                                    @art.Nome
-                                    ;
-                                }
+                                <option value="@kvp.Key"
+                                        selected="@(idSelezionato == kvp.Key)">
+                                    @kvp.Value
+                                </option>
                             }
-                        </td>
-                        <td>
-                            @if (imgMap.ContainsKey(o.IdArticolo2))
-                            {
-                                <img src="@imgMap[o.IdArticolo2]"
-                                     style="width:60px; height:70px; object-fit:cover;">
-                            }
-                        </td>
-                        <td>@o.NumeroOrdini</td>
-                        <td>@o.Confidence</td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-
-            <form method="post"
-                  asp-action="AggiornaConfidence">
-                <button type="submit"
-                        class="btn btn-primary">
-                    Aggiorna Confidence
-                </button>
+                        }
+                    </select>
+                </div>
             </form>
         </div>
     </div>
 
+    <!-- ── LAYOUT A DUE COLONNE ──────────────────────────────── -->
+    <div class="adm-ass-grid">
 
+        <!-- Colonna 1 — immagine articolo selezionato -->
+        <div class="adm-ass-img-card">
+            <a id="articoloLink"
+               href="@Url.Action("ModificaArticolo", "ArticoliAdmin")/@idSelezionato">
+                <img id="articoloImg"
+                     src="@imgUrl"
+                     alt="Immagine articolo"
+                     class="adm-ass-img" />
+            </a>
+            <div class="adm-ass-img-footer">
+                <span class="adm-badge adm-badge--teal">Articolo selezionato</span>
+            </div>
+        </div>
+
+        <!-- Colonna 2 — tabella associazioni + azione -->
+        <div class="adm-card adm-card--full" style="grid-column: unset;">
+            <div class="adm-card__head">
+                <span class="adm-card__title">Articoli Associati</span>
+                <form method="post" asp-action="AggiornaConfidence">
+                    <button type="submit" class="adm-btn adm-btn--primary adm-btn--sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                             style="flex-shrink:0">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Aggiorna Confidence
+                    </button>
+                </form>
+            </div>
+            <div class="adm-card__body adm-table-wrap">
+                <table id="associazioniTable" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Immagine</th>
+                            <th>Ordini</th>
+                            <th>Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var o in Model.ListaAssociazioni)
+                        {
+                            <tr>
+                                <td>@o.IdArticolo2</td>
+                                <td>
+                                    @foreach (var art in Model.ListaArticoliPresi)
+                                    {
+                                        @if (o.IdArticolo2 == art.IdArticolo)
+                                        {
+                                            <span style="font-weight:500; color:var(--ink-mid);">@art.Nome</span>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @if (imgMap.ContainsKey(o.IdArticolo2))
+                                    {
+                                        <img src="@imgMap[o.IdArticolo2]"
+                                             style="width:48px; height:48px; object-fit:cover; border-radius:8px; border:1px solid var(--border);" />
+                                    }
+                                </td>
+                                <td>
+                                    <span style="font-weight:600; color:var(--teal-dark);">@o.NumeroOrdini</span>
+                                </td>
+                                <td>
+                                    <span class="adm-badge adm-badge--teal">@o.Confidence</span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 @section Scripts
 {
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-    <!--Script per data table + immagine-->
     <script>
         const imgMap = @Html.Raw(imgMapJson);
 
         $(document).ready(function () {
-            $('#associazioniTable').DataTable();
+            $('#associazioniTable').DataTable({
+                language: {
+                    search: "Cerca:",
+                    lengthMenu: "Mostra _MENU_ righe",
+                    info: "Da _START_ a _END_ di _TOTAL_ righe",
+                    paginate: { previous: "‹", next: "›" }
+                }
+            });
 
             $('#idArticolo').on('change', function () {
                 const id = parseInt($(this).val());
                 const url = imgMap[id];
                 if (url) $('#articoloImg').attr('src', url);
-
-                // Aggiorna il link dell'immagine grande
                 $('#articoloLink').attr('href', '@Url.Action("ModificaArticolo", "ArticoliAdmin")/' + id);
-
                 $(this).closest('form').submit();
             });
 
             $('#associazioniTable tbody').on('click', 'tr', function () {
-                var id = $(this).find('td:first').text();
+                var id = $(this).find('td:first').text().trim();
                 window.location.href = '@Url.Action("ModificaArticolo", "ArticoliAdmin")/' + id;
             });
         });
@@ -144,5 +176,5 @@
 @section Styles
 {
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
-    <link rel="stylesheet" href="/cssAdmin/Associazioni.css"/>
+    <link rel="stylesheet" href="/cssAdmin/AdminPanel.css"/>
 }

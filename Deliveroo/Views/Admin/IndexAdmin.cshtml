@@ -1,253 +1,253 @@
-﻿@model Deliveroo.AdminViewModels.IndexAdminViewModel
+@model Deliveroo.AdminViewModels.IndexAdminViewModel
 @{
     ViewData["Title"] = "Admin Dashboard";
     Layout = "_LayoutAdmin";
 }
 
-<div class="grid-container">
-
-    <!--BLOCCO 1 della GRID (in altro a sinistra)-->
-    <!--GRAFICO-->
-    <div class="container">
-        <h4>CATEGORIE PIU' ORDINATE</h4>
-        <canvas id="graficoCategorie"></canvas>
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<div class="adm-hero">
+    <div class="adm-hero__left">
+        <span class="adm-eyebrow">Pannello di controllo</span>
+        <h1 class="adm-title">Dashboard <strong>Admin</strong></h1>
     </div>
-
-    <!--BLOCCO 2 della GRID (in altro a destra)-->
-    <!-- CLASSIFICA ARTICOLI -->
-    <!--DA FARE: modificare che il podio sia a destra e le altre posizioni a sinistra-->
-    <div class="container-fluid">
-        <h4>BEST SELLING</h4>
-
-        <p>Seleziona numero di classificati</p>
-        <form method="post" asp-action="IndexAdmin">
-            <input type="number"
-                   name="numeroTotaleClassificati"
-                   value="@Model.NumeroTotaleClassificati"
-                   min="3"
-                   step="1"
-                   onchange="this.form.submit()"/>
-            @if (Model.NumeroTotaleClassificati < 3 || Model.isMinore)
-            {
-                <small style="color:red;">Il numero minimo di classificati è 3.</small>
-            }
-        </form>
-
-        <div class="ranking-wrapper">
-            @{
-                var lista = Model.ClassificaArticoli.ToList();
-                var medals = new[] { "🥇", "🥈", "🥉" };
-            }
-
-            <!-- PODIO: primi 3 -->
-            @if (lista.Count >= 1)
-            {
-                <div class="podium">
-                    @for (int i = 0; i < Math.Min(3, lista.Count); i++)
-                    {
-                        var a = lista[i];
-                        <div class="podium-card pos-@(i + 1)"
-                             data-id="@a.IdArticolo">
-                            <div class="podium-pos">@(i + 1)</div>
-                            <div class="podium-medal">@medals[i]</div>
-                            <div class="podium-name">@a.Nome</div>
-                            <div class="podium-category">@a.Categoria.Nome</div>
-                            <div class="podium-orders">@a.NumeroOrdini <span>ordini</span></div>
-                            <div class="podium-price">€ @a.Prezzo.ToString("0.00")</div>
-                        </div>
-                    }
-                </div>
-            }
-
-            <!-- LISTA: dal 4° in poi -->
-            @if (lista.Count > 3)
-            {
-                <div class="ranking-list">
-                    @for (int i = 3; i < Math.Min(Model.NumeroTotaleClassificati, lista.Count); i++)
-                    {
-                        var a = lista[i];
-                        <div class="rank-row"
-                             data-id="@a.IdArticolo">
-                            <div class="rank-num">#@(i + 1)</div>
-                            <div class="rank-info">
-                                <span class="rank-name">@a.Nome</span>
-                                <span class="rank-cat">@a.Categoria.Nome</span>
-                            </div>
-                            <div class="rank-price">€ @a.Prezzo.ToString("0.00")</div>
-                            <div class="rank-orders">
-                                <strong>@a.NumeroOrdini</strong>
-                                <small>ordini</small>
-                            </div>
-                        </div>
-                    }
-                </div>
-            }
-        </div>
-    </div>
-
-    <!--BLOCCO 3 della GRID (in basso a sinistra)-->
-    <div class="container">
-        <p>
-            <a asp-controller="CategorieAdmin"
-               asp-action="CategorieAdmin"
-               class="btn btn-primary">
-                ARTICOLI (MODIFICA/ELIMINA)
-            </a>
-        </p>
-
-        <p>
-            <a asp-controller="ArticoliAdmin"
-               asp-action="AggiungiNuovoArticolo"
-               class="btn btn-primary">
-                AGGIUNGI ARTICOLO
-            </a>
-        </p>
-
-        <p>
-            <a asp-controller="AssociazioniAdmin"
-               asp-action="AssociazioniAdmin"
-               class="btn btn-primary">
-                ASSOCIAZIONI D'ACQUISTO
-            </a>
-        </p>
-
-        <p>
-            <a asp-controller="UtentiAdmin"
-               asp-action="GestioneUtentiAdmin"
-               class="btn btn-primary">
-                GESTIONE UTENTI
-            </a>
-        </p>
-    </div>
-
-    <!--BLOCCO 4 della GRID (in basso a destra)-->
-    <!--ORDINI-->
-    <div class="container">
-        <h4>ORDINI</h4>
-        <!--data table per gli ORDINI-->
-        <table id="ordiniTable"
-               class="display">
-            <thead>
-            <tr>
-                <th>ID ordine</th>
-                <th>Nome utente</th>
-                <th>Data di creazione ordine</th>
-                <th>Importo totale</th>
-                <th>Indirizzo di consenga</th>
-                <th>Numero di telefono</th>
-                <th>Username</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var o in Model.Ordini)
-            {
-                <tr>
-                    <td>@o.IdOrdine</td>
-                    <td>@o.NomeCliente</td>
-                    <td>@o.Data.ToString("dd/MM/yyyy — HH:mm")</td>
-                    <td>@o.ImportoTotale</td>
-                    <td>@o.Indirizzo</td>
-                    <td>@o.Telefono</td>
-                    <td>
-                        @foreach (var utente in Model.Utenti)
-                        {
-                            if (o.IdUtente == utente.Id)
-                            {
-                                @utente.Username;
-                            }
-                        }
-                    </td>
-                </tr>
-            }
-            </tbody>
-        </table>
+    <div class="adm-hero__right">
+        <span class="adm-badge adm-badge--teal">Live</span>
     </div>
 </div>
 
+<!-- ── PAGINA ─────────────────────────────────────────────────── -->
+<div class="adm-page">
+    <!-- DASHBOARD GRID -->
+    <div class="adm-dashboard-grid">
+
+        <!-- ① GRAFICO CATEGORIE -->
+        <div class="adm-card">
+            <div class="adm-card__head">
+                <span class="adm-card__title">Categorie più ordinate</span>
+            </div>
+            <div class="adm-card__body" style="display:flex; justify-content:center; align-items:center; min-height:280px;">
+                <canvas id="graficoCategorie" style="max-width:500px; max-height:500px;"></canvas>
+            </div>
+        </div>
+
+        <!-- ② BEST SELLING -->
+        <div class="adm-card">
+            <div class="adm-card__head">
+                <span class="adm-card__title">Best selling</span>
+                <!-- controllo numero classificati inline -->
+                <form method="post" asp-action="IndexAdmin" style="display:inline-flex; align-items:center; gap:.5rem;">
+                    <div class="adm-ranking-ctrl">
+                        <label for="numeroTotaleClassificati">Top</label>
+                        <input type="number"
+                               id="numeroTotaleClassificati"
+                               name="numeroTotaleClassificati"
+                               value="@Model.NumeroTotaleClassificati"
+                               min="3"
+                               step="1"
+                               onchange="this.form.submit()" />
+                    </div>
+                    @if (Model.NumeroTotaleClassificati < 3 || Model.isMinore)
+                    {
+                        <span class="adm-ranking-warn">min 3</span>
+                    }
+                </form>
+            </div>
+            <div class="adm-card__body">
+                <div class="ranking-wrap">
+                    @{
+                        var lista   = Model.ClassificaArticoli.ToList();
+                        var medals  = new[] { "🥇", "🥈", "🥉" };
+                    }
+
+                    <!-- PODIO -->
+                    @if (lista.Count >= 1)
+                    {
+                        <div class="podium">
+                            @for (int i = 0; i < Math.Min(3, lista.Count); i++)
+                            {
+                                var a = lista[i];
+                                <div class="podium-card pos-@(i + 1)" data-id="@a.IdArticolo">
+                                    <div class="podium-pos">@(i + 1)°</div>
+                                    <div class="podium-medal">@medals[i]</div>
+                                    <div class="podium-name">@a.Nome</div>
+                                    <div class="podium-cat">@a.Categoria.Nome</div>
+                                    <div class="podium-orders">@a.NumeroOrdini <span>ordini</span></div>
+                                    <div class="podium-price">€ @a.Prezzo.ToString("0.00")</div>
+                                </div>
+                            }
+                        </div>
+                    }
+
+                    <!-- LISTA -->
+                    @if (lista.Count > 3)
+                    {
+                        <div class="rank-list">
+                            @for (int i = 3; i < Math.Min(Model.NumeroTotaleClassificati, lista.Count); i++)
+                            {
+                                var a = lista[i];
+                                <div class="rank-row" data-id="@a.IdArticolo">
+                                    <div class="arank-num">#@(i + 1)</div>
+                                    <div class="rank-info">
+                                        <span class="rank-name">@a.Nome</span>
+                                        <span class="rank-cat">@a.Categoria.Nome</span>
+                                    </div>
+                                    <div class="rank-price">€ @a.Prezzo.ToString("0.00")</div>
+                                    <div class="rank-orders">
+                                        <strong>@a.NumeroOrdini</strong>
+                                        <small>ordini</small>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- ③ AZIONI RAPIDE -->
+        <div class="adm-card adm-card--full">
+            <div class="adm-card__head">
+                <span class="adm-card__title">Azioni rapide</span>
+            </div>
+            <div class="adm-card__body">
+                <div class="adm-quick-links">
+                    <a class="adm-quick-link"
+                       asp-controller="CategorieAdmin" asp-action="CategorieAdmin">
+                        <span class="adm-quick-link__icon">📦</span>
+                        <span class="adm-quick-link__text">
+                            <span class="adm-quick-link__label">Articoli</span>
+                            <span class="adm-quick-link__desc">Modifica o elimina articoli esistenti</span>
+                        </span>
+                        <span class="adm-quick-link__arrow">›</span>
+                    </a>
+                    <a class="adm-quick-link"
+                       asp-controller="ArticoliAdmin" asp-action="AggiungiNuovoArticolo">
+                        <span class="adm-quick-link__icon">➕</span>
+                        <span class="adm-quick-link__text">
+                            <span class="adm-quick-link__label">Aggiungi articolo</span>
+                            <span class="adm-quick-link__desc">Carica un nuovo prodotto</span>
+                        </span>
+                        <span class="adm-quick-link__arrow">›</span>
+                    </a>
+                    <a class="adm-quick-link"
+                       asp-controller="AssociazioniAdmin" asp-action="AssociazioniAdmin">
+                        <span class="adm-quick-link__icon">🔗</span>
+                        <span class="adm-quick-link__text">
+                            <span class="adm-quick-link__label">Associazioni d'acquisto</span>
+                            <span class="adm-quick-link__desc">Gestisci le confidence tra articoli</span>
+                        </span>
+                        <span class="adm-quick-link__arrow">›</span>
+                    </a>
+                    <a class="adm-quick-link"
+                       asp-controller="UtentiAdmin" asp-action="GestioneUtentiAdmin">
+                        <span class="adm-quick-link__icon">👤</span>
+                        <span class="adm-quick-link__text">
+                            <span class="adm-quick-link__label">Gestione utenti</span>
+                            <span class="adm-quick-link__desc">Visualizza e modifica gli utenti</span>
+                        </span>
+                        <span class="adm-quick-link__arrow">›</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ④ ORDINI (full width) -->
+        <div class="adm-card adm-card--full">
+            <div class="adm-card__head">
+                <span class="adm-card__title">Ordini recenti</span>
+            </div>
+            <div class="adm-card__body">
+                <div class="adm-table-wrap">
+                    <table id="ordiniTable" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome cliente</th>
+                                <th>Data</th>
+                                <th>Importo</th>
+                                <th>Indirizzo</th>
+                                <th>Telefono</th>
+                                <th>Username</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var o in Model.Ordini)
+                            {
+                                <tr>
+                                    <td>@o.IdOrdine</td>
+                                    <td>@o.NomeCliente</td>
+                                    <td>@o.Data.ToString("dd/MM/yyyy — HH:mm")</td>
+                                    <td>€ @o.ImportoTotale.ToString("0.00")</td>
+                                    <td>@o.Indirizzo</td>
+                                    <td>@o.Telefono</td>
+                                    <td>
+                                        @foreach (var u in Model.Utenti)
+                                        {
+                                            if (o.IdUtente == u.Id) { @u.Username; }
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /adm-dashboard-grid -->
+</div><!-- /adm-page -->
+
 
 @section Scripts {
-    <!--SCRIPT per DATA TABLE-->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <!--SCRIPT per i GRAFICI-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!--SCRIPT per la creazione delle DATA TABLE-->
     <script>
         $(document).ready(function () {
             $('#ordiniTable').DataTable();
-
             $('#ordiniTable tbody').on('click', 'tr', function () {
                 var id = $(this).find('td:first').text();
                 window.location.href = '@Url.Action("DettaglioOrdineAdmin", "OrdiniAdmin")/' + id;
             });
         });
 
-        // Click su podio e classifica
-        $('.podium-card, .rank-row').on('click', function () {
-            var id = $(this).data('id');
-            window.location.href = '@Url.Action("ModificaArticolo", "ArticoliAdmin")/' + id;
-        }).css('cursor', 'pointer');
+        document.querySelectorAll('.podium-card, .rank-row').forEach(el => {
+            el.addEventListener('click', () => {
+                const id = el.dataset.id;
+                window.location.href = '@Url.Action("ModificaArticolo", "ArticoliAdmin")/' + id;
+            });
+            el.style.cursor = 'pointer';
+        });
     </script>
 
-    <!--SCRIPT per la creazione del GRAFICO "graficoCategorie"-->
     <script>
-
-        //blocco di codice c# per dividere tutti i dizionari
-        //per poi inserire le key come label e i value come data
-        //mentendo l'ordine
         @{
-            List<String> cslabel = new List<string>();
-            List<int> csdata = new List<int>();
-
+            List<string> cslabel = new();
+            List<int>    csdata  = new();
             foreach (var d in Model.OrdiniTotaliDiOgniCategoria)
-            {
-                cslabel.AddRange(d.Keys);
-                csdata.AddRange(d.Values);
-            }
+            { cslabel.AddRange(d.Keys); csdata.AddRange(d.Values); }
         }
-
-        //serializzazione dei dati perche' la libreria accetta solo json per data e label
         const labels = @Json.Serialize(cslabel);
-        const data = @Json.Serialize(csdata);
-
-        //JSON per i colori
-        const colors = [
-            '#FF6384', // rosa
-            '#36A2EB', // blu
-            '#FFCE56', // giallo
-            '#4BC0C0', // turchese
-            '#9966FF', // viola
-            '#FF9F40', // arancione
-            '#00C851', // verde
-            '#FF4444', // rosso
-            '#33B5E5', // azzurro
-            '#AA66CC'  // lilla
-        ];
+        const data   = @Json.Serialize(csdata);
+        const colors = ['#00CCBC','#36A2EB','#FFCE56','#9966FF','#FF9F40','#00C851','#FF4444','#33B5E5','#AA66CC','#FF6384'];
 
         new Chart(document.getElementById('graficoCategorie'), {
-                type: 'doughnut',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Ordini totali:',
-                        data: data,
-                        backgroundColor: colors,
-                        borderWidth: 2
-                    }]
+            type: 'doughnut',
+            data: {
+                labels,
+                datasets: [{ label: 'Ordini totali', data, backgroundColor: colors, borderWidth: 2 }]
+            },
+            options: {
+                plugins: {
+                    legend: { labels: { font: { family: 'DM Sans', size: 12 }, color: '#3D5552' } }
                 }
             }
-        );
+        });
     </script>
 }
 
 @section Styles {
-    <!--stile sheet per le data tables-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
-
-    <!--importazione font per alcune classi della classifica (per ora tolto)
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap"
-          rel="stylesheet">-->
-
-    <link rel="stylesheet" href="~/cssAdmin/classifica.css"/>
-    <link rel="stylesheet" href="~/cssAdmin/Index.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/cssAdmin/AdminPanel.css" />
+    <link rel="stylesheet" href="~/cssAdmin/Classifica.css" />
 }

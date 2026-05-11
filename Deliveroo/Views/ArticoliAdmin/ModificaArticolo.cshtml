@@ -1,11 +1,11 @@
-﻿@using System.Globalization
+@using System.Globalization
 @using Deliveroo.Tabelle
 @{
-    ViewData["Title"] = "Admin - Modifica Articoli";
+    ViewData["Title"] = "Admin - Modifica Articolo";
     ViewData["HideSearchUser"] = true;
     Layout = "_LayoutAdmin";
 
-    Articolo art = Model.ArticoloScelto;
+    Articolo art         = Model.ArticoloScelto;
     List<Categoria> categorie = Model.ListaCategorie;
 
     var currentCategoria = ViewContext.RouteData.Values["categoria"]?.ToString()
@@ -13,276 +13,235 @@
 }
 
 @section NavbarLinks {
-
-    <!--TAB ITEM-->
+    
     @foreach (var cat in categorie)
     {
         var isActive = currentCategoria == cat.Nome ? "active" : "";
         <a class="art-tab @isActive"
            asp-controller="ArticoliAdmin"
            asp-action="ArticoliAdmin"
-           asp-route-idCategoria="@cat.IdCategoria">
-            @cat.Nome
-        </a>
+           asp-route-idCategoria="@cat.IdCategoria">@cat.Nome</a>
     }
 }
 
-<h1>MODIFICA L'ARTICOLO</h1>
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<div class="adm-hero">
+    <div class="adm-hero__left">
+        <span class="adm-eyebrow">Articoli</span>
+        <h1 class="adm-title">Modifica <strong>@art.Nome</strong></h1>
+    </div>
+    <div class="adm-hero__right">
+        <!-- Elimina articolo -->
+        <a href="@Url.Action("EliminaArticolo", new { id = art.IdArticolo })"
+           class="adm-btn adm-btn--danger confirm-action"
+           data-msg="Eliminare @art.Nome?">
+            🗑 Elimina
+        </a>
+    </div>
+</div>
 
-<div class="macro-section">
-    <div class="container">
-        <div class="page-split">
+<!-- ── PAGINA ─────────────────────────────────────────────────── -->
+<div class="adm-form-page">
+    <div class="adm-form-grid">
 
-            <!-- SINISTRA -->
-            <div class="left-col">
+        <!-- COLONNA SINISTRA -->
+        <div>
 
-                <!-- NAVIGAZIONE PREV / NEXT 
-                Piuttosto di ritornare sempre alla pagina di tutti gli articoli, ci sono i bottoni avanti e indietro per navigare facilmente -->
-                <div class="article-nav">
-                    @if (ViewBag.IdPrev != null)
-                    {
-                        <a class="nav-arrow prev" asp-action="ModificaArticolo"
-                           asp-route-id="@ViewBag.IdPrev">&#8592;</a>
-                    }
-                    else
-                    {
-                        <span class="nav-arrow prev disabled">&#8592;</span>
-                    }
+            <!-- FRECCE PREV / NEXT -->
+            <div class="article-nav">
+                @if (ViewBag.IdPrev != null)
+                {
+                    <a class="nav-arrow prev" asp-action="ModificaArticolo" asp-route-id="@ViewBag.IdPrev" title="Articolo precedente">&#8592;</a>
+                }
+                else
+                {
+                    <span class="nav-arrow prev disabled">&#8592;</span>
+                }
+                @if (ViewBag.IdNext != null)
+                {
+                    <a class="nav-arrow next" asp-action="ModificaArticolo" asp-route-id="@ViewBag.IdNext" title="Articolo successivo">&#8594;</a>
+                }
+                else
+                {
+                    <span class="nav-arrow next disabled">&#8594;</span>
+                }
+            </div>
 
-                    @if (ViewBag.IdNext != null)
-                    {
-                        <a class="nav-arrow next" asp-action="ModificaArticolo"
-                           asp-route-id="@ViewBag.IdNext">&#8594;</a>
-                    }
-                    else
-                    {
-                        <span class="nav-arrow next disabled">&#8594;</span>
-                    }
-                </div>
+            <form id="ModificaArticoloFormUpload"
+                  method="post"
+                  asp-action="ModificaArticolo"
+                  asp-route-id="@art.IdArticolo"
+                  enctype="multipart/form-data">
 
-                <form id="ModificaArticoloFormUpload"
-                      method="post"
-                      asp-action="ModificaArticolo"
-                      asp-route-id="@art.IdArticolo"
-                      enctype="multipart/form-data">
-                    <div class="article-split">
+                <div class="adm-article-split">
 
-                        <!--Riquadro a sinistra-->
-                        <div class="article-left">
+                    <!-- ── COLONNA IMMAGINE ──────────────────── -->
+                    <div class="adm-article-img-col">
 
-                            <!--Modifica immagine-->
-                            <div class="d-flex align-items-center gap-2">
-                                <input type="file"
-                                       name="ImageUrl"
-                                       id="inputImage"/>
-                                <button type="button"
-                                        class="btn btn-primary"
-                                        id="btnResetImage"
-                                        disabled>
-                                    RIPRISTINA
+                        <div class="adm-file-wrap">
+                            <span class="adm-file-label">Sostituisci immagine</span>
+                            <div class="adm-file-input-row">
+                                <input type="file" name="ImageUrl" id="inputImage" class="adm-file" accept="image/*" />
+                                <button type="button" class="adm-btn adm-btn--secondary adm-btn--sm" id="btnResetImage" disabled>
+                                    Ripristina
                                 </button>
                             </div>
+                        </div>
 
-                            <!-- Bottone per aprire la galleria -->
-                            <button type="button" id="btnSfogliaCloud" class="btn btn-secondary">
-                                📂 SCEGLI DA CLOUDINARY
-                            </button>
+                        <button type="button" id="btnSfogliaCloud" class="adm-btn adm-btn--secondary adm-btn--sm">
+                            📂 Scegli da Cloudinary
+                        </button>
 
-                            <!-- Hidden input per passare l'url scelto al backend -->
-                            <input type="hidden" name="CloudinaryImageUrl" id="hiddenImageUrl"/>
+                        <input type="hidden" name="CloudinaryImageUrl" id="hiddenImageUrl" />
 
-                            <!-- MODALE GALLERIA -->
-                            <div id="cloudModal" style="display:none">
-                                <div id="cloudModalBox">
+                        <img src="@art.ImageUrl"
+                             id="previewImage"
+                             alt="Immagine articolo"
+                             class="adm-article-preview visible" />
 
-                                    <div id="cloudModalHeader">
-                                        <span>Scegli un'immagine</span>
-                                        <button type="button" id="btnChiudiModal">✕</button>
-                                    </div>
+                        <input type="hidden" name="ResetImage" id="ResetImage" value="false" />
+                    </div>
 
-                                    <!-- Griglia immagini -->
-                                    <div id="cloudGallery">
-                                        <p>Caricamento...</p>
-                                    </div>
+                    <!-- ── COLONNA CAMPI ─────────────────────── -->
+                    <div class="adm-article-fields-col">
+                        <div class="adm-article-fields-inner">
 
+                            <!-- Nome -->
+                            <div class="adm-field-group">
+                                <label class="adm-field-label">Nome</label>
+                                <div class="adm-field-edit">
+                                    <input type="text" value="@art.Nome" disabled id="inputNome" class="adm-input" />
+                                    <input type="hidden" name="Nome" id="hiddenNome" value="@art.Nome" />
+                                    <button type="button" class="adm-edit-btn" data-target="inputNome" data-type="text" title="Modifica">✏️</button>
                                 </div>
                             </div>
 
-                            <img src="@art.ImageUrl"
-                                 id="previewImage"
-                                 alt="Immagine articolo"/>
-
-                            <!-- flag per il backend -->
-                            <input type="hidden"
-                                   name="ResetImage"
-                                   id="ResetImage"
-                                   value="false"/>
-                        </div>
-
-                        <!--Riquadro a destra-->
-                        <div class="article-right">
-
-                            <div class="article-right-content">
-
-
-                                <!--Modifica nome-->
-                                <div class="field-edit">
-                                    <!-- visibile ma disabled: non invia nulla -->
-                                    <input type="text"
-                                           value="@art.Nome"
-                                           disabled
-                                           id="inputNome"/>
-                                    <!-- valore reale inviato -->
-                                    <input type="hidden"
-                                           name="Nome"
-                                           id="hiddenNome"
-                                           value="@art.Nome"/>
-                                    <button type="button"
-                                            class="edit-btn"
-                                            data-target="inputNome"
-                                            data-type="text">
-                                        ✏️
-                                    </button>
+                            <!-- Descrizione -->
+                            <div class="adm-field-group">
+                                <label class="adm-field-label">Descrizione</label>
+                                <div class="adm-field-edit">
+                                    <textarea disabled id="txaModificaDescrizione" class="adm-textarea">@art.Descrizione</textarea>
+                                    <input type="hidden" name="Descrizione" id="hiddenDescrizione" value="@art.Descrizione" />
+                                    <button type="button" class="adm-edit-btn" data-target="txaModificaDescrizione" data-type="textarea" title="Modifica">✏️</button>
                                 </div>
+                            </div>
 
-                                <!--Modifica descrizione-->
-                                <div class="field-edit">
-                                    <!-- visibile ma disabled: non invia nulla -->
-                                    <textarea disabled
-                                              id="txaModificaDescrizione"
-                                              style="width:200px; overflow:hidden; resize:none;">@art.Descrizione</textarea>
-                                    <!-- valore reale inviato -->
-                                    <input type="hidden"
-                                           name="Descrizione"
-                                           id="hiddenDescrizione"
-                                           value="@art.Descrizione"/>
-                                    <button type="button"
-                                            class="edit-btn"
-                                            data-target="txaModificaDescrizione"
-                                            data-type="textarea">
-                                        ✏️
-                                    </button>
+                            <div class="adm-divider"></div>
+
+                            <!-- Prezzo -->
+                            <div class="adm-field-group">
+                                <label class="adm-field-label">Prezzo (€)</label>
+                                <div class="adm-field-edit">
+                                    <input type="text" value="@art.Prezzo.ToString(CultureInfo.CurrentCulture)" disabled id="inputPrezzo" class="adm-input" inputmode="decimal" />
+                                    <input type="hidden" name="Prezzo" id="hiddenPrezzo" value="@art.Prezzo.ToString(CultureInfo.CurrentCulture)" />
+                                    <button type="button" class="adm-edit-btn" data-target="inputPrezzo" data-type="text" title="Modifica">✏️</button>
                                 </div>
+                            </div>
 
-                                <div class="article-divider"></div>
+                            <div class="adm-divider"></div>
 
-                                <!--Input prezzo-->
-                                <div class="field-edit">
-                                    <!-- visibile ma disabled: non invia nulla -->
-                                    <input type="text"
-                                           value="@art.Prezzo.ToString(CultureInfo.CurrentCulture)"
-                                           disabled
-                                           id="inputPrezzo"
-                                           inputmode="decimal"/>
-                                    <!-- valore reale inviato -->
-                                    <input type="hidden"
-                                           name="Prezzo"
-                                           id="hiddenPrezzo"
-                                           value="@art.Prezzo.ToString(CultureInfo.CurrentCulture)"/>
-                                    <button type="button"
-                                            class="edit-btn"
-                                            data-target="inputPrezzo"
-                                            data-type="text">
-                                        ✏️
-                                    </button>
-                                </div>
-
-                                <div class="article-divider"></div>
-
-                                <!--Input categoria-->
-                                <div class="field-edit">
-                                    <select id="selectCategoria" disabled>
+                            <!-- Categoria -->
+                            <div class="adm-field-group">
+                                <label class="adm-field-label">Categoria</label>
+                                <div class="adm-field-edit">
+                                    <select id="selectCategoria" class="adm-select" disabled>
                                         @foreach (var c in categorie)
                                         {
-                                            var isSelected = c.IdCategoria == art.Categoria.IdCategoria;
-                                            <option value="@c.IdCategoria" selected="@(isSelected ? "selected" : "")">
+                                            <option value="@c.IdCategoria" selected="@(c.IdCategoria == art.Categoria.IdCategoria ? "selected" : null)">
                                                 @c.Nome
                                             </option>
                                         }
                                     </select>
-                                    <!-- valore reale inviato -->
-                                    <input type="hidden" name="IdCategoria" value="@art.Categoria.IdCategoria"
-                                           id="hiddenCategoria"/>
-                                    <button type="button"
-                                            class="edit-btn"
-                                            data-target="selectCategoria"
-                                            data-type="select">
-                                        ✏️
-                                    </button>
+                                    <input type="hidden" name="IdCategoria" id="hiddenCategoria" value="@art.Categoria.IdCategoria" />
+                                    <button type="button" class="adm-edit-btn" data-target="selectCategoria" data-type="select" title="Modifica">✏️</button>
                                 </div>
-
                             </div>
-                            <!--Pulsante salva modifiche finale-->
-                            <input type="submit"
-                                   value="SALVA MODIFICHE"
-                                   class="add-btn"/>
+
                         </div>
+
+                        <input type="submit" value="Salva modifiche" class="adm-submit-btn" />
                     </div>
-                </form>
-            </div>
 
-            <!--A destra dell'articolo-->
-            <div class="right-col">
+                </div>
+            </form>
+        </div>
 
-                <!--Pulsante elimina articolo-->
-                <a href="@Url.Action("EliminaArticolo", new { id = art.IdArticolo })"
-                   class="btn btn-primary confirm-action"
-                   data-msg="Eliminare @art.Nome?">ELIMINA</a>
+        <!-- COLONNA DESTRA: info articolo -->
+        <div class="adm-side-col">
+            <div class="adm-side-card">
+                <div class="adm-card__head">
+                    <span class="adm-card__title">Dettagli</span>
+                </div>
+                <div class="adm-side-card__body">
+                    <div class="adm-info-row">
+                        <span class="adm-info-label">ID</span>
+                        <span class="adm-info-value">#@art.IdArticolo</span>
+                    </div>
+                </div>
             </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- LOADING OVERLAY -->
+<div id="ModificaArticoloLoadingOverlay" class="adm-loading-overlay">
+    <div class="adm-spinner"></div>
+    <p>Caricamento in corso…</p>
+</div>
+
+<!-- MODALE CLOUDINARY -->
+<div id="cloudModal" class="adm-cloud-modal" style="display:none">
+    <div class="adm-cloud-modal-box">
+        <div class="adm-cloud-modal-head">
+            <span>Scegli un'immagine da Cloudinary</span>
+            <button type="button" id="btnChiudiModal" class="adm-btn adm-btn--secondary adm-btn--sm">✕</button>
+        </div>
+        <div id="cloudGallery" class="adm-cloud-gallery">
+            <p style="color:var(--muted); font-size:.82rem;">Caricamento…</p>
         </div>
     </div>
 </div>
 
-<!--Overlay per caricamento-->
-<div id="ModificaArticoloLoadingOverlay" class="overlay">
-    <div class="spinner"></div>
-    <p>Caricamento in corso...</p>
-</div>
-
-<!-- POP-UP per la conferma di ELIMINAZIONE -->
-<div id="confirm-modal" class="modal-overlay" style="display:none">
-    <div class="modal-box">
+<!-- MODALE CONFERMA ELIMINA -->
+<div id="confirm-modal" class="adm-modal-overlay" style="display:none">
+    <div class="adm-modal-box">
         <p id="modal-msg"></p>
-        <div class="modal-btns">
-            <button id="modal-cancel" class="modal-btn cancel">Annulla</button>
-            <button id="modal-confirm" class="modal-btn confirm">Conferma</button>
+        <div class="adm-modal-btns">
+            <button id="modal-cancel"  class="adm-btn adm-btn--secondary">Annulla</button>
+            <button id="modal-confirm" class="adm-btn adm-btn--danger">Elimina</button>
         </div>
     </div>
 </div>
 
 @section Styles {
+    <link rel="stylesheet" href="~/cssAdmin/AdminPanel.css" />
     <link rel="stylesheet" href="/cssAdmin/ModificaArticolo.css"/>
     <link rel="stylesheet" href="/css/site.css"/>
 }
 
-@section Scripts
-{
-    <!--Script per la overlay del caricamento-->
+@section Scripts {
     <script>
-        document.getElementById("ModificaArticoloFormUpload").addEventListener("submit", function () {
+        // Loading overlay
+        document.getElementById("ModificaArticoloFormUpload").addEventListener("submit", () => {
             document.getElementById("ModificaArticoloLoadingOverlay").style.display = "flex";
         });
     </script>
 
-    <!--script per adattare la larghezza della <textarea> della descrizione-->
     <script>
+        // Textarea autoresize
         const ta = document.getElementById("txaModificaDescrizione");
         ta.style.height = ta.scrollHeight + "px";
-        // l'evento "input" è già gestito dallo script di sincronizzazione,
-        // qui agganciamo solo il resize automatico
-        ta.addEventListener("input", () => {
-            ta.style.height = "auto";
-            ta.style.height = ta.scrollHeight + "px";
-        });
+        ta.addEventListener("input", () => { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + "px"; });
     </script>
 
-    <!--Script per il pop up quando ELIMINI l'articolo-->
     <script>
+        // Conferma elimina
         document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('confirm-modal');
             const modalMsg = document.getElementById('modal-msg');
             const btnConfirm = document.getElementById('modal-confirm');
-            const btnCancel = document.getElementById('modal-cancel');
+            const btnCancel  = document.getElementById('modal-cancel');
             let pendingUrl = null;
 
             document.querySelectorAll('.confirm-action').forEach(el => {
@@ -294,170 +253,104 @@
                 });
             });
 
-            btnConfirm.addEventListener('click', () => {
-                if (pendingUrl) window.location.href = pendingUrl;
-            });
-
-            btnCancel.addEventListener('click', () => {
-                modal.style.display = 'none';
-                pendingUrl = null;
-            });
-
-            modal.addEventListener('click', e => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                    pendingUrl = null;
-                }
-            });
+            btnConfirm.addEventListener('click', () => { if (pendingUrl) window.location.href = pendingUrl; });
+            btnCancel.addEventListener('click',  () => { modal.style.display = 'none'; pendingUrl = null; });
+            modal.addEventListener('click', e => { if (e.target === modal) { modal.style.display = 'none'; pendingUrl = null; } });
         });
     </script>
 
-    <!--Script per abilitare la modifica degli input-->
     <script>
-        document.querySelectorAll('.edit-btn').forEach(btn => {
+        // Abilita edit
+        document.querySelectorAll('.adm-edit-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                const targetId = btn.getAttribute('data-target');
-                const el = document.getElementById(targetId);
-
-                // tutti gli elementi visibili ora sono disabled, non readonly
+                const el = document.getElementById(btn.getAttribute('data-target'));
                 el.disabled = false;
-
                 el.focus();
                 el.classList.add('active-edit');
             });
         });
     </script>
 
-    <!--Script per sincronizzare inputNome → hiddenNome-->
     <script>
-        const inputNome = document.getElementById("inputNome");
-        const hiddenNome = document.getElementById("hiddenNome");
-        if (inputNome) {
-            inputNome.addEventListener("input", () => {
-                hiddenNome.value = inputNome.value;
-            });
-        }
-    </script>
+        // Sync inputs → hidden
+        const syncPairs = [
+            ['inputNome',             'hiddenNome'],
+            ['txaModificaDescrizione','hiddenDescrizione'],
+        ];
+        syncPairs.forEach(([srcId, dstId]) => {
+            const src = document.getElementById(srcId);
+            const dst = document.getElementById(dstId);
+            if (src) src.addEventListener('input', () => dst.value = src.value);
+        });
 
-    <!--Script per sincronizzare txaModificaDescrizione → hiddenDescrizione-->
-    <script>
-        const txaDescrizione = document.getElementById("txaModificaDescrizione");
-        const hiddenDescrizione = document.getElementById("hiddenDescrizione");
-        if (txaDescrizione) {
-            txaDescrizione.addEventListener("input", () => {
-                hiddenDescrizione.value = txaDescrizione.value;
-            });
-        }
-    </script>
-
-    <!--Script per sincronizzare inputPrezzo → hiddenPrezzo (normalizza la virgola in punto)-->
-    <script>
         const inputPrezzo = document.getElementById("inputPrezzo");
         const hiddenPrezzo = document.getElementById("hiddenPrezzo");
-        if (inputPrezzo) {
-            inputPrezzo.addEventListener("input", () => {
-                hiddenPrezzo.value = inputPrezzo.value.replace(",", ".");
-            });
-        }
-    </script>
+        if (inputPrezzo) inputPrezzo.addEventListener("input", () => hiddenPrezzo.value = inputPrezzo.value.replace(",", "."));
 
-    <!--Script per la gestione del select idCategoria-->
-    <script>
         const select = document.getElementById("selectCategoria");
         const hidden = document.getElementById("hiddenCategoria");
-
-        if (select) {
-            select.addEventListener("change", () => {
-                hidden.value = select.value;
-            });
-        }
+        if (select) select.addEventListener("change", () => hidden.value = select.value);
     </script>
 
-    <!--Script per preview immagine caricata e ripristina immagine (da immagine caricata lo ripristina a immagine già nel db-->
     <script>
-        const input = document.getElementById("inputImage");
-        const preview = document.getElementById("previewImage");
-        const resetBtn = document.getElementById("btnResetImage");
-        const resetFlag = document.getElementById("ResetImage");
-
-        const originalImage = preview.src;
-
-        // Disabilitato di default
-        resetBtn.disabled = true;
+        // Preview immagine + ripristina
+        const input      = document.getElementById("inputImage");
+        const preview    = document.getElementById("previewImage");
+        const resetBtn   = document.getElementById("btnResetImage");
+        const resetFlag  = document.getElementById("ResetImage");
+        const originalSrc = preview.src;
 
         input.addEventListener("change", function () {
             const file = this.files[0];
-
             if (file) {
                 preview.src = URL.createObjectURL(file);
+                preview.classList.add("visible");
                 resetFlag.value = "false";
-                resetBtn.disabled = false; // ← abilita il bottone
+                resetBtn.disabled = false;
             }
-
-
         });
 
-        resetBtn.addEventListener("click", function () {
-            preview.src = originalImage;
-            input.value = "";
+        resetBtn.addEventListener("click", () => {
+            preview.src = originalSrc;
+            input.value  = "";
             resetFlag.value = "true";
-            resetBtn.disabled = true; // ← torna disabilitato dopo il reset
+            resetBtn.disabled = true;
         });
     </script>
 
     <script>
-        const btnSfogliaCloud = document.getElementById("btnSfogliaCloud");
-        const cloudModal = document.getElementById("cloudModal");
-        const btnChiudiModal = document.getElementById("btnChiudiModal");
-        const cloudGallery = document.getElementById("cloudGallery");
-        const hiddenImageUrl = document.getElementById("hiddenImageUrl");
+        // Galleria Cloudinary
+        const btnSfogliaCloud  = document.getElementById("btnSfogliaCloud");
+        const cloudModal       = document.getElementById("cloudModal");
+        const btnChiudiModal   = document.getElementById("btnChiudiModal");
+        const cloudGallery     = document.getElementById("cloudGallery");
+        const hiddenImageUrl   = document.getElementById("hiddenImageUrl");
 
-        // Apri il modale e carica le immagini
         btnSfogliaCloud.addEventListener("click", async () => {
             cloudModal.style.display = "flex";
-            cloudGallery.innerHTML = "<p>Caricamento...</p>";
-
+            cloudGallery.innerHTML   = "<p style='color:var(--muted);font-size:.82rem;grid-column:1/-1;'>Caricamento…</p>";
             try {
-                const response = await fetch("/ArticoliAdmin/GetImmaginiCloud");  // ✅ CORRETTO
-                const immagini = await response.json();
-
-                cloudGallery.innerHTML = ""; // pulisci
-
+                const res      = await fetch("/ArticoliAdmin/GetImmaginiCloud");
+                const immagini = await res.json();
+                cloudGallery.innerHTML = "";
                 immagini.forEach(img => {
                     const el = document.createElement("img");
-                    el.src = img.thumbUrl;   // ← thumbnail leggero per la griglia
-                    el.alt = img.publicId;
+                    el.src   = img.thumbUrl;
+                    el.alt   = img.publicId;
                     el.classList.add("cloud-thumb");
-
                     el.addEventListener("click", () => {
-                        preview.src = img.url;          // ← originale per il preview
-                        hiddenImageUrl.value = img.url; // ← originale salvato nel DB
-                        resetFlag.value = "false";
-                        resetBtn.disabled = false;
+                        preview.src            = img.url;
+                        hiddenImageUrl.value   = img.url;
+                        resetFlag.value        = "false";
+                        resetBtn.disabled      = false;
                         cloudModal.style.display = "none";
                     });
-
                     cloudGallery.appendChild(el);
                 });
-
-            } catch (err) {
-                cloudGallery.innerHTML = "<p>Errore nel caricamento.</p>";
-                console.error(err);
-            }
+            } catch { cloudGallery.innerHTML = "<p style='color:var(--danger);'>Errore nel caricamento.</p>"; }
         });
 
-        // Chiudi il modale
-        btnChiudiModal.addEventListener("click", () => {
-            cloudModal.style.display = "none";
-        });
-
-        // Chiudi cliccando fuori
-        cloudModal.addEventListener("click", (e) => {
-            if (e.target === cloudModal) {
-                cloudModal.style.display = "none";
-            }
-
-
-        });
+        btnChiudiModal.addEventListener("click", () => cloudModal.style.display = "none");
+        cloudModal.addEventListener("click", e => { if (e.target === cloudModal) cloudModal.style.display = "none"; });
     </script>
 }

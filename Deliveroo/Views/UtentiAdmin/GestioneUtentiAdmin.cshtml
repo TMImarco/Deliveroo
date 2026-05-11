@@ -1,43 +1,60 @@
+@using Deliveroo.Tabelle
 @{
     ViewData["Title"] = "Admin - Gestione Utenti";
     ViewData["HideSearchUser"] = true;
     Layout = "_LayoutAdmin";
 }
 
-@section NavbarLinks
-{
-    <!--Attiva la nav bar-->
-}
+@section NavbarLinks { <!--Attiva la nav bar--> }
 
-<div class="container">
-    <table id="utentiTable"
-           class="display">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nome utente</th>
-            <th>Username</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var utente in Model)
-        {
-            <tr>
-                <td>@utente.Id</td>
-                <td>@utente.Nome</td>
-                <td>@utente.Username</td>
-            </tr>
-        }
-        </tbody>
-    </table>
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<div class="adm-hero">
+    <div class="adm-hero__left">
+        <span class="adm-eyebrow">Utenti</span>
+        <h1 class="adm-title">Gestione <strong>utenti</strong></h1>
+    </div>
+    <span class="adm-badge adm-badge--muted">@Model.NumeroIscritti iscritti</span>
 </div>
 
-@section Scripts {
-    <!--SCRIPT per DATA TABLE-->
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<!-- ── PAGINA ─────────────────────────────────────────────────── -->
+<div class="adm-page">
+    <div class="adm-card">
+        <div class="adm-card__head">
+            <span class="adm-card__title">Tutti gli utenti</span>
+        </div>
+        <div class="adm-card__body">
+            <div class="adm-table-wrap">
+                <table id="utentiTable" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var utente in Model.Utenti)
+                        {
+                            <tr>
+                                <td>@utente.Id</td>
+                                <td>@utente.Nome</td>
+                                <td>@utente.Username</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>  
 
-    <!--SCRIPT per la creazione delle DATA TABLE-->
+@section Styles {
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/cssAdmin/AdminPanel.css" />
+}
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#utentiTable').DataTable();
@@ -48,9 +65,4 @@
             window.location.href = '@Url.Action("DettaglioUtenteAdmin", "UtentiAdmin")/' + id;
         });
     </script>
-}
-
-@section Styles {
-    <!--stile sheet per le data tables-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
 }

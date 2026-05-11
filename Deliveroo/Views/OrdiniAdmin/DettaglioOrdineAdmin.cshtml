@@ -5,85 +5,109 @@
     ViewData["HideSearchUser"] = true;
 }
 
-@section NavbarLinks
-{
-    <!--Attiva la nav bar-->
-}
+@section NavbarLinks { <!--Attiva la nav bar--> }
 
+<!-- ── HERO ──────────────────────────────────────────────────── -->
 
-<!--Colonna 1-->
-<div class="container">
-    <!--METRIC CARDS:-->
-    <div class="grid-top">
-        <div class="metric">
-            <p class="metric-label">Ordine</p>
-            <p class="metric-value">#@Model.Ordine.IdOrdine</p>
-        </div>
-        <div class="metric">
-            <p class="metric-label">Importo totale</p>
-            <p class="metric-value">€ @Model.Ordine.ImportoTotale.ToString("0.00")</p>
-        </div>
-        <div class="metric">
-            <p class="metric-label">Data ordine</p>
-            <p class="metric-value metric-value--sm">@Model.Ordine.Data.ToString("dd/MM/yyyy — HH:mm")</p>
-        </div>
+<div class="adm-hero">
+    <div class="adm-hero__left">
+        <span class="adm-eyebrow">Ordini</span>
+        <h1 class="adm-title">Ordine <strong>#@Model.Ordine.IdOrdine</strong></h1>
     </div>
+</div>
 
-    <!--CARD INFO CLIENTE-->
-    <div class="card">
-        <p class="card-title">Informazioni utente</p>
-        <div class="info-row">
-            <span class="info-label">ID</span>
-            <span class="info-value"># @Model.Utente.Id</span>
-        </div>
-        <div class="info-row">
-            <span class="info-label">Nome</span>
-            <span class="info-value">@Model.Ordine.NomeCliente</span>
-        </div>
-        <div class="info-row">
-            <span class="info-label">Telefono</span>
-            <span class="info-value">@Model.Ordine.Telefono</span>
-        </div>
-        <div class="info-row">
-            <span class="info-label">Indirizzo</span>
-            <span class="info-value">@Model.Ordine.Indirizzo</span>
-        </div>
-        <a class="btn btn-primary"
-           asp-controller="UtentiAdmin"
-           asp-action="DettaglioUtenteAdmin"
-           asp-route-id="@Model.Utente.Id">
-            DETTAGLIO UTENTE
-        </a>
-    </div>
 
-    <!--CARD ARTICOLI-->
-    <div class="card">
-        <p class="card-title">Articoli ordinati</p>
+<!-- ── PAGINA ─────────────────────────────────────────────────── -->
+<div class="adm-detail-page">
 
-        <div class="food-header">
-            <span class="food-name">Articolo</span>
-            <span class="food-qty">Qtà</span>
-            <span class="food-price">Prezzo unit.</span>
-            <span class="food-sub">Subtotale</span>
-        </div>
-
-        @foreach (var r in Model.Righe)
-        {
-            <div class="food-row">
-                <span class="food-name">@r.NomeArticolo</span>
-                <span class="food-qty">× @r.Quantita</span>
-                <span class="food-price">€ @((r.Prezzo / r.Quantita).ToString("0.00"))</span>
-                <span class="food-sub">€ @r.Prezzo.ToString("0.00")</span>
+    <div class="container">
+        <!-- METRICS -->
+        <div class="adm-metrics-row">
+            <div class="adm-metric">
+                <span class="adm-metric__label">Ordine</span>
+                <span class="adm-metric__value">#@Model.Ordine.IdOrdine</span>
             </div>
-        }
+            <div class="adm-metric">
+                <span class="adm-metric__label">Importo totale</span>
+                <span class="adm-metric__value">€ @Model.Ordine.ImportoTotale.ToString("0.00")</span>
+            </div>
+            <div class="adm-metric">
+                <span class="adm-metric__label">Data ordine</span>
+                <span
+                    class="adm-metric__value adm-metric__value--sm">@Model.Ordine.Data.ToString("dd/MM/yyyy — HH:mm")</span>
+            </div>
+        </div>
 
-        <div class="totale-row">
-            <span class="totale-label">Totale ordine</span>
-            <span class="totale-value">€ @Model.Ordine.ImportoTotale.ToString("0.00")</span>
+        <div class="adm-detail-grid">
+
+            <!-- CARD CLIENTE -->
+            <div class="adm-card">
+                <div class="adm-card__head">
+                    <span class="adm-card__title">Informazioni cliente</span>
+                    <a class="adm-btn adm-btn--secondary adm-btn--sm"
+                       asp-controller="UtentiAdmin"
+                       asp-action="DettaglioUtenteAdmin"
+                       asp-route-id="@Model.Utente.Id">
+                        Profilo utente ›
+                    </a>
+                </div>
+                <div class="adm-card__body">
+                    <div class="adm-info-row">
+                        <span class="adm-info-label">ID</span>
+                        <span class="adm-info-value">#@Model.Utente.Id</span>
+                    </div>
+                    <div class="adm-info-row">
+                        <span class="adm-info-label">Nome</span>
+                        <span class="adm-info-value">@Model.Ordine.NomeCliente</span>
+                    </div>
+                    <div class="adm-info-row">
+                        <span class="adm-info-label">Telefono</span>
+                        <span class="adm-info-value">@Model.Ordine.Telefono</span>
+                    </div>
+                    <div class="adm-info-row">
+                        <span class="adm-info-label">Indirizzo</span>
+                        <span class="adm-info-value">@Model.Ordine.Indirizzo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD ARTICOLI -->
+            <div class="adm-card">
+                <div class="adm-card__head">
+                    <span class="adm-card__title">Articoli ordinati</span>
+                    <span class="adm-badge adm-badge--teal">@Model.Righe.Count() articoli</span>
+                </div>
+                <div class="adm-card__body">
+                    <div class="adm-food-header">
+                        <span class="adm-food-name">Articolo</span>
+                        <span class="adm-food-qty">Qtà</span>
+                        <span class="adm-food-price">Prezzo unit.</span>
+                        <span class="adm-food-sub">Subtotale</span>
+                    </div>
+
+                    @foreach (var r in Model.Righe)
+                    {
+                        <div class="adm-food-row">
+                            <span class="adm-food-name">@r.NomeArticolo</span>
+                            <span class="adm-food-qty">× @r.Quantita</span>
+                            <span class="adm-food-price">€ @((r.Prezzo / r.Quantita).ToString("0.00"))</span>
+                            <span class="adm-food-sub">€ @r.Prezzo.ToString("0.00")</span>
+                        </div>
+                    }
+
+                    <div class="adm-totale-row">
+                        <span class="adm-totale-label">Totale ordine</span>
+                        <span class="adm-totale-value">€ @Model.Ordine.ImportoTotale.ToString("0.00")</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 
+
 @section Styles {
-    <link rel="stylesheet" href="/cssAdmin/DettaglioOrdine.css"/>
+    <link rel="stylesheet" href="~/cssAdmin/AdminPanel.css"/>
+    <link rel="stylesheet" href="~/cssAdmin/DettaglioOrdine.css"/>
 }

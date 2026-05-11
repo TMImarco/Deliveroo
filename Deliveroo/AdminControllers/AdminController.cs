@@ -23,7 +23,7 @@ public class AdminController : Controller
 			Articoli = _gestioneDati.GetTuttiArticoli(),
 			OrdiniTotaliDiOgniCategoria = _gestioneDati.GetOrdiniTotaliDiOgniCategoria(),
 			ClassificaArticoli = _gestioneDati.GetArticoliOrdineNumero_ordini(),
-			NumeroTotaleClassificati = 4,
+			NumeroTotaleClassificati = 5,
 			Utenti = _gestioneDati.GetTuttiUtenti(),
 			isMinore = false
 		};

@@ -51,7 +51,63 @@ public class UtentiAdminController : Controller
 	public IActionResult GestioneUtentiAdmin()
 	{
 		var utenti = _gestioneDati.GetTuttiUtenti();
+
+		GestioneUtentiViewModel viewModel = new GestioneUtentiViewModel()
+		{
+			Utenti = utenti,
+			NumeroIscritti = utenti.Count()
+		};
 		
-		return View(utenti);
+		return View(viewModel);
+	}
+	
+	
+	[HttpPost]
+	public IActionResult ModificaUtente(int id, DettaglioUtenteViewModel input)
+	{
+		var utente = _gestioneDati.GetUtente(id);
+		
+		// Nome
+		if (!string.IsNullOrWhiteSpace(input.Utente.Nome) &&
+		    input.Utente.Nome != utente.Nome)
+		{
+			utente.Nome = input.Utente.Nome;
+		}
+		// Username
+		if (!string.IsNullOrWhiteSpace(input.Utente.Username) &&
+		    input.Utente.Username != utente.Username)
+		{
+			utente.Username = input.Utente.Username;
+		}
+		// Telefono
+		if (!string.IsNullOrWhiteSpace(input.Utente.Telefono) &&
+		    input.Utente.Telefono != utente.Telefono)
+		{
+			utente.Telefono = input.Utente.Telefono;
+		}
+		// Indirizzo
+		if (!string.IsNullOrWhiteSpace(input.Utente.Indirizzo) &&
+		    input.Utente.Indirizzo != utente.Indirizzo)
+		{
+			utente.Indirizzo = input.Utente.Indirizzo;
+		}
+		// Password
+		if (!string.IsNullOrWhiteSpace(input.Utente.Password) &&
+		    input.Utente.Password != utente.Password)
+		{
+			utente.Password = input.Utente.Password;
+		}
+		
+		try
+		{
+			_gestioneDati.ModificaUtente(utente);
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e);
+			return RedirectToAction("Error", "Home");
+		}
+
+		return RedirectToAction("DettaglioUtenteAdmin", new { id = id });
 	}
 }

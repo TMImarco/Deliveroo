@@ -810,7 +810,7 @@ VALUES (@idUtente, @idArticolo);";
 SET nome = @nome,
     telefono = @telefono,
     password = @password,
-    username = @username
+    username = @username,
     indirizzo = @indirizzo
 WHERE id = @id";
         MySqlCommand command = new MySqlCommand(query, _connection);

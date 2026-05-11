@@ -92,8 +92,6 @@ public class ArticoliAdminController : Controller
     [HttpPost]
     public IActionResult ModificaArticolo(int id, ArticoloModificaArticolo input)
     {
-        Console.WriteLine("Controller: " + input.Prezzo);
-
         var articoloDb = _gestioneDati.GetArticoloScelto(id);
 
         // Nome

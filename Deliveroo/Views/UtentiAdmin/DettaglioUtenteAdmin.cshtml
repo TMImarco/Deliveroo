@@ -5,120 +5,157 @@
     Layout = "_LayoutAdmin";
 }
 
-@section NavbarLinks
-{
-    <!--Attiva la nav bar-->
-}
+@section NavbarLinks { <!--Attiva la nav bar--> }
 
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<div class="adm-hero">
+    <div class="adm-hero__left">
+        <span class="adm-eyebrow">Utenti</span>
+        <h1 class="adm-title">Utente <strong>#@Model.Utente.Id</strong></h1>
+    </div>
+    <span class="adm-badge adm-badge--muted">@Model.Utente.Username</span>
+</div>
 
-<!--Colonna 1-->
-<div class="container">
-    <!--METRIC CARDS:-->
-    <div class="grid-top">
-        <div class="metric">
-            <p class="metric-label">Utente</p>
-            <p class="metric-value"># @Model.Utente.Id</p>
+<!-- ── PAGINA ─────────────────────────────────────────────────── -->
+<div class="adm-detail-page">
+
+    <!-- METRIC -->
+    <div class="adm-metrics-row">
+        <div class="adm-metric">
+            <span class="adm-metric__label">ID utente</span>
+            <span class="adm-metric__value">#@Model.Utente.Id</span>
+        </div>
+        <div class="adm-metric">
+            <span class="adm-metric__label">Ordini effettuati</span>
+            <span class="adm-metric__value">@Model.ListaOrdini.Count()</span>
+        </div>
+        <div class="adm-metric">
+            <span class="adm-metric__label">Articoli preferiti</span>
+            <span class="adm-metric__value">@Model.ListaArticoliPreferiti.Count()</span>
         </div>
     </div>
 
-    <!--CARD INFO CLIENTE-->
-    <div class="card">
-        <p class="card-title">Informazioni utente</p>
-        <div class="info-row">
-            <span class="info-label">Nome</span>
-            <span class="info-value">@Model.Utente.Nome</span>
-        </div>
-        <div class="info-row">
-            <span class="info-label">Username</span>
-            <span class="info-value">@Model.Utente.Username</span>
-        </div>
-        <div class="info-row">
-            <span class="info-label">Telefono</span>
-            <span class="info-value">@Model.Utente.Telefono</span>
-        </div>
-        <div class="info-row">
-            <span class="info-label">Indirizzo</span>
-            <span class="info-value">@Model.Utente.Indirizzo</span>
-        </div>
-        <div class="info-row">
-            <span class="info-label">Password</span>
-            <span class="info-value">@Model.Utente.Password</span>
-        </div>
-    </div>
+    <div class="adm-detail-grid">
 
-    <div class="card">
-        <p class="card-title">Ordini effettuati</p>
-        <!--ORDINI-->
-        <table id="ordiniTable"
-               class="display">
-            <thead>
-            <tr>
-                <th>ID ordine</th>
-                <th>Data di creazione ordine</th>
-                <th>Importo totale</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var o in Model.ListaOrdini)
-            {
-                <tr>
-                    <td>@o.IdOrdine</td>
-                    <td>@o.Data.ToString("dd/MM/yyyy — HH:mm")</td>
-                    <td>@o.ImportoTotale</td>
-                </tr>
-            }
-            </tbody>
-        </table>
-    </div>
-    
-    <!--Ordini preferiti-->
-    <div class="card">
-        <p class="card-title">Articoli preferiti</p>
-        
-        <table id="articoliPreferitiTable"
-               class="display">
-            <thead>
-            <tr>
-                <th>ID Articolo</th>
-                <th>Nome</th>
-                <th>Foto</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var art in Model.ListaArticoliPreferiti)
-            {
-                <tr>
-                    <td>@art.IdArticolo</td>
-                    <td>@art.Nome</td>
-                    <td>
-                        <img src="@art.ImageUrl" 
-                             style="width:60px; height:70px; object-fit:cover;">
-                    </td>
-                </tr>
-            }
-            </tbody>
-        </table>
+        <!-- CARD INFO UTENTE (modificabile) -->
+        <div class="adm-card">
+            <div class="adm-card__head">
+                <span class="adm-card__title">Informazioni utente</span>
+            </div>
+            <div class="adm-card__body">
+                <form method="post" asp-action="ModificaUtente" asp-route-id="@Model.Utente.Id">
+
+                    @{
+                        var fields = new[] {
+                            new { Label = "Nome",     InputId = "inputNome",     HiddenId = "hiddenNome",     HiddenName = "Utente.Nome",     Value = Model.Utente.Nome     },
+                            new { Label = "Username", InputId = "inputUsername", HiddenId = "hiddenUsername", HiddenName = "Utente.Username", Value = Model.Utente.Username },
+                            new { Label = "Telefono", InputId = "inputTelefono", HiddenId = "hiddenTelefono", HiddenName = "Utente.Telefono", Value = Model.Utente.Telefono },
+                            new { Label = "Indirizzo",InputId = "inputIndirizzo",HiddenId = "hiddenIndirizzo",HiddenName = "Utente.Indirizzo",Value = Model.Utente.Indirizzo},
+                            new { Label = "Password", InputId = "inputPassword", HiddenId = "hiddenPassword", HiddenName = "Utente.Password", Value = Model.Utente.Password },
+                        };
+                    }
+
+                    @foreach (var f in fields)
+                    {
+                        <div class="adm-info-row">
+                            <span class="adm-info-label">@f.Label</span>
+                            <span class="adm-info-value">
+                                <input type="text" value="@f.Value" disabled id="@f.InputId" class="adm-input" style="max-width:260px;" />
+                                <input type="hidden" name="@f.HiddenName" id="@f.HiddenId" value="@f.Value" />
+                                <button type="button" class="adm-edit-btn" data-target="@f.InputId" title="Modifica">✏️</button>
+                            </span>
+                        </div>
+                    }
+
+                    <div style="margin-top:1rem;">
+                        <input type="submit" value="Salva modifiche" class="adm-submit-btn" style="margin-top:0;" />
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- CARD ORDINI -->
+        <div class="adm-card">
+            <div class="adm-card__head">
+                <span class="adm-card__title">Ordini effettuati</span>
+                <span class="adm-badge adm-badge--teal">@Model.ListaOrdini.Count()</span>
+            </div>
+            <div class="adm-card__body">
+                <div class="adm-table-wrap">
+                    <table id="ordiniTable" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID ordine</th>
+                                <th>Data</th>
+                                <th>Importo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var o in Model.ListaOrdini)
+                            {
+                                <tr>
+                                    <td>@o.IdOrdine</td>
+                                    <td>@o.Data.ToString("dd/MM/yyyy — HH:mm")</td>
+                                    <td>€ @o.ImportoTotale.ToString("0.00")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD PREFERITI -->
+        <div class="adm-card">
+            <div class="adm-card__head">
+                <span class="adm-card__title">Articoli preferiti</span>
+                <span class="adm-badge adm-badge--teal">@Model.ListaArticoliPreferiti.Count()</span>
+            </div>
+            <div class="adm-card__body">
+                <div class="adm-table-wrap">
+                    <table id="articoliPreferitiTable" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Foto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var art in Model.ListaArticoliPreferiti)
+                            {
+                                <tr>
+                                    <td>@art.IdArticolo</td>
+                                    <td>@art.Nome</td>
+                                    <td>
+                                        <img src="@art.ImageUrl"
+                                             style="width:48px; height:48px; object-fit:cover; border-radius:8px; border:1px solid var(--border);" />
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
 @section Styles {
-    <!--stile sheet per le data tables-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
-    <link rel="stylesheet" href="/cssAdmin/DettaglioOrdine.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/cssAdmin/AdminPanel.css" />
 }
 
-@section Scripts
-{
-    <!--SCRIPT per DATA TABLE-->
+@section Scripts {
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
-    <!--SCRIPT per la creazione delle DATA TABLE-->
     <script>
         $(document).ready(function () {
             $('#ordiniTable').DataTable();
             $('#articoliPreferitiTable').DataTable();
         });
-        
+
         $('#ordiniTable tbody').on('click', 'tr', function () {
             var id = $(this).find('td:first').text();
             window.location.href = '@Url.Action("DettaglioOrdineAdmin", "OrdiniAdmin")/' + id;
@@ -127,6 +164,24 @@
         $('#articoliPreferitiTable tbody').on('click', 'tr', function () {
             var id = $(this).find('td:first').text();
             window.location.href = '@Url.Action("ModificaArticolo", "ArticoliAdmin")/' + id;
+        });
+    </script>
+
+    <script>
+        // Abilita modifica + sync hidden
+        document.querySelectorAll('.adm-edit-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+                const el       = document.getElementById(targetId);
+                const hiddenId = targetId.replace('input', 'hidden');
+                const hidden   = document.getElementById(hiddenId);
+
+                el.disabled = false;
+                el.focus();
+                el.classList.add('active-edit');
+
+                el.addEventListener('input', () => { if (hidden) hidden.value = el.value; });
+            });
         });
     </script>
 }
