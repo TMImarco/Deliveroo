@@ -45,7 +45,7 @@
 
         $('#utentiTable tbody').on('click', 'tr', function () {
             var id = $(this).find('td:first').text();
-            window.location.href = '@Url.Action("DettaglioUtenteAdmin", "Admin")/' + id;
+            window.location.href = '@Url.Action("DettaglioUtenteAdmin", "UtentiAdmin")/' + id;
         });
     </script>
 }

@@ -23,8 +23,9 @@ public class AdminController : Controller
 			Articoli = _gestioneDati.GetTuttiArticoli(),
 			OrdiniTotaliDiOgniCategoria = _gestioneDati.GetOrdiniTotaliDiOgniCategoria(),
 			ClassificaArticoli = _gestioneDati.GetArticoliOrdineNumero_ordini(),
-			NumeroTotaleClassificati = 5,
-			Utenti = _gestioneDati.GetTuttiUtenti()
+			NumeroTotaleClassificati = 4,
+			Utenti = _gestioneDati.GetTuttiUtenti(),
+			isMinore = false
 		};
 		return View(adminViewModel);
 	}
@@ -32,6 +33,15 @@ public class AdminController : Controller
 	[HttpPost]
 	public IActionResult IndexAdmin(int numeroTotaleClassificati)
 	{
+		bool isMinore = false;
+		// Forza il minimo a 3
+		if (numeroTotaleClassificati < 3)
+		{
+			numeroTotaleClassificati = 3;
+			isMinore = true;
+		}
+			
+		
 		var adminViewModel = new IndexAdminViewModel()
 		{
 			Ordini = _gestioneDati.GetTuttiOrdini(),
@@ -39,7 +49,9 @@ public class AdminController : Controller
 			Articoli = _gestioneDati.GetTuttiArticoli(),
 			OrdiniTotaliDiOgniCategoria = _gestioneDati.GetOrdiniTotaliDiOgniCategoria(),
 			ClassificaArticoli = _gestioneDati.GetArticoliOrdineNumero_ordini(),
-			NumeroTotaleClassificati = numeroTotaleClassificati
+			NumeroTotaleClassificati = numeroTotaleClassificati,
+			Utenti = _gestioneDati.GetTuttiUtenti(),
+			isMinore =  isMinore
 		};
 		return View(adminViewModel);
 	}

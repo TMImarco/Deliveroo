@@ -11,4 +11,5 @@ public class IndexAdminViewModel
     public List<Articolo> ClassificaArticoli { get; set; }
     public int NumeroTotaleClassificati { get; set; }
     public List<Utente> Utenti { get; set; }
+    public bool isMinore { get; set; }
 }

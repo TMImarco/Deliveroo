@@ -19,14 +19,11 @@ Dividiamo il progetto in tre macro argomenti:
 9. In ModificaArticolo possibilita' di usare immagini gia' caricate su Cloudinary
 10. In AggiungiArticolo implementare anche li il pulsante "prendi foto da Cloudinary"
 11. Fare in modo che nel riquadro della classifica ci sia anche una classifica per vedere gli articolo piu' preferiti
+12. Gestione Utenti
 
 ### Funzioni da implementare:
 1. Grafica
-2. Modificare grafica delle associazioni (troppo basic)
-3. Modificare grafica dettaglio ordine (troppo claude)
-4. Modificare grafica classifica (troppo claude)
-5. Modificare grafica lista ordini (troppo basic)
-8. In ModificaArticolo, nella pagina dove ti chiedere di scegliere la categoria, mettere la barra di ricerca che ha fatto la Stefi (mettina in grande tipo Google e sotto le categorie, poi nelle altre pagine in alto come in articoli normali)
+2. In ModificaArticolo, nella pagina dove ti chiedere di scegliere la categoria, mettere la barra di ricerca che ha fatto la Stefi (mettina in grande tipo Google e sotto le categorie, poi nelle altre pagine in alto come in articoli normali)
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate

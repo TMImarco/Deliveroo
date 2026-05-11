@@ -607,8 +607,6 @@ VALUES (@id_ordine, @id_articolo, @quantita, @prezzo)";
     //>>>>>>>>>>>> MODIFICA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     public void ModificaArticolo(int id, Articolo modificheArticolo)
     {
-        Console.WriteLine("Gestione dati: " + modificheArticolo.Prezzo);
-
         string query = @"UPDATE articoli
 SET nome = @nome,
     imageUrl = @foto,
@@ -804,6 +802,34 @@ VALUES (@idUtente, @idArticolo);";
         command.Parameters.AddWithValue("@idUtente", idUtente);
         command.Parameters.AddWithValue("@idArticolo", idArticolo);
         command.ExecuteNonQuery();
+    }
+
+    public void ModificaUtente(Utente user)
+    {
+        string query = @"UPDATE utenti
+SET nome = @nome,
+    telefono = @telefono,
+    password = @password,
+    username = @username
+    indirizzo = @indirizzo
+WHERE id = @id";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@id", user.Id);
+        command.Parameters.AddWithValue("@nome", user.Nome);
+        command.Parameters.AddWithValue("@telefono", user.Telefono);
+        command.Parameters.AddWithValue("@password", user.Password);
+        command.Parameters.AddWithValue("@username", user.Username);
+        command.Parameters.AddWithValue("@indirizzo", user.Indirizzo);
+
+        try
+        {
+            command.ExecuteNonQuery();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
     
     /* ORDINI PASSATI */

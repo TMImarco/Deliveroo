@@ -17,7 +17,7 @@
     var imgMap = Model.ListaArticoliPresi
         .ToDictionary(a => a.IdArticolo, a => a.ImageUrl);
     var imgMapJson = System.Text.Json.JsonSerializer.Serialize(imgMap);
-    
+
     string imgUrl = imgMap.ContainsKey(idSelezionato) ? imgMap[idSelezionato] : null;
 }
 
@@ -28,7 +28,7 @@
 <div class="container">
 
     <h1>SCEGLI ASSOCIAZIONIE</h1>
-    
+
     <form method="post" asp-action="AssociazioniAdmin">
         <select name="IdArticoloSelezionato"
                 id="idArticolo">
@@ -43,15 +43,18 @@
                     </option>
                 }
             }
-
         </select>
     </form>
 
     <div class="grid-container-ass">
         <!--Colonna 1-->
         <div class="container">
-            <img id="articoloImg"
-                 src="@imgUrl">
+            <a id="articoloLink"
+               href="@Url.Action("ModificaArticolo", "ArticoliAdmin")/@idSelezionato">
+                <img id="articoloImg"
+                     src="@imgUrl"
+                     style="cursor:pointer;">
+            </a>
         </div>
 
         <!--Colonna 2-->
@@ -76,14 +79,15 @@
                             {
                                 @if (o.IdArticolo2 == art.IdArticolo)
                                 {
-                                    @art.Nome;
+                                    @art.Nome
+                                    ;
                                 }
                             }
                         </td>
                         <td>
                             @if (imgMap.ContainsKey(o.IdArticolo2))
                             {
-                                <img src="@imgMap[o.IdArticolo2]" 
+                                <img src="@imgMap[o.IdArticolo2]"
                                      style="width:60px; height:70px; object-fit:cover;">
                             }
                         </td>
@@ -93,7 +97,7 @@
                 }
                 </tbody>
             </table>
-            
+
             <form method="post"
                   asp-action="AggiornaConfidence">
                 <button type="submit"
@@ -105,13 +109,12 @@
     </div>
 
 
-    
 </div>
 
 @section Scripts
 {
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    
+
     <!--Script per data table + immagine-->
     <script>
         const imgMap = @Html.Raw(imgMapJson);
@@ -124,13 +127,18 @@
                 const url = imgMap[id];
                 if (url) $('#articoloImg').attr('src', url);
 
-                // submit solo per aggiornare tabella e dati
+                // Aggiorna il link dell'immagine grande
+                $('#articoloLink').attr('href', '@Url.Action("ModificaArticolo", "ArticoliAdmin")/' + id);
+
                 $(this).closest('form').submit();
+            });
+
+            $('#associazioniTable tbody').on('click', 'tr', function () {
+                var id = $(this).find('td:first').text();
+                window.location.href = '@Url.Action("ModificaArticolo", "ArticoliAdmin")/' + id;
             });
         });
     </script>
-    
-    
 }
 
 @section Styles

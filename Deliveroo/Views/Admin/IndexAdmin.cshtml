@@ -18,17 +18,21 @@
     <!--DA FARE: modificare che il podio sia a destra e le altre posizioni a sinistra-->
     <div class="container-fluid">
         <h4>BEST SELLING</h4>
-        
+
         <p>Seleziona numero di classificati</p>
         <form method="post" asp-action="IndexAdmin">
             <input type="number"
                    name="numeroTotaleClassificati"
                    value="@Model.NumeroTotaleClassificati"
-                   min="4"
+                   min="3"
                    step="1"
                    onchange="this.form.submit()"/>
+            @if (Model.NumeroTotaleClassificati < 3 || Model.isMinore)
+            {
+                <small style="color:red;">Il numero minimo di classificati è 3.</small>
+            }
         </form>
-        
+
         <div class="ranking-wrapper">
             @{
                 var lista = Model.ClassificaArticoli.ToList();
@@ -42,7 +46,8 @@
                     @for (int i = 0; i < Math.Min(3, lista.Count); i++)
                     {
                         var a = lista[i];
-                        <div class="podium-card pos-@(i + 1)">
+                        <div class="podium-card pos-@(i + 1)"
+                             data-id="@a.IdArticolo">
                             <div class="podium-pos">@(i + 1)</div>
                             <div class="podium-medal">@medals[i]</div>
                             <div class="podium-name">@a.Nome</div>
@@ -61,7 +66,8 @@
                     @for (int i = 3; i < Math.Min(Model.NumeroTotaleClassificati, lista.Count); i++)
                     {
                         var a = lista[i];
-                        <div class="rank-row">
+                        <div class="rank-row"
+                             data-id="@a.IdArticolo">
                             <div class="rank-num">#@(i + 1)</div>
                             <div class="rank-info">
                                 <span class="rank-name">@a.Nome</span>
@@ -104,9 +110,9 @@
                 ASSOCIAZIONI D'ACQUISTO
             </a>
         </p>
-        
+
         <p>
-            <a asp-controller="Admin"
+            <a asp-controller="UtentiAdmin"
                asp-action="GestioneUtentiAdmin"
                class="btn btn-primary">
                 GESTIONE UTENTI
@@ -119,7 +125,7 @@
     <div class="container">
         <h4>ORDINI</h4>
         <!--data table per gli ORDINI-->
-        <table id="ordiniTable" 
+        <table id="ordiniTable"
                class="display">
             <thead>
             <tr>
@@ -169,14 +175,18 @@
     <script>
         $(document).ready(function () {
             $('#ordiniTable').DataTable();
-            $('#associazioniTable').DataTable();
-            $('#classificaArticoliTable').DataTable();
+
+            $('#ordiniTable tbody').on('click', 'tr', function () {
+                var id = $(this).find('td:first').text();
+                window.location.href = '@Url.Action("DettaglioOrdineAdmin", "OrdiniAdmin")/' + id;
+            });
         });
 
-        $('#ordiniTable tbody').on('click', 'tr', function () {
-            var id = $(this).find('td:first').text();
-            window.location.href = '@Url.Action("DettaglioOrdineAdmin", "Admin")/' + id;
-        });
+        // Click su podio e classifica
+        $('.podium-card, .rank-row').on('click', function () {
+            var id = $(this).data('id');
+            window.location.href = '@Url.Action("ModificaArticolo", "ArticoliAdmin")/' + id;
+        }).css('cursor', 'pointer');
     </script>
 
     <!--SCRIPT per la creazione del GRAFICO "graficoCategorie"-->
