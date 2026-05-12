@@ -1,4 +1,7 @@
 # Deliveroo
+
+Il "progetto Deliveroo" consiste una web app di food delivery con funzionalità amministrative e motore di raccomandazione prodotti. Il progetto e' stato creato usando Asp.Net con architettura Model-View-Controller (MVC). Questo lavoro si ispira liberamente all'applicazione della nota compagnia di consegna cibo a domicilio Deliveroo, da cui prende il nome.
+
 ## Progetto di coppia
 Coppia: Agapi, Garbin
 Scandeza 09/05/2026
