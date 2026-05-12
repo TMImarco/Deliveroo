@@ -18,15 +18,14 @@ Dividiamo il progetto in tre macro argomenti:
 5. Aggiungi articolo
 6. Vedere le associazioni di acquisto con le "confidence" in 'A' + refresh confidence
 7. Elimina articolo
-8. Ogni entri della tabella articolo e' cliccabile e mostra tutte le info dell'ordine (modificare la grafica che e' di Claude)
+8. Ogni entry della tabella articolo e' cliccabile e mostra tutte le info dell'ordine (modificare la grafica che e' di Claude)
 9. In ModificaArticolo possibilita' di usare immagini gia' caricate su Cloudinary
-10. In AggiungiArticolo implementare anche li il pulsante "prendi foto da Cloudinary"
-11. Fare in modo che nel riquadro della classifica ci sia anche una classifica per vedere gli articolo piu' preferiti
 12. Gestione Utenti
 
 ### Funzioni da implementare:
 1. Grafica
-2. In ModificaArticolo, nella pagina dove ti chiedere di scegliere la categoria, mettere la barra di ricerca che ha fatto la Stefi (mettina in grande tipo Google e sotto le categorie, poi nelle altre pagine in alto come in articoli normali)
+3. In AggiungiArticolo implementare anche li il pulsante "prendi foto da Cloudinary"
+4. Fare in modo che nel riquadro della classifica ci sia anche una classifica per vedere gli articolo piu' preferiti
 
 ### Note
 1. Opzione elimina/modifica/aggiungi categoria scartate
