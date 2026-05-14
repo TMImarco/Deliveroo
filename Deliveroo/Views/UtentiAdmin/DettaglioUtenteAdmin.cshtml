@@ -146,6 +146,31 @@
 @section Styles {
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="~/cssAdmin/AdminPanel.css" />
+    <style>
+        /* ── CENTRA IL CONTENUTO DELLA PAGINA ──────────────────── */
+        .adm-detail-page {
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* adm-detail-grid ha già max-width:780px in AdminPanel.css  */
+        /* ma senza margin:auto — lo aggiungiamo qui                 */
+        .adm-detail-grid {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ── BADGE USERNAME — più visibile ─────────────────────── */
+        .adm-badge.adm-badge--muted {
+            background: var(--teal-light);
+            color: var(--teal-mid);
+            border: 1.5px solid var(--teal-border);
+            font-size: 0.72rem;
+            padding: 5px 14px;
+        }
+    </style>
 }
 
 @section Scripts {

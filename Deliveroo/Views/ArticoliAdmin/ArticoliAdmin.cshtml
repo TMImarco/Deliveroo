@@ -30,10 +30,15 @@
     }
 }
 
-<h1 class="idx-title">SELEZIONA ARTICOLO DA CAMBIARE</h1>
-
 <!-- TUTTI GLI ARTICOLI -->
 <div class="art-section">
+
+    <!-- INTESTAZIONE CENTRATA – larghezza ancorata alla griglia -->
+    <div class="art-admin-header">
+        <h1 class="idx-title art-admin-title">SELEZIONA ARTICOLO<br><strong>DA CAMBIARE</strong></h1>
+        <div class="art-admin-divider"></div>
+    </div>
+
     <div class="art-grid">
         @foreach (var articolo in Model)
         {
@@ -61,6 +66,9 @@
 
 @section Styles {
     <link rel="stylesheet" href="/cssAdmin/Articoli.css"/>
+    <style>
+        
+    </style>
 }
 
 @section Scripts

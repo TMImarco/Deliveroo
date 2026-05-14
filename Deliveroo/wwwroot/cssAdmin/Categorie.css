@@ -284,6 +284,42 @@
     justify-content: center;
 }
 
+/* ── INTESTAZIONE ADMIN CATEGORIE ──────────────────────── */
+.cat-admin-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;         /* centra orizzontalmente */
+    text-align: center;
+    padding: 2.8rem 0 0;
+}
+
+.cat-admin-title {
+    text-transform: uppercase;
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    font-weight: 300;
+    margin: 0 0 1.4rem;
+}
+
+/* il divisore usa la stessa larghezza della griglia sotto di lui   */
+/* width: 100% = larghezza del .container, come l'idx-grid          */
+.cat-admin-divider {
+    width: 100%;                 /* si ferma ai bordi della griglia */
+    height: 1.5px;
+    background: linear-gradient(
+            to right,
+            transparent 0%,
+            var(--teal-border, rgba(0,204,188,.35)) 8%,
+            var(--teal, #00ccbc) 40%,
+            var(--teal, #00ccbc) 60%,
+            var(--teal-border, rgba(0,204,188,.35)) 92%,
+            transparent 100%
+    );
+    margin-bottom: 2rem;
+    border: none;
+}
+
 /* ── RESPONSIVE ────────────────────────────────────────────── */
 @media (max-width: 1400px) {
     .idx-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }

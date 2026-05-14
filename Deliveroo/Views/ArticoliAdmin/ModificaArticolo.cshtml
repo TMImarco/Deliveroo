@@ -28,26 +28,25 @@
 <div class="adm-hero">
     <div class="adm-hero__left">
         <span class="adm-eyebrow">Articoli</span>
-        <h1 class="adm-title">Modifica <strong>@art.Nome</strong></h1>
+        <div class="adm-title-row">
+            <h1 class="adm-title">Modifica <strong>@art.Nome</strong> <span class="adm-id-badge">#@art.IdArticolo</span></h1>
+        </div>
     </div>
     <div class="adm-hero__right">
         <!-- Elimina articolo -->
         <a href="@Url.Action("EliminaArticolo", new { id = art.IdArticolo })"
-           class="adm-btn adm-btn--danger confirm-action"
+           class="adm-btn adm-btn--danger adm-btn--delete confirm-action"
            data-msg="Eliminare @art.Nome?">
-            🗑 Elimina
+            🗑&nbsp; Elimina articolo
         </a>
     </div>
 </div>
 
 <!-- ── PAGINA ─────────────────────────────────────────────────── -->
 <div class="adm-form-page">
-    <div class="adm-form-grid">
+    <div class="adm-article-center">
 
-        <!-- COLONNA SINISTRA -->
-        <div>
-
-            <!-- FRECCE PREV / NEXT -->
+        <!-- FRECCE PREV / NEXT -->
             <div class="article-nav">
                 @if (ViewBag.IdPrev != null)
                 {
@@ -164,23 +163,6 @@
 
                 </div>
             </form>
-        </div>
-
-        <!-- COLONNA DESTRA: info articolo -->
-        <div class="adm-side-col">
-            <div class="adm-side-card">
-                <div class="adm-card__head">
-                    <span class="adm-card__title">Dettagli</span>
-                </div>
-                <div class="adm-side-card__body">
-                    <div class="adm-info-row">
-                        <span class="adm-info-label">ID</span>
-                        <span class="adm-info-value">#@art.IdArticolo</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 
@@ -218,6 +200,9 @@
     <link rel="stylesheet" href="~/cssAdmin/AdminPanel.css" />
     <link rel="stylesheet" href="/cssAdmin/ModificaArticolo.css"/>
     <link rel="stylesheet" href="/css/site.css"/>
+    <style>
+        
+    </style>
 }
 
 @section Scripts {

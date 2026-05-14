@@ -1080,6 +1080,48 @@ input[type="file"].adm-file {
 .adm-badge--danger { background: var(--danger-light); color: var(--danger); }
 .adm-badge--muted { background: var(--surface); color: var(--muted); border: 1px solid var(--border-soft); }
 
+/* ── BADGE ID ARTICOLO ──────────────────────────────────── */
+/* Come adm-eyebrow ma: niente pallino, bordo teal scuro    */
+.adm-id-badge {
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    background: var(--teal-light);
+    color: var(--teal-mid);
+    font-size: 0.38em;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 100px;
+    border: 1.5px solid var(--teal-dark);   /* bordo azzurro/teal scuro */
+}
+
+/* ── BOTTONE ELIMINA — più visibile ────────────────────── */
+/* Override del ghost: sfondo pieno danger, testo bianco    */
+.adm-btn--delete {
+    background: var(--danger) !important;
+    color: var(--white) !important;
+    border-color: var(--danger) !important;
+    padding: 10px 22px !important;
+    font-size: 0.86rem !important;
+    box-shadow: 0 3px 10px rgba(232, 87, 42, 0.28);
+}
+.adm-btn--delete:hover {
+    background: #c94420 !important;
+    border-color: #c94420 !important;
+    color: var(--white) !important;
+    box-shadow: 0 6px 18px rgba(232, 87, 42, 0.38) !important;
+}
+
+/* ── CENTRATURA CARD ARTICOLO ───────────────────────────── */
+/* Rimuove adm-form-grid (3fr 2fr) inutilizzato; centra il  */
+/* riquadro adm-article-split con max-width e margin: auto  */
+.adm-article-center {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════════════════ */
