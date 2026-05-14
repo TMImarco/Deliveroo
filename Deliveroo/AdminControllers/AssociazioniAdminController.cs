@@ -17,45 +17,35 @@ public class AssociazioniAdminController : Controller
     public IActionResult AssociazioniAdmin()
     {
         var viewModel = new AssociazioniAdminViewModel();
-
-        // Carica la lista articoli
         viewModel.ListaArticoliENomi = _gestioneDati.GetTutteIdArticolo1ENomi();
 
-        // Prendi il primo ID come int?
-        viewModel.IdArticoloSelezionato = viewModel.ListaArticoliENomi
-            .SelectMany(d => d.Keys)
-            .Cast<int?>()
-            .FirstOrDefault();
+        // Legge l'ID selezionato da TempData se arriva da un POST, altrimenti usa il primo
+        viewModel.IdArticoloSelezionato = TempData.ContainsKey("IdArticoloSelezionato")
+            ? (int?)TempData["IdArticoloSelezionato"]
+            : viewModel.ListaArticoliENomi
+                .SelectMany(d => d.Keys)
+                .Cast<int?>()
+                .FirstOrDefault();
 
-        // Carica le associazioni solo se il valore c'è
         if (viewModel.IdArticoloSelezionato.HasValue)
         {
             viewModel.ListaAssociazioni = _gestioneDati.GetAssociazione(viewModel.IdArticoloSelezionato.Value);
         }
 
         foreach (var dic in viewModel.ListaArticoliENomi)
-        {
-            foreach (var id in dic.Keys)
-            {
-                viewModel.ListaArticoliPresi.Add(_gestioneDati.GetArticoloScelto(id));
-            }
-        }
-        
+        foreach (var id in dic.Keys)
+            viewModel.ListaArticoliPresi.Add(_gestioneDati.GetArticoloScelto(id));
+
         return View(viewModel);
     }
 
     [HttpPost]
     public IActionResult AssociazioniAdmin(AssociazioniAdminViewModel vm)
     {
-        vm.ListaArticoliENomi = _gestioneDati.GetTutteIdArticolo1ENomi();
-        vm.ListaArticoliPresi = _gestioneDati.GetTuttiArticoli(); // ← aggiunta
+        // Salva l'ID selezionato in TempData e reindirizza al GET
+        TempData["IdArticoloSelezionato"] = vm.IdArticoloSelezionato;
 
-        if (vm.IdArticoloSelezionato.HasValue)
-        {
-            vm.ListaAssociazioni = _gestioneDati.GetAssociazione(vm.IdArticoloSelezionato.Value);
-        }
-
-        return View(vm);
+        return RedirectToAction("AssociazioniAdmin");
     }
 
     [HttpPost]

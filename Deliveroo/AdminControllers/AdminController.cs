@@ -16,32 +16,15 @@ public class AdminController : Controller
 	[HttpGet]
 	public IActionResult IndexAdmin()
 	{
-		var adminViewModel = new IndexAdminViewModel()
-		{
-			Ordini = _gestioneDati.GetTuttiOrdini(),
-			Associazioni = _gestioneDati.GetTutteAssociazioni(),
-			Articoli = _gestioneDati.GetTuttiArticoli(),
-			OrdiniTotaliDiOgniCategoria = _gestioneDati.GetOrdiniTotaliDiOgniCategoria(),
-			ClassificaArticoli = _gestioneDati.GetArticoliOrdineNumero_ordini(),
-			NumeroTotaleClassificati = 5,
-			Utenti = _gestioneDati.GetTuttiUtenti(),
-			isMinore = false
-		};
-		return View(adminViewModel);
-	}
+		// Legge il valore da TempData se arriva da un POST, altrimenti usa il default
+		int numeroTotaleClassificati = TempData.ContainsKey("NumeroTotaleClassificati")
+			? (int)TempData["NumeroTotaleClassificati"]
+			: 5;
 
-	[HttpPost]
-	public IActionResult IndexAdmin(int numeroTotaleClassificati)
-	{
-		bool isMinore = false;
-		// Forza il minimo a 3
-		if (numeroTotaleClassificati < 3)
-		{
-			numeroTotaleClassificati = 3;
-			isMinore = true;
-		}
-			
-		
+		bool isMinore = TempData.ContainsKey("IsMinore")
+			? (bool)TempData["IsMinore"]
+			: false;
+
 		var adminViewModel = new IndexAdminViewModel()
 		{
 			Ordini = _gestioneDati.GetTuttiOrdini(),
@@ -51,9 +34,26 @@ public class AdminController : Controller
 			ClassificaArticoli = _gestioneDati.GetArticoliOrdineNumero_ordini(),
 			NumeroTotaleClassificati = numeroTotaleClassificati,
 			Utenti = _gestioneDati.GetTuttiUtenti(),
-			isMinore =  isMinore
+			isMinore = isMinore
 		};
 		return View(adminViewModel);
+	}
+
+	[HttpPost]
+	public IActionResult IndexAdmin(int numeroTotaleClassificati)
+	{
+		bool isMinore = false;
+		if (numeroTotaleClassificati < 3)
+		{
+			numeroTotaleClassificati = 3;
+			isMinore = true;
+		}
+
+		// Salva i risultati della logica in TempData
+		TempData["NumeroTotaleClassificati"] = numeroTotaleClassificati;
+		TempData["IsMinore"] = isMinore;
+
+		return RedirectToAction("IndexAdmin");
 	}
 	
 	[HttpGet]
